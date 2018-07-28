@@ -1,18 +1,22 @@
 <header>
   <div class="wrapper">
-    <nav>
+    <div class="masthead">
       <div class="logo">
-        <a href="/"><%= render "logo" %></a>
+        <a href="/"><%= render "partials/logo" %></a>
       </div>
-    </nav>
+      <nav>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
 
     <div class="intro">
-      <p class="tagline">Algorithms for Humanity</p>
-      <h1 class="title">Killer Code</h1>
+      <h2 class="tagline">Algorithms for</h2>
+      <h1 class="title">Title Here</h1>
       <div class="search">
         <div class="input-group">
           <span class="input-icon"></span>
-          <input type="text" class="search-input">
+          <input type="text" class="search-input" placeholder="Data Science, Machine Learning, and More...">
         </div>
         <a href="/search" class="search-button">Search</a>
       </div>

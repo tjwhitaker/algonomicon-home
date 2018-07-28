@@ -1,0 +1,87 @@
+header {
+  background:url(/assets/nebula.jpg) no-repeat center;
+  background-size:cover;
+  height:35vh;
+
+  .wrapper {
+    position:relative;
+    height:100%;
+
+    .masthead {
+      margin-top:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      .logo {
+        a {
+          display:block;
+
+          svg {
+            fill:white;
+            max-height:25px;
+            width:auto;
+            shape-rendering: crispedges;
+
+            &:hover {
+              fill:rgb(0,255,0);
+            }
+          }
+        }
+      }
+      
+      nav {
+        display:flex;
+        align-items:center;
+
+        a {
+          color:white;
+          margin:0 10px;
+        }
+      }
+    }
+
+    .intro {
+      position:absolute;
+      width:100%;
+      left:10px; bottom:20px;
+
+      .tagline {
+        color:white;
+        @include font-size(14);
+
+      }
+      .title {
+        color:white;
+      }
+      .search {
+        display:flex;
+
+        .input-group {
+          position:relative;
+          width:100%; max-width:400px;
+
+          .input-icon {
+            position:absolute;
+            left:15px; top:50%;
+            transform:translateY(-50%);
+          }
+
+          input {
+            width:100%;
+            padding:20px;
+            border-radius:3px;
+          }
+        }
+        .search-button {
+          display:block;
+          color:white;
+          background:linear-gradient(to left, $rust1, $rust2);
+          padding:20px 40px;
+          border-radius:3px;
+          margin:0 5px;
+        }
+      }
+    }
+  }
+}
