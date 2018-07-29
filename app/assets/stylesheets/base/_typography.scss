@@ -16,9 +16,10 @@ body {
 a {
   text-decoration:none;
   font-weight:bold;
+  color:$purple1;
 
   &:hover {
-    color:$blue1;
+    color:$purple2;
   }
 }
 
