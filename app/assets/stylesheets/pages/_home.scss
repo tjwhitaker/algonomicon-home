@@ -1,7 +1,8 @@
 .showcase {
   display:grid;
   grid-gap:20px;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(5, auto);
+  padding-top:5px;
 
   .item {
     .preview {
@@ -9,6 +10,7 @@
     }
     .title {
       @include font-size(16);
+      color:$dark2;
     }
     .description {
       @include font-size(12);
