@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :users
-  
-  resource :sessions, only: [:new, :create, :destroy]
+  resources :sessions
+
+  get    'login',  to: 'sessions#new',     as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 end
