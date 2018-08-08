@@ -2,6 +2,7 @@ header {
   background:url(/assets/nebula.jpg) no-repeat center;
   background-size:cover;
   height:35vh;
+  transition:all 1s ease;
 
   .wrapper {
     position:relative;
@@ -23,11 +24,12 @@ header {
             max-height:25px;
             width:auto;
             shape-rendering: crispedges;
+            transition:all 0.3s ease;
           }
 
           &:hover {
             svg {
-              visibility:visible;
+              opacity:1;
             }
           }
         }
@@ -44,6 +46,12 @@ header {
           &:hover {
             color:$rust1;
           }
+        }
+        span {
+          color:white;
+          margin:0 5px;
+          font-weight:bold;
+          cursor:default;
         }
       }
     }
@@ -97,5 +105,10 @@ header {
         }
       }
     }
+  }
+
+  &.grayscale {
+    filter:grayscale(1);
+    transition:all 3s ease;
   }
 }
