@@ -2,7 +2,6 @@ header {
   background:url(/assets/nebula.jpg) no-repeat center;
   background-size:cover;
   height:35vh;
-  transition:all 1s ease;
 
   .wrapper {
     position:relative;
@@ -105,10 +104,5 @@ header {
         }
       }
     }
-  }
-
-  &.grayscale {
-    filter:grayscale(1);
-    transition:all 3s ease;
   }
 }

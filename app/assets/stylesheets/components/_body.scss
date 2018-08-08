@@ -1,0 +1,8 @@
+body {
+  transition:all 1s ease;
+  
+  &.grayscale {
+    filter:grayscale(1);
+    transition:all 3s ease;
+  }
+}

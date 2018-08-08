@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('.glitch').on('mouseover', function() {
-    $('header').addClass('grayscale');
+    $('body').addClass('grayscale');
   }).on('mouseout', function() {
-    $('header').removeClass('grayscale');
+    $('body').removeClass('grayscale');
   });
 });

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = 'Welcome!'
-      redirect_to :root
+      redirect_to :root_path
     else
       render :new
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
   end
 
