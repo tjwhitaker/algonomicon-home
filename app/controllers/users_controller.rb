@@ -19,8 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = 'Welcome!'
-      redirect_to :root_path
+      redirect_to :root_path, notice: 'User created.'
     else
       render :new
     end
@@ -36,8 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      flash[:notice] = 'User updated.'
-      redirect_to @user
+      redirect_to @user, notice: 'User updated.'
     else
       render :edit
     end

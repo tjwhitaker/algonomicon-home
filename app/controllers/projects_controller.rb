@@ -19,8 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params)
 
     if @project.save
-      flash[:notice] = 'Project created.'
-      redirect_to @project
+      redirect_to @project, notice: 'Project created.'
     else
       render :new
     end
@@ -36,8 +35,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(params)
-      flash[:notice] = 'Project updated.'
-      redirect_to @project
+      redirect_to @project, notice: 'Project updated.'
     else
       render :edit
     end
