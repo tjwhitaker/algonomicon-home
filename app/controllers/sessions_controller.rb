@@ -7,18 +7,15 @@ class SessionsController < ApplicationController
   # POST /login
   def create
     if @user = login(params[:email], params[:password])
-      flash[:notice] = 'Login successful.'
-      redirect_back_or_to :root_path
+      redirect_back_or_to :root_path, notice: 'Login successful.'
     else
-      flash[:notice] = 'Login failed.'
-      render :new
+      render :new, notice: 'Login failed.'
     end
   end
 
   # DELETE /logout
   def destroy
     logout
-    flash[:notice] = 'Logged out.'
-    redirect_to :users
+    redirect_to :users, notice: 'Logged out.'
   end
 end

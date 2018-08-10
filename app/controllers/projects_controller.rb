@@ -8,42 +8,4 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
   end
-
-  # GET /projects/new
-  def new
-    @project = Project.new
-  end
-
-  # POST /projects
-  def create
-    @project = Project.new(params)
-
-    if @project.save
-      redirect_to @project, notice: 'Project created.'
-    else
-      render :new
-    end
-  end
-
-  # GET /projects/1/edit
-  def edit
-    @project = Project.find(params[:id])
-  end
-
-  # PUT /projects/1
-  def update
-    @project = Project.find(params[:id])
-
-    if @project.update(params)
-      redirect_to @project, notice: 'Project updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /projects/1
-  def destroy
-    @project = Project.find(params[:id])
-    @project.destroy
-  end
 end
