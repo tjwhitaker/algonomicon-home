@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users,      only: [:index, :show]
 
   namespace :admin do
+    root 'pages#dashboard'
+
     resources :categories
     resources :projects
     resources :users

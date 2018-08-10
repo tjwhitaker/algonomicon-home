@@ -1,4 +1,6 @@
 class Admin::ProjectsController < ApplicationController
+  layout 'admin'
+  
   # GET /admin/projects
   def index
     @projects = Project.all

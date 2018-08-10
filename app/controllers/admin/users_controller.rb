@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  layout 'admin'
+  
   # GET /admin/users
   def index
     @users = User.all
