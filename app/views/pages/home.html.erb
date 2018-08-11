@@ -2,23 +2,20 @@
   <div class="wrapper">
     <div class="list">
       <a href="#">All <i class="fa fa-caret-down"></i></a>
-      <a href="#">Art</a>
-      <a href="#">History</a>
-      <a href="#">Language</a>
-      <a href="#">Nature</a>
-      <a href="#">Society</a>
-      <a href="#">Space</a>
+      <% @categories.each do |category| %>
+        <a href="#"><%= category.title %></a>
+      <% end %>
     </div>
   </div>
 </section>
 
 <div class="wrapper">
   <div class="showcase">
-    <% for i in 0..9 do %>
+    <% @projects.each do |project| %>
       <div class="item">
         <img class="preview" src="https://placehold.it/200">
-        <h2 class="title">Hello World</h2>
-        <p class="description">Lorem ipsum dolor sit amet.</p>
+        <h2 class="title"><%= project.title %></h2>
+        <p class="description"><%= project.description %></p>
       </div>
     <% end %>
   </div>

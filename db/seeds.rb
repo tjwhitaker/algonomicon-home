@@ -5,7 +5,7 @@ categories.each do |title|
 end
 
 for i in 0..16 do
-  Project.create(title: Faker::Company.name, 
-                 description: Faker::Company.bs,
+  Project.create(title: [Faker::Lovecraft.deity, Faker::Lovecraft.tome, Faker::Lovecraft.location].sample,
+                 description: Faker::Lovecraft.sentence,
                  content: Faker::Markdown.sandwich)
 end
