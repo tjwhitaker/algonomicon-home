@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   # POST /login
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to :root_path, notice: 'Login successful.'
+      redirect_back_or_to :root, notice: 'Login successful.'
     else
       render :new, notice: 'Login failed.'
     end

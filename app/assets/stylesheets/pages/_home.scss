@@ -1,21 +1,32 @@
 .showcase {
   display:grid;
   grid-gap:20px;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(5, 1fr);
   padding-top:5px;
 
   .item {
+    display:block;
+
     .preview {
       margin-bottom:5px;
+      height:165px;
     }
     .title {
       @include font-size(16);
       color:$dark2;
+      transition:all 0.1s ease;
     }
     .description {
       @include font-size(12);
       color:$dark3;
+      font-weight:normal;
       margin-bottom:0;
+    }
+
+    &:hover {
+      .title {
+        color:$purple2;
+      }
     }
   }
 }

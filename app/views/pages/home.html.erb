@@ -12,11 +12,11 @@
 <div class="wrapper">
   <div class="showcase">
     <% @projects.each do |project| %>
-      <div class="item">
+      <a class="item" href="<%= project_path(project.id) %>">
         <img class="preview" src="https://placehold.it/200">
         <h2 class="title"><%= project.title %></h2>
         <p class="description"><%= project.description %></p>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>

@@ -13,6 +13,12 @@
   </head>
 
   <body>
+    <div class="notice">
+      <div class="wrapper">
+        <p><%= flash[:notice] %></p>
+      </div>
+    </div>
+
     <header>
       <div class="wrapper">
         <div class="masthead">
@@ -24,6 +30,8 @@
             <a href="#">Blog</a>
             <a href="#">Contact</a>
             <a href="#">Projects</a>
+            <%= link_to "Login", :login %>
+            <%= link_to "Logout", :logout, method: :delete %>
           </nav>
         </div>
 
