@@ -1,0 +1,35 @@
+.admin {
+  display:grid;
+  width:100%; min-height:100vh;
+  grid-template-rows:auto 1fr;
+  grid-template-columns:256px 1fr;
+  grid-template-areas: 
+    "header header"
+    "aside main";
+
+  header {
+    grid-area:header;
+    height:auto;
+
+    .wrapper {
+      max-width:100%;
+
+      .masthead {
+        margin-top:0;
+      }
+    }
+  } 
+
+  aside {
+    grid-area:aside;
+    background:$light1;
+    padding:10px;
+
+    a {
+      display:block;
+    }
+  }
+  main {
+    grid-area:main;
+  }
+}

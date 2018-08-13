@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   </head>
 
-  <body>
+  <body class="admin">
     <header>
       <div class="wrapper">
         <div class="masthead">
@@ -20,34 +20,21 @@
             <a href="/" class="glitch"><%= render "partials/logo" %></a>
           </div>
           <nav>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-            <a href="#">Projects</a>
-
             <%= link_to "Login", :login %>
             <%= link_to "Logout", :logout, method: :delete %>
           </nav>
         </div>
-
-        <div class="intro">
-          <h2 class="tagline">Data Projects for <strong class="typed">Humanity</strong></h2>
-          <h1 class="title">The New Scientific Method</h1>
-          <div class="search">
-            <div class="input-group">
-              <span class="input-icon"><i class="fa fa-search"></i></span>
-              <input type="text" class="search-input" placeholder="Data Science, Machine Learning, and More...">
-            </div>
-            <a href="/search" class="search-button">Search</a>
-          </div>
-        </div>
       </div>
     </header>
 
-    <main>
-      <h1>Admin</h1>
-      <%= yield %>
+    <aside class="sidebar">
+      <a href="#">Categories</a>
+      <a href="#">Projects</a>
+      <a href="#">Users</a>
+    </aside>
 
+    <main>
+      <%= yield %>
     </main>
   </body>
 </html>

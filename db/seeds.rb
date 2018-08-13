@@ -5,10 +5,13 @@ categories.each do |title|
 end
 
 for i in 0..16 do
-  Project.create(
+  data = {
     title: [Faker::Lovecraft.deity, Faker::Lovecraft.tome, Faker::Lovecraft.location].sample,              
     description: Faker::Lovecraft.sentence,
-    content: Faker::Markdown.sandwich)
+    content: Faker::Markdown.sandwich
+  }
+
+  Project.create(data)
 end
 
 User.create(email: 'test@algonomicon.com', password: 'test')
