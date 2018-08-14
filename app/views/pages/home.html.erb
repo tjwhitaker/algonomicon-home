@@ -1,9 +1,9 @@
 <section class="filters">
   <div class="wrapper">
     <div class="list">
-      <a href="#">All <i class="fa fa-caret-down"></i></a>
+      <a href="/">All <i class="fa fa-caret-down"></i></a>
       <% @categories.each do |category| %>
-        <a href="#"><%= category.title %></a>
+        <%= link_to category.title, category %>
       <% end %>
     </div>
   </div>

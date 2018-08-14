@@ -1,6 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  layout 'admin'
-
+class Admin::CategoriesController < Admin::BaseController 
   # GET /admin/categories
   def index
     @categories = Category.all

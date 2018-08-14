@@ -1,6 +1,4 @@
-class Admin::ProjectsController < ApplicationController
-  layout 'admin'
-  
+class Admin::ProjectsController < Admin::BaseController
   # GET /admin/projects
   def index
     @projects = Project.all

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :projects,   only: [:index, :show]
-  resources :users,      only: [:index, :show]
 
   namespace :admin do
     root 'pages#dashboard'
