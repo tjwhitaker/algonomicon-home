@@ -12,7 +12,6 @@ gem 'jbuilder',   '~> 2.5'
 gem 'bootsnap',   '>= 1.1.0', require: false
 gem 'faker'
 gem 'jquery-rails'
-gem 'pundit'
 gem 'sorcery'
 gem 'sqlite3'
 
