@@ -25,6 +25,7 @@
 
         .title {
           padding-top:5px;
+          @include font-size(16);
         }
         .description {
           color:$dark2;
@@ -36,7 +37,7 @@
             @include font-size(36);
           }
           .description {
-            @include font-size(24);
+            @include font-size(18);
           }
         }
       }
@@ -77,6 +78,7 @@
           }
           .title {
             margin:0;
+            @include font-size(16);
           }
         }
       }
