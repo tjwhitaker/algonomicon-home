@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :articles,   only: [:index, :show]
   resources :categories, only: [:index, :show]
+  resources :events,     only: [:index, :show]
   resources :projects,   only: [:index, :show]
 
   namespace :admin do
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
     resources :articles
     resources :categories
+    resources :events
     resources :projects
     resources :users
   end
