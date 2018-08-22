@@ -1,0 +1,22 @@
+<h1>Editing Admin Event</h1>
+
+<%= form_with(model: [:admin, @event], local: true) do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', admin_event_path(@event) %> |
+<%= link_to 'Back', admin_events_path %>

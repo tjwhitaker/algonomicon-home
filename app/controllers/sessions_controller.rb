@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
   # DELETE /logout
   def destroy
     logout
-    redirect_to :users, notice: 'Logged out.'
+    redirect_to :root, notice: 'Logged out.'
   end
 end

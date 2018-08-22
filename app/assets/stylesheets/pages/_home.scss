@@ -26,6 +26,7 @@
         .title {
           padding-top:5px;
           @include font-size(16);
+          transition:all 0.1s ease;
         }
         .description {
           color:$dark2;
@@ -33,11 +34,20 @@
         }
 
         &.featured {
+          padding-top:0;
+
           .title {
             @include font-size(36);
+            padding-top:0;
           }
           .description {
             @include font-size(18);
+          }
+        }
+
+        &:hover {
+          .title {
+            color:$purple2;
           }
         }
       }
@@ -63,7 +73,7 @@
         font-family:mono;
       }
 
-      .projects {
+      .events {
         .item {
           display:block;
           border-bottom:1px solid $light2;
@@ -79,6 +89,11 @@
           .title {
             margin:0;
             @include font-size(16);
+          }
+          &:hover {
+            .title {
+              color:$purple2;
+            }
           }
         }
       }

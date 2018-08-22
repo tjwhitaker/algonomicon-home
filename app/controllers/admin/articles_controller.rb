@@ -16,7 +16,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   # POST /admin/articles
   def create
-    @article = Article.new(params)
+    @article = Article.new(article_params)
 
     if @article.save
       redirect_to @article, notice: 'Article created.'
@@ -47,5 +47,11 @@ class Admin::ArticlesController < Admin::BaseController
     @article.destroy
 
     redirect_to :index, notice: 'Article destroyed.'
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :description, :content)
   end
 end

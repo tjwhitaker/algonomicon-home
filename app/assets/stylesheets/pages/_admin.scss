@@ -1,11 +1,25 @@
 .admin {
   display:grid;
   width:100%; min-height:100vh;
-  grid-template-rows:auto 1fr;
+  grid-template-rows:auto auto 1fr;
   grid-template-columns:256px 1fr;
-  grid-template-areas: 
+  grid-template-areas:
+    "notice notice"
     "header header"
     "aside main";
+
+  .notice {
+    grid-area:notice;
+
+    p {
+      padding:10px;
+      margin:0;
+
+      &:empty {
+        display:none;
+      }
+    }
+  }
 
   header {
     grid-area:header;
