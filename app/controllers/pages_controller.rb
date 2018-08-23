@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   def home 
     @title = 'Home'
-    @articles = Article.all
+    @articles = Article.all.order(:created_at)
     @categories = Category.all.order(:title)
-    @projects = Project.all
+    @events = Event.all
   end
 end

@@ -32,28 +32,14 @@
       <h3 class="heading">Events</h3>
       <div class="latest">
         <div class="events">
-          <% @projects.first(10).each do |project| %>
-            <a class="item" href="<%= project_path(project.id) %>">
-              <time class="timestamp"><%= project.created_at.strftime("%b %d") %></time>
-              <h3 class="title"><%= project.title %></h3>
+          <% @events.first(10).each do |project| %>
+            <a class="item" href="<%= event_path(event.id) %>">
+              <time class="timestamp"><%= event.schedule %></time>
+              <h3 class="title"><%= event.title %></h3>
             </a>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-
-<!--
-  <div class="showcase">  
-    <% @projects.each do |project| %>
-      <a class="item" href="<%= project_path(project.id) %>">
-        <img class="preview" src="https://placehold.it/200">
-        <h2 class="title"><%= project.title %></h2>
-        <p class="description"><%= project.description %></p>
-      </a>
-    <% end %>
-  </div>
--->
-
 </div>
-
