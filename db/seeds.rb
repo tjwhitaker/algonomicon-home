@@ -8,8 +8,7 @@ for i in 0..16 do
   data = {
     title: [Faker::Lovecraft.deity, Faker::Lovecraft.tome, Faker::Lovecraft.location].sample,              
     description: Faker::Lovecraft.sentence,
-    content: Faker::Markdown.sandwich,
-    preview: Faker::LoremFlickr.image('640x360', ['science'])
+    content: Faker::Markdown.sandwich
   }
 
   Project.create(data)
@@ -19,8 +18,7 @@ for i in 0..8 do
   data = {
     title: [Faker::Lovecraft.deity, Faker::Lovecraft.tome, Faker::Lovecraft.location].sample,              
     description: Faker::Lovecraft.sentence,
-    content: Faker::Markdown.sandwich,
-    preview: Faker::LoremFlickr.image('640x360', ['tech'])
+    content: Faker::Markdown.sandwich
   }
 
   Article.create(data)
