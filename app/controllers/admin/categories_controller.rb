@@ -46,6 +46,6 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.find(params[:id])
     @category.destroy
 
-    redirect_to :index, notice: 'Category destroyed.'
+    redirect_to :admin_categories, notice: 'Category destroyed.'
   end
 end

@@ -46,7 +46,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to :index, notice: 'Article destroyed.'
+    redirect_to :admin_articles, notice: 'Article destroyed.'
   end
 
   private

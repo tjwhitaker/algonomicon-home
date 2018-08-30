@@ -46,6 +46,6 @@ class Admin::EventsController < Admin::BaseController
     @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to :index, notice: 'Event destroyed.'
+    redirect_to :admin_events, notice: 'Event destroyed.'
   end
 end

@@ -46,7 +46,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to :index, notice: 'User destroyed.'
+    redirect_to :admin_users, notice: 'User destroyed.'
   end
 
   private
