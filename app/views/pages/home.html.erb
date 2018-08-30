@@ -14,15 +14,10 @@
   <div class="showcase">
     <div class="primary">
       <div class="articles">
-        <a class="item featured" href="#">
-          <h2 class="title"><%= Faker::Lorem.sentence %></h2>
-          <p class="description"><%= Faker::Lorem.paragraphs(3).join(' ') %></p>
-        </a>
-
-        <% @articles.first(4).each_with_index do |article, i| %>
-          <a class="item" href="<%= article_path(article.id) %>">
-            <h2 class="title"><%= Faker::Lorem.sentence %></h2>
-            <p class="description"><%= Faker::Lorem.paragraphs(5).join(' ') %></p>
+        <% @articles.first(5).each_with_index do |article, i| %>
+          <a class="item <%= 'featured' if i == 0 %>" href="<%= article_path(article.id) %>">
+            <h2 class="title"><%= article.title %></h2>
+            <p class="description"><%= article.description %></p>
           </a>
         <% end %>
       </div>

@@ -7,7 +7,7 @@ end
 for i in 0..9 do
   data = {
     title: [Faker::Lovecraft.deity, Faker::Lovecraft.tome, Faker::Lovecraft.location].sample,              
-    description: Faker::Lovecraft.sentence,
+    description: Faker::Hipster.paragraph,
     content: Faker::Markdown.sandwich
   }
 
