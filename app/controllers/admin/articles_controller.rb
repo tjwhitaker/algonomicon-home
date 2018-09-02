@@ -12,7 +12,6 @@ class Admin::ArticlesController < Admin::BaseController
   # GET /admin/articles/new
   def new
     @article = Article.new
-    @categories = Category.all
   end 
 
   # POST /admin/articles
@@ -35,7 +34,7 @@ class Admin::ArticlesController < Admin::BaseController
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(params)
+    if @article.update(article_params)
       redirect_to @article, notice: 'Article updated.'
     else
       render :edit
@@ -53,6 +52,6 @@ class Admin::ArticlesController < Admin::BaseController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :content)
+    params.require(:article).permit(:title, :category_id, :description, :content)
   end
 end
