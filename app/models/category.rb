@@ -1,4 +1,3 @@
 class Category < ApplicationRecord
-  # title
-  # projects
+  has_many :articles
 end

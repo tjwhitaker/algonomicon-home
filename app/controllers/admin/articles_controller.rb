@@ -12,6 +12,7 @@ class Admin::ArticlesController < Admin::BaseController
   # GET /admin/articles/new
   def new
     @article = Article.new
+    @categories = Category.all
   end 
 
   # POST /admin/articles

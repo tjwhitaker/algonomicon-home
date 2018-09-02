@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   before_save :parse_content
+  belongs_to :category
 
   private
 
