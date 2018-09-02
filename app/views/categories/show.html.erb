@@ -1,3 +1,7 @@
 <div class="wrapper">
-  <h1>Category Show</h1>
+  <h1><%= @category.title %></h1>
+
+  <% @category.articles.each do |article| %>
+    <h2><%= article.title %></h2>
+  <% end %>
 </div>
