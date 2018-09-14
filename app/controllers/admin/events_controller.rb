@@ -16,10 +16,10 @@ class Admin::EventsController < Admin::BaseController
 
   # POST /admin/events
   def create
-    @event = Event.new(params)
+    @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event, notice: 'Event created.'
+      redirect_to :admin_events, notice: 'Event created.'
     else
       render :new
     end
@@ -34,8 +34,8 @@ class Admin::EventsController < Admin::BaseController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update(params)
-      redirect_to @event, notice: 'Event updated.'
+    if @event.update(event_params)
+      redirect_to :admin_events, notice: 'Event updated.'
     else
       render :edit
     end
@@ -47,5 +47,11 @@ class Admin::EventsController < Admin::BaseController
     @event.destroy
 
     redirect_to :admin_events, notice: 'Event destroyed.'
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :location, :link, :start, :end)
   end
 end

@@ -14,22 +14,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "title" %>
+    <%= form.label "Title" %>
     <%= form.text_field :title %>
   </div>
   
   <div class="field">
-    <%= form.label "category" %>
+    <%= form.label "Category" %>
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
   </div>
 
   <div class="field">
-    <%= form.label "description" %>
+    <%= form.label "Description" %>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label "content" %>
+    <%= form.label "Content" %>
     <%= form.text_area :content %>
   </div>
 

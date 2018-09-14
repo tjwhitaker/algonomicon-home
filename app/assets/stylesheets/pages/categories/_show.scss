@@ -1,0 +1,46 @@
+.category-show {
+  .wrapper {
+    .category-title {
+      border-bottom:1px solid $light2;
+      padding-bottom:5px;
+    }
+    .articles {
+
+      .item {
+        display:block;
+        padding:10px 0;
+        border-bottom:1px solid $light2;
+
+        .title {
+          padding-top:5px;
+          @include font-size(16);
+          transition:all 0.1s ease;
+        }
+        .description {
+          color:$dark2;
+          font-weight:normal;
+          margin-bottom:10px;
+        }
+
+        .meta {
+          span {
+            color:$light3;
+            @include font-size(12);
+            margin-right:10px;
+            padding-right:10px;
+            font-family:mono;
+            &:not(:last-child) {
+              border-right:1px solid $light2;
+            }
+          }
+        }
+
+        &:hover {
+          .title {
+            color:$purple2;
+          }
+        }
+      }
+    }
+  }
+}

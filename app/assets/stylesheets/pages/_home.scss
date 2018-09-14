@@ -1,104 +1,137 @@
-.showcase {
-  display:grid;
-  grid-gap:0px;
-  grid-template-columns: 3fr 1fr;
+.home {
+  .categories {
+    .wrapper {
+      display:flex;
+      padding-bottom:0;
 
-  .primary {
-    border-right:1px solid $light2;
-
-    .articles {
-      padding-right:10px;
-      grid-area:articles;
-
-      .item {
-        display:block;
-        padding:10px 0;
+      .list {
+        display:flex;
+        width:100%;
+        padding-bottom:10px;
         border-bottom:1px solid $light2;
 
-        .title {
-          padding-top:5px;
-          @include font-size(16);
-          transition:all 0.1s ease;
-        }
-        .description {
-          color:$dark2;
-          font-weight:normal;
-          margin-bottom:10px;
-        }
-
-        .meta {
-          span {
-            color:$light3;
-            @include font-size(12);
-            margin-right:10px;
-            padding-right:10px;
-            font-family:mono;
-            &:not(:last-child) {
-              border-right:1px solid $light2;
-            }
-          }
-        }
-
-        &.featured {
-          padding-top:0;
-
-          .title {
-            @include font-size(36);
-            padding-top:0;
-          }
-          .description {
-            @include font-size(18);
-          }
-        }
-
-        &:hover {
-          .title {
-            color:$purple2;
-          }
+        a {
+          margin-right:20px;
+          font-weight:bold;
         }
       }
     }
   }
-  .secondary {
-    padding-left:10px;
 
-    .heading {
-      color:$light3;
-      border-bottom:1px solid $light2;
-      @include font-size(14);
-      padding:10px 0;
-      font-family:mono;
-    }
+  .showcase {
+    .wrapper {
+      display:grid;
+      grid-gap:0px;
+      grid-template-columns: 2fr 1fr;
 
-    .latest {
-      .heading {
-        color:$light3;
-        border-bottom:1px solid $light2;
-        @include font-size(14);
-        padding:10px 0;
-        font-family:mono;
+      .primary {
+        border-right:1px solid $light2;
+
+        .articles {
+          padding-right:10px;
+          grid-area:articles;
+
+          .item {
+            display:block;
+            padding:10px 0;
+            border-bottom:1px solid $light2;
+
+            .title {
+              padding-top:5px;
+              @include font-size(16);
+              transition:all 0.1s ease;
+            }
+            .description {
+              color:$dark2;
+              font-weight:normal;
+              margin-bottom:10px;
+            }
+
+            .meta {
+              span {
+                color:$light3;
+                @include font-size(12);
+                margin-right:10px;
+                padding-right:10px;
+                font-family:mono;
+                &:not(:last-child) {
+                  border-right:1px solid $light2;
+                }
+              }
+            }
+
+            &.featured {
+              padding-top:0;
+
+              .title {
+                @include font-size(32);
+                line-height:1.1;
+                margin-bottom:10px;
+                padding-top:0;
+              }
+              .description {
+                @include font-size(16);
+              }
+            }
+
+            &:hover {
+              .title {
+                color:$purple2;
+              }
+            }
+          }
+        }
       }
+      .secondary {
+        padding-left:10px;
 
-      .events {
-        .item {
-          display:block;
+        .heading {
+          color:$light3;
           border-bottom:1px solid $light2;
+          @include font-size(14);
           padding:10px 0;
+          font-family:mono;
+        }
 
-          .timestamp {
+        .latest {
+          .heading {
             color:$light3;
-            @include font-size(12);
-            margin:0;
-            padding:0;
+            border-bottom:1px solid $light2;
+            @include font-size(14);
+            padding:10px 0;
             font-family:mono;
           }
-          .title {
-            margin:0;
-            @include font-size(16);
-          }
-          &:hover {
-            .title {
-              color:$purple2;
+
+          .events {
+            .item {
+              display:flex;
+              align-items:center;
+              border-bottom:1px solid $light2;
+              padding:10px 0;
+
+              .title {
+                flex:1;
+                margin:0;
+                @include font-size(16);
+              }
+              .meta {
+                flex:0 1 auto;
+                text-align:right;
+                margin-left:10px;
+
+                .timestamp, .location {
+                  color:$light3;
+                  @include font-size(12);
+                  margin:0;
+                  padding:0;
+                  font-family:mono;  
+                }
+              }
+              &:hover {
+                .title {
+                  color:$purple2;
+                }
+              }
             }
           }
         }

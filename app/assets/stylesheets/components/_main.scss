@@ -5,4 +5,9 @@ body {
     filter:grayscale(1);
     transition:all 3s ease;
   }
+
+  main {
+    min-height:60vh;
+    padding-bottom:40px;
+  }
 }

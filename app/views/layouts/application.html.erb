@@ -10,6 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <%= yield :lib %>
   </head>
 
   <body>
@@ -26,16 +27,14 @@
             <a href="/" class="glitch"><%= render "layouts/logo" %></a>
           </div>
           <nav>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-            <a href="#">Projects</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
           </nav>
         </div>
 
         <div class="intro">
-          <h2 class="tagline">Data Projects for <strong class="typed">Humanity</strong></h2>
-          <h1 class="title">Deep Learning Research</h1>
+          <h2 class="tagline">Destroyer of The Ancient World</h2>
+          <h1 class="title">Machine Learning for Humans</h1>
           <div class="search">
             <div class="input-group">
               <span class="input-icon"><i class="fa fa-search"></i></span>
@@ -52,7 +51,13 @@
     </main>
 
     <footer>
-      <div class="wrapper"></div>
+      <div class="wrapper">
+        <div class="copyright">
+          <p>&copy; Algonomicon LLC 2018</p>
+        </div>
+      </div>
     </footer>
+
+    <%= yield :scripts %>
   </body>
 </html>

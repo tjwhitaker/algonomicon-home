@@ -13,6 +13,31 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label "Title" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Location" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Link" %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Start" %>
+    <%= form.datetime_select :start %>
+  </div>
+
+  <div class="field">
+    <%= form.label "End" %>
+    <%= form.datetime_select :end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

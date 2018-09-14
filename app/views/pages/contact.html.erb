@@ -1,0 +1,54 @@
+<div class="contact">
+  <div class="wrapper">
+    <h1>Contact</h1>
+    <p>Thanks for your interest! I'd love to talk more if you have any questions, concerns or ideas. Feel free to use the form to email me, or get in touch through one of these other means.</p>
+
+    <form>
+      <div class="field-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Name">
+      </div>
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Email">
+      </div>
+      <div class="field-group">
+        <label for="content">Content</label>
+        <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+      </div>
+    </form>
+
+    <div class="location">
+      <div class="map"></div>
+      <div class="info">
+        <h3>Algonomicon</h3>
+        <p>
+          324 Jefferson Street, Fort Collins, CO <br>
+          info@algonomicon.com
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :lib do %>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+<% end %>
+
+<% content_for :scripts do %>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtcDRjbGltYmVyIiwiYSI6ImNpdzhwM2VzbjAyc24yb21zZjduZHh3dmMifQ.k42_5Mnh3NX7pUqkQTA2SA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-105.073333, 40.588722],
+        zoom: 14,
+        interactive: false
+    });
+    
+    var marker = new mapboxgl.Marker()
+      .setLngLat([-105.073333, 40.588722])
+      .addTo(map);
+  </script>
+<% end %>
