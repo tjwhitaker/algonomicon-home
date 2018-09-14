@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :articles,   only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :events,     only: [:index, :show]
+  resources :papers,     only: [:index, :show]
 
   namespace :admin do
     root 'pages#dashboard'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :categories
     resources :events
+    resources :papers
     resources :users
   end
 end
