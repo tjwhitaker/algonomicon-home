@@ -3,7 +3,7 @@
 <%= form_with(model: [:admin, @event], local: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@event.errors.count, 'error') %> prohibited this event from being saved:</h2>
 
       <ul>
       <% @event.errors.full_messages.each do |message| %>
@@ -14,27 +14,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "Title" %>
+    <%= form.label 'Title' %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label "Location" %>
+    <%= form.label 'Location' %>
     <%= form.text_field :location %>
   </div>
 
   <div class="field">
-    <%= form.label "Link" %>
+    <%= form.label 'Link' %>
     <%= form.text_field :link %>
   </div>
 
   <div class="field">
-    <%= form.label "Start" %>
+    <%= form.label 'Start' %>
     <%= form.datetime_select :start %>
   </div>
 
   <div class="field">
-    <%= form.label "End" %>
+    <%= form.label 'End' %>
     <%= form.datetime_select :end %>
   </div>
   

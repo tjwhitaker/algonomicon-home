@@ -1,0 +1,51 @@
+<h1>New Admin Paper</h1>
+
+<%= form_with(model: [:admin, @paper], local: true) do |form| %>
+  <% if @paper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paper.errors.count, 'error') %> prohibited this paper from being saved:</h2>
+
+      <ul>
+      <% @paper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label 'Title' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Category' %>
+    <%= form.collection_select(:category_id, Category.all, :id, :title) %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Content' %>
+    <%= form.text_field :content %>
+  </div>
+  
+  <div class="field">
+    <%= form.label 'Source' %>
+    <%= form.text_field :source %>
+  </div>
+  
+  <div class="field">
+    <%= form.label 'Authors' %>
+    <%= form.text_field :authors %>
+  </div>
+  
+  <div class="field">
+    <%= form.label 'Abstract' %>
+    <%= form.text_area :abstract %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', admin_papers_path %>

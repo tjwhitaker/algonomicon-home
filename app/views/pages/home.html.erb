@@ -13,15 +13,15 @@
   <div class="showcase">
     <div class="wrapper">
       <div class="primary">
-        <div class="articles">
-          <% @articles.first(5).each_with_index do |article, i| %>
-            <a class="item <%= 'featured' if i == 0 %>" href="<%= article_path(article.id) %>">
-              <h2 class="title"><%= article.title %></h2>
-              <p class="description"><%= article.description %></p>
+        <div class="papers">
+          <% @papers.first(5).each do |paper| %>
+            <a class="item" href="<%= paper_path(paper.id) %>">
+              <h2 class="title"><%= paper.title %></h2>
+              <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
 
               <div class="meta">
-                <span><i class="far fa-clock"></i> <%= article.created_at.strftime('%b %d') %></span>
-                <span><i class="far fa-folder"></i> <%= article.category.title %></span>
+                <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
+                <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
               </div>
             </a>
           <% end %>
@@ -29,19 +29,17 @@
       </div>
 
       <div class="secondary">
-        <h3 class="heading">Events</h3>
-        <div class="latest">
-          <div class="events">
-            <% @events.first(10).each do |event| %>
-              <a class="item" target="_blank" href="<%= event.link %>">
-                <h3 class="title"><%= event.title %></h3>
-                <div class="meta">
-                  <time class="timestamp"><%= event.schedule %></time>
-                  <p class="location"><%= event.location %></p>
-                </div>
-              </a>
-            <% end %>
-          </div>
+        <div class="events">
+          <h3 class="heading">Events</h3>
+          <% @events.first(10).each do |event| %>
+            <a class="item" target="_blank" href="<%= event.link %>">
+              <h3 class="title"><%= event.title %></h3>
+              <div class="meta">
+                <time class="timestamp"><%= event.schedule %></time>
+                <p class="location"><%= event.location %></p>
+              </div>
+            </a>
+          <% end %>
         </div>
       </div>
     </div>

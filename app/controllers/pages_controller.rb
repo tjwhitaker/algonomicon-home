@@ -12,5 +12,6 @@ class PagesController < ApplicationController
     @articles = Article.all.order(created_at: :desc)
     @categories = Category.all.order(:title)
     @events = Event.all
+    @papers = Paper.all.order(created_at: :desc)
   end
 end
