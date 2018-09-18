@@ -16,5 +16,6 @@ class PagesController < ApplicationController
   end
 
   def work
+    @title = 'Work'
   end
 end
