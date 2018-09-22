@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(version: 2018_09_14_162330) do
     t.integer "category_id"
     t.string "title"
     t.string "source"
+    t.string "content"
     t.string "authors"
     t.text "abstract"
+    t.date "publish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_papers_on_category_id"

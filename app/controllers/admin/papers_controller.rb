@@ -52,6 +52,6 @@ class Admin::PapersController < Admin::BaseController
   private
 
   def paper_params
-    params.require(:paper).permit(:title, :category_id, :content, :source, :authors, :abstract)
+    params.require(:paper).permit(:title, :publish_date, :category_id, :content, :source, :authors, :abstract)
   end
 end

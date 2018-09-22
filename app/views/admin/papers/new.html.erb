@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= form.label 'Publish Date' %>
+    <%= form.date_field :publish_date %>
+  </div>
+  
+  <div class="field">
     <%= form.label 'Category' %>
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
   </div>

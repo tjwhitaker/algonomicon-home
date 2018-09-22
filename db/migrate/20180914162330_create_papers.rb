@@ -8,7 +8,7 @@ class CreatePapers < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :authors
       t.text :abstract
-      t.date :submitted
+      t.date :publish_date
 
       t.timestamps
     end
