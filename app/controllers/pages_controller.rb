@@ -14,8 +14,4 @@ class PagesController < ApplicationController
     @events = Event.all
     @papers = Paper.all.order(created_at: :desc)
   end
-
-  def work
-    @title = 'Work'
-  end
 end
