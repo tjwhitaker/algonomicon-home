@@ -3,16 +3,20 @@
     <h1 class="category-title"><%= @category.title %></h1>
 
     <div class="articles">
-      <% @category.articles.each do |article| %>
-        <a class="item" href="<%= article_path(article.id) %>">
-          <h2 class="title"><%= article.title %></h2>
-          <p class="description"><%= article.description %></p>
+      <% if @category.articles.empty? %>
+        <p>Nothing to see here.</p>
+      <% else %>
+        <% @category.articles.each do |article| %>
+          <a class="item" href="<%= article_path(article.id) %>">
+            <h2 class="title"><%= article.title %></h2>
+            <p class="description"><%= article.description %></p>
 
-          <div class="meta">
-            <span><i class="far fa-clock"></i> <%= article.created_at.strftime('%b %d') %></span>
-            <span><i class="far fa-folder"></i> <%= article.category.title %></span>
-          </div>
-        </a>
+            <div class="meta">
+              <span><i class="far fa-clock"></i> <%= article.created_at.strftime('%b %d') %></span>
+              <span><i class="far fa-folder"></i> <%= article.category.title %></span>
+            </div>
+          </a>
+        <% end %>
       <% end %>
     </div>
   </div>
