@@ -14,7 +14,7 @@
     <div class="wrapper">
       <div class="primary">
         <div class="papers">
-          <% @papers.first(5).each do |paper| %>
+          <% @papers.each do |paper| %>
             <a class="item" href="<%= paper_path(paper.id) %>">
               <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
               <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
@@ -25,6 +25,7 @@
               </div>
             </a>
           <% end %>
+          <%= paginate @papers %>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-categories = ['Art', 'General', 'Language', 'Games', 'Vision']
+categories = ['Language', 'Reinforcement', 'Vision']
 
 categories.each do |title|
   Category.create(title: title)

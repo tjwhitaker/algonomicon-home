@@ -19,7 +19,7 @@ class Admin::PapersController < Admin::BaseController
     @paper = Paper.new(paper_params)
 
     if @paper.save
-      redirect_to @paper, notice: 'Paper created.'
+      redirect_to :admin_root, notice: 'Paper created.'
     else
       render :new
     end
