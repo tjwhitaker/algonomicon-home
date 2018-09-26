@@ -33,7 +33,7 @@
         <div class="events">
           <h3 class="heading">Events</h3>
           <% @events.first(10).each do |event| %>
-            <a class="item" target="_blank" href="<%= event.link %>">
+            <a class="item" href="<%= event_path(event.id) %>">
               <h3 class="title"><%= event.title %></h3>
               <div class="meta">
                 <time class="timestamp"><%= event.schedule %></time>

@@ -1,4 +1,4 @@
-.paper-show {
+.event-show {
   .wrapper {
     .title {
       border-bottom:1px solid $light2;
@@ -8,13 +8,10 @@
     .meta {
       margin-bottom:10px;
 
-      .authors, .source, .implementation {
+      .link, .start, .end {
         margin-bottom:0;
       }
     }
-
-    img {
-      width:100%;
-    }
-  }
+    .description {}
+  } 
 }
