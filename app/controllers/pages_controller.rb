@@ -10,4 +10,7 @@ class PagesController < ApplicationController
     @events = Event.all
     @papers = Paper.order(created_at: :desc).page(params[:page])
   end
+
+  def work
+  end
 end
