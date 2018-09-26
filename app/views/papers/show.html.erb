@@ -1,8 +1,16 @@
 <div class="paper">
   <div class="wrapper">
-    <h1 class="title"><%= @paper.title %></h1>
+    <h1 class="title"><%= @paper.title %> (<%= @paper.publish_date.strftime('%Y') %>)</h1>
 
-    <p class="source">Source: <%= @paper.source %></p>
+    <div class="meta">
+      <p class="authors">Authors: <%= @paper.authors %></p>
+      <p class="source">Source: <%= @paper.source %></p>
+    
+      <% if @paper.implementation %>
+        <p class="implementation">Implementation: <%= @paper.implementation %></p>
+      <% end %>
+    </div>
+
     <p class="abstract"><%= @paper.abstract %></p>
   </div>
 </div>

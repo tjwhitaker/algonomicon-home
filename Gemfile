@@ -11,6 +11,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.5'
 gem 'bootsnap',   '>= 1.1.0', require: false
 gem 'faker'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'redcarpet'

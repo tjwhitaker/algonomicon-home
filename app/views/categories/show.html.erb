@@ -1,23 +1,52 @@
 <div class="category-show">
-  <div class="wrapper">
-    <h1 class="category-title"><%= @category.title %></h1>
-
-    <div class="articles">
-      <% if @category.articles.empty? %>
-        <p>Nothing to see here.</p>
-      <% else %>
-        <% @category.articles.each do |article| %>
-          <a class="item" href="<%= article_path(article.id) %>">
-            <h2 class="title"><%= article.title %></h2>
-            <p class="description"><%= article.description %></p>
-
-            <div class="meta">
-              <span><i class="far fa-clock"></i> <%= article.created_at.strftime('%b %d') %></span>
-              <span><i class="far fa-folder"></i> <%= article.category.title %></span>
-            </div>
-          </a>
+  <div class="categories">
+    <div class="wrapper">
+      <div class="list">
+        <a href="/">All</a>
+        <% @categories.each do |category| %>
+          <%= link_to category.title, category, class: "#{'active' if category.id == @category.id}" %>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <div class="wrapper">
+      <div class="primary">
+        <div class="papers">
+          <% if @category.papers.empty? %>
+            <p>Nothing to see here.</p>
+          <% else %>
+            <% @papers.each do |paper| %>
+              <a class="item" href="<%= paper_path(paper.id) %>">
+                <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
+                <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
+
+                <div class="meta">
+                  <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
+                  <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
+                </div>
+              </a>
+            <% end %>
+            <%= paginate @papers %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="secondary">
+        <div class="events">
+          <h3 class="heading">Events</h3>
+          <% @events.first(10).each do |event| %>
+            <a class="item" target="_blank" href="<%= event.link %>">
+              <h3 class="title"><%= event.title %></h3>
+              <div class="meta">
+                <time class="timestamp"><%= event.schedule %></time>
+                <p class="location"><%= event.location %></p>
+              </div>
+            </a>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

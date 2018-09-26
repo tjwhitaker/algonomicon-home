@@ -27,17 +27,17 @@
     <%= form.label 'Category' %>
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
   </div>
-
-  <div class="field">
-    <%= form.label 'Content' %>
-    <%= form.text_field :content %>
-  </div>
   
   <div class="field">
     <%= form.label 'Source' %>
     <%= form.text_field :source %>
   </div>
   
+  <div class="field">
+    <%= form.label 'Implementation' %>
+    <%= form.text_field :implementation %>
+  </div>
+
   <div class="field">
     <%= form.label 'Authors' %>
     <%= form.text_field :authors %>

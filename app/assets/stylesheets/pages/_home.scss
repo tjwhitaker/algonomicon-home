@@ -13,6 +13,10 @@
         a {
           margin-right:20px;
           font-weight:bold;
+
+          &.active {
+            color:$purple2;
+          }
         }
       }
     }

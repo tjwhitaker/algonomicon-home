@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User created.'
+      redirect_to :admin_users, notice: 'User created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to @user, notice: 'User updated.'
+      redirect_to :admin_users, notice: 'User updated.'
     else
       render :edit
     end

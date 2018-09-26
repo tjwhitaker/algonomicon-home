@@ -7,5 +7,4 @@ class Admin::BaseController < ApplicationController
   def not_authenticated
     redirect_to login_path, notice: "Not authenticated."
   end
-
 end

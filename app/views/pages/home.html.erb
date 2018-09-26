@@ -2,7 +2,7 @@
   <div class="categories">
     <div class="wrapper">
       <div class="list">
-        <a href="/">All <i class="fa fa-caret-down"></i></a>
+        <a href="/" class="active">All</a>
         <% @categories.each do |category| %>
           <%= link_to category.title, category %>
         <% end %>

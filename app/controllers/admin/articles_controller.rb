@@ -19,7 +19,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article, notice: 'Article created.'
+      redirect_to :admin_articles, notice: 'Article created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article updated.'
+      redirect_to :admin_articles, notice: 'Article updated.'
     else
       render :edit
     end

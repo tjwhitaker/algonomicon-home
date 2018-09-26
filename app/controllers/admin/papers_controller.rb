@@ -19,7 +19,7 @@ class Admin::PapersController < Admin::BaseController
     @paper = Paper.new(paper_params)
 
     if @paper.save
-      redirect_to :admin_root, notice: 'Paper created.'
+      redirect_to :admin_papers, notice: 'Paper created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::PapersController < Admin::BaseController
     @paper = Paper.find(params[:id])
 
     if @paper.update(paper_params)
-      redirect_to @paper, notice: 'Paper updated.'
+      redirect_to :admin_papers, notice: 'Paper updated.'
     else
       render :edit
     end
@@ -52,6 +52,6 @@ class Admin::PapersController < Admin::BaseController
   private
 
   def paper_params
-    params.require(:paper).permit(:title, :publish_date, :category_id, :content, :source, :authors, :abstract)
+    params.require(:paper).permit(:title, :publish_date, :category_id, :source, :implementation, :authors, :abstract)
   end
 end

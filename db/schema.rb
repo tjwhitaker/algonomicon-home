@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_162330) do
     t.integer "category_id"
     t.string "title"
     t.string "source"
-    t.string "content"
+    t.string "implementation"
     t.string "authors"
     t.text "abstract"
     t.date "publish_date"

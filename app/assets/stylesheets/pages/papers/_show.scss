@@ -5,6 +5,13 @@
       margin-bottom:10px;
       padding-bottom:5px;
     }
+    .meta {
+      margin-bottom:10px;
+
+      .authors, .source, .implementation {
+        margin-bottom:0;
+      }
+    }
 
     img {
       width:100%;

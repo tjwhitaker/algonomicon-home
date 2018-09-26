@@ -1,45 +1,117 @@
 .category-show {
-  .wrapper {
-    .category-title {
-      border-bottom:1px solid $light2;
-      margin-bottom:10px;
-      padding-bottom:5px;
-    }
+  .categories {
+    .wrapper {
+      display:flex;
+      padding-bottom:0;
 
-    .articles {
-
-      .item {
-        display:block;
-        padding:10px 0;
+      .list {
+        display:flex;
+        width:100%;
+        padding-bottom:10px;
         border-bottom:1px solid $light2;
 
-        .title {
-          padding-top:5px;
-          @include font-size(16);
-          transition:all 0.1s ease;
-        }
-        .description {
-          color:$dark2;
-          font-weight:normal;
-          margin-bottom:10px;
-        }
+        a {
+          margin-right:20px;
+          font-weight:bold;
 
-        .meta {
-          span {
-            color:$light3;
-            @include font-size(12);
-            margin-right:10px;
-            padding-right:10px;
-            font-family:mono;
-            &:not(:last-child) {
-              border-right:1px solid $light2;
+          &.active {
+            color:$purple2;
+
+          }
+        }
+      }
+    }
+  }
+
+  .showcase {
+    .wrapper {
+      display:grid;
+      grid-gap:0px;
+      grid-template-columns: 2fr 1fr;
+
+      .primary {
+        border-right:1px solid $light2;
+
+        .papers {
+          padding-right:10px;
+
+          .item {
+            display:block;
+            padding:10px 0;
+            border-bottom:1px solid $light2;
+
+            .title {
+              @include font-size(16);
+              transition:all 0.1s ease;
+            }
+            .description {
+              color:$dark2;
+              font-weight:normal;
+              margin-bottom:10px;
+            }
+
+            .meta {
+              span {
+                color:$light3;
+                @include font-size(12);
+                margin-right:10px;
+                padding-right:10px;
+                font-family:mono;
+                &:not(:last-child) {
+                  border-right:1px solid $light2;
+                }
+              }
+            }
+            &:hover {
+              .title {
+                color:$purple2;
+              }
             }
           }
         }
+      }
+      .secondary {
+        padding-left:10px;
 
-        &:hover {
-          .title {
-            color:$purple2;
+        .events {
+          .heading {
+            color:$light3;
+            border-bottom:1px solid $light2;
+            @include font-size(14);
+            padding:10px 0;
+            font-family:mono;
+          }
+
+          .item {
+            display:flex;
+            align-items:center;
+            border-bottom:1px solid $light2;
+            padding:10px 0;
+
+            .title {
+              flex:1;
+              margin:0;
+              transition:all 0.1s ease;
+              @include font-size(16);
+            }
+            .meta {
+              flex:0 1 auto;
+              text-align:right;
+              margin-left:10px;
+
+              .timestamp, .location {
+                color:$light3;
+                @include font-size(12);
+                margin:0;
+                padding:0;
+                font-family:mono;  
+              }
+            }
+            &:hover {
+              .title {
+                color:$purple2;
+              }
+            }
           }
         }
       }
