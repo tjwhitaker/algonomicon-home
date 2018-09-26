@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Algonomicon <%= @title ? ' | ' + @title : '' %></title>
+    <title><%= content_for?(:title) ? content_for(:title) + ' | ' : '' %> Algonomicon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
