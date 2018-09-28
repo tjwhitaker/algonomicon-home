@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @categories = Category.all
+    @papers = Paper.order(created_at: :desc).page(params[:page])
     @events = Event.all
   end
 end
