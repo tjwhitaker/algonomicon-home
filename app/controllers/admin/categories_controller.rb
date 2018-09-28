@@ -16,7 +16,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   # POST /admin/categories
   def create
-    @category = Category.new(params)
+    @category = Category.new(category_params)
 
     if @category.save
       redirect_to :admin_categories, notice: 'Category created.'
@@ -47,5 +47,11 @@ class Admin::CategoriesController < Admin::BaseController
     @category.destroy
 
     redirect_to :admin_categories, notice: 'Category destroyed.'
+  end
+
+  private
+
+  def category_params 
+    params.require(:category).permit(:title)
   end
 end
