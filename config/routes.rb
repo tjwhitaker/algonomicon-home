@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'about',   to: 'pages#about'
   get 'contact', to: 'pages#contact'
-  get 'work',    to: 'pages#work'
 
   get    'login',  to: 'sessions#new'
   post   'login',  to: 'sessions#create'
