@@ -6,10 +6,10 @@
 
     <div class="meta">
       <p class="authors">Authors: <%= @paper.authors %></p>
-      <p class="source">Source: <%= @paper.source %></p>
+      <p class="source">Source: <%= link_to @paper.source, @paper.source %></p>
     
       <% if @paper.implementation %>
-        <p class="implementation">Implementation: <%= @paper.implementation %></p>
+        <p class="implementation">Implementation: <%= link_to @paper.implementation, @paper.implementation %></p>
       <% end %>
     </div>
 
