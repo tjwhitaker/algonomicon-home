@@ -22,8 +22,8 @@
               <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
 
               <div class="meta">
-                <span><i class="fa fa-clock-o"></i> <%= paper.created_at.strftime('%b %d') %></span>
-                <span><i class="fa fa-folder-o"></i> <%= paper.category.title %></span>
+                <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
+                <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
               </div>
             </a>
           <% end %>

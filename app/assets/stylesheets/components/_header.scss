@@ -79,11 +79,8 @@ header {
             position:absolute;
             left:15px; top:50%;
             transform:translateY(-50%);
-
-            i {
-              @include font-size(20);
-              color:$light3;
-            }
+            @include font-size(20);
+            color:$light3;
           }
 
           input {
