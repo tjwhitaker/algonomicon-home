@@ -1,5 +1,8 @@
 <%- title "Contact" %>
 
+<% fake_name = Faker::Lovecraft.deity %>
+<% fake_email = fake_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') %>
+
 <div class="contact">
   <div class="wrapper">
     <div class="intro">
@@ -11,15 +14,15 @@
       <form>
         <div class="field-group">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Name">
+          <input type="text" id="name" placeholder="<%= fake_name %>">
         </div>
         <div class="field-group">
           <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Email">
+          <input type="text" id="email" placeholder="<%= fake_email %>@algonomicon.com">
         </div>
         <div class="field-group">
           <label for="content">Content</label>
-          <textarea name="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+          <textarea name="content" id="content" cols="30" rows="10" placeholder="<%= Faker::Lovecraft.paragraph %>"></textarea>
         </div>
       </form>
 
