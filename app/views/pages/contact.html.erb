@@ -1,6 +1,6 @@
 <%- title "Contact" %>
 
-<% fake_name = Faker::Lovecraft.deity %>
+<% fake_name = Faker::LordOfTheRings.character %>
 <% fake_email = fake_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '') %>
 
 <div class="contact">
@@ -22,7 +22,7 @@
         </div>
         <div class="field-group">
           <label for="content">Content</label>
-          <textarea name="content" id="content" cols="30" rows="10" placeholder="<%= Faker::Lovecraft.paragraph %>"></textarea>
+          <textarea name="content" id="content" cols="30" rows="10" placeholder="<%= Faker::LordOfTheRings.quote %>"></textarea>
         </div>
       </form>
 
