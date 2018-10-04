@@ -6,8 +6,8 @@
     
     <div class="meta">
       <p class="link">Link: <%= link_to @event.link, @event.link %></p>
-      <p class="start">Start: <%= @event.start %></p>
-      <p class="end">End: <%= @event.end %></p>  
+      <p class="start">Start: <%= @event.start.strftime '%a %b %e %I:%M %p' %></p>
+      <p class="end">End: <%= @event.end.strftime '%a %b %e %I:%M %p' %></p>
     </div>
 
     <p class="description"><%= @event.description %></p>
