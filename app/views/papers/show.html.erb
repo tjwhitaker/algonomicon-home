@@ -5,12 +5,13 @@
     <h1 class="title"><%= @paper.title %> (<%= @paper.publish_date.strftime('%Y') %>)</h1>
 
     <div class="meta">
-      <p class="authors">Authors: <%= @paper.authors %></p>
       <p class="source">Source: <%= link_to @paper.source, @paper.source %></p>
     
       <% if @paper.implementation %>
         <p class="implementation">Implementation: <%= link_to @paper.implementation, @paper.implementation %></p>
       <% end %>
+
+      <p class="authors">Authors: <%= @paper.authors %></p>
     </div>
 
     <p class="abstract"><%= @paper.abstract %></p>
