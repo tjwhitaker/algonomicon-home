@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   end
 
   def home 
-    @categories = Category.all.order(:title)
-    @events = Event.all
+    @categories = Category.order(:title)
+    @events = Event.order(start: :desc)
     @papers = Paper.order(created_at: :desc).page(params[:page])
   end
 
