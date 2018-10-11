@@ -1,10 +1,10 @@
 .pagination {
-  padding:5px 0;
+  padding:10px 0;
   margin-left:-5px;
   
   span {
     a {
-      color:$light3;
+      color:$purple1;
       padding:5px;
 
       &:hover {
@@ -13,7 +13,7 @@
     }
     &.current {
       padding:5px;
-      color:$dark1;
+      color:$purple2;
       font-weight:bold;
     }
   }
