@@ -10,10 +10,12 @@ gem 'uglifier',   '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.5'
 gem 'bootsnap',   '>= 1.1.0', require: false
+
 gem 'faker'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'redcarpet'
+gem 'searchkick'
 gem 'sorcery'
 gem 'sqlite3'
 
