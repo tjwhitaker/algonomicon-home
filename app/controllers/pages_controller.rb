@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     @papers = Paper.order(created_at: :desc).page(params[:page])
   end
 
+  def search
+    @papers = Paper.search(params[:query], page: params[:page], per_page: 5)
+  end
+
   def work
   end
 end
