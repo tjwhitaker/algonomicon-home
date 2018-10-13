@@ -94,10 +94,17 @@ header {
         .search-button {
           display:block;
           color:white;
-          background:linear-gradient(to left, $rust1, $rust2);
+          background:linear-gradient(to left, $rust1, $rust2) repeat;
+          background-position:0 0;
           padding:20px 40px;
           border-radius:3px;
           margin:0 10px;
+          transition:all 0.3s ease;
+          background-size:200% auto;
+
+          &:hover {
+            background-position:-100px 0;
+          }
         }
       }
     }
