@@ -16,22 +16,18 @@
     <div class="wrapper">
       <div class="primary">
         <div class="papers">
-          <% if @category.papers.empty? %>
-            <p>Nothing to see here.</p>
-          <% else %>
-            <% @papers.each do |paper| %>
-              <a class="item" href="<%= paper_path(paper.id) %>">
-                <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
-                <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
+          <% @papers.each do |paper| %>
+            <a class="item" href="<%= paper_path(paper.id) %>">
+              <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
+              <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
 
-                <div class="meta">
-                  <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
-                  <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
-                </div>
-              </a>
-            <% end %>
-            <%= paginate @papers %>
+              <div class="meta">
+                <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
+                <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
+              </div>
+            </a>
           <% end %>
+          <%= paginate @papers %>
         </div>
       </div>
 

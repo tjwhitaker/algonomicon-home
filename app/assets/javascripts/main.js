@@ -4,9 +4,19 @@ $(document).on('turbolinks:load', function() {
     let query = $('.search-input').val();
 
     if (query.length) {
-      $(this).attr('href', "/search?query=" + query); 
+      $(this).attr('href', '/search?query=' + query); 
     } else {
       e.preventDefault();
+    }
+  });
+
+  $('.search-input').on('keypress', function(e) {
+    if (e.keyCode == 13) {
+      let query = $(this).val();
+
+      if (query.length) {
+        Turbolinks.visit('/search?query=' + query); 
+      }
     }
   });
 
