@@ -7,8 +7,12 @@ class PagesController < ApplicationController
 
   def home 
     @categories = Category.order(:title)
-    @events = Event.order(start: :desc)
     @papers = Paper.order(created_at: :desc).page(params[:page])
+
+    # For feed get list of statuses from algonomicon.io/api/v1/timelines/public
+    uri = URI('https://algonomicon.io/api/v1/timelines/public')
+    response = Net::HTTP.get(uri)
+    @posts = JSON.parse(response)
   end
 
   def search

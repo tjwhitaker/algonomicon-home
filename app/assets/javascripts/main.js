@@ -10,6 +10,7 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
+  // Search on enter keypress
   $('.search-input').on('keypress', function(e) {
     if (e.keyCode == 13) {
       let query = $(this).val();
