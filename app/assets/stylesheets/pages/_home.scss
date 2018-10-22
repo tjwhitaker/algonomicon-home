@@ -67,6 +67,9 @@
                 color:$purple2;
               }
             }
+            &:first-child {
+              padding-top:0;
+            }
           }
         }
       }
