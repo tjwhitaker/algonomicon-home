@@ -33,8 +33,8 @@
 
       <div class="secondary">
         <div class="feed">
-          <h3 class="heading">Feed</h3>
-          <% @posts.first(10).each do |post| %>
+          <a class="heading" href="https://algonomicon.io">Feed</a>
+          <% @posts.first(5).each do |post| %>
             <div class="post">
               <div class="avatar">
                 <img src="<%= post['account']['avatar'] %>">
