@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   before_save :parse_content
   belongs_to :category, optional: true
   searchkick

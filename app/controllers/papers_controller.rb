@@ -6,6 +6,6 @@ class PapersController < ApplicationController
 
   # GET /papers/1
   def show
-    @paper = Paper.find(params[:id])
+    @paper = Paper.friendly.find(params[:id])
   end
 end

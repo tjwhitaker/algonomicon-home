@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
     @categories = Category.all.order(:title)
     @papers = @category.papers.order(created_at: :desc).page(params[:page])
 
