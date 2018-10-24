@@ -17,7 +17,7 @@
       <div class="primary">
         <div class="papers">
           <% @papers.each do |paper| %>
-            <a class="item" href="<%= paper_path(paper.id) %>">
+            <a class="item" href="<%= paper_path(paper.slug) %>">
               <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
               <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
 
