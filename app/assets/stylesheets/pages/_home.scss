@@ -75,8 +75,15 @@
       }
       .secondary {
         padding-left:10px;
+        max-height:100%;
+        overflow:hidden;
 
         .feed {
+          max-height:100%;
+          margin-right: -50px;
+          padding-right:38px;
+          overflow:scroll;
+
           .heading {
             color:$light3;
             border-bottom:1px solid $light2;
@@ -84,6 +91,7 @@
             padding:10px 0;
             font-family:monospace;
             display:block;
+            text-transform:uppercase;
           }
 
           .post {
