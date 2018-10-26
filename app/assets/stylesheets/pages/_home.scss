@@ -78,21 +78,21 @@
         max-height:100%;
         overflow:hidden;
 
+        .heading {
+          color:$light3;
+          border-bottom:1px solid $light2;
+          @include font-size(14);
+          padding:10px 0;
+          font-family:monospace;
+          display:block;
+          text-transform:uppercase;
+        }
+
         .feed {
           max-height:100%;
           margin-right: -50px;
-          padding-right:38px;
+          padding-right:42px;
           overflow:scroll;
-
-          .heading {
-            color:$light3;
-            border-bottom:1px solid $light2;
-            @include font-size(14);
-            padding:10px 0;
-            font-family:monospace;
-            display:block;
-            text-transform:uppercase;
-          }
 
           .post {
             border-bottom:1px solid $light2;
