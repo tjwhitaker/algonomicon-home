@@ -1,0 +1,26 @@
+<div class="events-index">
+  <div class="categories">
+    <div class="wrapper">
+      <div class="list">
+        <a href="#">Home</a>
+        <a href="#">Articles</a>
+        <a href="#">Datasets</a>
+        <a class="active" href="#">Events</a>
+        <a href="#">Papers</a>
+        <a href="#">Projects</a>
+      </div>
+    </div>  
+  </div>
+
+  <div class="showcase">
+    <% if @events.empty? %>
+      <p class="message">Nothing to see here.</p>
+    <% else %>
+      <% @events.each do |event| %>
+        <a class="item" href="<%= event_path(event.slug) %>">
+          <h2 class="title"><%= event.title %></h2>
+        </a>
+      <% end %>
+    <% end %>
+  </div>
+</div>

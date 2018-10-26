@@ -1,0 +1,27 @@
+<div class="papers-index">
+  <div class="categories">
+    <div class="wrapper">
+      <div class="list">
+        <a href="#">Home</a>
+        <a href="#">Articles</a>
+        <a href="#">Datasets</a>
+        <a href="#">Events</a>
+        <a class="active" href="#">Papers</a>
+        <a href="#">Projects</a>
+      </div>
+    </div>  
+  </div>
+
+  <div class="showcase">
+    <% if @papers.empty? %>
+      <p class="message">Nothing to see here.</p>
+    <% else %>
+      <% @papers.each do |paper| %>
+        <a class="item" href="<%= paper_path(paper.slug) %>">
+          <h2 class="title"><%= paper.title %></h2>
+        </a>
+      <% end %>
+      <%= paginate @papers %>
+    <% end %>
+  </div>
+</div>
