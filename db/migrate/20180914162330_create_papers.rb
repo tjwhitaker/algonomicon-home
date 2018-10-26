@@ -1,8 +1,6 @@
 class CreatePapers < ActiveRecord::Migration[5.2]
   def change
     create_table :papers do |t|
-      t.belongs_to :category, index: true
-
       t.string :title
       t.string :source
       t.string :implementation

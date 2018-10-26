@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :articles,   only: [:index, :show]
-  resources :categories, only: [:index, :show]
   resources :datasets,   only: [:index, :show]
   resources :events,     only: [:index, :show]
   resources :papers,     only: [:index, :show]
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
     root 'pages#dashboard'
 
     resources :articles
-    resources :categories
     resources :datasets
     resources :events
     resources :papers
