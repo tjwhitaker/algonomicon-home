@@ -24,11 +24,6 @@
   </div>
   
   <div class="field">
-    <%= form.label 'Category' %>
-    <%= form.collection_select(:category_id, Category.all, :id, :title) %>
-  </div>
-  
-  <div class="field">
     <%= form.label 'Source' %>
     <%= form.text_field :source %>
   </div>

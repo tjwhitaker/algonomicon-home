@@ -1,10 +1,10 @@
-<div class="articles-index">
+<div class="datasets-index">
   <div class="categories">
     <div class="wrapper">
       <div class="list">
         <a href="/">Home</a>
-        <a class="active" href="/articles">Articles</a>
-        <a href="/datasets">Datasets</a>
+        <a href="/articles">Articles</a>
+        <a class="active" href="/datasets">Datasets</a>
         <a href="/events">Events</a>
         <a href="/papers">Papers</a>
         <a href="/projects">Projects</a>
@@ -14,15 +14,15 @@
 
   <div class="showcase">
     <div class="wrapper">
-      <% if @articles.empty? %>
+      <% if @datasets.empty? %>
         <p class="message">Nothing to see here.</p>
       <% else %>
-        <% @articles.each do |article| %>
-          <a class="item" href="<%= article_path(article.slug) %>">
-            <h2 class="title"><%= article.title %></h2>
+        <% @datasets.each do |dataset| %>
+          <a class="item" href="<%= dataset_path(dataset.slug) %>">
+            <h2 class="title"><%= dataset.title %></h2>
           </a>
         <% end %>
-        <%= paginate @articles %>
+        <%= paginate @datasets %>
       <% end %>
     </div>
   </div>

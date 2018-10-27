@@ -13,14 +13,16 @@
   </div>
 
   <div class="showcase">
-    <% if @events.empty? %>
-      <p class="message">Nothing to see here.</p>
-    <% else %>
-      <% @events.each do |event| %>
-        <a class="item" href="<%= event_path(event.slug) %>">
-          <h2 class="title"><%= event.title %></h2>
-        </a>
+    <div class="wrapper">
+      <% if @events.empty? %>
+        <p class="message">Nothing to see here.</p>
+      <% else %>
+        <% @events.each do |event| %>
+          <a class="item" href="<%= event_path(event.slug) %>">
+            <h2 class="title"><%= event.title %></h2>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

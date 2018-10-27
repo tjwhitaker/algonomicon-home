@@ -13,15 +13,17 @@
   </div>
 
   <div class="showcase">
-    <% if @papers.empty? %>
-      <p class="message">Nothing to see here.</p>
-    <% else %>
-      <% @papers.each do |paper| %>
-        <a class="item" href="<%= paper_path(paper.slug) %>">
-          <h2 class="title"><%= paper.title %></h2>
-        </a>
+    <div class="wrapper">
+      <% if @papers.empty? %>
+        <p class="message">Nothing to see here.</p>
+      <% else %>
+        <% @papers.each do |paper| %>
+          <a class="item" href="<%= paper_path(paper.slug) %>">
+            <h2 class="title"><%= paper.title %></h2>
+          </a>
+        <% end %>
+        <%= paginate @papers %>
       <% end %>
-      <%= paginate @papers %>
-    <% end %>
+    </div>
   </div>
 </div>

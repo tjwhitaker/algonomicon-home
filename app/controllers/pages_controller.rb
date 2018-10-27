@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def home 
-    @categories = Category.order(:title)
     @papers = Paper.order(created_at: :desc).page(params[:page])
 
     # For feed get list of statuses from algonomicon.io/api/v1/timelines/public

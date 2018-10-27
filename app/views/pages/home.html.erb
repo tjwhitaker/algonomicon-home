@@ -1,17 +1,6 @@
 <%- title "Home" %>
 
 <div class="home">
-<!--   <div class="categories">
-    <div class="wrapper">
-      <div class="list">
-        <a href="/" class="active">All</a>
-        <% @categories.each do |category| %>
-          <%= link_to category.title, category %>
-        <% end %>
-      </div>
-    </div>
-  </div> -->
-
   <div class="categories">
     <div class="wrapper">
       <div class="list">
@@ -36,7 +25,7 @@
 
               <div class="meta">
                 <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
-                <span><i class="far fa-folder"></i> <%= paper.category.title %></span>
+                <span><i class="far fa-folder"></i></span>
               </div>
             </a>
           <% end %>
