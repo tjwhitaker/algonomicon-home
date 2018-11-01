@@ -4,7 +4,7 @@
   <div class="categories">
     <div class="wrapper">
       <div class="list">
-        <a class="active" href="/">Home</a>
+        <a class="active" href="#">Home</a>
         <a href="/articles">Articles</a>
         <a href="/datasets">Datasets</a>
         <a href="/events">Events</a>
@@ -17,19 +17,25 @@
   <div class="showcase">
     <div class="wrapper">
       <div class="primary">
-        <div class="papers">
-          <% @papers.each do |paper| %>
-            <a class="item" href="<%= paper_path(paper.slug) %>">
-              <h2 class="title"><%= paper.title %> (<%= paper.publish_date.strftime('%Y') %>)</h2>
-              <p class="description"><%= paper.abstract.truncate(300, separator: ' ') %></p>
+        <div class="intro">
+          <h1>Can we solve meaningful problems with machine learning?</h1>
+          <p>Yes! Thanks to increased computational power and the availability of vast amounts of data, we can use machine learning to conquer tasks that were previously thought to be impossible. We're hoping to use the power of machine learning to do real good in this world.</p>
 
-              <div class="meta">
-                <span><i class="far fa-clock"></i> <%= paper.created_at.strftime('%b %d') %></span>
-                <span><i class="far fa-folder"></i></span>
-              </div>
-            </a>
-          <% end %>
-          <%= paginate @papers %>
+          <p>We're a study group. We're a research lab. We're a company driven to make waves in the grand challenges that face humanity.</p>
+          
+          <p>We're particularly interested in the following global and social issues:</p>
+
+          <ul>
+            <li>Climate Change and The Destruction of Nature</li>
+            <li>Water Scarcity and Pollution</li>
+            <li>Poverty, Disease and Malnutrition</li>
+            <li>Overpopulation and Global Education</li>
+            <li>Transparency and Misinformation Campaigns</li>
+            <li>Cyber Threats and Regional Stability</li>
+            <li>Atomic Energy and Weapons of Mass Destruction</li>
+          </ul>
+
+          <p>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
         </div>
       </div>
 

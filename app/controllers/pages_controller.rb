@@ -6,8 +6,6 @@ class PagesController < ApplicationController
   end
 
   def home 
-    @papers = Paper.order(created_at: :desc).page(params[:page])
-
     # For feed get list of statuses from algonomicon.io/api/v1/timelines/public
     uri = URI('https://algonomicon.io/api/v1/timelines/public')
     response = Net::HTTP.get(uri)

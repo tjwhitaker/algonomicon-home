@@ -6,7 +6,7 @@ class Admin::PapersController < Admin::BaseController
 
   # GET /admin/papers/1
   def show
-    @paper = Paper.find(params[:id])
+    @paper = Paper.friendly.find(params[:id])
   end
 
   # GET /admin/papers/new
@@ -27,12 +27,12 @@ class Admin::PapersController < Admin::BaseController
 
   # GET /admin/papers/1/edit
   def edit
-    @paper = Paper.find(params[:id])
+    @paper = Paper.friendly.find(params[:id])
   end
 
   # PUT /admin/papers/1
   def update
-    @paper = Paper.find(params[:id])
+    @paper = Paper.friendly.find(params[:id])
 
     if @paper.update(paper_params)
       redirect_to :admin_papers, notice: 'Paper updated.'
@@ -43,7 +43,7 @@ class Admin::PapersController < Admin::BaseController
 
   # DELETE /admin/papers/1
   def destroy
-    @paper = Paper.find(params[:id])
+    @paper = Paper.friendly.find(params[:id])
     @paper.destroy
 
     redirect_to :admin_papers, notice: 'Paper destroyed.'
