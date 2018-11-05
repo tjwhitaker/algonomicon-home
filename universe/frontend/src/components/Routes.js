@@ -1,10 +1,9 @@
-import { Component } from 'inferno'
 import { Route, Switch } from 'inferno-router'
 import Layout from '../pages/Layout'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
-const AppRoute = ({ ...rest }) => (
+const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
     <Layout {...props}>
       <Component {...props} />
