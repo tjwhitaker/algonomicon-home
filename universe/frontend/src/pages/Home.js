@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component } from 'inferno'
 
 class Home extends Component {
   render() {
@@ -8,4 +8,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Home

@@ -1,8 +1,22 @@
+import { Component } from 'inferno'
 import { Route, Switch } from 'inferno-router'
+import Layout from '../pages/Layout'
 import Home from '../pages/Home'
+import NotFound from '../pages/NotFound'
 
-export default (
+const AppRoute = ({ ...rest }) => (
+  <Route {...rest} render={ props => (
+    <Layout {...props}>
+      <Component {...props} />
+    </Layout>  
+  )} />
+)
+
+const Routes = (
   <Switch>
-    <Route path="/" component={Home} exact />
+    <AppRoute path="/" component={Home} exact />
+    <AppRoute path="*" component={NotFound} />
   </Switch>
-);
+)
+
+export default Routes

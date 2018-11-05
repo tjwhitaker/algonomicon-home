@@ -1,6 +1,6 @@
-import { Component } from 'inferno';
-import { BrowserRouter } from 'inferno-router';
-import Routes from './Routes';
+import { Component } from 'inferno'
+import { BrowserRouter } from 'inferno-router'
+import Routes from './Routes'
 
 class App extends Component {
   render() {
@@ -8,8 +8,8 @@ class App extends Component {
       <BrowserRouter>
         {Routes}
       </BrowserRouter> 
-    );
+    )
   }
 }
 
-export default App;
+export default App
