@@ -1,0 +1,27 @@
+.articles-index {
+  .showcase {
+    .wrapper {
+      .primary {
+        .feature {
+          position:relative;
+          
+          .content {
+            position:absolute;
+            bottom:20px; left:20px;
+            padding:20px;
+            background:$dark1;
+
+            .title {
+              color:$light1;
+            }
+            .description {
+              color:$light2;
+              margin-bottom:0;
+            }
+          }
+        }
+      }
+      .secondary {}
+    }
+  }
+}
