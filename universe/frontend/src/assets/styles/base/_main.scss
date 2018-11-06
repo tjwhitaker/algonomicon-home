@@ -1,0 +1,10 @@
+body {
+  &.grayscale {
+    filter:grayscale(1);
+    transition:all 3s ease;
+  }
+
+  main {
+    min-height:65vh;
+  }
+}

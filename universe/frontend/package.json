@@ -5,7 +5,8 @@
   "dependencies": {
     "inferno": "^6.1.4",
     "inferno-router": "^6.1.4",
-    "inferno-scripts": "7.0.2"
+    "inferno-scripts": "7.0.2",
+    "node-sass": "^4.10.0"
   },
   "scripts": {
     "start": "inferno-scripts start",
