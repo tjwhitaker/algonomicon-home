@@ -1,5 +1,5 @@
 import { Component } from 'inferno'
-import Categories from '../components/Categories/Categories'
+import Categories from '../components/Categories'
 
 class Events extends Component {
   render() {
