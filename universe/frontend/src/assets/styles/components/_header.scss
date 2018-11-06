@@ -44,6 +44,10 @@ header {
           &:hover {
             color:$rust1;
           }
+
+          &.active {
+            color:$rust1;
+          }
         }
         span {
           color:white;
@@ -71,16 +75,21 @@ header {
       .search {
         display:flex;
 
-        .input-group {
+        .search-input {
           position:relative;
           width:100%; max-width:400px;
 
-          .input-icon {
+          .search-icon {
             position:absolute;
             left:15px; top:50%;
             transform:translateY(-50%);
             @include font-size(20);
             color:$light3;
+
+            svg {
+              width:20px;
+              display:block;
+            }
           }
 
           input {

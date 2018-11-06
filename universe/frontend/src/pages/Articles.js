@@ -1,15 +1,15 @@
 import { Component } from 'inferno'
 import Categories from '../components/Categories/Categories'
 
-class Home extends Component {
+class Articles extends Component {
   render() {
     return (
       <div>
         <Categories />
-        <h1>Home</h1>
+        <h1>Articles</h1>
       </div>
     )
   }
 }
 
-export default Home
+export default Articles

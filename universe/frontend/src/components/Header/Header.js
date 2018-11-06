@@ -1,7 +1,7 @@
 import { Component } from 'inferno'
-import { Link } from 'inferno-router'
+import { Link, NavLink } from 'inferno-router'
 import Logo from './Logo'
-import Search from './Search'
+import Search from '../Search/Search'
 
 class Header extends Component {
   render() {
@@ -15,9 +15,9 @@ class Header extends Component {
               </Link>
             </div>
             <nav>
-              <Link to="/about">About</Link>
+              <NavLink to="/about" activeClassName="active">About</NavLink>
               <a href="https://algonomicon.io">Community</a>
-              <Link to="/contact">Contact</Link>
+              <NavLink to="/contact" activeClassName="active">Contact</NavLink>
             </nav>
           </div>
           <div class="intro">

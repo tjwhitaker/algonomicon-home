@@ -1,6 +1,6 @@
 import { Component } from 'inferno'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 
 class Layout extends Component {
   render() {

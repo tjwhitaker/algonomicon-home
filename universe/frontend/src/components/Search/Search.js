@@ -1,14 +1,12 @@
 import { Component } from 'inferno'
 import { Link } from 'inferno-router'
+import SearchInput from './Input'
 
 class Search extends Component {
   render() {
     return (
       <div className="search">
-        <div className="input-group">
-          <span className="input-icon"><i class="fa fa-search"></i></span>
-          <input type="text" className="search-input" placeholder="Articles, Datasets, Research and more..." />
-        </div>
+        <SearchInput /> 
         <Link to="/search" className="search-button">Search</Link>
       </div>
     )
