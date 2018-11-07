@@ -1,6 +1,6 @@
 import { Component } from 'inferno'
 
-class Contact extends Component {
+class ContactContainer extends Component {
   render() {
     return (
       <h1>Contact</h1>
@@ -8,4 +8,4 @@ class Contact extends Component {
   }
 }
 
-export default Contact
+export default ContactContainer

@@ -1,6 +1,6 @@
 import { Component } from 'inferno'
 
-class NotFound extends Component {
+class NotFoundContainer extends Component {
   render() {
     return (
       <h1>Not Found</h1>
@@ -8,4 +8,4 @@ class NotFound extends Component {
   }
 }
 
-export default NotFound
+export default NotFoundContainer

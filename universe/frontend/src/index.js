@@ -1,5 +1,5 @@
 import { render } from 'inferno'
-import App from './components/App'
+import App from './config/App'
 import './assets/styles/application.scss'
 import * as serviceWorker from './serviceWorker'
 

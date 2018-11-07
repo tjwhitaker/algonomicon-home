@@ -1,6 +1,6 @@
 import { Component } from 'inferno'
 
-class Search extends Component {
+class SearchContainer extends Component {
   render() {
     return (
       <h1>Search</h1>
@@ -8,4 +8,4 @@ class Search extends Component {
   }
 }
 
-export default Search
+export default SearchContainer
