@@ -4,9 +4,13 @@ import CategoriesContainer from '../Components/Categories/CategoriesContainer'
 class ArticlesContainer extends Component {
   render() {
     return (
-      <div>
+      <div className="articles-container">
         <CategoriesContainer />
-        <h1>Articles</h1>
+        <div className="wrapper">
+          <h1>Articles</h1>
+          <div className="grid">
+          </div>
+        </div>
       </div>
     )
   }

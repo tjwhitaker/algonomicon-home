@@ -5,7 +5,7 @@ class ShowcaseContainer extends Component {
   render() {
     return (
       <div className="showcase-container">
-        <h1>What is the future of machine learning?</h1>
+        <h1>Finding Patterns in a Chaotic World</h1>
         <p>Thanks to increased computational power and vast amounts of data, we can use machine learning to conquer tasks that were previously thought to be impossible. We're hoping to use the power of machine learning to do real good in this world.</p>
 
         <img src={inception} />

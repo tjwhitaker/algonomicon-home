@@ -1,0 +1,16 @@
+.articles-container {
+  .wrapper {
+    .grid {
+      display:grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+
+      .primary {
+        border-right:1px solid $light2;
+        padding-right:20px;
+      }
+      .secondary {
+        padding-left:20px;
+      }
+    }
+  }
+}
