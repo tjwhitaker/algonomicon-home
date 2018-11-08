@@ -1,6 +1,5 @@
 import { render } from 'inferno'
-import App from './config/App'
-import './assets/styles/application.scss'
+import App from './App/App'
 import * as serviceWorker from './serviceWorker'
 
 render(<App />, document.getElementById('root'))

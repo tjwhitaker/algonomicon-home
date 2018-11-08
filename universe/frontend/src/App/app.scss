@@ -1,0 +1,16 @@
+@import "./assets/styles/reset";
+@import "./assets/styles/colors";
+@import "./assets/styles/typography";
+@import "./assets/styles/main";
+
+
+@import "../Layouts/default";
+@import "../Layouts/Footer/footer";
+
+@import "../Layouts/Header/header";
+@import "../Layouts/Header/logo";
+
+@import "../Components/Categories/categories";
+
+@import "../Home/home";
+@import "../Home/Feed/feed";

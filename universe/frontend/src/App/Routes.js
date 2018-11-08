@@ -1,21 +1,21 @@
 import { Route, Switch } from 'inferno-router'
-import DefaultLayout from '../views/Layouts/DefaultLayout'
-import AboutContainer from '../views/About/AboutContainer'
-import ContactContainer from '../views/Contact/ContactContainer'
-import HomeContainer from '../views/Home/HomeContainer'
-import ArticlesContainer from '../views/Articles/ArticlesContainer'
-import DatasetsContainer from '../views/Datasets/DatasetsContainer'
-import EventsContainer from '../views/Events/EventsContainer'
-import PapersContainer from '../views/Papers/PapersContainer'
-import ProjectsContainer from '../views/Projects/ProjectsContainer'
-import NotFoundContainer from '../views/Errors/NotFound/NotFoundContainer'
-import SearchContainer from '../views/Search/SearchContainer'
+import DefaultContainer from '../Layouts/DefaultContainer'
+import AboutContainer from '../About/AboutContainer'
+import ContactContainer from '../Contact/ContactContainer'
+import HomeContainer from '../Home/HomeContainer'
+import ArticlesContainer from '../Articles/ArticlesContainer'
+import DatasetsContainer from '../Datasets/DatasetsContainer'
+import EventsContainer from '../Events/EventsContainer'
+import PapersContainer from '../Papers/PapersContainer'
+import ProjectsContainer from '../Projects/ProjectsContainer'
+import NotFoundContainer from '../Errors/NotFound/NotFoundContainer'
+import SearchContainer from '../Search/SearchContainer'
 
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
-    <DefaultLayout {...props}>
+    <DefaultContainer {...props}>
       <Component {...props} />
-    </DefaultLayout>  
+    </DefaultContainer>  
   )} />
 )
 
