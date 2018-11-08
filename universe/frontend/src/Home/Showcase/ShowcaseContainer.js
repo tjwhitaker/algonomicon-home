@@ -1,4 +1,5 @@
 import { Component } from 'inferno'
+import inception from './inception.jpg'
 
 class ShowcaseContainer extends Component {
   render() {
@@ -6,6 +7,8 @@ class ShowcaseContainer extends Component {
       <div className="showcase-container">
         <h1>What is the future of machine learning?</h1>
         <p>Thanks to increased computational power and vast amounts of data, we can use machine learning to conquer tasks that were previously thought to be impossible. We're hoping to use the power of machine learning to do real good in this world.</p>
+
+        <img src={inception} />
 
         <p>We're a study group. We're a research lab. We're a company driven to make waves in the grand challenges that face humanity.</p>
         
