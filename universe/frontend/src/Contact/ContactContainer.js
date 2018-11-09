@@ -3,7 +3,9 @@ import { Component } from 'inferno'
 class ContactContainer extends Component {
   render() {
     return (
-      <h1>Contact</h1>
+      <div className="wrapper">
+        <h1>Contact</h1>
+      </div>
     )
   }
 }

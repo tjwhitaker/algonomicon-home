@@ -1,0 +1,18 @@
+@import "./assets/styles/reset";
+@import "./assets/styles/colors";
+@import "./assets/styles/typography";
+@import "./assets/styles/main";
+
+@import "../Layouts/DefaultStyles";
+@import "../Layouts/Footer/FooterStyles";
+@import "../Layouts/Header/HeaderStyles";
+@import "../Layouts/Header/LogoStyles";
+
+@import "../Components/Categories/CategoriesStyles";
+
+@import "../Home/HomeStyles";
+@import "../Home/Showcase/ShowcaseStyles";
+@import "../Home/Feed/FeedStyles";
+
+@import "../Articles/ArticlesStyles";
+@import "../Articles/Showcase/ShowcaseStyles";

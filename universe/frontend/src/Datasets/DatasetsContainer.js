@@ -6,7 +6,9 @@ class DatasetsContainer extends Component {
     return (
       <div>
         <CategoriesContainer />
-        <h1>Datasets</h1>
+        <div className="wrapper">
+          <h1>Datasets</h1>
+        </div>
       </div>
     )
   }

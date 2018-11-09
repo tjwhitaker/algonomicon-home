@@ -6,7 +6,9 @@ class ProjectsContainer extends Component {
     return (
       <div>
         <CategoriesContainer />
-        <h1>Projects</h1>
+        <div className="wrapper">
+          <h1>Projects</h1>
+        </div>
       </div>
     )
   }

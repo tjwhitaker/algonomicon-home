@@ -10,6 +10,16 @@
       }
       .secondary {
         padding-left:20px;
+
+        .heading {
+          color:$light3;
+          border-bottom:1px solid $light2;
+          @include font-size(14);
+          padding:10px 0;
+          font-family:monospace;
+          display:block;
+          text-transform:uppercase;
+        }
       }
     }
   }

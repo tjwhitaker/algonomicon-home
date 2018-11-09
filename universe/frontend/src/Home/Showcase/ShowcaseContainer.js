@@ -5,10 +5,11 @@ class ShowcaseContainer extends Component {
   render() {
     return (
       <div className="showcase-container">
-        <h1>Finding Patterns in a Chaotic World</h1>
-        <p>Thanks to increased computational power and vast amounts of data, we can use machine learning to conquer tasks that were previously thought to be impossible. We're hoping to use the power of machine learning to do real good in this world.</p>
+        <p>Welcome to my website! My name is Tim Whitaker and I'm a software engineer. I've primarily worked with javascript/python/ruby in the web space for almost 10 years. For the past year, I've been diving into machine learning and this website is the culmination of that experience.</p>
 
-        <img src={inception} />
+        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible.</p>
+
+        <img src={inception} alt="Inception Architecture"/>
 
         <p>We're a study group. We're a research lab. We're a company driven to make waves in the grand challenges that face humanity.</p>
         

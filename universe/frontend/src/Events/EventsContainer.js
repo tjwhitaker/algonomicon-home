@@ -6,7 +6,9 @@ class EventsContainer extends Component {
     return (
       <div>
         <CategoriesContainer />
-        <h1>Events</h1>
+        <div className="wrapper">
+          <h1>Events</h1>
+        </div>
       </div>
     )
   }

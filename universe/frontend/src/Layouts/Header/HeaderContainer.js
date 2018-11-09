@@ -20,8 +20,8 @@ class Header extends Component {
             </nav>
           </div>
           <div class="intro">
-            <h2 className="tagline">What the Fuck is up with Artificial Intelligence</h2>
-            <h1 className="title">The Open Source ML Commnuity</h1>
+            <h2 className="tagline">Finding Patterns in a Chaotic World</h2>
+            <h1 className="title">The Open Source ML Community</h1>
             <div className="search">
               <div className="search-input">
                 <span className="search-icon">
