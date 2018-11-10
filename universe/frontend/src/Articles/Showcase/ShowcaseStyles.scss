@@ -1,12 +1,18 @@
 .showcase-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+
   .feature {
     position:relative;
     overflow:hidden;
+    flex:0 0 100%;
+    margin-bottom:10px;
     
     .preview {
       margin-bottom:0;
     }
-    
+
     .content {
       position:absolute;
       bottom:20px; left:20px;
@@ -20,6 +26,14 @@
         color:$light2;
         margin-bottom:0;
       }
+    }
+  }
+  .article {
+    flex:0 0 30%;
+    padding:10px 0;
+
+    .preview {
+      margin-bottom:0;
     }
   }
 }

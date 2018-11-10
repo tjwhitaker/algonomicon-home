@@ -1,16 +1,43 @@
 import { Component } from 'inferno'
 
+const styles = {
+  postContainer: {
+    'border-bottom': '1px solid #ccc',
+    'padding': '10px 0',
+    'display': 'flex'
+  },
+  avatarContainer: {
+    'flex': '0'
+  },
+  avatar: {
+    'width': '40px'
+  },
+  contentContainer: {
+    'flex': '1',
+    'min-width': '50%',
+    'margin-left': '10px'
+  },
+  username: {
+    'font-weight': 'bold'
+  },
+  date: {
+    'color': '#aaa',
+    'font-size': '1.1rem',
+    'margin': '0'
+  }
+}
+
 class PostContainer extends Component {
   render() {
     return (
-      <div className="post-container">
-        <div className="avatar">
-          <img src={this.props.post.account.avatar} alt="Avatar" />
+      <div style={styles.postContainer}>
+        <div style={styles.avatarContainer}>
+          <img style={styles.avatar} src={this.props.post.account.avatar} alt="Avatar" />
         </div>
-        <div className="matter">
-          <span className="username">{this.props.post.account.username}</span>
+        <div style={styles.contentContainer}>
+          <span style={styles.username}>{this.props.post.account.username}</span>
           <div className="content" dangerouslySetInnerHTML={{__html: this.props.post.content}}></div>
-          <p className="date">{this.props.post.created_at}</p>
+          <p style={styles.date}>{this.props.post.created_at}</p>
         </div>
       </div>
     )

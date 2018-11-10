@@ -1,11 +1,19 @@
 import { Component } from 'inferno'
+import { createComponent } from 'inferno-fela'
 import inception from './inception.jpg'
+
+const styles = () => ({
+  background: 'black'
+})
 
 class ShowcaseContainer extends Component {
   render() {
+    const Container = createComponent(styles, 'p')
+
     return (
       <div className="showcase-container">
-        <p>Welcome to my website! My name is Tim Whitaker and I'm a software engineer. I've primarily worked with javascript/python/ruby in the web space for almost 10 years. For the past year, I've been diving into machine learning and this website is the culmination of that experience.</p>
+
+        <Container>Welcome to my website! My name is Tim Whitaker and I'm a software engineer. I've primarily worked with javascript/python/ruby in the web space for almost 10 years. For the past year, I've been diving into machine learning and this website is the culmination of that experience.</Container>
 
         <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible.</p>
 

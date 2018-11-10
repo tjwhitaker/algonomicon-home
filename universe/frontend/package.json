@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fela": "^6.2.3",
     "inferno": "^6.1.4",
+    "inferno-create-element": "^6.1.5",
+    "inferno-fela": "^9.0.4",
     "inferno-router": "^6.1.4",
     "inferno-scripts": "7.0.2",
+    "jss": "^9.8.7",
+    "jss-preset-default": "^4.5.0",
     "node-sass": "^4.10.0"
   },
   "scripts": {
