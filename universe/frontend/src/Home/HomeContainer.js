@@ -1,58 +1,62 @@
 import { Component } from 'inferno'
-import jss from 'jss'
+import { createComponent } from 'inferno-fela'
 import CategoriesContainer from '../Components/Categories/CategoriesContainer'
 import ShowcaseContainer from './Showcase/ShowcaseContainer'
 import FeedContainer from './Feed/FeedContainer'
 
 const styles = {
-  wrapper: {
-    maxWidth: 1024,
-    'margin': '0 auto',
-    'padding': '10px'
-  },
-  grid: {
-    'display': 'grid',
-    'grid-template-columns': 'minmax(0, 2fr) minmax(0, 1fr)'
-  },
-  firstColumn: {
-    'border-right': '1px solid #ccc',
-    'padding-right': '20px'
-  },
-  secondColumn: {
-    'padding-left': '20px',
-    'max-height': '100%',
-    'overflow': 'hidden'
-  },
-  'heading': {
-    'color': '#aaa',
-    'border-bottom': '1px solid #ccc',
-    'font-size': '1.4rem',
-    'padding': '10px 0',
-    'font-family': 'monospace',
-    'display': 'block',
-    'text-transform': 'uppercase'
-  }
+  wrapper: () => ({
+    maxWidth: '1024px',
+    margin: '0 auto',
+    padding: '10px'
+  }),
+  grid: () => ({
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+  }),
+  main: () => ({
+    borderRight: '1px solid #ccc',
+    paddingRight: '20px'
+  }),
+  sidebar: () => ({
+    paddingLeft: '20px',
+    maxHeight: '100%',
+    overflow: 'hidden'
+  }),
+  heading: () => ({
+    color: '#aaa',
+    borderBottom: '1px solid #ccc',
+    fontSize: '1.4rem',
+    padding: '10px 0',
+    fontFamily: 'monospace',
+    display: 'block',
+    textTransform: 'uppercase'
+  }),
 }
+
+const Wrapper = createComponent(styles.wrapper)
+const Grid = createComponent(styles.grid)
+const Main = createComponent(styles.main)
+const Sidebar = createComponent(styles.sidebar)
+const Heading = createComponent(styles.heading, 'h3')
 
 class HomeContainer extends Component {
   render() {
-    const { classes } = jss.createStyleSheet(styles).attach()
-
     return (
-      <div>
+      <>
         <CategoriesContainer />
-        <div className={classes.wrapper}>
-          <div className={classes.grid}>
-            <div className={classes.firstColumn}>
+        <Wrapper>
+          <Grid>
+            <Main>
               <ShowcaseContainer />
-            </div>
-            <div className={classes.secondColumn}>
-              <a className={classes.heading} href="https://algonomicon.io">Feed</a>
+            </Main>
+            <Sidebar>
+              <Heading>Feed</Heading>
               <FeedContainer />
-            </div>
-          </div>
-        </div>
-      </div>
+            </Sidebar>
+          </Grid>
+        </Wrapper>
+      </>
     )
   }
 }

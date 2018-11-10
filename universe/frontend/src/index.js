@@ -2,9 +2,11 @@ import { render } from 'inferno'
 import { createRenderer } from 'fela'
 import { Provider } from 'inferno-fela'
 import App from './App/App'
+import GlobalStyles from './App/GlobalStyles.css'
 import * as serviceWorker from './serviceWorker'
 
 const renderer = createRenderer()
+renderer.renderStatic(GlobalStyles.toString())
 
 render((
   <Provider renderer={renderer}>
