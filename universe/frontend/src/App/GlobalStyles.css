@@ -1,3 +1,6 @@
+/* Reset */
+/*********/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,4 +50,44 @@ img {
 }
 a {
  outline: 0;
+}
+
+/* Typography + Spacing */
+/************************/
+
+html {
+  font-size:62.5%;
+  font-family:sans-serif;
+}
+
+body {
+  font-size:1.4rem;
+  line-height:1.4;
+}
+
+p, ol, ul, img {
+  margin-bottom:1.4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:bold;
+}
+
+h1 { font-size:3.2rem; }
+h2 { font-size:2.4rem; }
+h3 { font-size:2.0rem; }
+h4 { font-size:1.6rem; }
+h5 { font-size:1.6rem; }
+h6 { font-size:1.4rem; }
+
+a {
+  color:#9370DB;
+}
+
+a:hover {
+  color:#5F527A;
+}
+
+a.active {
+  color:#5F527A;
 }

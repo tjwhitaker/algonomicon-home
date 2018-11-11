@@ -1,12 +1,10 @@
 import { Component } from 'inferno'
-import { createComponent } from 'inferno-fela'
 import inception from './inception.jpg'
 
 class ShowcaseContainer extends Component {
   render() {
     return (
-      <div className="showcase-container">
-
+      <>
         <p>Welcome to my website! My name is Tim Whitaker and I'm a software engineer. I've primarily worked with javascript/python/ruby in the web space for almost 10 years. For the past year, I've been diving into machine learning and this website is the culmination of that experience.</p>
 
         <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible.</p>
@@ -28,7 +26,7 @@ class ShowcaseContainer extends Component {
         </ul>
 
         <p>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
-      </div>
+      </>
     )
   }
 }

@@ -8,18 +8,26 @@ const styles = {
   wrapper: () => ({
     maxWidth: '1024px',
     margin: '0 auto',
-    padding: '10px'
+    padding: '1.4rem'
   }),
   grid: () => ({
     display: 'grid',
-    gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+    gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
+    gridTemplateAreas: 
+      `'nav nav'
+       'main sidebar'`
+  }),
+  nav: () => ({
+    gridArea: 'nav'
   }),
   main: () => ({
+    gridArea: 'main',
     borderRight: '1px solid #ccc',
-    paddingRight: '20px'
+    paddingRight: '1.4rem'
   }),
   sidebar: () => ({
-    paddingLeft: '20px',
+    gridArea: 'sidebar',
+    paddingLeft: '1.4rem',
     maxHeight: '100%',
     overflow: 'hidden'
   }),
@@ -27,7 +35,8 @@ const styles = {
     color: '#aaa',
     borderBottom: '1px solid #ccc',
     fontSize: '1.4rem',
-    padding: '10px 0',
+    padding: '1.4rem 0',
+    lineHeight: '1',
     fontFamily: 'monospace',
     display: 'block',
     textTransform: 'uppercase'
@@ -36,6 +45,7 @@ const styles = {
 
 const Wrapper = createComponent(styles.wrapper)
 const Grid = createComponent(styles.grid)
+const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 const Heading = createComponent(styles.heading, 'h3')
@@ -43,20 +53,20 @@ const Heading = createComponent(styles.heading, 'h3')
 class HomeContainer extends Component {
   render() {
     return (
-      <>
-        <CategoriesContainer />
-        <Wrapper>
-          <Grid>
-            <Main>
-              <ShowcaseContainer />
-            </Main>
-            <Sidebar>
-              <Heading>Feed</Heading>
-              <FeedContainer />
-            </Sidebar>
-          </Grid>
-        </Wrapper>
-      </>
+      <Wrapper>
+        <Grid>
+          <Nav>
+            <CategoriesContainer />
+          </Nav>
+          <Main>
+            <ShowcaseContainer />
+          </Main>
+          <Sidebar>
+            <Heading>Feed</Heading>
+            <FeedContainer />
+          </Sidebar>
+        </Grid>
+      </Wrapper>
     )
   }
 }
