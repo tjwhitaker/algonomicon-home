@@ -4,7 +4,8 @@ import { createComponent } from 'inferno-fela'
 const styles = {
   container: () => ({
     background: '#111',
-    color: '#ccc'
+    color: '#ccc',
+    marginTop: '1.4rem'
   }),
   wrapper: () => ({
     maxWidth: '1024px',
