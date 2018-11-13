@@ -33,7 +33,7 @@ const styles = {
   gridItem: () => ({
     flex: '0 0 30%',
     padding: '10px 0'
-  }),
+  })
 }
 
 const Container = createComponent(styles.container)
