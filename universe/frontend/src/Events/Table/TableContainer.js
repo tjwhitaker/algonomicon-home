@@ -8,13 +8,12 @@ const styles = {
   }),
   headerRow: (props) => ({
     borderBottom: '1px solid #ccc',
-    background: props.theme.ravenclaw
+    background: '#333' 
   }),
   headerCell: () => ({
     padding: '1.4rem',
     fontWeight: 'bold',
     textAlign: 'left',
-    fontFamily: 'monospace',
     color: 'white'
   }),
   row: (props) => ({
