@@ -109,13 +109,18 @@
   },
   "babel": {
     "plugins": [
-      "transform-decorators-legacy"
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
     ],
     "presets": [
       "inferno-app"
     ]
   },
   "devDependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.5"
+    "@babel/plugin-proposal-decorators": "^7.1.6"
   }
 }
