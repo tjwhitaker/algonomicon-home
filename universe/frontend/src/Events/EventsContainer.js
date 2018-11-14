@@ -2,6 +2,7 @@ import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import CategoriesContainer from '../Components/Categories/CategoriesContainer'
 import TableContainer from './Table/TableContainer'
+
 const styles = {
   wrapper: () => ({
     maxWidth: '1024px',

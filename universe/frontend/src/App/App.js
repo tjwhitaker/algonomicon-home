@@ -1,8 +1,16 @@
 import { Component } from 'inferno'
 import { BrowserRouter } from 'inferno-router'
+import { Provider as StoreProvider } from 'inferno-mobx'
+import { Provider as RenderProvider } from 'inferno-fela'
 import { ThemeProvider } from 'inferno-fela'
+import { createRenderer } from 'fela'
 import Routes from './Routes'
+import GlobalStyles from './GlobalStyles.css'
+import RootStore from './RootStore'
 import './AppStyles.scss'
+
+const renderer = createRenderer()
+renderer.renderStatic(GlobalStyles.toString())
 
 const theme = {
   hufflepuff: '#9370DB',
@@ -10,14 +18,20 @@ const theme = {
   gryffindor: '#FDCA7A'
 }
 
+const store = {}
+
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          {Routes}
-        </BrowserRouter>
-      </ThemeProvider> 
+      <RenderProvider renderer={renderer}>
+        <ThemeProvider theme={theme}>
+          <StoreProvider store={RootStore}>
+            <BrowserRouter>
+              {Routes}
+            </BrowserRouter>
+          </StoreProvider>
+        </ThemeProvider> 
+      </RenderProvider>
     )
   }
 }
