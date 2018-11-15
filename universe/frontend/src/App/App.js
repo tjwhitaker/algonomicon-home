@@ -4,9 +4,9 @@ import { Provider as StoreProvider } from 'inferno-mobx'
 import { Provider as RenderProvider } from 'inferno-fela'
 import { ThemeProvider } from 'inferno-fela'
 import { createRenderer } from 'fela'
-import Routes from './Routes'
 import GlobalStyles from './GlobalStyles.css'
-import RootStore from './RootStore'
+import Routes from './Routes'
+import Stores from './Stores'
 import './AppStyles.scss'
 
 const renderer = createRenderer()
@@ -18,14 +18,12 @@ const theme = {
   gryffindor: '#FDCA7A'
 }
 
-const store = {}
-
 class App extends Component {
   render() {
     return (
       <RenderProvider renderer={renderer}>
         <ThemeProvider theme={theme}>
-          <StoreProvider store={RootStore}>
+          <StoreProvider {...Stores}>
             <BrowserRouter>
               {Routes}
             </BrowserRouter>

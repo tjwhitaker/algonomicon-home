@@ -1,5 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
+import { inject, observer } from 'inferno-mobx'
 
 const styles = {
   table: () => ({
@@ -34,45 +35,10 @@ const HeaderCell = createComponent(styles.headerCell, 'th')
 const Row = createComponent(styles.row, 'tr')
 const Cell = createComponent(styles.cell, 'td')
 
-class TableContainer extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      events: []
-    }
-  }
-
+@inject('EventStore') 
+@observer class TableContainer extends Component {
   componentDidMount() {
-    this.setState({
-      events: [
-        {
-          name: 'NIPS: Neural Information Processing Systems',
-          location: 'Montreal, Canada',
-          date: 'Dec 02 - Dec 08'
-        },
-        {
-          name: 'SC: The International Conference for High Performance Computing',
-          location: 'Dallas, TX',
-          date: 'Aug 19 - Aug 23'
-        },
-        {
-          name: 'ICML: International Conference on Machine Learning',
-          location: 'Stockholm, Sweden',
-          date: 'Jul 10 - Jul 15'
-        },
-        {
-          name: 'CVPR: Computer Vision and Pattern Recognition',
-          location: 'Long Beach, CA',
-          date: 'Jun 15 - Jun 21'
-        },
-        {
-          name: 'KDD: Knowledge Discovery and Data Mining',
-          location: 'London, UK',
-          date: 'Aug 19, Aug 23'
-        }
-      ]
-    })
+    this.props.EventStore.fetchEvents()
   }
 
   render() {
@@ -86,7 +52,7 @@ class TableContainer extends Component {
           </HeaderRow>
         </thead>
         <tbody>
-          {this.state.events.map(event => (
+          {this.props.EventStore.events.map(event => (
             <Row>
               <Cell>{event.name}</Cell>
               <Cell>{event.location}</Cell>
