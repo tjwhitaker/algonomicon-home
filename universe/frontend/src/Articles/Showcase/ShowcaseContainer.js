@@ -1,5 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
+import { inject, observer } from 'inferno-mobx'
 
 const styles = {
   container: () => ({
@@ -44,58 +45,16 @@ const Title = createComponent(styles.title, 'h2')
 const Description = createComponent(styles.description, 'p')
 const GridItem = createComponent(styles.gridItem)
 
-class ShowcaseContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
-      articles: []
-    }
-  }
-
+@inject('ArticleStore')
+@observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    this.setState({
-      articles: [{
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      },
-      {
-        preview: 'https://source.unsplash.com/600x300',
-        title: 'Hello!',
-        description: 'This is a test description of a fake article post'
-      }]
-    })
+    this.props.ArticleStore.fetchArticles()
   }
 
   render() {
     return (
       <Container>
-        {this.state.articles.map((article, index) => 
+        {this.props.ArticleStore.articles.map((article, index) => 
           index === 0 ? (
             <Feature>
               <Preview src={article.preview + "?" + index} alt={article.title}/>
