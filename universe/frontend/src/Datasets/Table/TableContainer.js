@@ -49,7 +49,7 @@ const Cell = createComponent(styles.cell, 'td')
             <HeaderCell>Name</HeaderCell>
             <HeaderCell>Description</HeaderCell>
             <HeaderCell>Instances</HeaderCell>
-            <HeaderCell>Features</HeaderCell>
+            <HeaderCell>Attributes</HeaderCell>
             <HeaderCell>Format</HeaderCell>
 
           </HeaderRow>

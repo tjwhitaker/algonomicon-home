@@ -1,7 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import CategoriesContainer from '../Components/Categories/CategoriesContainer'
-import FiltersContainer from './Filters/FiltersContainer'
 import TableContainer from './Table/TableContainer'
 
 const styles = {
