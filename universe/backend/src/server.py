@@ -1,5 +1,5 @@
 import hug
-from src import routes
+from src.api import articles, datasets, events, papers, projects
 from src.context import DBContext, engine
 from src.models.base import Base
 
@@ -13,6 +13,6 @@ def delete_context(context: DBContext, exception=None, errors=None, lacks_requir
 
 @hug.extend_api()
 def routes():
-  return [routes]
+  return [articles, datasets, events, papers, projects]
 
 Base.metadata.create_all(bind=engine)
