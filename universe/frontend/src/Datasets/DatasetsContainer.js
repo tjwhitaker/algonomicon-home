@@ -19,9 +19,7 @@ const styles = {
     gridArea: 'nav'
   }),
   main: () => ({
-    gridArea: 'main',
-    borderRight: '1px solid #ccc',
-    paddingRight: '1.4rem'
+    gridArea: 'main'
   })
 }
 
