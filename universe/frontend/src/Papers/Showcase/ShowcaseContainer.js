@@ -3,9 +3,25 @@ import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const styles = {
-  title: () => ({}),
-  description: () => ({})
+  post: () => ({
+    display: 'block',
+    padding: '1.4rem 0',
+    borderBottom: '1px solid #ccc',
+
+    '&:first-child': {
+      paddingTop: '0'
+    }
+  }),
+  title: () => ({
+  }),
+  description: () => ({
+    marginBottom: '0'
+  })
 }
+
+const Post = createComponent(styles.post)
+const Title = createComponent(styles.title, 'h3')
+const Description = createComponent(styles.description, 'p')
 
 @inject('PaperStore')
 @observer class ShowcaseContainer extends Component {
@@ -17,10 +33,10 @@ const styles = {
     return (
       <>
         {this.props.PaperStore.papers.map(paper => (
-          <div>
-            <h2>{paper.name}</h2>
-            <p>{paper.description}</p>
-          </div>
+          <Post>
+            <Title>{paper.title}</Title>
+            <Description>{paper.abstract}</Description>
+          </Post>
         ))}
       </>
     )
