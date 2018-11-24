@@ -6,15 +6,16 @@ from sqlalchemy.sql.sqltypes import Integer, String
 class Article(Base):
     __tablename__ = 'article'
     id = Column(Integer, primary_key=True)
+    title = Column(String)
 
 class ArticleResource(object):
     def on_get(self, req, resp, id):
-        item = Article() 
+        item = Article(title='hello world') 
 
         self.db.add(item)
         self.db.commit()
 
-        resp.media = self.db.query(Article, id)
+        resp.media = self.db.query(Article).first().title
         
 class ArticleCollectionResource(object):    
     def on_get(self, req, resp):
