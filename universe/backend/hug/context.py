@@ -6,16 +6,16 @@ engine = create_engine('sqlite:///:memory:')
 session_factory = scoped_session(sessionmaker(bind=engine))
 
 class DBContext(object):
-  def __init__(self):
-    self._db = session_factory()
+    def __init__(self):
+        self._db = session_factory()
 
-  @property
-  def db(self) -> Session:
-    return self._db
+    @property
+    def db(self) -> Session:
+        return self._db
 
-  def cleanup(self, exception=None):
-    if exception:
-      self.db.rollback()
-      return
+    def cleanup(self, exception=None):
+        if exception:
+            self.db.rollback()
+            return
 
-    self.db.commit()
+        self.db.commit()
