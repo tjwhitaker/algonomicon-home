@@ -7,10 +7,18 @@ class Dataset(Base):
     __tablename__ = 'dataset'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    description = Column(String)
+    attributes = Column(Integer)
+    instances = Column(Integer)
+    format = Column(String)
 
 class DatasetSchema(Schema):
     id = fields.Int(dump_only=True)
-    name = field.Str()
+    name = fields.Str()
+    description = fields.Str()
+    attributes = fields.Int()
+    instances = fields.Int()
+    format = fields.Str()
 
 class DatasetResource(object):
     def on_get(self, req, resp, id):
@@ -23,6 +31,10 @@ class DatasetResource(object):
         dataset = self.db.query(Dataset).get(id)
 
         dataset.name = req.media.get('name')
+        dataset.description = req.media.get('description')
+        dataset.attributes = req.media.get('attributes')
+        dataset.instances = req.media.get('instances')
+        dataset.format = req.media.get('format')
 
         self.db.commit()
 
@@ -44,7 +56,11 @@ class DatasetCollectionResource(object):
 
     def on_post(self, req, resp):
         dataset = Dataset(
-            name=req.media.get('name')
+            name=req.media.get('name'),
+            description=req.media.get('description'),
+            attributes=req.media.get('attributes'),
+            instances=req.media.get('instances'),
+            format=req.media.get('format')
         )
 
         self.db.add(dataset)

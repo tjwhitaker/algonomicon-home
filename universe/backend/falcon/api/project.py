@@ -7,10 +7,14 @@ class Project(Base):
     __tablename__ = 'project'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    description = Column(String)
+    preview = Column(String)
 
 class ProjectSchema(Schema):
     id = fields.Int(dump_only=True)
-    name = field.Str()
+    name = fields.Str()
+    description = fields.Str()
+    preview = fields.Str()
 
 class ProjectResource(object):
     def on_get(self, req, resp, id):
@@ -23,6 +27,8 @@ class ProjectResource(object):
         project = self.db.query(Project).get(id)
 
         project.name = req.media.get('name')
+        project.description = req.media.get('description')
+        project.preview = req.media.get('preview')
 
         self.db.commit()
 
@@ -44,7 +50,9 @@ class ProjectCollectionResource(object):
 
     def on_post(self, req, resp):
         project = Project(
-            name=req.media.get('name')
+            name=req.media.get('name'),
+            description=req.media.get('description'),
+            preview=req.media.get('preview')
         )
 
         self.db.add(project)

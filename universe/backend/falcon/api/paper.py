@@ -7,10 +7,12 @@ class Paper(Base):
     __tablename__ = 'paper'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    abstract = Column(String)
 
 class PaperSchema(Schema):
     id = fields.Int(dump_only=True)
-    name = field.Str()
+    name = fields.Str()
+    abstract = fields.Str()
 
 class PaperResource(object):
     def on_get(self, req, resp, id):
@@ -23,6 +25,7 @@ class PaperResource(object):
         paper = self.db.query(Paper).get(id)
 
         paper.name = req.media.get('name')
+        paper.abstract = req.media.get('abstract')
 
         self.db.commit()
 
@@ -44,7 +47,8 @@ class PaperCollectionResource(object):
 
     def on_post(self, req, resp):
         paper = Paper(
-            name=req.media.get('name')
+            name=req.media.get('name'),
+            abstract=req.media.get('abstract')
         )
 
         self.db.add(paper)

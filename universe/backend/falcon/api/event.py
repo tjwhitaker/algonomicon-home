@@ -7,10 +7,14 @@ class Event(Base):
     __tablename__ = 'event'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    location = Column(String)
+    date = Column(String)
 
 class EventSchema(Schema):
     id = fields.Int(dump_only=True)
-    name = field.Str()
+    name = fields.Str()
+    location = fields.Str()
+    date = fields.Str()
 
 class EventResource(object):
     def on_get(self, req, resp, id):
@@ -23,6 +27,8 @@ class EventResource(object):
         event = self.db.query(Event).get(id)
 
         event.name = req.media.get('name')
+        event.location = req.media.get('location')
+        event.date = req.media.get('date')
 
         self.db.commit()
 
@@ -44,7 +50,9 @@ class EventCollectionResource(object):
 
     def on_post(self, req, resp):
         event = Event(
-            name=req.media.get('name')
+            name=req.media.get('name'),
+            location=req.media.get('location'),
+            date=req.media.get('date')
         )
 
         self.db.add(event)
