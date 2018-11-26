@@ -74,7 +74,7 @@ class IntroContainer extends Component {
     return (
       <Container>
         <Tagline>Finding Patterns in a Chaotic World</Tagline>
-        <Title>The Open Source ML Community</Title>
+        <Title>Machine Learning for Fun and Profit</Title>
         <SearchContainer>
           <InputContainer>
             <Icon>
