@@ -44,7 +44,7 @@ const Description = createComponent(styles.description, 'p')
               <img src={project.preview + '?' + index} />
             </Preview>
             <Content>
-              <Title>{project.title}</Title>
+              <Title>{project.name}</Title>
               <Description>{project.description}</Description>
             </Content> 
           </Project>

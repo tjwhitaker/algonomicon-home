@@ -34,7 +34,7 @@ const Description = createComponent(styles.description, 'p')
       <>
         {this.props.PaperStore.papers.map(paper => (
           <Post>
-            <Title>{paper.title}</Title>
+            <Title>{paper.name}</Title>
             <Description>{paper.abstract}</Description>
           </Post>
         ))}

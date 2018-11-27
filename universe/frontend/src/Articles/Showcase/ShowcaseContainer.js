@@ -57,16 +57,16 @@ const GridItem = createComponent(styles.gridItem)
         {this.props.ArticleStore.articles.map((article, index) => 
           index === 0 ? (
             <Feature>
-              <Preview src={article.preview + "?" + index} alt={article.title}/>
+              <Preview src={article.preview + "?" + index} alt={article.name}/>
               <Content>
-                <Title color={'#eee'}>{article.title}</Title>
+                <Title color={'#eee'}>{article.name}</Title>
                 <Description color={'#aaa'}>{article.description}</Description>
               </Content>
             </Feature>
           ) : (
             <GridItem>
-              <Preview src={article.preview + "?" + index} alt={article.title}/>
-              <Title>{article.title}</Title>
+              <Preview src={article.preview + "?" + index} alt={article.name}/>
+              <Title>{article.name}</Title>
               <Description>{article.description}</Description>
             </GridItem>
           )
