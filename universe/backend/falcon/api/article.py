@@ -8,13 +8,13 @@ class Article(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(Text)
-    hero = Column(String)
+    preview = Column(String)
 
 class ArticleSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
-    hero = fields.Str()
+    preview = fields.Str()
 
 class ArticleResource(object):
     def on_get(self, req, resp, id):
@@ -28,7 +28,7 @@ class ArticleResource(object):
 
         article.name = req.media.get('name')
         article.description = req.media.get('description')
-        article.hero = req.media.get('hero')
+        article.preview = req.media.get('preview')
 
         self.db.commit()
 
@@ -52,7 +52,7 @@ class ArticleCollectionResource(object):
         article = Article(
             name=req.media.get('name'),
             description = req.media.get('description'),
-            hero=req.media.get('hero')
+            preview=req.media.get('preview')
         ) 
 
         self.db.add(article)

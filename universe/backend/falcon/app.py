@@ -5,8 +5,10 @@ from api.event   import EventResource,   EventCollectionResource
 from api.paper   import PaperResource,   PaperCollectionResource
 from api.project import ProjectResource, ProjectCollectionResource
 from db import Base, SessionManager, engine, session_factory
+from cors import PolicyManager 
 
 api = falcon.API(middleware=[
+    PolicyManager(),
     SessionManager(session_factory)
 ])
 
