@@ -41,7 +41,7 @@ const Description = createComponent(styles.description, 'p')
         {this.props.ProjectStore.projects.map((project, index) => (
           <Project>
             <Preview>
-              <img src={project.preview + '?' + index} />
+              <img src={project.preview + '?' + index} alt={project.name} />
             </Preview>
             <Content>
               <Title>{project.name}</Title>
