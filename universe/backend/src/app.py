@@ -4,7 +4,7 @@ from api.dataset import DatasetResource, DatasetCollectionResource
 from api.event   import EventResource,   EventCollectionResource
 from api.paper   import PaperResource,   PaperCollectionResource
 from api.project import ProjectResource, ProjectCollectionResource
-from db import Base, SessionManager, engine, session_factory
+from db.config import Base, SessionManager, engine, session_factory
 from cors import PolicyManager 
 
 api = falcon.API(middleware=[

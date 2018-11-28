@@ -1,4 +1,4 @@
-from db import Base
+from db.config import Base
 from marshmallow import Schema, fields
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, String, Text

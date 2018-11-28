@@ -1,4 +1,4 @@
-from test.base import APITestCase
+from test.runner import APITestCase
 
 class TestArticle(APITestCase):
     def test_get_article_collection():

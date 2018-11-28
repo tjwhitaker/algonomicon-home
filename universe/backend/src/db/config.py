@@ -4,7 +4,7 @@ from sqlalchemy.orm.scoping import scoped_session
 from sqlalchemy.orm.session import sessionmaker, Session
 
 Base = declarative_base()
-engine = create_engine('sqlite:///:memory:')
+engine = create_engine('sqlite:///db/dev.db')
 session_factory = scoped_session(sessionmaker(bind=engine))
 
 class SessionManager:
