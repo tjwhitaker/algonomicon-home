@@ -48,7 +48,6 @@ const Grid = createComponent(styles.grid)
 const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
-const Heading = createComponent(styles.heading, 'h3')
 
 class ArticlesContainer extends Component {
   render() {
@@ -62,7 +61,6 @@ class ArticlesContainer extends Component {
             <ShowcaseContainer />
           </Main>
           <Sidebar>
-            <Heading>Filters</Heading>
             <FiltersContainer />
           </Sidebar>
         </Grid>
