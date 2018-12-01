@@ -12,11 +12,12 @@ const styles = {
   }),
   tagline: () => ({
     color: 'white',
-    fontSize: '1.4rem'
+    fontSize: '1.4rem',
+    marginBottom: '1.4rem'
   }),
   title: () => ({
     color: 'white',
-    marginBottom: '1.4rem'
+    marginBottom: '0'
   }),
   searchContainer: () => ({
     display: 'flex'
@@ -31,14 +32,15 @@ const styles = {
     left: '1.4rem',
     top: '50%',
     transform: 'translateY(-50%)',
-    width: '2.5rem',
+    width: '3rem',
     lineHeight: '1',
     color: '#aaa'
   }),
   input: () => ({
     width: '100%',
-    padding: '2rem',
-    paddingLeft: '5.2rem',
+    paddingTop: '1.8rem',
+    paddingBottom: '1.8rem',
+    paddingLeft: '6rem',
     borderRadius: '3px',
     border: 0
   }),
@@ -48,10 +50,16 @@ const styles = {
     background: 'linear-gradient(to left, #FDCA7A, #ED9E6F) repeat',
     backgroundPosition: '0 0',
     backgroundSize: '200% auto',
-    padding: '2rem 4rem',
+    paddingTop: '1.8rem',
+    paddingRight: '4rem',
+    paddingBottom: '1.8rem',
+    paddingLeft: '4rem',
     borderRadius: '3px',
     margin: '0 1.4rem',
     fontWeight: 'bold',
+    fontFamily: 'monospace',
+    textTransform: 'uppercase',
+    border: '0',
 
     ':hover': {
       color: 'white',
@@ -67,22 +75,36 @@ const SearchContainer = createComponent(styles.searchContainer)
 const InputContainer = createComponent(styles.inputContainer)
 const Icon = createComponent(styles.icon)
 const Input = createComponent(styles.input, 'input', ['type', 'placeholder'])
-const Button = createComponent(styles.button, Link, ['to'])
+const Button = createComponent(styles.button, 'button')
 
 class IntroContainer extends Component {
+  /*
+    addEmail() {
+      let data = {
+        EMAIL: ''
+      }
+      
+      validate email
+      
+      fetch('https://algonomicon.us12.list-manage.com/subscribe/post-json?u=884c4febd2fb609267a7f7d66&amp;id=c6e91d9210&amp;c=?')
+    
+      show modal success or error`
+    }
+  */
+
   render() {
     return (
       <Container>
-        <Tagline>Finding Patterns in a Chaotic World</Tagline>
-        <Title>Machine Learning for Fun and Profit</Title>
+        <Title>The Place for Machine Learning</Title>
+        <Tagline>Still under construction. Thanks for bearing with us! Sign up for early access.</Tagline>
         <SearchContainer>
           <InputContainer>
             <Icon>
-              <svg style="display:block" aria-hidden="true" data-prefix="fas" data-icon="users" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-users fa-w-20"><path fill="currentColor" d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z" class=""></path></svg>
+              <svg style={{display: 'block'}} aria-hidden="true" data-prefix="fas" data-icon="user-astronaut" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-astronaut fa-w-14 fa-3x"><path fill="currentColor" d="M64 224h13.5c24.7 56.5 80.9 96 146.5 96s121.8-39.5 146.5-96H384c8.8 0 16-7.2 16-16v-96c0-8.8-7.2-16-16-16h-13.5C345.8 39.5 289.6 0 224 0S102.2 39.5 77.5 96H64c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16zm40-88c0-22.1 21.5-40 48-40h144c26.5 0 48 17.9 48 40v24c0 53-43 96-96 96h-48c-53 0-96-43-96-96v-24zm72 72l12-36 36-12-36-12-12-36-12 36-36 12 36 12 12 36zm151.6 113.4C297.7 340.7 262.2 352 224 352s-73.7-11.3-103.6-30.6C52.9 328.5 0 385 0 454.4v9.6c0 26.5 21.5 48 48 48h80v-64c0-17.7 14.3-32 32-32h128c17.7 0 32 14.3 32 32v64h80c26.5 0 48-21.5 48-48v-9.6c0-69.4-52.9-125.9-120.4-133zM272 448c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16zm-96 0c-8.8 0-16 7.2-16 16v48h32v-48c0-8.8-7.2-16-16-16z" class=""></path></svg>
             </Icon>
-            <Input type="text" placeholder="Enter your email for a short weekly ML newsletter" />
+            <Input type="text" placeholder="example@algonomicon.com" />
           </InputContainer>
-          <Button to="/search">Subscribe</Button>
+          <Button onclick={this.addEmail}>Sign Up!</Button>
         </SearchContainer>
       </Container>
     )

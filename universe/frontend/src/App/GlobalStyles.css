@@ -51,6 +51,10 @@ img {
 a {
  outline: 0;
 }
+::-moz-focus-inner {
+  border: 0;
+  outline: 0;
+}
 
 /* Typography + Spacing */
 /************************/
@@ -94,6 +98,10 @@ a.active {
 
 pre, code {
   font-family: monospace;
+}
+
+button {
+  cursor:pointer;
 }
 
 /* Animations */
