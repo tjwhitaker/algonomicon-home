@@ -1,5 +1,5 @@
 import falcon
-from cors import PolicyManager 
+from cors import PolicyManager
 from db.config import Base, SessionManager, engine, session_factory
 from api.article import ArticleResource, ArticleCollectionResource
 from api.dataset import DatasetResource, DatasetCollectionResource

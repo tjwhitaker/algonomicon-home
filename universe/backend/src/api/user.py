@@ -4,7 +4,7 @@ from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, String, Text
 
 class User(Base):
-    __tablename__ = 'project'
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     email = Column(String)
 
@@ -44,9 +44,7 @@ class UserCollectionResource(object):
 
     def on_post(self, req, resp):
         user = User(
-            name=req.media.get('name'),
-            description=req.media.get('description'),
-            preview=req.media.get('preview')
+            email=req.media.get('email')
         )
 
         self.db.add(user)
