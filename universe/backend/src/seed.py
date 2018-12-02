@@ -73,6 +73,9 @@ def seed_projects():
     for i in range(5):
         requests.post('http://localhost:8000/projects', json=data)
 
+def seed_users():
+    data = { 'email': 'tim@algonomicon.com' }
+    requests.post('http://localhost:8000/users', json=data)
 
 print('Seeding project...')
 
@@ -81,5 +84,6 @@ seed_datasets()
 seed_events()
 seed_papers()
 seed_projects()
+seed_users()
 
 print('Seeded')

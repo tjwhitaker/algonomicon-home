@@ -1,11 +1,12 @@
 import falcon
+from cors import PolicyManager 
+from db.config import Base, SessionManager, engine, session_factory
 from api.article import ArticleResource, ArticleCollectionResource
 from api.dataset import DatasetResource, DatasetCollectionResource
 from api.event   import EventResource,   EventCollectionResource
 from api.paper   import PaperResource,   PaperCollectionResource
 from api.project import ProjectResource, ProjectCollectionResource
-from db.config import Base, SessionManager, engine, session_factory
-from cors import PolicyManager 
+from api.user    import UserResource,    UserCollectionResource
 
 api = falcon.API(middleware=[
     PolicyManager(),
@@ -26,5 +27,8 @@ api.add_route('/papers', PaperCollectionResource())
 
 api.add_route('/project/{id}', ProjectResource())
 api.add_route('/projects', ProjectCollectionResource())
+
+api.add_route('/user/{id}', UserResource())
+api.add_route('/users', UserCollectionResource())
 
 Base.metadata.create_all(bind=engine)
