@@ -41,7 +41,11 @@ const styles = {
     paddingBottom: '1.8rem',
     paddingLeft: '6rem',
     borderRadius: '3px',
-    border: 0
+    border: 0,
+
+    '&:invalid': {
+      border: 'none'
+    }
   }),
   button: (props) => ({
     display: 'block',
@@ -81,29 +85,39 @@ class IntroContainer extends Component {
     super(props)
 
     this.state = {value: ''}
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit() {
     let data = {email: this.state.value}
-    
-    let options = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }
 
-    fetch('http://localhost:8000/users', options)
-      .then(res => res.json())
-      .then(result => console.log(result))
-      .catch(error => console.log(error))
+    if (this.validateEmail(data.email)) {
+      let options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }
+
+      fetch('http://localhost:8000/users', options)
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(error => console.log(error))
+    }
+    else {
+      console.log('Doesnt validate')
+    }
+    
   }
 
   handleChange(event) {
     this.setState({
       value: event.target.value
     })
+  }
+
+  validateEmail(email) {
+    return /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email)
   }
 
   render() {

@@ -32,7 +32,7 @@ const styles = {
     overflow: 'hidden'
   }),
   heading: () => ({
-    color: '#333',
+    color: '#777',
     borderBottom: '1px solid #ccc',
     fontSize: '1.4rem',
     padding: '1.4rem 0',
