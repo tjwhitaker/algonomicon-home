@@ -1,4 +1,5 @@
 import falcon
+from auth import AuthManager
 from cors import PolicyManager
 from db.config import Base, SessionManager, engine, session_factory
 from api.article import ArticleResource, ArticleCollectionResource
@@ -9,6 +10,7 @@ from api.project import ProjectResource, ProjectCollectionResource
 from api.user    import UserResource,    UserCollectionResource
 
 api = falcon.API(middleware=[
+    AuthManager(),
     PolicyManager(),
     SessionManager(session_factory)
 ])
