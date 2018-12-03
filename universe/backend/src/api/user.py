@@ -53,6 +53,7 @@ class UserCollectionResource:
             self.db.add(user.data)
             self.db.commit()
 
-            resp.media = {'message': 'success'}
-        except ValidationError as err:
-            resp.media = err.messages
+            resp.media, errors = UserSchema().dump(user.data)
+            
+        except:
+            resp.media = {'message': 'There was a problem.'}
