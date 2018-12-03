@@ -1,16 +1,20 @@
 from db.config import Base
-from marshmallow import Schema, fields
+from marshmallow import Schema, ValidationError, fields, post_load
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, String, Text
 
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    email = Column(String)
+    email = Column(String, unique=True)
 
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
-    email = fields.Str()
+    email = fields.Email()
+
+    @post_load
+    def make_user(self, data):
+        return User(**data)
 
 class UserResource:
     def on_get(self, req, resp, id):
@@ -43,12 +47,12 @@ class UserCollectionResource:
         resp.media = data
 
     def on_post(self, req, resp):
-        user = User(
-            email=req.media.get('email')
-        )
+        try:
+            user = UserSchema().load(req.media)
+                
+            self.db.add(user.data)
+            self.db.commit()
 
-        self.db.add(user)
-        self.db.commit()
-
-        data, errors = UserSchema().dump(user)
-        resp.media =data
+            resp.media = {'message': 'success'}
+        except ValidationError as err:
+            resp.media = err.messages
