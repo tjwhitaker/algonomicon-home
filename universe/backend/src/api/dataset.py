@@ -20,7 +20,7 @@ class DatasetSchema(Schema):
     instances = fields.Int()
     format = fields.Str()
 
-class DatasetResource(object):
+class DatasetResource:
     def on_get(self, req, resp, id):
         dataset = self.db.query(Dataset).get(id)
 
@@ -47,7 +47,7 @@ class DatasetResource(object):
 
         resp.media = {'message': 'Dataset Deleted'}
 
-class DatasetCollectionResource(object):
+class DatasetCollectionResource:
     def on_get(self, req, resp):
         datasets = self.db.query(Dataset).all()
 

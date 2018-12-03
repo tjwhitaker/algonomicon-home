@@ -16,7 +16,7 @@ class ProjectSchema(Schema):
     description = fields.Str()
     preview = fields.Str()
 
-class ProjectResource(object):
+class ProjectResource:
     def on_get(self, req, resp, id):
         project = self.db.query(Project).get(id)
 
@@ -41,7 +41,7 @@ class ProjectResource(object):
 
         resp.media = {'message': 'Project Deleted'}
 
-class ProjectCollectionResource(object):
+class ProjectCollectionResource:
     def on_get(self, req, resp):
         projects = self.db.query(Project).all()
 

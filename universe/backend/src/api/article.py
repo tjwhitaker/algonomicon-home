@@ -16,7 +16,7 @@ class ArticleSchema(Schema):
     description = fields.Str()
     preview = fields.Str()
 
-class ArticleResource(object):
+class ArticleResource:
     def on_get(self, req, resp, id):
         article = self.db.query(Article).get(id)
         
@@ -41,7 +41,7 @@ class ArticleResource(object):
 
         resp.media = {'message': 'Article Deleted'}
         
-class ArticleCollectionResource(object):    
+class ArticleCollectionResource:    
     def on_get(self, req, resp):
         articles = self.db.query(Article).all()
 

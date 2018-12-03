@@ -16,7 +16,7 @@ class EventSchema(Schema):
     location = fields.Str()
     date = fields.Str()
 
-class EventResource(object):
+class EventResource:
     def on_get(self, req, resp, id):
         event = self.db.query(Event).get(id)
 
@@ -41,7 +41,7 @@ class EventResource(object):
 
         resp.media = {'message': 'Event Deleted'}
 
-class EventCollectionResource(object):
+class EventCollectionResource:
     def on_get(self, req, resp):
         events = self.db.query(Event).all()
 

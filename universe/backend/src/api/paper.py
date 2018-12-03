@@ -14,7 +14,7 @@ class PaperSchema(Schema):
     name = fields.Str()
     abstract = fields.Str()
 
-class PaperResource(object):
+class PaperResource:
     def on_get(self, req, resp, id):
         paper = self.db.query(Paper).get(id)
 
@@ -38,7 +38,7 @@ class PaperResource(object):
 
         resp.media = {'message': 'Paper Deleted'}
 
-class PaperCollectionResource(object):
+class PaperCollectionResource:
     def on_get(self, req, resp):
         papers = self.db.query(Paper).all()
 

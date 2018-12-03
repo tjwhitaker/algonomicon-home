@@ -12,7 +12,7 @@ class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     email = fields.Str()
 
-class UserResource(object):
+class UserResource:
     def on_get(self, req, resp, id):
         user = self.db.query(User).get(id)
 
@@ -35,7 +35,7 @@ class UserResource(object):
 
         resp.media = {'message': 'User Deleted'}
 
-class UserCollectionResource(object):
+class UserCollectionResource:
     def on_get(self, req, resp):
         users = self.db.query(User).all()
 
