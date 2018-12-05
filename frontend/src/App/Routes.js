@@ -9,7 +9,6 @@ import EventsContainer from '../Events/EventsContainer'
 import PapersContainer from '../Papers/PapersContainer'
 import ProjectsContainer from '../Projects/ProjectsContainer'
 import NotFoundContainer from '../Errors/NotFound/NotFoundContainer'
-import SearchContainer from '../Search/SearchContainer'
 
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
@@ -29,7 +28,6 @@ const Routes = (
     <AppRoute path="/events" component={EventsContainer} />
     <AppRoute path="/papers" component={PapersContainer} />
     <AppRoute path="/projects" component={ProjectsContainer} />
-    <AppRoute path="/search" component={SearchContainer} />
     <AppRoute path="*" component={NotFoundContainer} />
   </Switch>
 )

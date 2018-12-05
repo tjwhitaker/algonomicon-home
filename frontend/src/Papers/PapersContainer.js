@@ -1,15 +1,11 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../Components/Categories/CategoriesContainer'
+import CategoriesContainer from '../Shared/Categories/CategoriesContainer'
 import ShowcaseContainer from './Showcase/ShowcaseContainer'
 import FiltersContainer from './Filters/FiltersContainer'
+import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
 
 const styles = {
-  wrapper: () => ({
-    maxWidth: '1024px',
-    margin: '0 auto',
-    padding: '1.4rem'
-  }),
   grid: () => ({
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
@@ -33,7 +29,6 @@ const styles = {
   })
 }
 
-const Wrapper = createComponent(styles.wrapper)
 const Grid = createComponent(styles.grid)
 const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
@@ -42,7 +37,7 @@ const Sidebar = createComponent(styles.sidebar)
 class PapersContainer extends Component {
   render() {
     return (
-      <Wrapper>
+      <WrapperContainer>
         <Grid>
           <Nav>
             <CategoriesContainer />
@@ -54,7 +49,7 @@ class PapersContainer extends Component {
             <FiltersContainer />
           </Sidebar>
         </Grid>
-      </Wrapper>
+      </WrapperContainer>
     )
   }
 }

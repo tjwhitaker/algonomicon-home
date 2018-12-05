@@ -1,6 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../Components/Categories/CategoriesContainer'
+import CategoriesContainer from '../Shared/Categories/CategoriesContainer'
 import ShowcaseContainer from './Showcase/ShowcaseContainer'
 import FeedContainer from './Feed/FeedContainer'
 

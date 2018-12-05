@@ -1,4 +1,3 @@
-hug
 falcon
 marshmallow
 sqlalchemy

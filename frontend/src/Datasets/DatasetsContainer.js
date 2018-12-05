@@ -1,14 +1,10 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../Components/Categories/CategoriesContainer'
+import CategoriesContainer from '../Shared/Categories/CategoriesContainer'
 import TableContainer from './Table/TableContainer'
+import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
 
 const styles = {
-  wrapper: () => ({
-    maxWidth: '1024px',
-    margin: '0 auto',
-    padding: '1.4rem'
-  }),
   grid: () => ({
     display: 'grid',
     gridTemplateAreas: 
@@ -23,7 +19,6 @@ const styles = {
   })
 }
 
-const Wrapper = createComponent(styles.wrapper)
 const Grid = createComponent(styles.grid)
 const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
@@ -31,7 +26,7 @@ const Main = createComponent(styles.main)
 class DatasetsContainer extends Component {
   render() {
     return (
-      <Wrapper>
+      <WrapperContainer>
         <Grid>
           <Nav>
             <CategoriesContainer />
@@ -40,7 +35,7 @@ class DatasetsContainer extends Component {
             <TableContainer />
           </Main>
         </Grid>
-      </Wrapper>
+      </WrapperContainer>
     )
   }
 }
