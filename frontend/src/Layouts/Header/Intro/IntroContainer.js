@@ -99,25 +99,26 @@ class IntroContainer extends Component {
   handleSubmit() {
     let data = {email: this.state.email}
 
-    if (this.validateEmail(data.email)) {
-      let options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      }
+    if (data.email) {
+      if (this.validateEmail(data.email)) {
+        let options = {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        }
 
-      fetch('http://localhost:8000/users', options)
-        .then(response => {
-          this.props.FlashStore.setFlash(`${data.email} subscribed!`, 'green')
-        })
-        .catch(error => {
-          this.props.FlashStore.setFlash(error, 'red')
-        })
-    }
-    else {
-      this.props.FlashStore.setFlash(`${data.email} doesn't validate`, 'red')
-    }
-    
+        fetch('http://localhost:8000/users', options)
+          .then(response => {
+            this.props.FlashStore.setFlash(`${data.email} subscribed!`, 'green')
+          })
+          .catch(error => {
+            this.props.FlashStore.setFlash(error, 'red')
+          })
+      }
+      else {
+        this.props.FlashStore.setFlash(`${data.email} doesn't validate`, 'red')
+      }
+    }    
   }
 
   handleChange(event) {
