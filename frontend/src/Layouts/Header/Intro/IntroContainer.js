@@ -46,7 +46,9 @@ const styles = {
     border: 0,
 
     '&:invalid': {
-      border: 'none'
+      border: 'none',
+      outline: 'none',
+      boxShadow: 'none'
     }
   }),
   button: (props) => ({
@@ -106,17 +108,14 @@ class IntroContainer extends Component {
 
       fetch('http://localhost:8000/users', options)
         .then(response => {
-          this.props.FlashStore.message = '<email> subscribed!'
-          this.props.FlashStore.color = 'lime'
+          this.props.FlashStore.setFlash('<email> subscribed!', 'green')
         })
         .catch(error => {
-          this.props.FlashStore.message = error
-          this.props.FlashStore.color = 'red'
+          this.props.FlashStore.setFlash(error, 'red')
         })
     }
     else {
-      this.props.FlashStore.message = '<email> doesn\'t validate'
-      this.props.FlashStore.color = 'red'
+      this.props.FlashStore.setFlash('<email> doesn\'t validate', 'red')
     }
     
   }

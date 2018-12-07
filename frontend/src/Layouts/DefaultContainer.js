@@ -1,5 +1,5 @@
 import { Component } from 'inferno'
-import FlashContainer from '../Shared/Flash/FlashContainer'
+import FlashContainer from './Flash/FlashContainer'
 import HeaderContainer from './Header/HeaderContainer'
 import FooterContainer from './Footer/FooterContainer'
 
