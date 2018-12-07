@@ -12,9 +12,9 @@ const styles = {
 const Wrapper = createComponent(styles.wrapper)
 
 class WrapperContainer extends Component {
-  render () {
+  render (props) {
     return (
-      <Wrapper>{this.props.children}</Wrapper>
+      <Wrapper {...props}>{this.props.children}</Wrapper>
     )
   }
 }

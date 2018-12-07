@@ -33,6 +33,7 @@
     "inferno-dev-utils": "^6.0.2",
     "inferno-fela": "^9.0.4",
     "inferno-mobx": "^6.2.1",
+    "inferno-motion": "^3.0.0",
     "inferno-router": "^6.1.4",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",

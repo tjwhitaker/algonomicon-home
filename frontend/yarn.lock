@@ -4783,6 +4783,14 @@ inferno-mobx@^6.2.1:
     inferno-vnode-flags "6.2.1"
     mobx "*"
 
+inferno-motion@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/inferno-motion/-/inferno-motion-3.0.0.tgz#0a922f86a21f5fb3f8521d3a1aeaf5d6f6991a9c"
+  integrity sha512-z4q1i2UVaYWZHG/+Dfv5UbCDZxJdbjF8Lu0laKkYdVxh187m99UkP3DA1KxbCWVMxLWJGMFZNj1TglQwFEXjkg==
+  dependencies:
+    performance-now "^2.1.0"
+    raf "^3.4.0"
+
 inferno-router@^6.1.4:
   version "6.1.5"
   resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-6.1.5.tgz#ed2e95540ccc0f798ef27485edd0f6b642f3ae4d"
@@ -8132,6 +8140,13 @@ raf@3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   integrity sha512-pDP/NMRAXoTfrhCfyfSEwJAKLaxBU9eApMeBPB1TkDouZmvPerIClV8lTAd+uF8ZiTaVl69e1FCxQrAd/VTjGw==
+  dependencies:
+    performance-now "^2.1.0"
+
+raf@^3.4.0:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
+  integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
   dependencies:
     performance-now "^2.1.0"
 

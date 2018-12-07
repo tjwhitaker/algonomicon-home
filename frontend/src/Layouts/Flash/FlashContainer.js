@@ -1,6 +1,7 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import { Motion, spring } from 'inferno-motion'
 import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
@@ -17,9 +18,15 @@ const Message = createComponent(styles.message)
     return (
       <>
         { this.props.FlashStore.message && (
-          <WrapperContainer>
-            <Message color={this.props.FlashStore.color}>{this.props.FlashStore.message}</Message>
-          </WrapperContainer>
+          <Motion 
+            defaultStyle={{x: -50}} 
+            style={{x: spring(0)}}>
+            { ({x}) => 
+              <WrapperContainer style={{'margin-top': `${x}px`}}> 
+                <Message color={this.props.FlashStore.color}>{this.props.FlashStore.message}</Message>
+              </WrapperContainer>
+            }
+          </Motion>
         )}
       </>
     )

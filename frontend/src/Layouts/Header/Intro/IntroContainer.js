@@ -108,14 +108,14 @@ class IntroContainer extends Component {
 
       fetch('http://localhost:8000/users', options)
         .then(response => {
-          this.props.FlashStore.setFlash('<email> subscribed!', 'green')
+          this.props.FlashStore.setFlash(`${data.email} subscribed!`, 'green')
         })
         .catch(error => {
           this.props.FlashStore.setFlash(error, 'red')
         })
     }
     else {
-      this.props.FlashStore.setFlash('<email> doesn\'t validate', 'red')
+      this.props.FlashStore.setFlash(`${data.email} doesn't validate`, 'red')
     }
     
   }

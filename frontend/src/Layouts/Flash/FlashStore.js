@@ -7,6 +7,11 @@ class FlashStore {
   @action setFlash(message, color) {
     this.message = message
     this.color = color
+
+    // setTimeout(() => {
+    //   this.message = ''
+    //   this.color = ''
+    // }, 2000)
   }
 }
 
