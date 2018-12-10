@@ -4,7 +4,7 @@ class EventStore {
   @observable events = []
 
   @action fetchEvents() {
-    fetch('http://localhost:8000/events')
+    fetch(`${process.env.INFERNO_APP_API}/events`)
       .then(response => response.json())
       .then(events => this.events = events)
   }
