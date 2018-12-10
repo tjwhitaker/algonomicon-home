@@ -8,6 +8,11 @@ class FlashStore {
     this.message = message
     this.color = color
   }
+
+  @action clearFlash() {
+    this.message = ''
+    this.color = ''
+  }
 }
 
 export default FlashStore
