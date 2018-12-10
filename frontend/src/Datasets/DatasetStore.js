@@ -5,7 +5,7 @@ class DatasetStore {
 
   @action
   fetchDatasets() {
-    fetch('http://localhost:8000/datasets')
+    fetch(`${process.env.INFERNO_APP_API}/datasets`)
       .then(response => response.json())
       .then(datasets => this.datasets = datasets)
   }
