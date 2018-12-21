@@ -1,3 +1,5 @@
+import falcon
+from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
 from sqlalchemy.sql.schema import Column
@@ -23,6 +25,7 @@ class EventResource:
         data, errors = EventSchema().dump(event)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_put(self, req, resp, id):
         event = self.db.query(Event).get(id)
 
@@ -35,6 +38,7 @@ class EventResource:
         data, errors = EventSchema().dump(event)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_delete(self, req, resp, id):
         self.db.query(Event).get(id).delete()
         self.db.commit()
@@ -48,6 +52,7 @@ class EventCollectionResource:
         data, errors = EventSchema(many=True).dump(events)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_post(self, req, resp):
         event = Event(
             name=req.media.get('name'),

@@ -8,7 +8,7 @@ def seed_articles():
     }
 
     for i in range(10):
-        requests.post('http://localhost:8000/articles', json=data)
+        requests.post('http://localhost:8000/articles', json=data, headers={'Authorization': 'test'})
 
 def seed_datasets():
     data = {
@@ -20,7 +20,7 @@ def seed_datasets():
     }
 
     for i in range(15):
-        requests.post('http://localhost:8000/datasets', json=data)
+        requests.post('http://localhost:8000/datasets', json=data, headers={'Authorization': 'test'})
 
 def seed_events():
     events = [
@@ -52,7 +52,13 @@ def seed_events():
     ]
 
     for event in events:
-        requests.post('http://localhost:8000/events', json=event)
+        requests.post('http://localhost:8000/events', json=event, headers={'Authorization': 'test'})
+
+def seed_models():
+    data = {'name': 'Hello World!'}
+
+    for i in range(9):
+        requests.post('http://localhost:8000/models', json=data, headers={'Authorization': 'test'})
 
 def seed_papers():
     data = {
@@ -61,27 +67,35 @@ def seed_papers():
     }
 
     for i in range(10):
-        requests.post('http://localhost:8000/papers', json=data)
+        requests.post('http://localhost:8000/papers', json=data, headers={'Authorization': 'test'})
 
 def seed_projects():
-    data = {
-        'name': 'Hello World Project',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.',
-        'preview': 'https://source.unsplash.com/600x300'
-    }
+    data = [
+        {
+            'name': 'Launch Pad',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.',
+            'preview': 'https://source.unsplash.com/600x300'
+        },
+        {
+            'name': 'Mission Control',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.',
+            'preview': 'https://source.unsplash.com/600x300'
+        }
+    ]
 
-    for i in range(5):
-        requests.post('http://localhost:8000/projects', json=data)
+    for item in data:
+        requests.post('http://localhost:8000/projects', json=item, headers={'Authorization': 'test'})
 
 def seed_users():
     data = { 'email': 'tim@algonomicon.com' }
-    requests.post('http://localhost:8000/users', json=data)
+    requests.post('http://localhost:8000/users', json=data, headers={'Authorization': 'test'})
 
 print('Seeding project...')
 
 seed_articles()
 seed_datasets()
 seed_events()
+seed_models()
 seed_papers()
 seed_projects()
 seed_users()

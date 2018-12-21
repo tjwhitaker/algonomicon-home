@@ -1,3 +1,5 @@
+import falcon
+from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
 from sqlalchemy.sql.schema import Column
@@ -23,6 +25,7 @@ class ArticleResource:
         data, errors = ArticleSchema().dump(article)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_put(self, req, resp, id):
         article = self.db.query(Article).get(id)
 
@@ -35,6 +38,7 @@ class ArticleResource:
         data, errors = ArticleSchema().dump(article)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_delete(self, req, resp, id):
         self.db.query(Article).get(id).delete()
         self.db.commit()
@@ -48,6 +52,7 @@ class ArticleCollectionResource:
         data, errors = ArticleSchema(many=True).dump(articles)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_post(self, req, resp):
         article = Article(
             name=req.media.get('name'),

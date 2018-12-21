@@ -1,3 +1,5 @@
+import falcon
+from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, ValidationError, fields, post_load
 from sqlalchemy.sql.schema import Column
@@ -23,6 +25,7 @@ class UserResource:
         result = UserSchema().dump(user)
         resp.media = result.data
 
+    @falcon.before(validate_god)
     def on_put(self, req, resp, id):
         user = self.db.query(User).get(id)
 
@@ -33,6 +36,7 @@ class UserResource:
         result = UserSchema().dump(user)
         resp.media = result.data
 
+    @falcon.before(validate_god)
     def on_delete(self, req, resp, id):
         try:
             self.db.query(User).get(id).delete()
@@ -47,6 +51,7 @@ class UserCollectionResource:
         result = UserSchema(many=True).dump(users)
         resp.media = result.data
 
+    @falcon.before(validate_god)
     def on_post(self, req, resp):
         try:
             user = UserSchema().load(req.media)

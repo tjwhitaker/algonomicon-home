@@ -38,8 +38,8 @@ class MastheadContainer extends Component {
         <LogoContainer />
         <Nav>
           <InternalLink to="/about" exact>About</InternalLink>
-          <ExternalLink href="https://algonomicon.io">Community</ExternalLink>
           <InternalLink to="/contact" exact>Contact</InternalLink>
+          <ExternalLink href="/forum">Forum</ExternalLink>
         </Nav>
       </Masthead>
     )
