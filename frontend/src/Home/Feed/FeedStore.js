@@ -4,7 +4,7 @@ class FeedStore {
   @observable feed = []
 
   @action fetchFeed() {
-    fetch('https://algonomicon.io/api/v1/timelines/public')
+    fetch(`${process.env.INFERNO_APP_API}/feed`)
       .then(response => response.json())
       .then(feed => this.feed = feed)
   }

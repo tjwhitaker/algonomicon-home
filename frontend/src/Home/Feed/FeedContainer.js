@@ -1,24 +1,24 @@
 import { Component } from 'inferno'
-import PostContainer from './Post/PostContainer'
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import ArticleContainer from './Post/ArticleContainer'
+import DatasetContainer from './Post/DatasetContainer'
+import EventContainer from './Post/EventContainer'
+import ModelContainer from './Post/ModelContainer'
+import PaperContainer from './Post/PaperContainer'
+import ProjectContainer from './Post/ProjectContainer'
 
 const styles = {
-  feedContainer: {
-    'max-height': '100%',
-    'margin-right': '-50px',
-    'padding-right': '42px',
-    'overflow': 'scroll'
-  }
+  feed: () => ({
+    maxHeight: '100%',
+    marginRight: '-50px',
+    paddingRight: '42px',
+    overflow: 'scroll'
+  })
 }
 
-const postContentStyles = `
-  .content a {
-    word-wrap: break-word;
-  }
-  .content p:last-child {
-    margin:0;
-  }
-`
+const Feed = createComponent(styles.feed)
+
 @inject('FeedStore')
 @observer class FeedContainer extends Component {
   componentDidMount() {
@@ -27,13 +27,18 @@ const postContentStyles = `
 
   render() {
     return (
-      <div style={styles.feedContainer}>
-        <style>{postContentStyles}</style>
-
-        {this.props.FeedStore.feed.map(post => (
-          <PostContainer post={post} />
+      <Feed>
+        {this.props.FeedStore.feed.map(item => (
+          {
+            article: <ArticleContainer data={item} />,
+            dataset: <DatasetContainer data={item} />,
+            event: <EventContainer data={item} />,
+            model: <ModelContainer data={item} />,
+            paper: <PaperContainer data={item} />,
+            project: <ProjectContainer data={item} />
+          }[item.type]
         ))}
-      </div>
+      </Feed>
     )
   }
 }

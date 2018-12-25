@@ -48,8 +48,8 @@ const Description = createComponent(styles.description, 'p')
           <Model>
             <Content borderTop={index < 2 ? 0 : '1px solid #ccc'}
                      paddingTop={index < 2 ? 0 : '1.4rem'}
-                     marginLeft={index % 2 == 0 ? 0 : '1.4rem'}
-                     marginRight={index % 2 == 1 ? 0 : '1.4rem'}>
+                     marginLeft={index % 2 === 0 ? 0 : '1.4rem'}
+                     marginRight={index % 2 === 1 ? 0 : '1.4rem'}>
               <Title>{model.name}</Title>
               <Description>{model.description.substring(0, 500)}...</Description>
             </Content>

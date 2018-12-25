@@ -33,7 +33,7 @@ const Description = createComponent(styles.description, 'p')
     return (
       <>
         {this.props.PaperStore.papers.map((paper, index) => (
-          <Post borderTop={index == 0 ? 0 : '1px solid #ccc'}>
+          <Post borderTop={index === 0 ? 0 : '1px solid #ccc'}>
             <Title>{paper.name}</Title>
             <Description>{paper.abstract.substring(0, 300)}...</Description>
           </Post>
