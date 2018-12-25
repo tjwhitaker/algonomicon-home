@@ -2,19 +2,24 @@ import falcon
 from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
+from sqlalchemy.sql import func
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, String, Text
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String, Text
 
 class Model(Base):
     __tablename__ = 'model'
     id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class ModelSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
 
 class ModelResource:
     def on_get(self, req, resp, id):

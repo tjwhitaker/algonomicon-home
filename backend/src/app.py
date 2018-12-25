@@ -5,6 +5,7 @@ from db.config import Base, SessionManager, engine, session_factory
 from api.article import ArticleResource, ArticleCollectionResource
 from api.dataset import DatasetResource, DatasetCollectionResource
 from api.event   import EventResource,   EventCollectionResource
+from api.feed    import FeedResource
 from api.model   import ModelResource,   ModelCollectionResource
 from api.paper   import PaperResource,   PaperCollectionResource
 from api.project import ProjectResource, ProjectCollectionResource
@@ -36,5 +37,7 @@ api.add_route('/projects', ProjectCollectionResource())
 
 api.add_route('/user/{id}', UserResource())
 api.add_route('/users', UserCollectionResource())
+
+api.add_route('/feed', FeedResource())
 
 Base.metadata.create_all(bind=engine)

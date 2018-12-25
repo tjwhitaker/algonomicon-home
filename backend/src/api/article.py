@@ -1,9 +1,11 @@
 import falcon
+import datetime
 from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
+from sqlalchemy.sql import func
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, String, Text
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String, Text
 
 class Article(Base):
     __tablename__ = 'article'
@@ -11,12 +13,16 @@ class Article(Base):
     name = Column(String)
     description = Column(Text)
     preview = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class ArticleSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
     preview = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
 
 class ArticleResource:
     def on_get(self, req, resp, id):

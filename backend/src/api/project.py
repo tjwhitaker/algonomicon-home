@@ -2,8 +2,9 @@ import falcon
 from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
+from sqlalchemy.sql import func
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, String, Text
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String, Text
 
 class Project(Base):
     __tablename__ = 'project'
@@ -11,12 +12,16 @@ class Project(Base):
     name = Column(String)
     description = Column(String)
     preview = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class ProjectSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
     preview = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
 
 class ProjectResource:
     def on_get(self, req, resp, id):
