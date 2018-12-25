@@ -26,16 +26,6 @@ const styles = {
     paddingLeft: '1.4rem',
     maxHeight: '100%',
     overflow: 'hidden'
-  }),
-  heading: () => ({
-    color: '#aaa',
-    borderBottom: '1px solid #ccc',
-    fontSize: '1.4rem',
-    padding: '1.4rem 0',
-    lineHeight: '1',
-    fontFamily: 'monospace',
-    display: 'block',
-    textTransform: 'uppercase'
   })
 }
 
@@ -44,7 +34,7 @@ const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 
-class ModelsContainer extends Component {
+class ArticlesContainer extends Component {
   render() {
     return (
       <WrapperContainer>
@@ -64,4 +54,4 @@ class ModelsContainer extends Component {
   }
 }
 
-export default ModelsContainer
+export default ArticlesContainer

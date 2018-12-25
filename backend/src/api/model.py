@@ -9,10 +9,12 @@ class Model(Base):
     __tablename__ = 'model'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    description = Column(String)
 
 class ModelSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    description = fields.Str()
 
 class ModelResource:
     def on_get(self, req, resp, id):
@@ -49,7 +51,8 @@ class ModelCollectionResource:
     @falcon.before(validate_god)
     def on_post(self, req, resp):
         model = Model(
-            name=req.media.get('name')
+            name=req.media.get('name'),
+            description=req.media.get('description')
         )
 
         self.db.add(model)

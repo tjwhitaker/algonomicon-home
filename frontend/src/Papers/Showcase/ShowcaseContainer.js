@@ -3,10 +3,10 @@ import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const styles = {
-  post: () => ({
+  post: (props) => ({
     display: 'block',
     padding: '1.4rem 0',
-    borderBottom: '1px solid #ccc',
+    borderTop: props.borderTop,
 
     '&:first-child': {
       paddingTop: '0'
@@ -32,10 +32,10 @@ const Description = createComponent(styles.description, 'p')
   render() {
     return (
       <>
-        {this.props.PaperStore.papers.map(paper => (
-          <Post>
+        {this.props.PaperStore.papers.map((paper, index) => (
+          <Post borderTop={index == 0 ? 0 : '1px solid #ccc'}>
             <Title>{paper.name}</Title>
-            <Description>{paper.abstract}</Description>
+            <Description>{paper.abstract.substring(0, 300)}...</Description>
           </Post>
         ))}
       </>

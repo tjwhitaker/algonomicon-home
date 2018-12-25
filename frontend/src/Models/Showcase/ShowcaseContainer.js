@@ -3,32 +3,37 @@ import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const styles = {
-  container: () => ({
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
+  grid: () => ({
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr'
   }),
-  preview: () => ({
+  model: () => ({
+    display: 'block',
+    borderRight: '1px solid #ccc',
+
+    '&:nth-child(even)': {
+      borderRight: 0
+    }
+  }),
+  content: (props) => ({
+    paddingBottom: '1.4rem',
+    borderTop: props.borderTop,
+    paddingTop: props.paddingTop,
+    marginLeft: props.marginLeft,
+    marginRight: props.marginRight
+  }),
+  title: () => ({
+  }),
+  description: () => ({
     marginBottom: '0'
-  }),
-  title: (props) => ({
-    color: props.color
-  }),
-  description: (props) => ({
-    color: props.color,
-    marginBottom: '0'
-  }),
-  gridItem: () => ({
-    flex: '0 0 30%',
-    padding: '10px 0'
   })
 }
 
-const Container = createComponent(styles.container)
-const Preview = createComponent(styles.preview, 'img', ['src'])
-const Title = createComponent(styles.title, 'h2')
+const Grid = createComponent(styles.grid)
+const Model = createComponent(styles.model)
+const Content = createComponent(styles.content)
+const Title = createComponent(styles.title, 'h3')
 const Description = createComponent(styles.description, 'p')
-const GridItem = createComponent(styles.gridItem)
 
 @inject('ModelStore')
 @observer class ShowcaseContainer extends Component {
@@ -38,15 +43,19 @@ const GridItem = createComponent(styles.gridItem)
 
   render() {
     return (
-      <Container>
-        {this.props.ModelStore.models.map((model, index) => 
-            <GridItem>
-              <Preview src={model.preview + "?" + index} alt={model.name}/>
+      <Grid>
+        {this.props.ModelStore.models.map((model, index) => (
+          <Model>
+            <Content borderTop={index < 2 ? 0 : '1px solid #ccc'}
+                     paddingTop={index < 2 ? 0 : '1.4rem'}
+                     marginLeft={index % 2 == 0 ? 0 : '1.4rem'}
+                     marginRight={index % 2 == 1 ? 0 : '1.4rem'}>
               <Title>{model.name}</Title>
-              <Description>{model.description}</Description>
-            </GridItem>
-        )}
-      </Container>
+              <Description>{model.description.substring(0, 500)}...</Description>
+            </Content>
+          </Model>
+        ))}
+      </Grid>
     )
   }
 }

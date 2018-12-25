@@ -15,17 +15,19 @@ const styles = {
     marginBottom: '10px'
   }),
   preview: () => ({
-    marginBottom: '0'
+    marginBottom: '5px'
   }),
   content: () => ({
     position: 'absolute',
     bottom: '2rem',
     left: '2rem',
     padding: '2rem',
-    background: '#111'
+    background: '#111',
+    maxWidth:  '50%'
   }),
   title: (props) => ({
-    color: props.color
+    color: props.color,
+    fontSize: props.size
   }),
   description: (props) => ({
     color: props.color,
@@ -60,14 +62,14 @@ const GridItem = createComponent(styles.gridItem)
               <Preview src={article.preview + "?" + index} alt={article.name}/>
               <Content>
                 <Title color={'#eee'}>{article.name}</Title>
-                <Description color={'#aaa'}>{article.description}</Description>
+                <Description color={'#aaa'}>{article.description.substring(0, 100)}...</Description>
               </Content>
             </Feature>
           ) : (
             <GridItem>
               <Preview src={article.preview + "?" + index} alt={article.name}/>
-              <Title>{article.name}</Title>
-              <Description>{article.description}</Description>
+              <Title size={'1.6rem'}>{article.name}</Title>
+              <Description>{article.description.substring(0, 100)}...</Description>
             </GridItem>
           )
         )}

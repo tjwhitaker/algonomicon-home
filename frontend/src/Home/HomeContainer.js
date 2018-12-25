@@ -62,7 +62,7 @@ class HomeContainer extends Component {
             <ShowcaseContainer />
           </Main>
           <Sidebar>
-            <Heading>Feed</Heading>
+            <Heading>Featured</Heading>
             <FeedContainer />
           </Sidebar>
         </Grid>

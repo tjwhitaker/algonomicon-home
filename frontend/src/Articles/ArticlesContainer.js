@@ -26,16 +26,6 @@ const styles = {
     paddingLeft: '1.4rem',
     maxHeight: '100%',
     overflow: 'hidden'
-  }),
-  heading: () => ({
-    color: '#aaa',
-    borderBottom: '1px solid #ccc',
-    fontSize: '1.4rem',
-    padding: '1.4rem 0',
-    lineHeight: '1',
-    fontFamily: 'monospace',
-    display: 'block',
-    textTransform: 'uppercase'
   })
 }
 
