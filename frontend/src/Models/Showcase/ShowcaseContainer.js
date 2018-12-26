@@ -3,24 +3,14 @@ import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const styles = {
-  grid: () => ({
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr'
-  }),
-  model: () => ({
+  model: (props) => ({
     display: 'block',
-    borderRight: '1px solid #ccc',
-
-    '&:nth-child(even)': {
-      borderRight: 0
-    }
-  }),
-  content: (props) => ({
-    paddingBottom: '1.4rem',
+    padding: '1.4rem 0',
     borderTop: props.borderTop,
-    paddingTop: props.paddingTop,
-    marginLeft: props.marginLeft,
-    marginRight: props.marginRight
+
+    '&:first-child': {
+      paddingTop: '0'
+    }
   }),
   title: () => ({
   }),
@@ -29,9 +19,7 @@ const styles = {
   })
 }
 
-const Grid = createComponent(styles.grid)
 const Model = createComponent(styles.model)
-const Content = createComponent(styles.content)
 const Title = createComponent(styles.title, 'h3')
 const Description = createComponent(styles.description, 'p')
 
@@ -43,19 +31,14 @@ const Description = createComponent(styles.description, 'p')
 
   render() {
     return (
-      <Grid>
+      <>
         {this.props.ModelStore.models.map((model, index) => (
-          <Model>
-            <Content borderTop={index < 2 ? 0 : '1px solid #ccc'}
-                     paddingTop={index < 2 ? 0 : '1.4rem'}
-                     marginLeft={index % 2 === 0 ? 0 : '1.4rem'}
-                     marginRight={index % 2 === 1 ? 0 : '1.4rem'}>
-              <Title>{model.name}</Title>
-              <Description>{model.description.substring(0, 500)}...</Description>
-            </Content>
+          <Model borderTop={index === 0 ? 0 : '1px solid #ccc'}>
+            <Title>{model.name}</Title>
+            <Description>{model.description.substring(0, 500)}...</Description>
           </Model>
         ))}
-      </Grid>
+      </>
     )
   }
 }
