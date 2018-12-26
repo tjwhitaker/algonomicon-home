@@ -1,7 +1,10 @@
+import falcon
+from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
+from sqlalchemy.sql import func
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, String, Text
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String, Text
 
 class Project(Base):
     __tablename__ = 'project'
@@ -9,12 +12,16 @@ class Project(Base):
     name = Column(String)
     description = Column(String)
     preview = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class ProjectSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
     preview = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
 
 class ProjectResource:
     def on_get(self, req, resp, id):
@@ -23,6 +30,7 @@ class ProjectResource:
         data, errors = ProjectSchema().dump(project)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_put(self, req, resp, id):
         project = self.db.query(Project).get(id)
 
@@ -35,6 +43,7 @@ class ProjectResource:
         data, errors = ProjectSchema().dump(project)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_delete(self, req, resp, id):
         self.db.query(Project).get(id).delete()
         self.db.commit()
@@ -48,6 +57,7 @@ class ProjectCollectionResource:
         data, errors = ProjectSchema(many=True).dump(projects)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_post(self, req, resp):
         project = Project(
             name=req.media.get('name'),

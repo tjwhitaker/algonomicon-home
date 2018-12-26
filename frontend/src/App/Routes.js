@@ -6,6 +6,7 @@ import HomeContainer from '../Home/HomeContainer'
 import ArticlesContainer from '../Articles/ArticlesContainer'
 import DatasetsContainer from '../Datasets/DatasetsContainer'
 import EventsContainer from '../Events/EventsContainer'
+import ModelsContainer from '../Models/ModelsContainer'
 import PapersContainer from '../Papers/PapersContainer'
 import ProjectsContainer from '../Projects/ProjectsContainer'
 import NotFoundContainer from '../Errors/NotFound/NotFoundContainer'
@@ -26,6 +27,7 @@ const Routes = (
     <AppRoute path="/articles" component={ArticlesContainer} />
     <AppRoute path="/datasets" component={DatasetsContainer} />
     <AppRoute path="/events" component={EventsContainer} />
+    <AppRoute path="/models" component={ModelsContainer} />
     <AppRoute path="/papers" component={PapersContainer} />
     <AppRoute path="/projects" component={ProjectsContainer} />
     <AppRoute path="*" component={NotFoundContainer} />

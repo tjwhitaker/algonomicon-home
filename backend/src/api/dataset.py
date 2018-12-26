@@ -1,7 +1,10 @@
+import falcon
+from auth import validate_god
 from db.config import Base
 from marshmallow import Schema, fields
+from sqlalchemy.sql import func
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, String, Text
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String, Text
 
 class Dataset(Base):
     __tablename__ = 'dataset'
@@ -11,6 +14,9 @@ class Dataset(Base):
     attributes = Column(Integer)
     instances = Column(Integer)
     format = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
 
 class DatasetSchema(Schema):
     id = fields.Int(dump_only=True)
@@ -19,6 +25,8 @@ class DatasetSchema(Schema):
     attributes = fields.Int()
     instances = fields.Int()
     format = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
 
 class DatasetResource:
     def on_get(self, req, resp, id):
@@ -27,6 +35,7 @@ class DatasetResource:
         data, errors = DatasetSchema().dump(dataset)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_put(self, req, resp, id):
         dataset = self.db.query(Dataset).get(id)
 
@@ -41,6 +50,7 @@ class DatasetResource:
         data, errors = DatasetSchema().dump(dataset)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_delete(self, req, resp, id):
         self.db.query(Dataset).get(id).delete()
         self.db.commit()
@@ -54,6 +64,7 @@ class DatasetCollectionResource:
         data, errors = DatasetSchema(many=True).dump(datasets)
         resp.media = data
 
+    @falcon.before(validate_god)
     def on_post(self, req, resp):
         dataset = Dataset(
             name=req.media.get('name'),

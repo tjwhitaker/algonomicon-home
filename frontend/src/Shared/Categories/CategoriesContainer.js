@@ -31,6 +31,7 @@ class CategoriesContainer extends Component {
           <Link to="/articles" activeClassName="active">Articles</Link>
           <Link to="/datasets" activeClassName="active">Datasets</Link>
           <Link to="/events" activeClassName="active">Events</Link>
+          <Link to="/models" activeClassName="active">Models</Link>
           <Link to="/papers" activeClassName="active">Papers</Link>
           <Link to="/projects" activeClassName="active">Projects</Link>
         </List>
