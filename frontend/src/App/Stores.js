@@ -1,11 +1,11 @@
-import ArticleStore from '../Articles/ArticleStore'
-import DatasetStore from '../Datasets/DatasetStore'
-import EventStore from '../Events/EventStore'
+import ArticleStore from '../Article/ArticleStore'
+import DatasetStore from '../Dataset/DatasetStore'
+import EventStore from '../Event/EventStore'
 import FeedStore from '../Home/Feed/FeedStore'
 import FlashStore from '../Layouts/Flash/FlashStore'
-import ModelStore from '../Models/ModelStore'
-import PaperStore from '../Papers/PaperStore'
-import ProjectStore from '../Projects/ProjectStore'
+import ModelStore from '../Model/ModelStore'
+import PaperStore from '../Paper/PaperStore'
+import ProjectStore from '../Project/ProjectStore'
 
 export default {
   ArticleStore: new ArticleStore(),

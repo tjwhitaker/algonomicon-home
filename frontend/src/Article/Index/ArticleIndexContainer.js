@@ -1,9 +1,9 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../Shared/Categories/CategoriesContainer'
-import ShowcaseContainer from './Showcase/ShowcaseContainer'
 import FiltersContainer from './Filters/FiltersContainer'
-import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
+import ShowcaseContainer from './Showcase/ShowcaseContainer'
+import CategoriesContainer from '../../Shared/Categories/CategoriesContainer'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   grid: () => ({
@@ -34,7 +34,7 @@ const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 
-class PapersContainer extends Component {
+class ArticleIndexContainer extends Component {
   render() {
     return (
       <WrapperContainer>
@@ -54,4 +54,4 @@ class PapersContainer extends Component {
   }
 }
 
-export default PapersContainer
+export default ArticleIndexContainer

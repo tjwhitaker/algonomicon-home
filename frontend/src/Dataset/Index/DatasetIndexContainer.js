@@ -1,8 +1,8 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../Shared/Categories/CategoriesContainer'
 import TableContainer from './Table/TableContainer'
-import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
+import CategoriesContainer from '../../Shared/Categories/CategoriesContainer'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   grid: () => ({
@@ -23,7 +23,7 @@ const Grid = createComponent(styles.grid)
 const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 
-class DatasetsContainer extends Component {
+class DatasetIndexContainer extends Component {
   render() {
     return (
       <WrapperContainer>
@@ -40,4 +40,4 @@ class DatasetsContainer extends Component {
   }
 }
 
-export default DatasetsContainer
+export default DatasetIndexContainer
