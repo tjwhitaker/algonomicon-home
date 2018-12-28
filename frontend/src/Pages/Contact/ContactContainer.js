@@ -1,7 +1,7 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { Helmet } from 'inferno-helmet'
-import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 import mapboxgl from 'mapbox-gl'
 
 const styles = {

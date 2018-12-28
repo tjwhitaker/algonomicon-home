@@ -1,5 +1,5 @@
 import { Component } from 'inferno'
-import WrapperContainer from '../Shared/Wrapper/WrapperContainer'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 class AboutContainer extends Component {
   render() {

@@ -1,30 +1,23 @@
 import { Route, Switch } from 'inferno-router'
 
 import DefaultContainer from '../Layouts/DefaultContainer'
-
-import AboutContainer from '../About/AboutContainer'
-import ContactContainer from '../Contact/ContactContainer'
-import HomeContainer from '../Home/HomeContainer'
+import AboutContainer from '../Pages/About/AboutContainer'
+import ContactContainer from '../Pages/Contact/ContactContainer'
+import HomeContainer from '../Pages/Home/HomeContainer'
+import NotFoundContainer from '../Pages/Errors/NotFound/NotFoundContainer'
 
 import ArticleIndexContainer from '../Article/Index/ArticleIndexContainer'
 import ArticleDetailContainer from '../Article/Detail/ArticleDetailContainer'
-
 import DatasetIndexContainer from '../Dataset/Index/DatasetIndexContainer'
 import DatasetDetailContainer from '../Dataset/Detail/DatasetDetailContainer'
-
 import EventIndexContainer from '../Event/Index/EventIndexContainer'
 import EventDetailContainer from '../Event/Detail/EventDetailContainer'
-
 import ModelIndexContainer from '../Model/Index/ModelIndexContainer'
 import ModelDetailContainer from '../Model/Detail/ModelDetailContainer'
-
 import PaperIndexContainer from '../Paper/Index/PaperIndexContainer'
 import PaperDetailContainer from '../Paper/Detail/PaperDetailContainer'
-
 import ProjectIndexContainer from '../Project/Index/ProjectIndexContainer'
 import ProjectDetailContainer from '../Project/Detail/ProjectDetailContainer'
-
-import NotFoundContainer from '../Errors/NotFound/NotFoundContainer'
 
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
