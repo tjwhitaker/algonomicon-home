@@ -23,9 +23,7 @@ const styles = {
   }),
   sidebar: () => ({
     gridArea: 'sidebar',
-    paddingLeft: '1.4rem',
-    maxHeight: '100%',
-    overflow: 'hidden'
+    paddingLeft: '1.4rem'
   })
 }
 
