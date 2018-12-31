@@ -1,8 +1,9 @@
 import { Component } from 'inferno'
 
+
 class ArticleDetailContainer extends Component {
   render() {
-    return (<></>)
+    return (<>Article Detail</>)
   }
 }
 

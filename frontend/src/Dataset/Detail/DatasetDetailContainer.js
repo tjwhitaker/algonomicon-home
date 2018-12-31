@@ -2,7 +2,7 @@ import { Component } from 'inferno'
 
 class DatasetDetailContainer extends Component {
   render() {
-    return (<></>)
+    return (<>Dataset Detail</>)
   }
 }
 

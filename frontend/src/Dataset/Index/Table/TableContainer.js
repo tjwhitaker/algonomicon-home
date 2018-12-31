@@ -1,38 +1,39 @@
 import { Component } from 'inferno'
+import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const styles = {
   table: () => ({
-    width: '100%',
-    border: '1px solid #ccc'
+    width: '100%'
   }),
   headerRow: (props) => ({
-    borderBottom: '1px solid #ccc',
-    background: '#333' 
+    borderBottom: '1px solid #ccc'
   }),
   headerCell: () => ({
-    padding: '1.4rem',
+    padding: '1.2rem 0',
     fontWeight: 'bold',
     textAlign: 'left',
-    color: 'white'
+    color: '#777',
+    fontSize: '1.2rem',
+    textTransform: 'uppercase'
   }),
   row: (props) => ({
     borderBottom: '1px solid #ccc',
-
-    '&:nth-child(odd)': {
-      background: '#eee'
-    }
+    display: 'table-row'
   }),
   cell: () => ({
-    padding: '1.4rem'
+    padding: '1.4rem 0',
+    color: 'black',
+    fontWeight: 'normal',
+    fontSize: '1.2rem'
   })
 }
 
 const Table = createComponent(styles.table, 'table')
 const HeaderRow = createComponent(styles.headerRow, 'tr')
 const HeaderCell = createComponent(styles.headerCell, 'th')
-const Row = createComponent(styles.row, 'tr')
+const Row = createComponent(styles.row, Link, ['to'])
 const Cell = createComponent(styles.cell, 'td')
 
 @inject('DatasetStore') 
@@ -49,20 +50,14 @@ const Cell = createComponent(styles.cell, 'td')
             <HeaderCell>Name</HeaderCell>
             <HeaderCell>Description</HeaderCell>
             <HeaderCell>Instances</HeaderCell>
-            <HeaderCell>Attributes</HeaderCell>
-            <HeaderCell>Format</HeaderCell>
-
           </HeaderRow>
         </thead>
         <tbody>
           {this.props.DatasetStore.datasets.map(dataset => (
-            <Row>
+            <Row to={'/datasets/' + dataset.id}>
               <Cell>{dataset.name}</Cell>
               <Cell>{dataset.description}</Cell>
               <Cell>{dataset.instances}</Cell>
-              <Cell>{dataset.attributes}</Cell>
-              <Cell>{dataset.format}</Cell>
-
             </Row>
           ))}
         </tbody>

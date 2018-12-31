@@ -64,7 +64,6 @@ const styles = {
     borderRadius: '3px',
     margin: '0 1.4rem',
     fontWeight: 'bold',
-    fontFamily: 'monospace',
     textTransform: 'uppercase',
     border: '0',
 

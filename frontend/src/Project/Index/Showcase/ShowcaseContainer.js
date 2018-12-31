@@ -1,4 +1,5 @@
 import { Component } from 'inferno'
+import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
@@ -6,6 +7,7 @@ const styles = {
   project: () => ({
     display: 'flex',
     padding: '1.4rem 0',
+    alignItems: 'center',
 
     '&:first-child': {
       paddingTop: '0'
@@ -20,10 +22,13 @@ const styles = {
     paddingLeft: '1.4rem'
   }),
   title: () => ({}),
-  description: () => ({})
+  description: () => ({
+    fontWeight: 'normal',
+    color: 'black'
+  })
 }
 
-const Project = createComponent(styles.project)
+const Project = createComponent(styles.project, Link, ['to'])
 const Preview = createComponent(styles.preview)
 const Content = createComponent(styles.content)
 const Title = createComponent(styles.title, 'h2')
@@ -39,7 +44,7 @@ const Description = createComponent(styles.description, 'p')
     return (
       <>
         {this.props.ProjectStore.projects.map((project, index) => (
-          <Project>
+          <Project to={'/projects/' + project.id}>
             <Preview>
               <img src={project.preview + '?' + index} alt={project.name} />
             </Preview>

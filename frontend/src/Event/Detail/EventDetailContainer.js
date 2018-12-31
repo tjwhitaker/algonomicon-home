@@ -2,7 +2,7 @@ import { Component } from 'inferno'
 
 class EventDetailContainer extends Component {
   render() {
-    return (<></>)
+    return (<>Event Detail</>)
   }
 }
 

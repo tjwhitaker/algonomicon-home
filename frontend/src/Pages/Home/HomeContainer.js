@@ -34,10 +34,9 @@ const styles = {
   heading: () => ({
     color: '#777',
     borderBottom: '1px solid #ccc',
-    fontSize: '1.4rem',
+    fontSize: '1.2rem',
     padding: '1.4rem 0',
     lineHeight: '1',
-    fontFamily: 'monospace',
     display: 'block',
     textTransform: 'uppercase'
   }),

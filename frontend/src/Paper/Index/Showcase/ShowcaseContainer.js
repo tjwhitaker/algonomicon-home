@@ -1,4 +1,5 @@
 import { Component } from 'inferno'
+import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
@@ -15,7 +16,9 @@ const styles = {
   title: () => ({
   }),
   description: () => ({
-    marginBottom: '0'
+    marginBottom: '0',
+    fontWeight: 'normal',
+    color:'black'
   })
 }
 
@@ -34,8 +37,10 @@ const Description = createComponent(styles.description, 'p')
       <>
         {this.props.PaperStore.papers.map((paper, index) => (
           <Post borderTop={index === 0 ? 0 : '1px solid #ccc'}>
-            <Title>{paper.name}</Title>
-            <Description>{paper.abstract.substring(0, 300)}...</Description>
+            <Link to={'/papers/' + paper.id}>
+              <Title>{paper.name}</Title>
+              <Description>{paper.abstract.substring(0, 300)}...</Description>
+            </Link>
           </Post>
         ))}
       </>

@@ -1,4 +1,5 @@
 import { Component } from 'inferno'
+import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
@@ -12,7 +13,7 @@ const styles = {
     position: 'relative',
     overflow: 'hidden',
     flex: '0 0 100%',
-    marginBottom: '10px'
+    marginBottom: '5px'
   }),
   preview: () => ({
     marginBottom: '5px'
@@ -31,7 +32,8 @@ const styles = {
   }),
   description: (props) => ({
     color: props.color,
-    marginBottom: '0'
+    marginBottom: '0',
+    fontWeight: 'normal'
   }),
   gridItem: () => ({
     flex: '0 0 30%',
@@ -59,16 +61,18 @@ const GridItem = createComponent(styles.gridItem)
         {this.props.ArticleStore.articles.map((article, index) => 
           index === 0 ? (
             <Feature>
-              <Preview src={article.preview + "?" + index} alt={article.name}/>
-              <Content>
-                <Title color={'#eee'}>{article.name}</Title>
-                <Description color={'#aaa'}>{article.description.substring(0, 100)}...</Description>
-              </Content>
+              <Link to={'/articles/' + article.id}>
+                <Preview src={article.preview + "?" + index} alt={article.name}/>
+                <Content>
+                  <Title color={'#eee'}>{article.name}</Title>
+                  <Description color={'#aaa'}>{article.description.substring(0, 100)}...</Description>
+                </Content>
+              </Link>
             </Feature>
           ) : (
             <GridItem>
-              <Preview src={article.preview + "?" + index} alt={article.name}/>
-              <Title size={'1.6rem'}>{article.name}</Title>
+              <Link to={'/articles/' + article.id}><Preview src={article.preview + "?" + index} alt={article.name}/></Link>
+              <Link to={'/articles/' + article.id}><Title size={'1.6rem'}>{article.name}</Title></Link>
               <Description>{article.description.substring(0, 100)}...</Description>
             </GridItem>
           )
