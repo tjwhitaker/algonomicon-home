@@ -24,6 +24,10 @@ const Nav = createComponent(styles.nav)
 const Main = createComponent(styles.main)
 
 class ProjectIndexContainer extends Component {
+  componentDidMount() {
+    document.title = 'Projects | Algonomicon'
+  }
+
   render() {
     return (
       <WrapperContainer>

@@ -2,6 +2,10 @@ import { Component } from 'inferno'
 import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 class AboutContainer extends Component {
+  componentDidMount() {
+    document.title = 'About | Algonomicon'
+  }
+
   render() {
     return (
       <WrapperContainer>

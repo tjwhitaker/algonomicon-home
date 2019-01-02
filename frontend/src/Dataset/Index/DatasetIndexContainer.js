@@ -33,6 +33,10 @@ const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 
 class DatasetIndexContainer extends Component {
+  componentDidMount() {
+    document.title = 'Datasets | Algonomicon'
+  }
+
   render() {
     return (
       <WrapperContainer>

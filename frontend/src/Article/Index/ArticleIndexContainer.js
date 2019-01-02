@@ -33,6 +33,10 @@ const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 
 class ArticleIndexContainer extends Component {
+  componentDidMount() {
+    document.title = 'Articles | Algonomicon'
+  }
+
   render() {
     return (
       <WrapperContainer>

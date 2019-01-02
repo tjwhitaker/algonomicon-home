@@ -3,9 +3,11 @@ import { createComponent } from 'inferno-fela'
 
 const styles = {
   wrapper: () => ({
-    maxWidth: '1024px',
+    maxWidth: '120rem',
     margin: '0 auto',
-    padding: '1.4rem'
+    padding: '1.4rem',
+    position: 'relative',
+    height: '100%'
   }),
 }
 

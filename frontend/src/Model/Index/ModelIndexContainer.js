@@ -33,6 +33,10 @@ const Main = createComponent(styles.main)
 const Sidebar = createComponent(styles.sidebar)
 
 class ModelIndexContainer extends Component {
+  componentDidMount() {
+    document.title = 'Models | Algonomicon'
+  }
+
   render() {
     return (
       <WrapperContainer>

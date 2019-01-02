@@ -1,9 +1,19 @@
 import { Component } from 'inferno'
+import { createComponent } from 'inferno-fela'
+import { inject, observer } from 'inferno-mobx'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 
 
-class ArticleDetailContainer extends Component {
+@inject('ArticleStore')
+@observer class ArticleDetailContainer extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
-    return (<>Article Detail</>)
+    return (
+      <WrapperContainer>Article Detail</WrapperContainer>
+    )
   }
 }
 

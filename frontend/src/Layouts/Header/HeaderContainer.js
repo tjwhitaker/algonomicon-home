@@ -2,6 +2,7 @@ import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import MastheadContainer from './Masthead/MastheadContainer'
 import IntroContainer from './Intro/IntroContainer'
+import WrapperContainer from '../../Shared/Wrapper/WrapperContainer'
 import hero from './1.jpg'
 
 const styles = {
@@ -22,27 +23,19 @@ const styles = {
       background: 'black',
       opacity:0 
     }
-  }),
-  wrapper: () => ({
-    maxWidth: '1024px',
-    margin: '0 auto',
-    padding: '1.4rem',
-    position: 'relative',
-    height: '100%'
   })
 }
 
 const Container = createComponent(styles.container)
-const Wrapper = createComponent(styles.wrapper)
 
 class Header extends Component {
   render() {
     return (
       <Container>
-        <Wrapper>
+        <WrapperContainer>
           <MastheadContainer />
           <IntroContainer />
-        </Wrapper>
+        </WrapperContainer>
       </Container>
     )
   }

@@ -11,9 +11,7 @@ class Dataset(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(String)
-    attributes = Column(Integer)
     instances = Column(Integer)
-    format = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
@@ -22,9 +20,7 @@ class DatasetSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
     description = fields.Str()
-    attributes = fields.Int()
     instances = fields.Int()
-    format = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
@@ -41,9 +37,7 @@ class DatasetResource:
 
         dataset.name = req.media.get('name')
         dataset.description = req.media.get('description')
-        dataset.attributes = req.media.get('attributes')
         dataset.instances = req.media.get('instances')
-        dataset.format = req.media.get('format')
 
         self.db.commit()
 
@@ -69,9 +63,7 @@ class DatasetCollectionResource:
         dataset = Dataset(
             name=req.media.get('name'),
             description=req.media.get('description'),
-            attributes=req.media.get('attributes'),
-            instances=req.media.get('instances'),
-            format=req.media.get('format')
+            instances=req.media.get('instances')
         )
 
         self.db.add(dataset)

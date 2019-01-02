@@ -32,37 +32,52 @@ def seed_datasets():
         {
             "name": "Global Terrorism",
             "description": "Worldwide terrorist attacks from 1970-2017",
-            "attributes": 32,
-            "instances": 180000,
-            "format": "CSV"
+            "instances": 180000
         },
         {
             "name": "World Development Indicators",
             "description": "Country development indicators from around the world",
-            "attributes": 69,
-            "instances": 10200,
-            "format": "CSV"
+            "instances": 10200
         },
         {
             "name": "Wine Reviews",
             "description": "This is a test description of a fake dataset",
-            "attributes": 14,
-            "instances": 130000,
-            "format": "CSV"
+            "instances": 130000
         },
         {
             "name": "Global Terrorism",
             "description": "This is a test description of a fake dataset",
-            "attributes": 69,
-            "instances": 180000,
-            "format": "SQLite"
+            "instances": 180000
         },
         {
             "name": "Game of Thrones Deaths",
             "description": "This is a test description of a fake dataset",
-            "attributes": 12,
-            "instances": 5123,
-            "format": "CSV"
+            "instances": 5123
+        },
+        {
+            "name": "Global Terrorism",
+            "description": "Worldwide terrorist attacks from 1970-2017",
+            "instances": 180000
+        },
+        {
+            "name": "World Development Indicators",
+            "description": "Country development indicators from around the world",
+            "instances": 10200
+        },
+        {
+            "name": "Wine Reviews",
+            "description": "This is a test description of a fake dataset",
+            "instances": 130000
+        },
+        {
+            "name": "Global Terrorism",
+            "description": "This is a test description of a fake dataset",
+            "instances": 180000
+        },
+        {
+            "name": "Game of Thrones Deaths",
+            "description": "This is a test description of a fake dataset",
+            "instances": 5123
         }
     ]
 
@@ -71,6 +86,31 @@ def seed_datasets():
 
 def seed_events():
     events = [
+        {
+            'name': 'NIPS: Neural Information Processing Systems',
+            'location': 'Montreal, Canada',
+            'date': 'Dec 02 - Dec 08'
+        },
+        {
+            'name': 'SC: The International Conference for High Performance Computing',
+            'location': 'Dallas, TX',
+            'date': 'Aug 19 - Aug 23'
+        },
+        {
+            'name': 'ICML: International Conference on Machine Learning',
+            'location': 'Stockholm, Sweden',
+            'date': 'Jul 10 - Jul 15'
+        },
+        {
+            'name': 'CVPR: Computer Vision and Pattern Recognition',
+            'location': 'Long Beach, CA',
+            'date': 'Jun 15 - Jun 21'
+        },
+        {
+            'name': 'KDD: Knowledge Discovery and Data Mining',
+            'location': 'London, UK',
+            'date': 'Aug 19, Aug 23'
+        },
         {
             'name': 'NIPS: Neural Information Processing Systems',
             'location': 'Montreal, Canada',

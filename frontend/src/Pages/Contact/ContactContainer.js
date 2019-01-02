@@ -44,6 +44,8 @@ const Location = createComponent(styles.location)
 
 class ContactContainer extends Component {
   componentDidMount() {
+    document.title = 'Contact | Algonomicon'
+    
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtcDRjbGltYmVyIiwiYSI6ImNpdzhwM2VzbjAyc24yb21zZjduZHh3dmMifQ.k42_5Mnh3NX7pUqkQTA2SA';
     let map = new mapboxgl.Map({
         container: 'map',
