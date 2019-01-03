@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "inferno": "^7.0.4",
+    "inferno-fela": "^10.0.2",
+    "inferno-mobx": "^7.0.5",
+    "inferno-router": "^7.0.5",
     "inferno-scripts": "7.0.4"
   },
   "scripts": {
