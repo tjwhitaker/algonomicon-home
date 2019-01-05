@@ -6,6 +6,7 @@ import { ThemeProvider } from 'inferno-fela'
 import { createRenderer } from 'fela'
 import Routes from './Config/Routes'
 import Stores from './Config/Stores'
+import GlobalStyles from './Static/Assets/GlobalStyles.css'
 
 const renderer = createRenderer()
 renderer.renderStatic(GlobalStyles.toString())

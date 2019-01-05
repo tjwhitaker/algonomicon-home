@@ -16,3 +16,5 @@ const Routes = (
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
   </Switch>
 )
+
+export default Routes

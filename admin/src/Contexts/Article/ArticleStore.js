@@ -1,4 +1,4 @@
-import { action, bservable } from 'mobx'
+import { action, observable } from 'mobx'
 
 class ArticleStore {
   @observable articles = []
