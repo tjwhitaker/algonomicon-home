@@ -7,7 +7,7 @@ import hero from './1.jpg'
 
 const styles = {
   container: () => ({
-    backgroundImage: 'url('+ hero + ')',
+    backgroundImage: 'url(' + hero + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '30rem',

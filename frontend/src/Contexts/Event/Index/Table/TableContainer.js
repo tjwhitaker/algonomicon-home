@@ -39,7 +39,9 @@ const Cell = createComponent(styles.cell, 'td')
 @inject('EventStore') 
 @observer class TableContainer extends Component {
   componentDidMount() {
-    this.props.EventStore.fetchEvents()
+    if (this.props.EventStore.events.length === 0) {
+      this.props.EventStore.fetchEvents()
+    }
   }
 
   render() {

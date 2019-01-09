@@ -39,7 +39,9 @@ const Cell = createComponent(styles.cell, 'td')
 @inject('DatasetStore') 
 @observer class TableContainer extends Component {
   componentDidMount() {
-    this.props.DatasetStore.fetchDatasets()
+    if (this.props.DatasetStore.datasets.length === 0) {
+      this.props.DatasetStore.fetchDatasets()
+    }
   }
 
   render() {

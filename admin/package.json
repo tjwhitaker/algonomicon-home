@@ -12,7 +12,8 @@
     "babel-preset-inferno-app": "^8.0.3",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "chalk": "2.4.1",
+    "chalk": "^2.4.2",
+    "create-inferno-context": "^0.2.4",
     "css-loader": "1.0.1",
     "dotenv": "6.1.0",
     "dotenv-expand": "4.2.0",
@@ -105,8 +106,19 @@
     ]
   },
   "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
     "presets": [
       "inferno-app"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.3"
   }
 }

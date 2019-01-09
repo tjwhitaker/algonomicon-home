@@ -52,7 +52,9 @@ const GridItem = createComponent(styles.gridItem)
 @inject('ArticleStore')
 @observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    this.props.ArticleStore.fetchArticles()
+    if (this.props.ArticleStore.articles.length === 0) {
+      this.props.ArticleStore.fetchArticles()
+    }
   }
 
   render() {

@@ -29,7 +29,9 @@ const Description = createComponent(styles.description, 'p')
 @inject('PaperStore')
 @observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    this.props.PaperStore.fetchPapers()
+    if (this.props.PaperStore.papers.length === 0) {
+      this.props.PaperStore.fetchPapers()
+    }
   }
 
   render() {

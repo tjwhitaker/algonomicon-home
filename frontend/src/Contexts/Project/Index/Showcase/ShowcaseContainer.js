@@ -37,7 +37,9 @@ const Description = createComponent(styles.description, 'p')
 @inject('ProjectStore')
 @observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    this.props.ProjectStore.fetchProjects()
+    if (this.props.ProjectStore.projects.length === 0) {
+      this.props.ProjectStore.fetchProjects()
+    }
   }
 
   render() {

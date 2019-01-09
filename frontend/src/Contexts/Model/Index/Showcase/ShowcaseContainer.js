@@ -29,7 +29,9 @@ const Description = createComponent(styles.description, 'p')
 @inject('ModelStore')
 @observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    this.props.ModelStore.fetchModels()
+    if (this.props.ModelStore.models.length === 0) {
+      this.props.ModelStore.fetchModels()
+    }
   }
 
   render() {
