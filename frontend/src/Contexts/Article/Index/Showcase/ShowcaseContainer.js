@@ -62,7 +62,8 @@ const GridItem = createComponent(styles.gridItem)
   }
 
   render() {
-    const { articles, loading, error } = this.props.ArticleStore
+    const { articles, loading } = this.props.ArticleStore
+    const error = articles.length ? '' : 'No articles found.'
 
     return (
       <Container>

@@ -1,6 +1,7 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import CategoriesContainer from '../../../Shared/Categories/CategoriesContainer'
 import ErrorContainer from '../../../Shared/Error/ErrorContainer'
 import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
 import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
@@ -20,18 +21,18 @@ const styles = {
   }
 
   render() {
-    const { ArticleStore: {error, loading} , match: {params} } = this.props
-    const article = this.props.ArticleStore.getArticle(params.id)
-    const missingError = 'Cannot find article with id ' + params.id
+    const { ArticleStore: { articles, loading } , match: {params} } = this.props
+    const article = articles.find(article => article.id == params.id)
+    const error = article ? '' : 'Can\'t find article.'
 
     return (
       <WrapperContainer>
+        <CategoriesContainer />
         { loading ? <LoadingContainer /> :
           error ? <ErrorContainer error={error} /> :
-          !article ? <ErrorContainer error={missingError} /> :
-            (
+          article && (
               <h1>{article.name}</h1>
-            )
+          )
         }
       </WrapperContainer>
     )
