@@ -1,10 +1,12 @@
 import { Route, Switch } from 'inferno-router'
 
 import LayoutContainer from '../Shared/Layout/LayoutContainer'
+import EmptyContainer from '../Shared/Layout/EmptyContainer'
+
 import AboutContainer from '../Static/Pages/About/AboutContainer'
 import ContactContainer from '../Static/Pages/Contact/ContactContainer'
 import HomeContainer from '../Static/Pages/Home/HomeContainer'
-import NotFoundContainer from '../Static/Pages/Errors/NotFound/NotFoundContainer'
+import NotFoundContainer from '../Static/Pages/NotFound/NotFoundContainer'
 
 import ArticleIndexContainer from '../Contexts/Article/Index/ArticleIndexContainer'
 import ArticleDetailContainer from '../Contexts/Article/Detail/ArticleDetailContainer'
@@ -24,6 +26,14 @@ const AppRoute = ({ component: Component, ...rest }) => (
     <LayoutContainer {...props}>
       <Component {...props} />
     </LayoutContainer>  
+  )} />
+)
+
+const ErrorRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={ props => (
+    <EmptyContainer {...props}>
+      <Component {...props} />
+    </EmptyContainer>
   )} />
 )
 
@@ -51,7 +61,7 @@ const Routes = (
     <AppRoute path="/projects" component={ProjectIndexContainer} exact />
     <AppRoute path="/projects/:id" component={ProjectDetailContainer} />
 
-    <AppRoute path="*" component={NotFoundContainer} />
+    <ErrorRoute path="*" component={NotFoundContainer} />
   </Switch>
 )
 

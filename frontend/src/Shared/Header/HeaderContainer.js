@@ -3,7 +3,7 @@ import { createComponent } from 'inferno-fela'
 import MastheadContainer from './Masthead/MastheadContainer'
 import IntroContainer from './Intro/IntroContainer'
 import WrapperContainer from '../Wrapper/WrapperContainer'
-import hero from './1.jpg'
+import hero from './nebula.jpg'
 
 const styles = {
   container: () => ({

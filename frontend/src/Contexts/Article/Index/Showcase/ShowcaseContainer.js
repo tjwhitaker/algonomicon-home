@@ -2,6 +2,8 @@ import { Component } from 'inferno'
 import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import ErrorContainer from '../../../../Shared/Error/ErrorContainer'
+import LoadingContainer from '../../../../Shared/Loading/LoadingContainer'
 
 const styles = {
   container: () => ({
@@ -52,33 +54,40 @@ const GridItem = createComponent(styles.gridItem)
 @inject('ArticleStore')
 @observer class ShowcaseContainer extends Component {
   componentDidMount() {
-    if (this.props.ArticleStore.articles.length === 0) {
-      this.props.ArticleStore.fetchArticles()
+    const { ArticleStore } = this.props
+
+    if (ArticleStore.articles.length === 0) {
+      ArticleStore.fetchArticles()
     }
   }
 
   render() {
+    const { articles, loading, error } = this.props.ArticleStore
+
     return (
       <Container>
-        {this.props.ArticleStore.articles.map((article, index) => 
-          index === 0 ? (
-            <Feature>
-              <Link to={'/articles/' + article.id}>
-                <Preview src={article.preview + "?" + index} alt={article.name}/>
-                <Content>
-                  <Title color={'#eee'}>{article.name}</Title>
-                  <Description color={'#aaa'}>{article.description.substring(0, 100)}...</Description>
-                </Content>
-              </Link>
-            </Feature>
-          ) : (
-            <GridItem>
-              <Link to={'/articles/' + article.id}><Preview src={article.preview + "?" + index} alt={article.name}/></Link>
-              <Link to={'/articles/' + article.id}><Title size={'1.6rem'}>{article.name}</Title></Link>
-              <Description>{article.description.substring(0, 100)}...</Description>
-            </GridItem>
+        { loading ? <LoadingContainer /> :
+          error ? <ErrorContainer error={error} /> :
+          articles.map((article, index) => 
+            index === 0 ? (
+              <Feature>
+                <Link to={'/articles/' + article.id}>
+                  <Preview src={article.preview + "?" + index} alt={article.name}/>
+                  <Content>
+                    <Title color={'#eee'}>{article.name}</Title>
+                    <Description color={'#aaa'}>{article.description.substring(0, 100)}...</Description>
+                  </Content>
+                </Link>
+              </Feature>
+            ) : (
+              <GridItem>
+                <Link to={'/articles/' + article.id}><Preview src={article.preview + "?" + index} alt={article.name}/></Link>
+                <Link to={'/articles/' + article.id}><Title size={'1.6rem'}>{article.name}</Title></Link>
+                <Description>{article.description.substring(0, 100)}...</Description>
+              </GridItem>
+            )
           )
-        )}
+        }
       </Container>
     )
   }
