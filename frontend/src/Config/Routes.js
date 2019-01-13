@@ -47,19 +47,19 @@ const Routes = (
     <AppRoute path="/articles/:slug" component={ArticleDetailContainer} />
 
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
-    <AppRoute path="/datasets/:id" component={DatasetDetailContainer} />
+    <AppRoute path="/datasets/:slug" component={DatasetDetailContainer} />
     
     <AppRoute path="/events" component={EventIndexContainer} exact />
-    <AppRoute path="/events/:id" component={EventDetailContainer} />
+    <AppRoute path="/events/:slug" component={EventDetailContainer} />
     
     <AppRoute path="/models" component={ModelIndexContainer} exact />
-    <AppRoute path="/models/:id" component={ModelDetailContainer} />
+    <AppRoute path="/models/:slug" component={ModelDetailContainer} />
     
     <AppRoute path="/papers" component={PaperIndexContainer} exact />
-    <AppRoute path="/papers/:id" component={PaperDetailContainer} />
+    <AppRoute path="/papers/:slug" component={PaperDetailContainer} />
     
     <AppRoute path="/projects" component={ProjectIndexContainer} exact />
-    <AppRoute path="/projects/:id" component={ProjectDetailContainer} />
+    <AppRoute path="/projects/:slug" component={ProjectDetailContainer} />
 
     <ErrorRoute path="*" component={NotFoundContainer} />
   </Switch>

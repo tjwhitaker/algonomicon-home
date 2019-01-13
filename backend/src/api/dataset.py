@@ -10,6 +10,7 @@ class Dataset(Base):
     __tablename__ = 'dataset'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     description = Column(String)
     instances = Column(Integer)
     created_at = Column(DateTime, server_default=func.now())
@@ -19,6 +20,7 @@ class Dataset(Base):
 class DatasetSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     description = fields.Str()
     instances = fields.Int()
     created_at = fields.DateTime()
@@ -36,6 +38,7 @@ class DatasetResource:
         dataset = self.db.query(Dataset).get(id)
 
         dataset.name = req.media.get('name')
+        dataset.slug = req.media.get('slug')
         dataset.description = req.media.get('description')
         dataset.instances = req.media.get('instances')
 
@@ -62,6 +65,7 @@ class DatasetCollectionResource:
     def on_post(self, req, resp):
         dataset = Dataset(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             description=req.media.get('description'),
             instances=req.media.get('instances')
         )

@@ -10,6 +10,7 @@ class Project(Base):
     __tablename__ = 'project'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     description = Column(String)
     preview = Column(String)
     created_at = Column(DateTime, server_default=func.now())
@@ -18,6 +19,7 @@ class Project(Base):
 class ProjectSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     description = fields.Str()
     preview = fields.Str()
     created_at = fields.DateTime()
@@ -35,6 +37,7 @@ class ProjectResource:
         project = self.db.query(Project).get(id)
 
         project.name = req.media.get('name')
+        project.slug = req.media.get('slug')
         project.description = req.media.get('description')
         project.preview = req.media.get('preview')
 
@@ -61,6 +64,7 @@ class ProjectCollectionResource:
     def on_post(self, req, resp):
         project = Project(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             description=req.media.get('description'),
             preview=req.media.get('preview')
         )

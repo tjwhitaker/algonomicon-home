@@ -39,7 +39,7 @@ const Description = createComponent(styles.description, 'p')
       <>
         {this.props.PaperStore.papers.map((paper, index) => (
           <Post borderTop={index === 0 ? 0 : '1px solid #ccc'}>
-            <Link to={'/papers/' + paper.id}>
+            <Link to={'/papers/' + paper.slug}>
               <Title>{paper.name}</Title>
               <Description>{paper.abstract.substring(0, 300)}...</Description>
             </Link>

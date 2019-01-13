@@ -56,7 +56,7 @@ const Cell = createComponent(styles.cell, 'td')
         </thead>
         <tbody>
           {this.props.DatasetStore.datasets.map(dataset => (
-            <Row to={'/datasets/' + dataset.id}>
+            <Row to={'/datasets/' + dataset.slug}>
               <Cell>{dataset.name}</Cell>
               <Cell>{dataset.description}</Cell>
               <Cell>{dataset.instances}</Cell>

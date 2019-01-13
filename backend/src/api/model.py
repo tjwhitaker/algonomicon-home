@@ -10,6 +10,7 @@ class Model(Base):
     __tablename__ = 'model'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     description = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
@@ -17,6 +18,7 @@ class Model(Base):
 class ModelSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     description = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
@@ -33,6 +35,8 @@ class ModelResource:
         model = self.db.query(Model).get(id)
         
         model.name = req.media.get('name')
+        model.slug = req.media.get('slug')
+        model.description = req.media.get('description')
         
         self.db.commit()
 
@@ -57,6 +61,7 @@ class ModelCollectionResource:
     def on_post(self, req, resp):
         model = Model(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             description=req.media.get('description')
         )
 

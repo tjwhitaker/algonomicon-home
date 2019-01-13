@@ -39,7 +39,7 @@ const Description = createComponent(styles.description, 'p')
       <>
         {this.props.ModelStore.models.map((model, index) => (
           <Model borderTop={index === 0 ? 0 : '1px solid #ccc'}>
-            <Link to={'/models/' + model.id}>
+            <Link to={'/models/' + model.slug}>
               <Title>{model.name}</Title>
               <Description>{model.description.substring(0, 500)}...</Description>
             </Link>

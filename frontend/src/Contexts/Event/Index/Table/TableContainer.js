@@ -56,7 +56,7 @@ const Cell = createComponent(styles.cell, 'td')
         </thead>
         <tbody>
           {this.props.EventStore.events.map(event => (
-            <Row to={'/events/' + event.id}>
+            <Row to={'/events/' + event.slug}>
               <Cell>{event.name}</Cell>
               <Cell>{event.location}</Cell>
               <Cell>{event.date}</Cell>
