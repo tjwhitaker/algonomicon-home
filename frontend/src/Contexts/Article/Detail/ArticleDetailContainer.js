@@ -33,7 +33,7 @@ const Title = createComponent(styles.title, 'h1')
         { loading ? <LoadingContainer /> :
           error ? <ErrorContainer error={error} /> :
           article && (
-              <Title>{article.name}</Title>
+            <Title>{article.name}</Title>
           )
         }
       </WrapperContainer>
