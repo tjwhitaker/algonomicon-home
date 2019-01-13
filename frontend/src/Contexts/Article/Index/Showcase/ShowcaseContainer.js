@@ -72,7 +72,7 @@ const GridItem = createComponent(styles.gridItem)
           articles.map((article, index) => 
             index === 0 ? (
               <Feature>
-                <Link to={'/articles/' + article.id}>
+                <Link to={'/articles/' + article.slug}>
                   <Preview src={article.preview + "?" + index} alt={article.name}/>
                   <Content>
                     <Title color={'#eee'}>{article.name}</Title>
@@ -82,8 +82,8 @@ const GridItem = createComponent(styles.gridItem)
               </Feature>
             ) : (
               <GridItem>
-                <Link to={'/articles/' + article.id}><Preview src={article.preview + "?" + index} alt={article.name}/></Link>
-                <Link to={'/articles/' + article.id}><Title size={'1.6rem'}>{article.name}</Title></Link>
+                <Link to={'/articles/' + article.slug}><Preview src={article.preview + "?" + index} alt={article.name}/></Link>
+                <Link to={'/articles/' + article.slug}><Title size={'1.6rem'}>{article.name}</Title></Link>
                 <Description>{article.description.substring(0, 100)}...</Description>
               </GridItem>
             )

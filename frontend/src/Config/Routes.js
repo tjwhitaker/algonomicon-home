@@ -44,7 +44,7 @@ const Routes = (
     <AppRoute path="/contact" component={ContactContainer} exact />
     
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
-    <AppRoute path="/articles/:id" component={ArticleDetailContainer} />
+    <AppRoute path="/articles/:slug" component={ArticleDetailContainer} />
 
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
     <AppRoute path="/datasets/:id" component={DatasetDetailContainer} />

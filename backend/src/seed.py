@@ -4,21 +4,25 @@ def seed_articles():
     data = [
         {
             "name": "Reinforcement Learning and Dominance Hierarchies",
+            "slug": "reinforcement-learning-and-dominance-hierarchies",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Why can we still not accurately describe what AI is?",
+            "slug": "why-can-we-still-not-accurately-describe-what-ai-is",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Can a reinforcement agent choose its own reward function?",
+            "slug": "can-a-reinforcmenet-agent-choose-its-own-reward-function",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Are thoughts deterministic?",
+            "slug": "are-thoughts-deterministic",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "preview": "https://source.unsplash.com/600x300"
         }

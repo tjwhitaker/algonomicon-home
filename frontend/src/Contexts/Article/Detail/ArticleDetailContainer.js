@@ -7,8 +7,10 @@ import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
 import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
-  
+  title: () => ({})
 }
+
+const Title = createComponent(styles.title, 'h1')
 
 @inject('ArticleStore')
 @observer class ArticleDetailContainer extends Component {
@@ -22,7 +24,7 @@ const styles = {
 
   render() {
     const { ArticleStore: { articles, loading } , match: {params} } = this.props
-    const article = articles.find(article => article.id == params.id)
+    const article = articles.find(article => article.slug === params.slug)
     const error = article ? '' : 'Can\'t find article.'
 
     return (
@@ -31,7 +33,7 @@ const styles = {
         { loading ? <LoadingContainer /> :
           error ? <ErrorContainer error={error} /> :
           article && (
-              <h1>{article.name}</h1>
+              <Title>{article.name}</Title>
           )
         }
       </WrapperContainer>

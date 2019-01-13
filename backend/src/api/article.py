@@ -11,6 +11,7 @@ class Article(Base):
     __tablename__ = 'article'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     description = Column(Text)
     preview = Column(String)
     created_at = Column(DateTime, server_default=func.now())
@@ -19,6 +20,7 @@ class Article(Base):
 class ArticleSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     description = fields.Str()
     preview = fields.Str()
     created_at = fields.DateTime()
@@ -36,6 +38,7 @@ class ArticleResource:
         article = self.db.query(Article).get(id)
 
         article.name = req.media.get('name')
+        article.slug = req.media.get('slug')
         article.description = req.media.get('description')
         article.preview = req.media.get('preview')
 
@@ -62,6 +65,7 @@ class ArticleCollectionResource:
     def on_post(self, req, resp):
         article = Article(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             description = req.media.get('description'),
             preview=req.media.get('preview')
         ) 
