@@ -6,24 +6,28 @@ def seed_articles():
             "name": "Reinforcement Learning and Dominance Hierarchies",
             "slug": "reinforcement-learning-and-dominance-hierarchies",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Why can we still not accurately describe what AI is?",
             "slug": "why-can-we-still-not-accurately-describe-what-ai-is",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Can a reinforcement agent choose its own reward function?",
             "slug": "can-a-reinforcmenet-agent-choose-its-own-reward-function",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "preview": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Are thoughts deterministic?",
             "slug": "are-thoughts-deterministic",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "preview": "https://source.unsplash.com/600x300"
         }
     ]
@@ -37,60 +41,70 @@ def seed_datasets():
             "name": "Global Terrorism",
             "slug": "global-terrorism",
             "description": "Worldwide terrorist attacks from 1970-2017",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
             "name": "World Development Indicators",
             "slug": "world-development-indicators",
             "description": "Country development indicators from around the world",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 10200
         },
         {
             "name": "Wine Reviews",
             "slug": "wine-reviews",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 130000
         },
         {
             "name": "Global Terrorism",
             "slug": "global-terrorism",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
             "name": "Game of Thrones Deaths",
             "slug": "game-of-thrones-death",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 5123
         },
         {
             "name": "Global Terrorism",
             "slug": "global-terrorism",
             "description": "Worldwide terrorist attacks from 1970-2017",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
             "name": "World Development Indicators",
             "slug": "world-development-indicators",
             "description": "Country development indicators from around the world",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 10200
         },
         {
             "name": "Wine Reviews",
             "slug": "wine-reviews",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 130000
         },
         {
             "name": "Global Terrorism",
             "slug": "global-terrorism",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
             "name": "Game of Thrones Deaths",
             "slug": "game-of-thrones-deaths",
             "description": "This is a test description of a fake dataset",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 5123
         }
     ]
@@ -101,63 +115,64 @@ def seed_datasets():
 def seed_events():
     events = [
         {
-            'name': 'NIPS: Neural Information Processing Systems',
+            "name": "NIPS: Neural Information Processing Systems",
             "slug": "nips-neural-information-processing-systems",
-            'location': 'Montreal, Canada',
-            'date': 'Dec 02 - Dec 08'
+            "location": "Montreal, Canada",
+            "date": "Dec 02 - Dec 08"
         },
         {
-            'name': 'SC: The International Conference for High Performance Computing',
+            "name": "SC: The International Conference for High Performance Computing",
             "slug": "sc-the-international-conference-for-high-performance-computing",
-            'location': 'Dallas, TX',
-            'date': 'Aug 19 - Aug 23'
+            "location": "Dallas, TX",
+            "date": "Aug 19 - Aug 23"
         },
         {
-            'name': 'ICML: International Conference on Machine Learning',
+            "name": "ICML: International Conference on Machine Learning",
             "slug": "icml-international-conference-on-machine-learning",
-            'location': 'Stockholm, Sweden',
-            'date': 'Jul 10 - Jul 15'
+            "location": "Stockholm, Sweden",
+            "date": "Jul 10 - Jul 15"
         },
         {
-            'name': 'CVPR: Computer Vision and Pattern Recognition',
+            "name": "CVPR: Computer Vision and Pattern Recognition",
             "slug": "cvpr-computer-vision-and-pattern-recognition",
-            'location': 'Long Beach, CA',
-            'date': 'Jun 15 - Jun 21'
+            "location": "Long Beach, CA",
+            "date": "Jun 15 - Jun 21"
         },
         {
-            'name': 'KDD: Knowledge Discovery and Data Mining',
+            "name": "KDD: Knowledge Discovery and Data Mining",
             "slug": "kdd-knowledge-discovery-and-data-mining",
-            'location': 'London, UK',
-            'date': 'Aug 19, Aug 23'
+            "location": "London, UK",
+            "date": "Aug 19, Aug 23"
         },
         {
-            'name': 'NIPS: Neural Information Processing Systems',
+            "name": "NIPS: Neural Information Processing Systems",
             "slug": "nips-neural-information-processing-systems",
-            'location': 'Montreal, Canada',
-            'date': 'Dec 02 - Dec 08'
+            "location": "Montreal, Canada",
+            "date": "Dec 02 - Dec 08"
         },
         {
-            'name': 'SC: The International Conference for High Performance Computing',
+            "name": "SC: The International Conference for High Performance Computing",
             "slug": "sc-the-international-conference-for-high-performance-computing",
-            'location': 'Dallas, TX',
-            'date': 'Aug 19 - Aug 23'
+            "location": "Dallas, TX",
+            "date": "Aug 19 - Aug 23"
         },
         {
-            'name': 'ICML: International Conference on Machine Learning',
+            "name": "ICML: International Conference on Machine Learning",
             "slug": "icml-international-conference-on-machine-learning",
-            'location': 'Stockholm, Sweden',
-            'date': 'Jul 10 - Jul 15'
+            "location": "Stockholm, Sweden",
+            "date": "Jul 10 - Jul 15"
         },
         {
-            'name': 'CVPR: Computer Vision and Pattern Recognition',
+            "name": "CVPR: Computer Vision and Pattern Recognition",
             "slug": "cvpr-computer-vision-and-pattern-recognition",
-            'location': 'Long Beach, CA',
-            'date': 'Jun 15 - Jun 21'
+            "location": "Long Beach, CA",
+            "date": "Jun 15 - Jun 21"
         },
         {
-            'name': 'KDD: Knowledge Discovery and Data Mining',
-            'location': 'London, UK',
-            'date': 'Aug 19, Aug 23'
+            "name": "KDD: Knowledge Discovery and Data Mining",
+            "slug": "kdd-knowledge-discovery-and-data-mining",
+            "location": "London, UK",
+            "date": "Aug 19, Aug 23"
         }
     ]
 
@@ -246,16 +261,16 @@ def seed_papers():
 def seed_projects():
     data = [
         {
-            'name': 'Launch Pad',
+            "name": "Launch Pad",
             "slug": "launch-pad",
-            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.',
-            'preview': 'https://source.unsplash.com/600x300'
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
+            "preview": "https://source.unsplash.com/600x300"
         },
         {
-            'name': 'Mission Control',
+            "name": "Mission Control",
             "slug": "mission-control",
-            'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.',
-            'preview': 'https://source.unsplash.com/600x300'
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
+            "preview": "https://source.unsplash.com/600x300"
         }
     ]
 

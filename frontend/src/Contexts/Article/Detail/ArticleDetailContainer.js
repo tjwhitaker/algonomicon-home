@@ -27,13 +27,18 @@ const Title = createComponent(styles.title, 'h1')
     const article = articles.find(article => article.slug === params.slug)
     const error = article ? '' : 'Can\'t find article.'
 
+    if (article) { document.title = article.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />
         { loading ? <LoadingContainer /> :
           error ? <ErrorContainer error={error} /> :
           article && (
-            <Title>{article.name}</Title>
+            <div>
+              <Title>{article.name}</Title>
+              <div>{article.content}</div>
+            </div>
           )
         }
       </WrapperContainer>
