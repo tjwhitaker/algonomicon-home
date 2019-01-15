@@ -27,6 +27,8 @@ const Title = createComponent(styles.title, 'h1')
     const project = projects.find(project => project.slug === params.slug)
     const error = project ? '' : 'Can\'t find project.'
 
+    if (project) { document.title = project.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />

@@ -27,6 +27,8 @@ const Title = createComponent(styles.title, 'h1')
     const paper = papers.find(paper => paper.slug === params.slug)
     const error = paper ? '' : 'Can\'t find paper.'
 
+    if (paper) { document.title = paper.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />

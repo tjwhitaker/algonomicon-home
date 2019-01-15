@@ -27,6 +27,8 @@ const Title = createComponent(styles.title, 'h1')
     const dataset = datasets.find(dataset => dataset.slug === params.slug)
     const error = dataset ? '' : 'Can\t find dataset.'
 
+    if (dataset) { document.title = dataset.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />

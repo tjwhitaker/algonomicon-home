@@ -27,6 +27,8 @@ const Title = createComponent(styles.title, 'h1')
     const model = models.find(model => model.slug === params.slug)
     const error = model ? '' : 'Can\t find model.'
 
+    if (model) { document.title = model.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />

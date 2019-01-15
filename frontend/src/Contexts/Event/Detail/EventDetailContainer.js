@@ -27,6 +27,8 @@ const Title = createComponent(styles.title, 'h1')
     const event = events.find(event => event.slug === params.slug)
     const error = event ? '' : 'Can\t find event.'
 
+    if (event) { document.title = event.name + ' | Algonomicon' }
+
     return (
       <WrapperContainer>
         <CategoriesContainer />
