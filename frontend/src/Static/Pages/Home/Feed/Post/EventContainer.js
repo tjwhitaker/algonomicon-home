@@ -1,4 +1,5 @@
 import { Component } from 'inferno'
+import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import moment from 'moment'
 
@@ -13,12 +14,15 @@ const styles = {
     fontSize: '1.6rem'
   }),
   description: () => ({
+    color: 'black',
     fontSize: '1.4rem',
+    fontWeight: 'normal',
     margin: 0
   }),
   meta: () => ({
     color: '#aaa',
     fontSize: '1.1rem',
+    fontWeight: 'normal',
     margin: 0,
   })
 }
@@ -32,9 +36,11 @@ class ArticleContainer extends Component {
   render() {
     return (
       <Post>
-        <Title>{this.props.data.name}</Title>
-        <Description>{this.props.data.location}</Description>
-        <Meta>Event from {moment(this.props.data.created_at).fromNow()}</Meta>
+        <Link to={"/events/" + this.props.data.slug}>
+          <Title>{this.props.data.name}</Title>
+          <Description>{this.props.data.location}</Description>
+          <Meta>Event from {moment(this.props.data.created_at).fromNow()}</Meta>
+        </Link>
       </Post>
     )
   }
