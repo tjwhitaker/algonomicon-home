@@ -35,7 +35,10 @@ const Title = createComponent(styles.title, 'h1')
         { loading ? <LoadingContainer /> :
           error ? <ErrorContainer error={error} /> :
           dataset && (
-            <Title>{dataset.name}</Title>
+            <div>
+              <Title>{dataset.name}</Title>
+              <div>{dataset.content}</div>
+            </div>
           )
         }
       </WrapperContainer>

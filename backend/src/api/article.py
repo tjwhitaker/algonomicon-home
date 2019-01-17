@@ -14,7 +14,7 @@ class Article(Base):
     slug = Column(String)
     description = Column(Text)
     content = Column(Text)
-    preview = Column(String)
+    hero = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
@@ -24,7 +24,7 @@ class ArticleSchema(Schema):
     slug = fields.Str()
     description = fields.Str()
     content = fields.Str()
-    preview = fields.Str()
+    hero = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
@@ -43,7 +43,7 @@ class ArticleResource:
         article.slug = req.media.get('slug')
         article.description = req.media.get('description')
         article.content = req.media.get('description')
-        article.preview = req.media.get('preview')
+        article.hero = req.media.get('hero')
 
         self.db.commit()
 
@@ -71,7 +71,7 @@ class ArticleCollectionResource:
             slug=req.media.get('slug'),
             description = req.media.get('description'),
             content=req.media.get('content'),
-            preview=req.media.get('preview')
+            hero=req.media.get('hero')
         ) 
 
         self.db.add(article)

@@ -1,7 +1,7 @@
 import { Component } from 'inferno'
 import { BrowserRouter } from 'inferno-router'
 import { Provider as StoreProvider } from 'inferno-mobx'
-import { Provider as RenderProvider } from 'inferno-fela'
+import { RendererProvider } from 'inferno-fela'
 import { ThemeProvider } from 'inferno-fela'
 import { createRenderer } from 'fela'
 import Routes from './Config/Routes'
@@ -20,7 +20,7 @@ const theme = {
 class App extends Component {
   render() {
     return (
-      <RenderProvider renderer={renderer}>
+      <RendererProvider renderer={renderer}>
         <ThemeProvider theme={theme}>
           <StoreProvider {...Stores}>
             <BrowserRouter>
@@ -28,7 +28,7 @@ class App extends Component {
             </BrowserRouter>
           </StoreProvider>
         </ThemeProvider> 
-      </RenderProvider>
+      </RendererProvider>
     )
   }
 }

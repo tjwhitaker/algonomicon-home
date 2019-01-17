@@ -7,28 +7,28 @@ def seed_articles():
             "slug": "reinforcement-learning-and-dominance-hierarchies",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Why can we still not accurately describe what AI is?",
             "slug": "why-can-we-still-not-accurately-describe-what-ai-is",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Can a reinforcement agent choose its own reward function?",
             "slug": "can-a-reinforcmenet-agent-choose-its-own-reward-function",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Are thoughts deterministic?",
             "slug": "are-thoughts-deterministic",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         }
     ]
 
@@ -38,8 +38,8 @@ def seed_articles():
 def seed_datasets():
     data = [
         {
-            "name": "Global Terrorism",
-            "slug": "global-terrorism",
+            "name": "Biodiversity Information",
+            "slug": "biodiversity-information",
             "description": "Worldwide terrorist attacks from 1970-2017",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
@@ -52,57 +52,57 @@ def seed_datasets():
             "instances": 10200
         },
         {
-            "name": "Wine Reviews",
-            "slug": "wine-reviews",
+            "name": "Earthquakes",
+            "slug": "earthquakes",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 130000
         },
         {
-            "name": "Global Terrorism",
-            "slug": "global-terrorism",
+            "name": "Global Happiness",
+            "slug": "global-happiness",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
-            "name": "Game of Thrones Deaths",
-            "slug": "game-of-thrones-death",
+            "name": "Game of Thrones",
+            "slug": "game-of-thrones",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 5123
         },
         {
-            "name": "Global Terrorism",
-            "slug": "global-terrorism",
+            "name": "Wildfires",
+            "slug": "wildfires",
             "description": "Worldwide terrorist attacks from 1970-2017",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
-            "name": "World Development Indicators",
-            "slug": "world-development-indicators",
+            "name": "Ice Caps",
+            "slug": "ice-caps",
             "description": "Country development indicators from around the world",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 10200
         },
         {
-            "name": "Wine Reviews",
-            "slug": "wine-reviews",
+            "name": "Glacial Movements",
+            "slug": "glacial-movements",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 130000
         },
         {
-            "name": "Global Terrorism",
-            "slug": "global-terrorism",
+            "name": "Rainforest Coverage",
+            "slug": "rainforest-coverage",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 180000
         },
         {
-            "name": "Game of Thrones Deaths",
-            "slug": "game-of-thrones-deaths",
+            "name": "Endangered Species",
+            "slug": "endangered-species",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
             "instances": 5123

@@ -5,6 +5,7 @@ import OverviewContainer from '../Static/Pages/Overview/OverviewContainer'
 import ArticleIndexContainer from '../Contexts/Article/Index/ArticleIndexContainer'
 import ArticleNewContainer from '../Contexts/Article/New/ArticleNewContainer'
 import ArticleDetailContainer from '../Contexts/Article/Detail/ArticleDetailContainer'
+import ArticleEditContainer from '../Contexts/Article/Edit/ArticleEditContainer'
 import DatasetIndexContainer from '../Contexts/Dataset/Index/DatasetIndexContainer'
 import DatasetNewContainer from '../Contexts/Dataset/New/DatasetNewContainer'
 import DatasetDetailContainer from '../Contexts/Dataset/Detail/DatasetDetailContainer'
@@ -35,7 +36,8 @@ const Routes = (
     
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
     <AppRoute path="/articles/new" component={ArticleNewContainer} exact />
-    <AppRoute path="/articles/:id" component={ArticleDetailContainer} />
+    <AppRoute path="/articles/:id" component={ArticleDetailContainer} exact />
+    <AppRoute path="/articles/:id/edit" component={ArticleEditContainer} />
 
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
     <AppRoute path="/datasets/new" component={DatasetNewContainer} exact />

@@ -22,11 +22,9 @@ class ShowcaseContainer extends Component {
   render() {
     return (
       <div>
-        <p>Welcome to Algonomicon! Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible.</p>
+        <p>Welcome to Algonomicon! We are hoping to positively shape AI through open source machine learning projects.</p>
 
-        <p>We are building machine learning projects to help solve some of the grand challenges that face humanity.</p>
-
-        <p>This website is a growing collection of content exploring the fun and power of machine learning.</p>
+        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. We are using this power to help solve some of the grand challenges that face humanity.</p>
 
         <Image src={inception} alt="Inception Architecture" />
 
