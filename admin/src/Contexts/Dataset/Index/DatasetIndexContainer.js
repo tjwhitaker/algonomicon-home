@@ -31,7 +31,7 @@ const Cell = createComponent(styles.cell)
           <Row>
             <Cell>{dataset.name}</Cell>
             <Cell><Link to={'/datasets/' + dataset.id}>View</Link></Cell>
-            <Cell><Link to={'/datasets/' + dataset.id}>Edit</Link></Cell>
+            <Cell><Link to={'/datasets/' + dataset.id + '/edit'}>Edit</Link></Cell>
             <Cell><Link to={'/datasets/' + dataset.id}>Delete</Link></Cell>
           </Row>
         ))}

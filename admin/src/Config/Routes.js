@@ -9,6 +9,7 @@ import ArticleEditContainer from '../Contexts/Article/Edit/ArticleEditContainer'
 import DatasetIndexContainer from '../Contexts/Dataset/Index/DatasetIndexContainer'
 import DatasetNewContainer from '../Contexts/Dataset/New/DatasetNewContainer'
 import DatasetDetailContainer from '../Contexts/Dataset/Detail/DatasetDetailContainer'
+import DatasetEditContainer from '../Contexts/Dataset/Edit/DatasetEditContainer'
 import EventIndexContainer from '../Contexts/Event/Index/EventIndexContainer'
 import EventNewContainer from '../Contexts/Event/New/EventNewContainer'
 import EventDetailContainer from '../Contexts/Event/Detail/EventDetailContainer'
@@ -37,11 +38,12 @@ const Routes = (
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
     <AppRoute path="/articles/new" component={ArticleNewContainer} exact />
     <AppRoute path="/articles/:id" component={ArticleDetailContainer} exact />
-    <AppRoute path="/articles/:id/edit" component={ArticleEditContainer} />
+    <AppRoute path="/articles/:id/edit" component={ArticleEditContainer} exact />
 
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
     <AppRoute path="/datasets/new" component={DatasetNewContainer} exact />
-    <AppRoute path="/datasets/:id" component={DatasetDetailContainer} />
+    <AppRoute path="/datasets/:id" component={DatasetDetailContainer} exact/>
+    <AppRoute path="/datasets/:id/edit" component={DatasetEditContainer} exact />
 
     <AppRoute path="/events" component={EventIndexContainer} exact />
     <AppRoute path="/events/new" component={EventNewContainer} exact />

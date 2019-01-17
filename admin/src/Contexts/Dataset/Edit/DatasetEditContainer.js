@@ -26,15 +26,15 @@ const Label = createComponent(styles.label, 'label')
 const Input = createComponent(styles.input, 'input', ['name', 'type', 'value', 'onInput'])
 const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', 'value', 'onInput'])
 
-@inject('ArticleStore')
-@observer class ArticleEditContainer extends Component {
+@inject('DatasetStore')
+@observer class DatasetEditContainer extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       name: '',
       slug: '',
-      hero: '',
+      instances: '',
       description: '',
       content: ''
     }
@@ -44,30 +44,30 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
   }
 
   componentDidMount() {
-    const { ArticleStore, match: { params } } = this.props
-    const article = ArticleStore.articles.find(article => article.id === params.id)
+    const { DatasetStore, match: { params } } = this.props
+    const dataset = DatasetStore.datasets.find(dataset => dataset.id === params.id)
 
-    if (article) {
+    if (dataset) {
       this.setState({
-        name: article.name,
-        slug: article.slug,
-        hero: article.hero,
-        description: article.description,
-        content: article.content
+        name: dataset.name,
+        slug: dataset.slug,
+        instances: dataset.instances,
+        description: dataset.description,
+        content: dataset.content
       })
     }
   }
 
-  handleChange(event) { 
+  handleChange(event) {
     this.setState({[event.target.name]: event.target.value})
   }
 
   submitForm() {
-    this.props.ArticleStore.putArticle({
+    this.props.DatasetStore.putDataset({
       id: this.props.match.params.id,
       name: this.state.name,
       slug: this.state.slug,
-      hero: this.state.hero,
+      instances: this.state.instances,
       description: this.state.description,
       content: this.state.content
     })
@@ -82,8 +82,8 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
         <Label>Slug</Label>
         <Input name="slug" type="text" value={this.state.slug} onInput={this.handleChange} />
 
-        <Label>Hero</Label>
-        <Input name="hero" type="text" value={this.state.hero} onInput={this.handleChange} />
+        <Label>Instances</Label>
+        <Input name="instances" type="number" value={this.state.instances} onInput={this.handleChange} /> 
 
         <Label>Description</Label>
         <Textarea name="description" rows="7" value={this.state.description} onInput={this.handleChange} />
@@ -97,4 +97,4 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
   }
 }
 
-export default ArticleEditContainer
+export default DatasetEditContainer

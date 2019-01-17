@@ -17,25 +17,25 @@ api = falcon.API(middleware=[
     SessionManager(session_factory)
 ])
 
-api.add_route('/article/{id}', ArticleResource())
+api.add_route('/articles/{id}', ArticleResource())
 api.add_route('/articles', ArticleCollectionResource())
 
-api.add_route('/dataset/{id}', DatasetResource())
+api.add_route('/datasets/{id}', DatasetResource())
 api.add_route('/datasets', DatasetCollectionResource())
 
-api.add_route('/event/{id}', EventResource())
+api.add_route('/events/{id}', EventResource())
 api.add_route('/events', EventCollectionResource())
 
-api.add_route('/model/{id}', ModelResource())
+api.add_route('/models/{id}', ModelResource())
 api.add_route('/models', ModelCollectionResource())
 
-api.add_route('/paper/{id}', PaperResource())
+api.add_route('/papers/{id}', PaperResource())
 api.add_route('/papers', PaperCollectionResource())
 
-api.add_route('/project/{id}', ProjectResource())
+api.add_route('/projects/{id}', ProjectResource())
 api.add_route('/projects', ProjectCollectionResource())
 
-api.add_route('/user/{id}', UserResource())
+api.add_route('/users/{id}', UserResource())
 api.add_route('/users', UserCollectionResource())
 
 api.add_route('/feed', FeedResource())

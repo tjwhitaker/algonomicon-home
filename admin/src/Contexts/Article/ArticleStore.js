@@ -26,7 +26,7 @@ class ArticleStore {
       body: JSON.stringify(data)
     }
 
-    fetch(`${process.env.INFERNO_APP_API}/article/${data.id}`, options)
+    fetch(`${process.env.INFERNO_APP_API}/articles/${data.id}`, options)
       .then(response => response.json())
       .then(article => this.articles.map(i => i.id === data.id ? set(i, article) : i))
       .catch(error => console.log(error))
