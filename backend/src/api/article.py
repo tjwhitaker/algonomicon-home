@@ -19,7 +19,7 @@ class Article(Base):
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class ArticleSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
     slug = fields.Str()
     description = fields.Str()
@@ -42,7 +42,7 @@ class ArticleResource:
         article.name = req.media.get('name')
         article.slug = req.media.get('slug')
         article.description = req.media.get('description')
-        article.content = req.media.get('description')
+        article.content = req.media.get('content')
         article.hero = req.media.get('hero')
 
         self.db.commit()

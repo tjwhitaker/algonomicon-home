@@ -45,7 +45,7 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
 
   componentDidMount() {
     const { ArticleStore, match: {params} } = this.props
-    const article = ArticleStore.articles.find(article => article.id == params.id)
+    const article = ArticleStore.articles.find(article => article.id === params.id)
 
     if (article) {
       this.setState({

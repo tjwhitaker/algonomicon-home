@@ -28,7 +28,7 @@ class ArticleStore {
 
     fetch(`${process.env.INFERNO_APP_API}/article/${data.id}`, options)
       .then(response => response.json())
-      .then(article => this.articles.map(o => o.id == data.id ? set(o, article) : o))
+      .then(article => this.articles.map(i => i.id === data.id ? set(i, article) : i))
       .catch(error => console.log(error))
       .finally(() => this.loading = false)
   }
