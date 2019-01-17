@@ -19,7 +19,7 @@ class Dataset(Base):
 
 
 class DatasetSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
     slug = fields.Str()
     description = fields.Str()

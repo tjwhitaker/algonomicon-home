@@ -14,7 +14,7 @@ class User(Base):
     updated_at = Column(DateTime, onupdate=func.now())
 
 class UserSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     email = fields.Email()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()

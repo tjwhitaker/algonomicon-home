@@ -16,7 +16,7 @@ class Paper(Base):
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class PaperSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
     slug = fields.Str()
     abstract = fields.Str()
