@@ -133,7 +133,7 @@ class IntroContainer extends Component {
   render() {
     return (
       <Container>
-        <Title>The Place for Machine Learning</Title>
+        <Title>Machine Learning Algorithms</Title>
         <Tagline>Still under construction. Thanks for bearing with us! Sign up for early access.</Tagline>
         <SubscribeContainer>
           <InputContainer>

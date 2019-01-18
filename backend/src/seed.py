@@ -264,13 +264,13 @@ def seed_projects():
             "name": "Launch Pad",
             "slug": "launch-pad",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         },
         {
             "name": "Mission Control",
             "slug": "mission-control",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
-            "preview": "https://source.unsplash.com/600x300"
+            "hero": "https://source.unsplash.com/600x300"
         }
     ]
 

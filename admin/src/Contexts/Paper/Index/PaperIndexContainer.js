@@ -31,7 +31,7 @@ const Cell = createComponent(styles.cell)
           <Row>
             <Cell>{paper.name}</Cell>
             <Cell><Link to={'/papers/' + paper.id}>View</Link></Cell>
-            <Cell><Link to={'/papers/' + paper.id}>Edit</Link></Cell>
+            <Cell><Link to={'/papers/' + paper.id + '/edit'}>Edit</Link></Cell>
             <Cell><Link to={'/papers/' + paper.id}>Delete</Link></Cell>
           </Row>
         ))}

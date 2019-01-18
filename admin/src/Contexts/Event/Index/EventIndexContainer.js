@@ -31,7 +31,7 @@ const Cell = createComponent(styles.cell)
           <Row>
             <Cell>{event.name}</Cell>
             <Cell><Link to={'/events/' + event.id}>View</Link></Cell>
-            <Cell><Link to={'/events/' + event.id}>Edit</Link></Cell>
+            <Cell><Link to={'/events/' + event.id + '/edit'}>Edit</Link></Cell>
             <Cell><Link to={'/events/' + event.id}>Delete</Link></Cell>
           </Row>
         ))}

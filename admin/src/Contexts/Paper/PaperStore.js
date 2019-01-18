@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, observable, set } from 'mobx'
 
 class PaperStore {
   @observable papers = []
