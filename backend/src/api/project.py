@@ -11,8 +11,9 @@ class Project(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     slug = Column(String)
-    description = Column(String)
-    preview = Column(String)
+    description = Column(Text)
+    content = Column(Text)
+    hero = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
@@ -21,7 +22,8 @@ class ProjectSchema(Schema):
     name = fields.Str()
     slug = fields.Str()
     description = fields.Str()
-    preview = fields.Str()
+    content = fields.Str()
+    hero = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
@@ -39,7 +41,8 @@ class ProjectResource:
         project.name = req.media.get('name')
         project.slug = req.media.get('slug')
         project.description = req.media.get('description')
-        project.preview = req.media.get('preview')
+        project.content = req.media.get('content')
+        project.hero = req.media.get('hero')
 
         self.db.commit()
 
@@ -66,7 +69,8 @@ class ProjectCollectionResource:
             name=req.media.get('name'),
             slug=req.media.get('slug'),
             description=req.media.get('description'),
-            preview=req.media.get('preview')
+            content=req.media.get('content'),
+            hero=req.media.get('hero')
         )
 
         self.db.add(project)

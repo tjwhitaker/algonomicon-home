@@ -11,7 +11,8 @@ class Model(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     slug = Column(String)
-    description = Column(String)
+    description = Column(Text)
+    content = Column(Text)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
@@ -20,6 +21,7 @@ class ModelSchema(Schema):
     name = fields.Str()
     slug = fields.Str()
     description = fields.Str()
+    content = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
