@@ -10,21 +10,21 @@ class Dataset(Base):
     __tablename__ = 'dataset'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    description = Column(String)
-    attributes = Column(Integer)
+    slug = Column(String)
+    description = Column(Text)
+    content = Column(Text)
     instances = Column(Integer)
-    format = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 
 class DatasetSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     description = fields.Str()
-    attributes = fields.Int()
+    content = fields.Str()
     instances = fields.Int()
-    format = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
@@ -40,10 +40,10 @@ class DatasetResource:
         dataset = self.db.query(Dataset).get(id)
 
         dataset.name = req.media.get('name')
+        dataset.slug = req.media.get('slug')
         dataset.description = req.media.get('description')
-        dataset.attributes = req.media.get('attributes')
+        dataset.content = req.media.get('content')
         dataset.instances = req.media.get('instances')
-        dataset.format = req.media.get('format')
 
         self.db.commit()
 
@@ -68,10 +68,10 @@ class DatasetCollectionResource:
     def on_post(self, req, resp):
         dataset = Dataset(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             description=req.media.get('description'),
-            attributes=req.media.get('attributes'),
-            instances=req.media.get('instances'),
-            format=req.media.get('format')
+            content=req.media.get('content'),
+            instances=req.media.get('instances')
         )
 
         self.db.add(dataset)

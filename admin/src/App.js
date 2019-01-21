@@ -1,21 +1,36 @@
-import { version, Component } from 'inferno';
-import Logo from './logo';
-import './App.css';
+import { Component } from 'inferno'
+import { BrowserRouter } from 'inferno-router'
+import { Provider as StoreProvider } from 'inferno-mobx'
+import { RendererProvider } from 'inferno-fela'
+import { ThemeProvider } from 'inferno-fela'
+import { createRenderer } from 'fela'
+import Routes from './Config/Routes'
+import Stores from './Config/Stores'
+import GlobalStyles from './Static/Assets/GlobalStyles.css'
+
+const renderer = createRenderer()
+renderer.renderStatic(GlobalStyles.toString())
+
+const theme = {
+  hufflepuff: '#9370DB',
+  ravenclaw: '#5F527A',
+  gryffindor: '#FDCA7A'
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Logo width="80" height="80" />
-          <p>{`Welcome to Inferno ${version}`}</p>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
+      <RendererProvider renderer={renderer}>
+        <ThemeProvider theme={theme}>
+          <StoreProvider {...Stores}>
+            <BrowserRouter>
+              {Routes}
+            </BrowserRouter>
+          </StoreProvider>
+        </ThemeProvider> 
+      </RendererProvider>
+    )
   }
 }
 
-export default App;
+export default App

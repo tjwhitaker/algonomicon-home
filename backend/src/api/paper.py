@@ -10,13 +10,15 @@ class Paper(Base):
     __tablename__ = 'paper'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     abstract = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class PaperSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     abstract = fields.Str()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
@@ -33,6 +35,7 @@ class PaperResource:
         paper = self.db.query(Paper).get(id)
 
         paper.name = req.media.get('name')
+        paper.slug = req.media.get('slug')
         paper.abstract = req.media.get('abstract')
 
         self.db.commit()
@@ -58,6 +61,7 @@ class PaperCollectionResource:
     def on_post(self, req, resp):
         paper = Paper(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             abstract=req.media.get('abstract')
         )
 

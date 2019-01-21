@@ -10,14 +10,16 @@ class Event(Base):
     __tablename__ = 'event'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    slug = Column(String)
     location = Column(String)
     date = Column(String)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
 class EventSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Str(dump_only=True)
     name = fields.Str()
+    slug = fields.Str()
     location = fields.Str()
     date = fields.Str()
     created_at = fields.DateTime()
@@ -35,6 +37,7 @@ class EventResource:
         event = self.db.query(Event).get(id)
 
         event.name = req.media.get('name')
+        event.slug = req.media.get('slug')
         event.location = req.media.get('location')
         event.date = req.media.get('date')
 
@@ -61,6 +64,7 @@ class EventCollectionResource:
     def on_post(self, req, resp):
         event = Event(
             name=req.media.get('name'),
+            slug=req.media.get('slug'),
             location=req.media.get('location'),
             date=req.media.get('date')
         )
