@@ -6,6 +6,13 @@ const styles = {
   image: () => ({
     marginBottom: '1.4rem'
   }),
+  heading: () => ({
+    marginBottom: '1rem'
+  }),
+  caption: () => ({
+    fontStyle: 'italic',
+    marginBottom: '1.4rem'
+  }),
   quote: () => ({
     borderLeft: '5px solid #ccc',
     paddingLeft: '1.4rem',
@@ -16,37 +23,39 @@ const styles = {
 }
 
 const Image = createComponent(styles.image, 'img', ['src', 'alt'])
+const Heading = createComponent(styles.heading, 'h6')
+const Caption = createComponent(styles.caption)
 const Quote = createComponent(styles.quote, 'blockquote')
 
 class ShowcaseContainer extends Component {
   render() {
     return (
       <div>
-        <p>Welcome to Algonomicon! We are hoping to positively shape AI through open source machine learning projects.</p>
+        <Heading>Welcome to the open source website for all things machine learning!</Heading>
 
-        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. We are using this power to help solve some of the grand challenges that face humanity.</p>
+        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. They are powering self driving cars, searching for life beyond the stars, and detecting pneumonia in chest x-rays. We believe that machine learning holds a ton of potential to do good and we plan to use this power to help solve some of the grand challenges that humanity faces.</p>
 
         <Image src={inception} alt="Inception Architecture" />
 
-        <p>AI will soon be known as the greatest technological innovation in history. Life as we know it is being inundated with machine learning applications and they are only going to become more pronounced. Ads are going to become more manipulative and big companies are going to continue to mine your information.</p>
+        <Caption>Inception: A state of the art deep learning architecture developed by the research team at Google.</Caption>
 
-        <Quote> We want to make the world a better place and we want to do it by helping the companies that help people most.</Quote>
+        <Quote>{'↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵'}</Quote>
 
-        <p>We're particularly interested in these topics:</p>
+        <p>We're particularly interested in the following research topics:</p>
         
         <ul>
-          <li>Climate Change and The Destruction of Nature</li>
+          <li>Climate Change and Anthropogenic Impacts on the Environment</li>
           <li>Water Scarcity and Pollution</li>
           <li>Poverty, Disease and Malnutrition</li>
           <li>Overpopulation and Global Education</li>
-          <li>Transparency and Misinformation Campaigns</li>
           <li>Cyber Threats and Regional Stability</li>
-          <li>Animal Conservation and Renewable Energy</li>
+          <li>Wildlife Conservation and Biodiversity Loss</li> 
+          <li>Renewable and Alternative Energy</li>
         </ul>
 
         <p>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
 
-        <p>Also: We're big proponents of open source software. If you get some benefit out of our content, we ask that you pay it forward and present your own work as open source.</p>
+        <p>We support open source software. If you like our content, please join our mission and collaborate with us on <a href="https://github.com/algonomicon">Github</a>.</p>
       </div>
     )
   }

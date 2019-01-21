@@ -1,5 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
+import WrapperContainer from '../Wrapper/WrapperContainer'
 
 const styles = {
   container: () => ({
@@ -7,27 +8,21 @@ const styles = {
     color: '#ccc',
     marginTop: '1.4rem'
   }),
-  wrapper: () => ({
-    maxWidth: '1024px',
-    margin: '0 auto',
-    padding: '1.4rem'
-  }),
   copyright: () => ({
     margin: '0'
   })
 }
 
 const Container = createComponent(styles.container)
-const Wrapper = createComponent(styles.wrapper)
 const Copyright = createComponent(styles.copyright, 'p')
 
 class FooterContainer extends Component {
   render() {
     return (
       <Container>
-        <Wrapper>
-          <Copyright>&copy; Algonomicon LLC 2018</Copyright>
-        </Wrapper>
+        <WrapperContainer>
+          <Copyright>&copy; Algonomicon LLC 2019</Copyright>
+        </WrapperContainer>
       </Container>
     )
   }
