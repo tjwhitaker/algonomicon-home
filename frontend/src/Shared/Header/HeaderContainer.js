@@ -3,13 +3,13 @@ import { createComponent } from 'inferno-fela'
 import MastheadContainer from './Masthead/MastheadContainer'
 import IntroContainer from './Intro/IntroContainer'
 import WrapperContainer from '../Wrapper/WrapperContainer'
-import hero from './nebula.jpg'
+import hero from './nebula-small.jpg'
 
 const styles = {
   container: () => ({
     backgroundImage: 'url(' + hero + ')',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center bottom',
     height: '30rem',
     position:'relative',
 

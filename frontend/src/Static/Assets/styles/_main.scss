@@ -1,7 +1,9 @@
 body {
-  &.grayscale {
-    filter:grayscale(1);
-    transition:all 3s ease;
+  transition:filter 1s ease;
+
+  &.glitched {
+    filter:sepia(1);
+    transition:filter 2s ease;
   }
 
   main {

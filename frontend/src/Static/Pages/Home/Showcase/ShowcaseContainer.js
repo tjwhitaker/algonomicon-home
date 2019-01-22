@@ -31,9 +31,9 @@ class ShowcaseContainer extends Component {
   render() {
     return (
       <div>
-        <Heading>Welcome to the open source website for all things machine learning!</Heading>
+        <Heading>Welcome to The Open Source Machine Learning Community!</Heading>
 
-        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. They are powering self driving cars, searching for life beyond the stars, and detecting pneumonia in chest x-rays. We believe that machine learning holds a ton of potential to do good and we plan to use this power to help solve some of the grand challenges that humanity faces.</p>
+        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning is powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
 
         <Image src={inception} alt="Inception Architecture" />
 
