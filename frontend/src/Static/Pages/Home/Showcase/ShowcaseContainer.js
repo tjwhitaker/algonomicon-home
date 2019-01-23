@@ -33,11 +33,11 @@ class ShowcaseContainer extends Component {
       <div>
         <Heading>Welcome to The Open Source Machine Learning Community!</Heading>
 
-        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning is powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
+        <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
 
         <Image src={inception} alt="Inception Architecture" />
 
-        <Caption>Inception: A state of the art deep learning architecture developed by the research team at Google.</Caption>
+        <Caption>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</Caption>
 
         <Quote>{'↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵'}</Quote>
 
