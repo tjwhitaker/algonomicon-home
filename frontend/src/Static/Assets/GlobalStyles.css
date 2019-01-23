@@ -85,18 +85,6 @@ h4 { font-size:1.6rem; }
 h5 { font-size:1.6rem; }
 h6 { font-size:1.4rem; }
 
-a {
-  color:#9370DB;
-}
-
-a:hover {
-  color:#5F527A;
-}
-
-a.active {
-  color:#5F527A;
-}
-
 pre, code {
   font-family: monospace;
 }

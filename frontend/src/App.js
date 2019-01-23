@@ -13,8 +13,8 @@ const renderer = createRenderer()
 renderer.renderStatic(GlobalStyles.toString())
 
 const theme = {
-  hufflepuff: '#9370DB',
-  ravenclaw: '#5F527A',
+  hufflepuff: 'rgb(0, 193, 182)',
+  ravenclaw: 'rgb(19, 110, 181)',
   gryffindor: '#FDCA7A'
 }
 
