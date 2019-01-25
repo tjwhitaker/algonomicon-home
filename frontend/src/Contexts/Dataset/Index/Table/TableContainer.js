@@ -23,10 +23,18 @@ const styles = {
     display: 'table-row'
   }),
   cell: () => ({
-    padding: '1.4rem 0',
+    padding: '1.4rem 0.7rem',
     color: 'black',
     fontWeight: 'normal',
-    fontSize: '1.2rem'
+    fontSize: '1.4rem',
+    verticalAlign: 'middle',
+
+    '&:first-child': {
+      paddingLeft: '0'
+    },
+    '&:last-child': {
+      paddingRight: '0'
+    }
   })
 }
 
@@ -51,7 +59,6 @@ const Cell = createComponent(styles.cell, 'td')
           <HeaderRow>
             <HeaderCell>Name</HeaderCell>
             <HeaderCell>Description</HeaderCell>
-            <HeaderCell>Instances</HeaderCell>
           </HeaderRow>
         </thead>
         <tbody>
@@ -59,7 +66,6 @@ const Cell = createComponent(styles.cell, 'td')
             <Row to={'/datasets/' + dataset.slug}>
               <Cell>{dataset.name}</Cell>
               <Cell>{dataset.description}</Cell>
-              <Cell>{dataset.instances}</Cell>
             </Row>
           ))}
         </tbody>

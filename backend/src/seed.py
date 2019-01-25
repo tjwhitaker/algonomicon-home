@@ -41,71 +41,61 @@ def seed_datasets():
             "name": "Biodiversity Information",
             "slug": "biodiversity-information",
             "description": "Worldwide terrorist attacks from 1970-2017",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 180000
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "World Development Indicators",
             "slug": "world-development-indicators",
             "description": "Country development indicators from around the world",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 10200
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "Earthquakes",
             "slug": "earthquakes",
             "description": "This is a test description of a fake dataset",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 130000
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "Global Happiness",
             "slug": "global-happiness",
             "description": "This is a test description of a fake dataset",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 180000
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "Game of Thrones",
             "slug": "game-of-thrones",
             "description": "This is a test description of a fake dataset",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 5123
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "Wildfires",
             "slug": "wildfires",
             "description": "Worldwide terrorist attacks from 1970-2017",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 180000
+            "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
         },
         {
             "name": "Ice Caps",
             "slug": "ice-caps",
             "description": "Country development indicators from around the world",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 10200
         },
         {
             "name": "Glacial Movements",
             "slug": "glacial-movements",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 130000
         },
         {
             "name": "Rainforest Coverage",
             "slug": "rainforest-coverage",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 180000
         },
         {
             "name": "Endangered Species",
             "slug": "endangered-species",
             "description": "This is a test description of a fake dataset",
             "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-            "instances": 5123
         }
     ]
 
