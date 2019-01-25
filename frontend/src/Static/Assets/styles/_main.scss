@@ -2,7 +2,7 @@ body {
   transition:filter 1s ease;
 
   &.glitched {
-    filter:sepia(1);
+    filter:grayscale(1);
     transition:filter 2s ease;
   }
 

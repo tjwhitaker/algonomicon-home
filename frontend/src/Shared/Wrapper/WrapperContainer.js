@@ -3,7 +3,7 @@ import { createComponent } from 'inferno-fela'
 
 const styles = {
   wrapper: () => ({
-    maxWidth: '120rem',
+    maxWidth: '105rem',
     margin: '0 auto',
     padding: '1.4rem',
     position: 'relative',

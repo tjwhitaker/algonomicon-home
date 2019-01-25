@@ -13,7 +13,6 @@ class Dataset(Base):
     slug = Column(String)
     description = Column(Text)
     content = Column(Text)
-    instances = Column(Integer)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
@@ -24,7 +23,6 @@ class DatasetSchema(Schema):
     slug = fields.Str()
     description = fields.Str()
     content = fields.Str()
-    instances = fields.Int()
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
 
@@ -43,7 +41,6 @@ class DatasetResource:
         dataset.slug = req.media.get('slug')
         dataset.description = req.media.get('description')
         dataset.content = req.media.get('content')
-        dataset.instances = req.media.get('instances')
 
         self.db.commit()
 
@@ -70,8 +67,7 @@ class DatasetCollectionResource:
             name=req.media.get('name'),
             slug=req.media.get('slug'),
             description=req.media.get('description'),
-            content=req.media.get('content'),
-            instances=req.media.get('instances')
+            content=req.media.get('content')
         )
 
         self.db.add(dataset)

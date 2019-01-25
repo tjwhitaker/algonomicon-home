@@ -34,7 +34,6 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
     this.state = {
       name: '',
       slug: '',
-      instances: '',
       description: '',
       content: ''
     }
@@ -51,7 +50,6 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
       this.setState({
         name: dataset.name,
         slug: dataset.slug,
-        instances: dataset.instances,
         description: dataset.description,
         content: dataset.content
       })
@@ -67,7 +65,6 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
       id: this.props.match.params.id,
       name: this.state.name,
       slug: this.state.slug,
-      instances: this.state.instances,
       description: this.state.description,
       content: this.state.content
     })
@@ -81,9 +78,6 @@ const Textarea = createComponent(styles.textarea, 'textarea', ['name', 'rows', '
 
         <Label>Slug</Label>
         <Input name="slug" type="text" value={this.state.slug} onInput={this.handleChange} />
-
-        <Label>Instances</Label>
-        <Input name="instances" type="number" value={this.state.instances} onInput={this.handleChange} /> 
 
         <Label>Description</Label>
         <Textarea name="description" rows="7" value={this.state.description} onInput={this.handleChange} />

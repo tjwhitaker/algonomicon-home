@@ -23,10 +23,18 @@ const styles = {
     display: 'table-row',
   }),
   cell: () => ({
-    padding: '1.4rem 0',
+    padding: '1.4rem 0.7rem',
     color: 'black',
     fontWeight: 'normal',
-    fontSize: '1.2rem'
+    fontSize: '1.4rem',
+    verticalAlign: 'middle',
+
+    '&:first-child': {
+      paddingLeft: '0'
+    },
+    '&:last-child': {
+      paddingRight: '0'
+    }
   })
 }
 
