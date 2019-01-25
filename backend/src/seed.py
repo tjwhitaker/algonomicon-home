@@ -107,6 +107,7 @@ def seed_events():
         {
             "name": "NIPS: Neural Information Processing Systems",
             "slug": "nips-neural-information-processing-systems",
+            "url": "#",
             "location": "Montreal, Canada",
             "date": "Dec 02 - Dec 08"
         },
@@ -119,48 +120,56 @@ def seed_events():
         {
             "name": "ICML: International Conference on Machine Learning",
             "slug": "icml-international-conference-on-machine-learning",
+            "url": "#",
             "location": "Stockholm, Sweden",
             "date": "Jul 10 - Jul 15"
         },
         {
             "name": "CVPR: Computer Vision and Pattern Recognition",
             "slug": "cvpr-computer-vision-and-pattern-recognition",
+            "url": "#",
             "location": "Long Beach, CA",
             "date": "Jun 15 - Jun 21"
         },
         {
             "name": "KDD: Knowledge Discovery and Data Mining",
             "slug": "kdd-knowledge-discovery-and-data-mining",
+            "url": "#",
             "location": "London, UK",
             "date": "Aug 19, Aug 23"
         },
         {
             "name": "NIPS: Neural Information Processing Systems",
             "slug": "nips-neural-information-processing-systems",
+            "url": "#",
             "location": "Montreal, Canada",
             "date": "Dec 02 - Dec 08"
         },
         {
             "name": "SC: The International Conference for High Performance Computing",
             "slug": "sc-the-international-conference-for-high-performance-computing",
+            "url": "#",
             "location": "Dallas, TX",
             "date": "Aug 19 - Aug 23"
         },
         {
             "name": "ICML: International Conference on Machine Learning",
             "slug": "icml-international-conference-on-machine-learning",
+            "url": "#",
             "location": "Stockholm, Sweden",
             "date": "Jul 10 - Jul 15"
         },
         {
             "name": "CVPR: Computer Vision and Pattern Recognition",
             "slug": "cvpr-computer-vision-and-pattern-recognition",
+            "url": "#",
             "location": "Long Beach, CA",
             "date": "Jun 15 - Jun 21"
         },
         {
             "name": "KDD: Knowledge Discovery and Data Mining",
             "slug": "kdd-knowledge-discovery-and-data-mining",
+            "url": "#",
             "location": "London, UK",
             "date": "Aug 19, Aug 23"
         }

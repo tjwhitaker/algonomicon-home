@@ -11,6 +11,7 @@ class Event(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     slug = Column(String)
+    url = Column(String)
     location = Column(String)
     date = Column(String)
     created_at = Column(DateTime, server_default=func.now())
@@ -20,6 +21,7 @@ class EventSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str()
     slug = fields.Str()
+    url = fields.Str()
     location = fields.Str()
     date = fields.Str()
     created_at = fields.DateTime()
@@ -38,6 +40,7 @@ class EventResource:
 
         event.name = req.media.get('name')
         event.slug = req.media.get('slug')
+        event.url = req.media.get('url')
         event.location = req.media.get('location')
         event.date = req.media.get('date')
 
@@ -65,6 +68,7 @@ class EventCollectionResource:
         event = Event(
             name=req.media.get('name'),
             slug=req.media.get('slug'),
+            url=req.media.get('url'),
             location=req.media.get('location'),
             date=req.media.get('date')
         )
