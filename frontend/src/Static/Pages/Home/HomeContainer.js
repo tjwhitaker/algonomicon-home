@@ -25,7 +25,8 @@ const styles = {
     gridArea: 'sidebar',
     paddingLeft: '1.4rem',
     maxHeight: '100%',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    position: 'relative'
   }),
   heading: () => ({
     color: '#777',

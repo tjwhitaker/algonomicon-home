@@ -13,7 +13,8 @@ const styles = {
     maxHeight: '100%',
     marginRight: '-50px',
     paddingRight: '42px',
-    overflow: 'scroll'
+    overflow: 'scroll',
+    position: 'absolute'
   })
 }
 

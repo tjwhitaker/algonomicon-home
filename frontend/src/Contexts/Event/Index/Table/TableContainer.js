@@ -11,12 +11,19 @@ const styles = {
     borderBottom: '1px solid #ccc'
   }),
   headerCell: () => ({
-    padding: '1.2rem 0',
+    padding: '1.4rem 0.7rem',
     fontWeight: 'bold',
     textAlign: 'left',
     color: '#777',
     textTransform: 'uppercase',
-    fontSize: '1.2rem'
+    fontSize: '1.2rem',
+
+    '&:first-child': {
+      paddingLeft: '0'
+    },
+    '&:last-child': {
+      paddingRight: '0'
+    }
   }),
   row: (props) => ({
     borderBottom: '1px solid #ccc',
