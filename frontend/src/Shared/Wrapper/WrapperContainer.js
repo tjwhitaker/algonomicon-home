@@ -8,8 +8,6 @@ const Wrapper = createComponent(() => ({
   height: '100%'
 }))
 
-const WrapperContainer = (props) => (
+export const WrapperContainer = (props) => (
   <Wrapper {...props}>{props.children}</Wrapper>
 )
-
-export default WrapperContainer

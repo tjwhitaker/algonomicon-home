@@ -1,7 +1,8 @@
 import { Link } from 'inferno-router'
+import { NavLink } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 
-const NavLink = createComponent(() => ({
+const MastLink = createComponent(() => ({
   color: 'white',
   marginLeft: '1.4rem',
   fontWeight: 'bold',
@@ -11,4 +12,8 @@ const NavLink = createComponent(() => ({
   } 
 }), Link, ['to', 'exact'])
 
-export default NavLink
+const CategoryLink = createComponent(() => ({
+  marginRight: '2.8rem'
+}), NavLink, ['to', 'exact', 'activeClassName'])
+
+export { MastLink, CategoryLink }

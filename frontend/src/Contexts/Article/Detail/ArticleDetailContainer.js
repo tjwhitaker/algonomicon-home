@@ -1,10 +1,9 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import CategoriesContainer from '../../../Shared/Categories/CategoriesContainer'
-import ErrorContainer from '../../../Shared/Error/ErrorContainer'
+import { CategoriesContainer } from '../../../Shared/Categories/CategoriesContainer'
 import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   title: () => ({
@@ -54,7 +53,7 @@ const Image = createComponent(styles.image, 'img', ['src'])
       <WrapperContainer>
         <CategoriesContainer />
         { loading ? <LoadingContainer /> :
-          error ? <ErrorContainer error={error} /> :
+          error ? <p>{error}</p> :
           article && (
             <div>
               <Title>{article.name}</Title>

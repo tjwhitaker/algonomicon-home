@@ -1,4 +1,4 @@
-export default () => (
+const LogoSVG = () => (
   <svg class="glitch__img" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="31.75mm" width="330.2mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1170 112.5">
    <g id="layer1" transform="translate(962.86 -165.58)">
     <g id="text3336">
@@ -17,3 +17,5 @@ export default () => (
    </g>
   </svg>
 )
+
+export default LogoSVG

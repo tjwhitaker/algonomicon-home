@@ -1,7 +1,7 @@
 import { Route, Switch } from 'inferno-router'
 
-import LayoutContainer from '../Shared/Layout/LayoutContainer'
-import EmptyContainer from '../Shared/Layout/EmptyContainer'
+import { LayoutContainer } from '../Shared/Layout/LayoutContainer'
+import { ErrorContainer } from '../Shared/Layout/ErrorContainer'
 
 import AboutContainer from '../Static/Pages/About/AboutContainer'
 import ContactContainer from '../Static/Pages/Contact/ContactContainer'
@@ -29,9 +29,9 @@ const AppRoute = ({ component: Component, ...rest }) => (
 
 const ErrorRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
-    <EmptyContainer {...props}>
+    <ErrorContainer {...props}>
       <Component {...props} />
-    </EmptyContainer>
+    </ErrorContainer>
   )} />
 )
 

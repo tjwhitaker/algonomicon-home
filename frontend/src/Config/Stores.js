@@ -2,7 +2,7 @@ import ArticleStore from '../Contexts/Article/ArticleStore'
 import DatasetStore from '../Contexts/Dataset/DatasetStore'
 import EventStore from '../Contexts/Event/EventStore'
 import FeedStore from '../Static/Pages/Home/Feed/FeedStore'
-import FlashStore from '../Shared/Flash/FlashStore'
+import FlashStore from '../Shared/Layout/Flash/FlashStore'
 import PaperStore from '../Contexts/Paper/PaperStore'
 import ProjectStore from '../Contexts/Project/ProjectStore'
 

@@ -1,17 +1,15 @@
+import { MastLink } from '../../../../Theme/Links'
 import { createComponent } from 'inferno-fela'
-import NavLink from '../../../../Theme/Links'
 
 const Nav = createComponent(() => ({
   display: 'flex',
   alignItems: 'center'
 }))
 
-const NavContainer = () => (
+export const NavContainer = () => (
   <Nav>
-    <NavLink to="/about" exact>About</NavLink>
-    <NavLink to="/contact" exact>Contact</NavLink>
-    <NavLink to="https://google.com/forum">Forum</NavLink>
+    <MastLink to="/about" exact>About</MastLink>
+    <MastLink to="/contact" exact>Contact</MastLink>
+    <MastLink to="https://google.com/forum">Forum</MastLink>
   </Nav>
 )
-
-export default NavContainer

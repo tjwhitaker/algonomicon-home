@@ -2,7 +2,7 @@ import FlashContainer from './Flash/FlashContainer'
 import HeaderContainer from './Header/HeaderContainer'
 import FooterContainer from './Footer/FooterContainer'
 
-const LayoutContainer = (props) => (
+export const LayoutContainer = (props) => (
   <div>
     <FlashContainer />
     <HeaderContainer />
@@ -10,5 +10,3 @@ const LayoutContainer = (props) => (
     <FooterContainer />
   </div>
 )
-
-export default LayoutContainer

@@ -1,4 +1,4 @@
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const setTitle = () => (
   document.title = 'About | Algonomicon'

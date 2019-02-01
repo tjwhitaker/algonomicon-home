@@ -1,6 +1,6 @@
+import { LogoContainer } from './Logo/LogoContainer'
+import { NavContainer } from './Nav/NavContainer'
 import { createComponent } from 'inferno-fela'
-import LogoContainer from './Logo/LogoContainer'
-import NavContainer from './Nav/NavContainer'
 
 const Masthead = createComponent(() => ({
   position: 'relative',
@@ -10,11 +10,9 @@ const Masthead = createComponent(() => ({
   justifyContent: 'space-between'
 }))
 
-const MastheadContainer = () => (
+export const MastheadContainer = () => (
   <Masthead>
     <LogoContainer />
     <NavContainer />
   </Masthead>
 )
-
-export default MastheadContainer

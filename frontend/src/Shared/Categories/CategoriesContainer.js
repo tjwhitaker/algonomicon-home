@@ -1,42 +1,22 @@
 import { Component } from 'inferno'
-import { NavLink } from 'inferno-router'
+import { CategoryLink } from '../Theme/Links'
 import { createComponent } from 'inferno-fela'
 
-const styles = {
-  container: () => ({
-    marginBottom: '1.4rem'
-  }),
-  list: () => ({
-    display: 'flex',
-    width: '100%',
-    paddingBottom: '1.4rem',
-    borderBottom: '1px solid #ccc'
-  }),
-  link: () => ({
-    marginRight: '2.8rem',
-    fontWeight: 'bold',
-  })
-}
+const Categories = createComponent(() => ({
+  display: 'flex',
+  width: '100%',
+  marginBottom: '1.4rem',
+  paddingBottom: '1.4rem',
+  borderBottom: '1px solid #ccc'
+}))
 
-const Container = createComponent(styles.container)
-const List = createComponent(styles.list)
-const Link = createComponent(styles.link, NavLink, ['to', 'exact', 'activeClassName'])
-
-class CategoriesContainer extends Component {
-  render() {
-    return (
-      <Container>
-        <List>
-          <Link exact to="/" activeClassName="active">Home</Link>
-          <Link to="/articles" activeClassName="active">Articles</Link>
-          <Link to="/datasets" activeClassName="active">Datasets</Link>
-          <Link to="/events" activeClassName="active">Events</Link>
-          <Link to="/papers" activeClassName="active">Papers</Link>
-          <Link to="/projects" activeClassName="active">Projects</Link>
-        </List>
-      </Container>
-    )
-  }
-}
-
-export default CategoriesContainer
+export const CategoriesContainer = () => (
+  <Categories>
+    <CategoryLink exact to="/" activeClassName="active">Home</CategoryLink>
+    <CategoryLink to="/articles" activeClassName="active">Articles</CategoryLink>
+    <CategoryLink to="/datasets" activeClassName="active">Datasets</CategoryLink>
+    <CategoryLink to="/events" activeClassName="active">Events</CategoryLink>
+    <CategoryLink to="/papers" activeClassName="active">Papers</CategoryLink>
+    <CategoryLink to="/projects" activeClassName="active">Projects</CategoryLink>
+  </Categories>
+)

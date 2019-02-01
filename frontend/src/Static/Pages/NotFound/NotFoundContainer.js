@@ -1,7 +1,7 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import bg from './space.jpg'
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   background: () => ({

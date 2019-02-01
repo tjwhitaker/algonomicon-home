@@ -1,9 +1,9 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import CategoriesContainer from '../../../Shared/Categories/CategoriesContainer'
+import { CategoriesContainer } from '../../../Shared/Categories/CategoriesContainer'
 import ShowcaseContainer from './Showcase/ShowcaseContainer'
 import FeedContainer from './Feed/FeedContainer'
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   grid: () => ({
