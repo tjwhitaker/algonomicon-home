@@ -2,7 +2,6 @@ import { Component } from 'inferno'
 import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import ErrorContainer from '../../../../Shared/Error/ErrorContainer'
 import LoadingContainer from '../../../../Shared/Loading/LoadingContainer'
 
 const styles = {
@@ -81,7 +80,6 @@ const GridItem = createComponent(styles.gridItem)
     return (
       <Container>
         { loading ? <LoadingContainer /> :
-          error ? <ErrorContainer error={error} /> :
           articles.map((article, index) => 
             index === 0 ? (
               <Feature>

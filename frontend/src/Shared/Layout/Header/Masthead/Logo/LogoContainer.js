@@ -1,4 +1,3 @@
-import { Component } from 'inferno'
 import { Link } from 'inferno-router'
 import LogoSVG from './LogoSVG'
 

@@ -1,4 +1,3 @@
-import { Component } from 'inferno'
 import { CategoryLink } from '../Theme/Links'
 import { createComponent } from 'inferno-fela'
 

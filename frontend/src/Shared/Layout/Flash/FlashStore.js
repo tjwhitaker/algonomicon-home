@@ -3,15 +3,16 @@ import { action, observable } from 'mobx'
 class FlashStore {
   @observable message = ''
   @observable color = ''
+  @observable isOpen = false
 
   @action setFlash(message, color) {
+    this.isOpen = true
     this.message = message
     this.color = color
   }
 
-  @action clearFlash() {
-    this.message = ''
-    this.color = ''
+  @action close() {
+    this.isOpen = false
   }
 }
 
