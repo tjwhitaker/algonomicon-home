@@ -6,7 +6,6 @@ from api.article import ArticleResource, ArticleCollectionResource
 from api.dataset import DatasetResource, DatasetCollectionResource
 from api.event   import EventResource,   EventCollectionResource
 from api.feed    import FeedResource
-from api.model   import ModelResource,   ModelCollectionResource
 from api.paper   import PaperResource,   PaperCollectionResource
 from api.project import ProjectResource, ProjectCollectionResource
 from api.user    import UserResource,    UserCollectionResource
@@ -25,9 +24,6 @@ api.add_route('/datasets', DatasetCollectionResource())
 
 api.add_route('/events/{id}', EventResource())
 api.add_route('/events', EventCollectionResource())
-
-api.add_route('/models/{id}', ModelResource())
-api.add_route('/models', ModelCollectionResource())
 
 api.add_route('/papers/{id}', PaperResource())
 api.add_route('/papers', PaperCollectionResource())

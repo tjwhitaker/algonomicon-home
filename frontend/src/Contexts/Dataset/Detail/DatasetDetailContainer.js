@@ -7,7 +7,9 @@ import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
 import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
-  title: () => ({})
+  title: () => ({
+    marginBottom: '1.4rem'
+  })
 }
 
 const Title = createComponent(styles.title, 'h1')

@@ -178,53 +178,6 @@ def seed_events():
     for event in events:
         requests.post('http://localhost:8000/events', json=event, headers={'Authorization': 'test'})
 
-def seed_models():
-    data = [
-        {
-            "name": "Neural Style Transfer",
-            "slug": "neural-style-transfer",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Chatbot",
-            "slug": "chatbot",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Deep Dream",
-            "slug": "deep-dream",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Sequence to Sequence Translation",
-            "slug": "sequence-to-sequence-translation",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Character Level Generation",
-            "slug": "character-level-generation",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Semantic Analysis",
-            "slug": "semantic-analysis",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Nudity Detection",
-            "slug": "nudity-detection",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        },
-        {
-            "name": "Image Caption Generator",
-            "slug": "image-caption-generator",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel esse voluptas iste velit. Nemo nisi incidunt veritatis modi id soluta, ipsam vitae laboriosam sint sed rem quo pariatur voluptatibus inventore."
-        }
-    ]
-
-    for i in data:
-        requests.post('http://localhost:8000/models', json=i, headers={'Authorization': 'test'})
-
 def seed_papers():
     data = [
         {
@@ -285,7 +238,6 @@ print('Seeding project...')
 seed_articles()
 seed_datasets()
 seed_events()
-seed_models()
 seed_papers()
 seed_projects()
 seed_users()

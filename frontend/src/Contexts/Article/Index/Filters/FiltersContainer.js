@@ -7,7 +7,6 @@ const styles = {
     borderBottom: '1px solid #ccc',
     fontSize: '1.2rem',
     padding: '1.4rem 0',
-    lineHeight: '1',
     display: 'block',
     textTransform: 'uppercase'
   }),
