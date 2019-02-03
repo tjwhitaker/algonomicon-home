@@ -1,4 +1,3 @@
-import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 import { Motion, spring, presets } from 'inferno-motion'

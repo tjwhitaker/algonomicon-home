@@ -1,7 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import { CategoriesContainer } from '../../../Shared/Categories/CategoriesContainer'
 import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
 import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
@@ -32,7 +31,6 @@ const Title = createComponent(styles.title, 'h1')
 
     return (
       <WrapperContainer>
-        <CategoriesContainer />
         { loading ? <LoadingContainer /> :
           error ? <p>{error}</p> :
           paper && (

@@ -2,7 +2,7 @@ import { Component } from 'inferno'
 import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import LoadingContainer from '../../../../Shared/Loading/LoadingContainer'
+import LoadingContainer from '../../../../../Shared/Loading/LoadingContainer'
 
 const styles = {
   container: () => ({

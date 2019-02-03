@@ -2,7 +2,6 @@ import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import TableContainer from './Table/TableContainer'
 import FiltersContainer from './Filters/FiltersContainer'
-import { CategoriesContainer } from '../../../Shared/Categories/CategoriesContainer'
 import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
@@ -42,7 +41,6 @@ class DatasetIndexContainer extends Component {
       <WrapperContainer>
         <Grid>
           <Nav>
-            <CategoriesContainer />
           </Nav>
           <Main>
             <TableContainer />

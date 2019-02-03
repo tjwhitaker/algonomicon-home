@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { Label, Input, TextArea } from '../../../../../Shared/Theme/Forms'
+import { Label, Input, TextArea } from '../../../../Shared/Theme/Forms'
 
 const Form = createComponent(() => ({
   flex: '0 0 50%',

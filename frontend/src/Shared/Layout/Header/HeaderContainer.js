@@ -12,7 +12,7 @@ const Header = createComponent(() => ({
   position:'relative',
 }))
 
-const HeaderContainer = () => (
+export const HeaderContainer = () => (
   <Header>
     <WrapperContainer>
       <MastheadContainer />
@@ -20,5 +20,3 @@ const HeaderContainer = () => (
     </WrapperContainer>
   </Header>
 )
-
-export default HeaderContainer
