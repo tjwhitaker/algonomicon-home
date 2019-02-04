@@ -1,3 +1,4 @@
+import { Component } from 'inferno'
 import { Link } from 'inferno-router'
 import { css } from 'glamor'
 import { brevier, longPrimer, pica } from '../../../../../../Shared/Theme/Text'
@@ -23,7 +24,7 @@ const meta = css({
   marginBottom: 0
 }, brevier)
 
-export const ArticleContainer = () => (
+export const PostContainer = ({url, title, content, meta}) => (
   <div {...post}>
     <Link to={"/articles/" + this.props.data.slug}>
       <h2 {...title}>{this.props.data.name}</h2>

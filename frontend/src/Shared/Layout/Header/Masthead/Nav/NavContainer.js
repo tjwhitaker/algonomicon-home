@@ -7,7 +7,7 @@ const flex = css({
   alignItems: 'center'
 })
 
-const mastLink = css({
+const navLink = css({
   color: 'white',
   marginLeft: '1.4rem',
   fontWeight: 'bold',
@@ -19,8 +19,8 @@ const mastLink = css({
 
 export const NavContainer = () => (
   <nav {...flex}>
-    <Link {...mastLink} to="/about" exact>About</Link>
-    <Link {...mastLink} to="/contact" exact>Contact</Link>
-    <Link {...mastLink} to="https://google.com/forum">Forum</Link>
+    <Link {...navLink} to="/about" exact>About</Link>
+    <Link {...navLink} to="/contact" exact>Contact</Link>
+    <Link {...navLink} to="https://google.com/forum">Forum</Link>
   </nav>
 )

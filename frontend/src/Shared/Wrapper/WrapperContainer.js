@@ -1,9 +1,9 @@
 import { css } from 'glamor'
 
 const wrapper = css({
-  maxWidth: '105rem',
+  maxWidth: '110rem',
   margin: '0 auto',
-  padding: '1.4rem',
+  padding: '1.5rem',
   position: 'relative',
   height: '100%'
 })
