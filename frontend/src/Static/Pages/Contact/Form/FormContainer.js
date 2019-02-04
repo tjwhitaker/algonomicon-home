@@ -1,26 +1,25 @@
-import { createComponent } from 'inferno-fela'
-import { Label, Input, TextArea } from '../../../../Shared/Theme/Forms'
+import { css } from 'glamor'
 
-const Form = createComponent(() => ({
+const form = css({
   flex: '0 0 50%',
   paddingRight: '0.7rem'
-}))
+})
 
 export const FormContainer = () => (
-  <Form>
+  <div {...form}>
     <div>
-      <Label>Name</Label>
-      <Input type="text" />
+      <label>Name</label>
+      <input type="text" />
     </div>
 
     <div>
-      <Label>Email</Label>
-      <Input type="email" />
+      <label>Email</label>
+      <input type="email" />
     </div>
 
     <div>
-      <Label>Content</Label>
-      <TextArea rows="10" />
+      <label>Content</label>
+      <textarea rows="10" />
     </div>
-  </Form>
+  </div>
 )

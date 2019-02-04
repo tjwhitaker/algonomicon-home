@@ -1,18 +1,18 @@
-import { createComponent } from 'inferno-fela'
-import CanonContainer from './Canon/CanonContainer'
-import RegistrationContainer from './Registration/RegistrationContainer'
+import { HeadlineContainer } from './Headline/HeadlineContainer'
+import { RegistrationContainer } from './Registration/RegistrationContainer'
+import { css } from 'glamor'
 
-const Content = createComponent(() => ({
+const content = css({
   position: 'absolute',
   width: '100%',
   left: '1.4rem',
-  bottom: '2.8rem',
+  bottom: '2.0rem',
   paddingRight: '1.4rem'
-}))
+})
 
 export const ContentContainer = () => (
-  <Content>
-    <CanonContainer />
+  <div {...content}>
+    <HeadlineContainer />
     <RegistrationContainer />
-  </Content>
+  </div>
 )

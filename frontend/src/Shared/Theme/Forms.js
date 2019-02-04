@@ -1,19 +1,19 @@
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
 
-export const Label = createComponent(() => ({
+export const label = css({
   display: 'block'
-}), 'label')
+})
 
-export const Input = createComponent(() => ({
+export const input = css({
   width: '100%',
   border: '1px solid #ccc',
   padding: '0.7rem',
   marginBottom: '1.4rem'
-}), 'input', ['type'])
+})
 
-export const TextArea = createComponent(() => ({
+export const textarea = css({
   width: '100%',
   marginBottom: 0,
   border: '1px solid #ccc',
   padding: '0.7em'
-}), 'textarea', ['rows'])
+})

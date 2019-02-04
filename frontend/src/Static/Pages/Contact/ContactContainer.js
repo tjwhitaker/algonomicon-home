@@ -1,22 +1,24 @@
 import { FormContainer } from './Form/FormContainer'
-import { LocationContainer } from './Location/LocationContainer'
+import { MapContainer, initMap } from './Map/MapContainer'
 import { MessageContainer } from './Message/MessageContainer'
 import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
 
-const Contact = createComponent(() => ({
+const flex = css({
   display: 'flex',
   flexWrap: 'wrap'
-}))
+})
 
-const setTitle = () => document.title = 'Contact | Algonomicon'
+export const ContactContainer = () => {
+  document.title = 'Contact | Algonomicon'
 
-export const ContactContainer = () => (
-  <WrapperContainer onComponentDidMount={setTitle}>
-    <Contact>
-      <MessageContainer />
-      <FormContainer />
-      <LocationContainer />
-    </Contact>
-  </WrapperContainer>
-)
+  return (
+    <WrapperContainer>
+      <div {...flex}>
+        <MessageContainer />
+        <FormContainer />
+        <MapContainer onComponentDidMount={initMap}/>
+      </div>
+    </WrapperContainer>
+  )
+}

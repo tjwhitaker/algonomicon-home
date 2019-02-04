@@ -1,47 +1,39 @@
 import { Component } from 'inferno'
 import { Link } from 'inferno-router'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
+import { brevier, longPrimer, pica } from '../../../../../../Shared/Theme/Text'
 import moment from 'moment'
 
-const styles = {
-  post: () => ({
-    paddingTop: '1.4rem',
-    paddingBottom: '1.4rem',
+const post = css({
+    paddingTop: '1.5rem',
+    paddingBottom: '1.5rem',
     borderBottom: '1px solid #ccc'
-  }),
-  title: () => ({
-    fontWeight: 'bold',
-    fontSize: '1.6rem'
-  }),
-  description: () => ({
-    color: 'black',
-    fontSize: '1.4rem',
-    fontWeight: 'normal',
-    margin: 0
-  }),
-  meta: () => ({
-    color: '#aaa',
-    fontSize: '1.1rem',
-    fontWeight: 'normal',
-    margin: 0,
-  })
-}
+})
 
-const Post = createComponent(styles.post)
-const Title = createComponent(styles.title, 'h3')
-const Description = createComponent(styles.description, 'p')
-const Meta = createComponent(styles.meta, 'p')
+const title = css({
+  marginBottom: '0.2rem'
+})
+
+const content = css({
+  fontWeight: 'normal',
+  color: '#111',
+  marginBottom: '0.2rem'
+})
+
+const meta = css({
+  marginBottom: 0
+})
 
 class ArticleContainer extends Component {
   render() {
     return (
-      <Post>
+      <div {...post}>
         <Link to={"/articles/" + this.props.data.slug}>
-          <Title>{this.props.data.name}</Title>
-          <Description>{this.props.data.description.substring(0, 100)}...</Description>
-          <Meta>Article from {moment(this.props.data.created_at).fromNow()}</Meta>
+          <h2 {...title} {...pica}>{this.props.data.name}</h2>
+          <p {...content} {...longPrimer}>{this.props.data.description.substring(0, 100)}...</p>
+          <p {...meta} {...brevier}>Article from {moment(this.props.data.created_at).fromNow()}</p>
         </Link>
-      </Post>
+      </div>
     )
   }
 }

@@ -46,8 +46,9 @@ const styles = {
     paddingBottom: '1.8rem',
     paddingLeft: '4rem',
     borderRadius: '3px',
-    margin: '0 1.4rem',
+    margin: '0 1.5rem',
     fontWeight: 'bold',
+    fontSize: '1.3rem',
     textTransform: 'uppercase',
     border: '0',
 
@@ -126,4 +127,4 @@ class RegistrationContainer extends Component {
   }
 }
 
-export default RegistrationContainer
+export { RegistrationContainer }

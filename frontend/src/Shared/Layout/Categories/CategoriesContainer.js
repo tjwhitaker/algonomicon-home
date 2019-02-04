@@ -1,23 +1,30 @@
-import { CategoryLink } from '../../Theme/Links'
+import { Link } from 'inferno-router'
 import { WrapperContainer } from '../../Wrapper/WrapperContainer'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
+import { longPrimer } from '../../Theme/Text'
 
-const Categories = createComponent(() => ({
+const categoryList = css({
   display: 'flex',
   width: '100%',
-  paddingBottom: '1.4rem',
+  paddingBottom: '1.5rem',
   borderBottom: '1px solid #ccc'
-}))
+})
+
+const categoryLink = css({
+  marginRight: '2.8rem',
+  color: '#007bff',
+  fontWeight: 'bold'
+}, longPrimer)
 
 export const CategoriesContainer = () => (
   <WrapperContainer style={{'padding-bottom': 0}}>
-    <Categories>
-      <CategoryLink exact to="/" activeClassName="active">Home</CategoryLink>
-      <CategoryLink to="/articles" activeClassName="active">Articles</CategoryLink>
-      <CategoryLink to="/datasets" activeClassName="active">Datasets</CategoryLink>
-      <CategoryLink to="/events" activeClassName="active">Events</CategoryLink>
-      <CategoryLink to="/papers" activeClassName="active">Papers</CategoryLink>
-      <CategoryLink to="/projects" activeClassName="active">Projects</CategoryLink>
-    </Categories>
+    <div {...categoryList}>
+      <Link {...categoryLink} exact to="/" activeClassName="active">Home</Link>
+      <Link {...categoryLink} to="/articles" activeClassName="active">Articles</Link>
+      <Link {...categoryLink} to="/datasets" activeClassName="active">Datasets</Link>
+      <Link {...categoryLink} to="/events" activeClassName="active">Events</Link>
+      <Link {...categoryLink} to="/papers" activeClassName="active">Papers</Link>
+      <Link {...categoryLink} to="/projects" activeClassName="active">Projects</Link>
+    </div>
   </WrapperContainer>
 )

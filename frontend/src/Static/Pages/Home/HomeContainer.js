@@ -1,20 +1,16 @@
 import { MainContainer } from './Main/MainContainer'
 import { SidebarContainer } from './Sidebar/SidebarContainer'
 import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
+import { grid } from '../../../Shared/Theme/Layout'
 
-const Grid = createComponent(() => ({
-  display: 'grid',
-  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
-}))
+export const HomeContainer = () => {
+  document.title = 'Algonomicon'
 
-const setTitle = () => document.title = 'Algonomicon'
-
-export const HomeContainer = () => (
-  <WrapperContainer onComponentDidMount={setTitle}>
-    <Grid>
+  return (
+    <WrapperContainer {...grid}>
       <MainContainer />
       <SidebarContainer />
-    </Grid>
-  </WrapperContainer>
-)
+    </WrapperContainer>
+  )
+}
