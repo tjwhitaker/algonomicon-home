@@ -1,16 +1,18 @@
-import { WrapperContainer } from '../../Wrapper/WrapperContainer'
-import { CopyrightContainer } from './Copyright/CopyrightContainer'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
+import CopyrightContainer from './Copyright/CopyrightContainer'
+import WrapperContainer from '../../Wrapper/WrapperContainer'
 
-const Footer = createComponent(() => ({
+const container = css({
   background: '#111',
   marginTop: '1.4rem'
-}))
+})
 
-export const FooterContainer = () => (
-  <Footer>
+const FooterContainer = () => (
+  <footer {...container}>
     <WrapperContainer>
       <CopyrightContainer />
     </WrapperContainer>
-  </Footer>
+  </footer>
 )
+
+export default FooterContainer

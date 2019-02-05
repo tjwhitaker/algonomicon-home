@@ -2,7 +2,6 @@ import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
-import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   title: () => ({
@@ -30,14 +29,14 @@ const Title = createComponent(styles.title, 'h1')
     if (project) { document.title = project.name + ' | Algonomicon' }
 
     return (
-      <WrapperContainer>
+      <div>
         { loading ? <LoadingContainer /> :
           error ? <p>{error}</p> :
           project && (
             <Title>{project.name}</Title>
           )
         }
-      </WrapperContainer>
+      </div>
     )
   }
 }

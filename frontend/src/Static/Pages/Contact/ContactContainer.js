@@ -1,24 +1,23 @@
-import { FormContainer } from './Form/FormContainer'
-import { MapContainer, initMap } from './Map/MapContainer'
-import { MessageContainer } from './Message/MessageContainer'
-import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 import { css } from 'glamor'
+import FormContainer from './Form/FormContainer'
+import MapContainer from './Map/MapContainer'
+import MessageContainer from './Message/MessageContainer'
 
 const flex = css({
   display: 'flex',
   flexWrap: 'wrap'
 })
 
-export const ContactContainer = () => {
+const ContactContainer = () => {
   document.title = 'Contact | Algonomicon'
 
   return (
-    <WrapperContainer>
-      <div {...flex}>
-        <MessageContainer />
-        <FormContainer />
-        <MapContainer onComponentDidMount={initMap}/>
-      </div>
-    </WrapperContainer>
+    <div {...flex}>
+      <MessageContainer />
+      <FormContainer />
+      <MapContainer />
+    </div>
   )
 }
+
+export default ContactContainer

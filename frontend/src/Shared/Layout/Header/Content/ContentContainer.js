@@ -1,6 +1,6 @@
-import { HeadlineContainer } from './Headline/HeadlineContainer'
-import { RegistrationContainer } from './Registration/RegistrationContainer'
 import { css } from 'glamor'
+import HeadlineContainer from './Headline/HeadlineContainer'
+import RegistrationContainer from './Registration/RegistrationContainer'
 
 const content = css({
   position: 'absolute',
@@ -10,9 +10,11 @@ const content = css({
   paddingRight: '1.4rem'
 })
 
-export const ContentContainer = () => (
+const ContentContainer = () => (
   <div {...content}>
     <HeadlineContainer />
     <RegistrationContainer />
   </div>
 )
+
+export default ContentContainer

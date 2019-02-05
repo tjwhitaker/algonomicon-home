@@ -1,16 +1,17 @@
-import { MainContainer } from './Main/MainContainer'
-import { SidebarContainer } from './Sidebar/SidebarContainer'
-import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 import { css } from 'glamor'
 import { grid } from '../../../Shared/Theme/Layout'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
 
-export const HomeContainer = () => {
+const HomeContainer = () => {
   document.title = 'Algonomicon'
 
   return (
-    <WrapperContainer {...grid}>
+    <div {...grid}>
       <MainContainer />
       <SidebarContainer />
-    </WrapperContainer>
+    </div>
   )
 }
+
+export default HomeContainer

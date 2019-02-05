@@ -1,11 +1,6 @@
-import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 import { Motion, spring, presets } from 'inferno-motion'
-import { WrapperContainer } from '../../Wrapper/WrapperContainer'
-
-const Message = createComponent(({ color }) => ({
-  color: color
-}))
+import WrapperContainer from '../../Wrapper/WrapperContainer'
 
 const onRest = (flash) => {
   if (flash.isOpen) {
@@ -15,7 +10,7 @@ const onRest = (flash) => {
   }
 }
 
-export const FlashContainer = inject('FlashStore')(observer(({ FlashStore }) => (
+const FlashContainer = ({ FlashStore }) => (
   <div>
     { FlashStore.message && (
       <Motion 
@@ -24,10 +19,12 @@ export const FlashContainer = inject('FlashStore')(observer(({ FlashStore }) => 
         onRest={onRest(FlashStore)}>
         { ({x}) => 
           <WrapperContainer style={{'margin-top': `${x}px`, 'height': '50px'}}> 
-            <Message color={FlashStore.color}>{FlashStore.message}</Message>
+            <p style={{color: FlashStore.color}}>{FlashStore.message}</p>
           </WrapperContainer>
         }
       </Motion>
     )}
   </div>
-)))
+)
+
+export default inject('FlashStore')(observer(FlashContainer))

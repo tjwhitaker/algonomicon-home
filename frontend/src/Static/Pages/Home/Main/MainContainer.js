@@ -1,5 +1,5 @@
 import { css } from 'glamor'
-import { greatPrimer, bodyCopy } from '../../../../Shared/Theme/Text'
+import { greatPrimer } from '../../../../Shared/Theme/Text'
 import inception from './inception.jpg'
 
 const main = css({
@@ -7,21 +7,21 @@ const main = css({
   paddingRight: '1.5rem'
 })
 
-export const MainContainer = () => (
+const MainContainer = () => (
   <div {...main}>
     <h2 {...greatPrimer}>Welcome to The Open Source Machine Learning Community!</h2>
 
-    <p {...bodyCopy}>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
+    <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
 
     <img src={inception} alt="Inception Architecture" />
 
-    <i {...bodyCopy}>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</i>
+    <i>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</i>
 
-    <blockquote {...bodyCopy}>{'↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵'}</blockquote>
+    <blockquote>{'↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵'}</blockquote>
 
-    <p {...bodyCopy}>We're particularly interested in the following research topics:</p>
+    <p>We're particularly interested in the following research topics:</p>
     
-    <ul {...bodyCopy}>
+    <ul>
       <li>Climate Change and Anthropogenic Impacts on the Environment</li>
       <li>Water Scarcity and Pollution</li>
       <li>Poverty, Disease and Malnutrition</li>
@@ -31,8 +31,10 @@ export const MainContainer = () => (
       <li>Renewable and Alternative Energy</li>
     </ul>
 
-    <p {...bodyCopy}>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
+    <p>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
 
-    <p {...bodyCopy}>We support open source software. If you like our content, please join our mission and collaborate with us on <a href="https://github.com/algonomicon">Github</a>.</p>
+    <p>We support open source software. If you like our content, please join our mission and collaborate with us on <a href="https://github.com/algonomicon">Github</a>.</p>
   </div>
 )
+
+export default MainContainer

@@ -1,7 +1,6 @@
 import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import ShowcaseContainer from './Showcase/ShowcaseContainer'
-import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   grid: () => ({
@@ -29,7 +28,6 @@ class ProjectIndexContainer extends Component {
 
   render() {
     return (
-      <WrapperContainer>
         <Grid>
           <Nav>
           </Nav>
@@ -37,7 +35,6 @@ class ProjectIndexContainer extends Component {
             <ShowcaseContainer />
           </Main>
         </Grid>
-      </WrapperContainer>
     )
   }
 }

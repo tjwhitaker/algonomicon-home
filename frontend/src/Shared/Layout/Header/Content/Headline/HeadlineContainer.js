@@ -10,9 +10,11 @@ const headline = css({
   marginBottom: 0
 })
 
-export const HeadlineContainer = () => (
+const HeadlineContainer = () => (
   <div {...container}>
     <h1 {...css(headline, trafalgar)}>Machine Learning Algorithms</h1>
     <h2 {...css(headline, bodyCopy)}>Still under construction. Thanks for bearing with us! Sign up for early access.</h2>
   </div>
 )
+
+export default HeadlineContainer

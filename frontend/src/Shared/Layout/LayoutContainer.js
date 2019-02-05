@@ -1,16 +1,19 @@
-import { CategoriesContainer } from './Categories/CategoriesContainer'
-import { FlashContainer } from './Flash/FlashContainer'
-import { HeaderContainer } from './Header/HeaderContainer'
-import { FooterContainer } from './Footer/FooterContainer'
+import CategoriesContainer from './Categories/CategoriesContainer'
+import FlashContainer from './Flash/FlashContainer'
+import HeaderContainer from './Header/HeaderContainer'
+import FooterContainer from './Footer/FooterContainer'
+import WrapperContainer from '../Wrapper/WrapperContainer'
 
-export const LayoutContainer = (props) => (
+const LayoutContainer = (props) => (
   <div>
     <FlashContainer />
     <HeaderContainer />
-    <main>
+    <WrapperContainer>
       <CategoriesContainer />
       { props.children }
-    </main>
+    </WrapperContainer>
     <FooterContainer />
   </div>
 )
+
+export default LayoutContainer

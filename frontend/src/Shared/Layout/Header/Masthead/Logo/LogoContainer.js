@@ -9,10 +9,12 @@ const unGlitchBody = () => {
   document.body.className = ''
 }
 
-export const LogoContainer = () => (
+const LogoContainer = () => (
   <div className="logo" onMouseEnter={glitchBody} onMouseLeave={unGlitchBody}>
     <Link to="/" className="glitch">
       {[...Array(5)].map(() => <LogoSVG />)}
     </Link>
   </div>
 )
+
+export default LogoContainer

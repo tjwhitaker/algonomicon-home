@@ -1,8 +1,10 @@
-import { Component } from 'inferno'
-import { Link } from 'inferno-router'
 import { css } from 'glamor'
 import { brevier, longPrimer, pica } from '../../../../../../Shared/Theme/Text'
-import moment from 'moment'
+import { ArticleContainer } from './ArticleContainer'
+import { DatasetContainer } from './DatasetContainer'
+import { EventContainer } from './EventContainer'
+import { PaperContainer } from './PaperContainer'
+import { ProjectContainer } from './ProjectContainer'
 
 const post = css({
     paddingTop: '1.5rem',
@@ -10,26 +12,27 @@ const post = css({
     borderBottom: '1px solid #ccc'
 })
 
-const title = css({
+export const title = css({
   marginBottom: '0.2rem'
 }, pica)
 
-const content = css({
+export const content = css({
   fontWeight: 'normal',
   color: '#111',
   marginBottom: '0.2rem'
 }, longPrimer)
 
-const meta = css({
+export const meta = css({
   marginBottom: 0
 }, brevier)
 
-export const PostContainer = ({url, title, content, meta}) => (
+export const PostContainer = (props) => (
   <div {...post}>
-    <Link to={"/articles/" + this.props.data.slug}>
-      <h2 {...title}>{this.props.data.name}</h2>
-      <p {...content}>{this.props.data.description.substring(0, 100)}...</p>
-      <p {...meta}>Article from {moment(this.props.data.created_at).fromNow()}</p>
-    </Link>
+    {{ article: <ArticleContainer data={props.data} />,
+      dataset: <DatasetContainer data={props.data} />,
+      event: <EventContainer data={props.data} />,
+      paper: <PaperContainer data={props.data} />,
+      project: <ProjectContainer data={props.data} />
+    }[props.data.type]}
   </div>
 )

@@ -1,18 +1,20 @@
-import { LogoContainer } from './Logo/LogoContainer'
-import { NavContainer } from './Nav/NavContainer'
-import { createComponent } from 'inferno-fela'
+import { css } from 'glamor'
+import LogoContainer from './Logo/LogoContainer'
+import NavContainer from './Nav/NavContainer'
 
-const Masthead = createComponent(() => ({
+const masthead = css({
   position: 'relative',
   marginTop: '10px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between'
-}))
+})
 
-export const MastheadContainer = () => (
-  <Masthead>
+const MastheadContainer = () => (
+  <div {...masthead}>
     <LogoContainer />
     <NavContainer />
-  </Masthead>
+  </div>
 )
+
+export default MastheadContainer

@@ -2,7 +2,6 @@ import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
-import { WrapperContainer } from '../../../Shared/Wrapper/WrapperContainer'
 
 const styles = {
   title: () => ({
@@ -29,42 +28,60 @@ const Title = createComponent(styles.title, 'h1')
 const ImageContainer = createComponent(styles.imageContainer)
 const Image = createComponent(styles.image, 'img', ['src'])
 
-@inject('ArticleStore')
-@observer class ArticleDetailContainer extends Component {
-  componentDidMount() {
-    const { ArticleStore } = this.props
+// @inject('ArticleStore')
+// @observer class ArticleDetailContainer extends Component {
+//   componentDidMount() {
+//     const { ArticleStore } = this.props
 
-    if (ArticleStore.articles.length === 0) {
-      ArticleStore.fetchArticles()
-    }
-  }
+//     if (ArticleStore.articles.length === 0) {
+//       ArticleStore.fetchArticles()
+//     }
+//   }
 
-  render() {
-    const { ArticleStore: { articles, loading } , match: {params} } = this.props
-    const article = articles.find(article => article.slug === params.slug)
-    const error = article ? '' : 'Can\'t find article.'
+//   render() {
+//     const { ArticleStore: { articles, loading } , match: {params} } = this.props
+//     const article = articles.find(article => article.slug === params.slug)
+//     const error = article ? '' : 'Can\'t find article.'
 
-    if (article) { 
-      document.title = article.name + ' | Algonomicon'
-    }
+//     if (article) { 
+//       document.title = article.name + ' | Algonomicon'
+//     }
 
-    return (
-      <WrapperContainer>
-        { loading ? <LoadingContainer /> :
-          error ? <p>{error}</p> :
-          article && (
-            <div>
-              <Title>{article.name}</Title>
-              <ImageContainer>
-                <Image src={article.hero} />
-              </ImageContainer>
-              <div>{article.content}</div>
-            </div>
-          )
-        }
-      </WrapperContainer>
-    )
-  }
+//     return (
+//       <div>
+//         { loading ? <LoadingContainer /> :
+//           error ? <p>{error}</p> :
+//           article && (
+//             <div>
+//               <Title>{article.name}</Title>
+//               <ImageContainer>
+//                 <Image src={article.hero} />
+//               </ImageContainer>
+//               <div>{article.content}</div>
+//             </div>
+//           )
+//         }
+//       </div>
+//     )
+//   }
+// }
+
+const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
+  const article = ArticleStore.fetchArticle(params.slug)
+
+  return (
+    <div>
+      { article && (
+        <div>
+          <Title>{article.name}</Title>
+          <ImageContainer>
+            <Image src={article.hero} />
+          </ImageContainer>
+          <div>{article.content}</div>
+        </div>
+      )}
+    </div>
+  )
 }
 
-export default ArticleDetailContainer
+export default inject('ArticleStore')(observer(ArticleDetailContainer))

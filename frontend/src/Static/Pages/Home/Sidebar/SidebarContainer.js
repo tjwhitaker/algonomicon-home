@@ -9,9 +9,11 @@ const sidebar = css({
   position: 'relative'
 })
 
-export const SidebarContainer = () => (
+const SidebarContainer = () => (
   <div {...sidebar}>
     <h3 {...minion}>FEED</h3>
-    <FeedContainer/>
+    <FeedContainer />
   </div>
 )
+
+export default SidebarContainer

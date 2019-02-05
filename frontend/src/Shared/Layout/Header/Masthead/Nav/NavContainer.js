@@ -17,10 +17,12 @@ const navLink = css({
   } 
 }, longPrimer)
 
-export const NavContainer = () => (
+const NavContainer = () => (
   <nav {...flex}>
     <Link {...navLink} to="/about" exact>About</Link>
     <Link {...navLink} to="/contact" exact>Contact</Link>
     <Link {...navLink} to="https://google.com/forum">Forum</Link>
   </nav>
 )
+
+export default NavContainer

@@ -5,6 +5,7 @@ import FeedStore from '../Static/Pages/Home/Sidebar/Feed/FeedStore'
 import FlashStore from '../Shared/Layout/Flash/FlashStore'
 import PaperStore from '../Contexts/Paper/PaperStore'
 import ProjectStore from '../Contexts/Project/ProjectStore'
+import RegistrationStore from '../Shared/Layout/Header/Content/Registration/RegistrationStore'
 
 export default {
   ArticleStore: new ArticleStore(),
@@ -13,5 +14,6 @@ export default {
   FeedStore: new FeedStore(),
   FlashStore: new FlashStore(),
   PaperStore: new PaperStore(),
-  ProjectStore: new ProjectStore()
+  ProjectStore: new ProjectStore(),
+  RegistrationStore: new RegistrationStore()
 }

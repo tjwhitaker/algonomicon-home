@@ -1,12 +1,12 @@
 import { css } from 'glamor'
 
-const form = css({
+const flex = css({
   flex: '0 0 50%',
   paddingRight: '0.7rem'
 })
 
-export const FormContainer = () => (
-  <div {...form}>
+const FormContainer = () => (
+  <div {...flex}>
     <div>
       <label>Name</label>
       <input type="text" />
@@ -23,3 +23,5 @@ export const FormContainer = () => (
     </div>
   </div>
 )
+
+export default FormContainer
