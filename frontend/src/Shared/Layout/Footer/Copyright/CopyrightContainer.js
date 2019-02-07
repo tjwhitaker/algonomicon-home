@@ -1,12 +1,12 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 
-const copyright = css({
+const Copyright = createComponent(() => ({
   color: '#ccc',
   margin: 0
-})
+}), 'p')
 
 const CopyrightContainer = () => (
-  <p {...copyright}>&copy; Algonomicon LLC 2019</p>
+  <Copyright>&copy; Algonomicon LLC 2019</Copyright>
 )
 
 export default CopyrightContainer

@@ -1,15 +1,14 @@
-import { css } from 'glamor'
-import { greatPrimer } from '../../../../Shared/Theme/Text'
+import { createComponent } from 'inferno-fela'
 import inception from './inception.jpg'
 
-const main = css({
+const Main = createComponent(() => ({
   borderRight: '1px solid #ccc',
   paddingRight: '1.5rem'
-})
+}))
 
 const MainContainer = () => (
-  <div {...main}>
-    <h2 {...greatPrimer}>Welcome to The Open Source Machine Learning Community!</h2>
+  <Main>
+    <h3>Welcome to The Open Source Machine Learning Community!</h3>
 
     <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
 
@@ -34,7 +33,7 @@ const MainContainer = () => (
     <p>If you own or work at a company that is tackling global or social issues, we'd love to get in touch. Feel free to visit our <a href="/contact">contact page</a> or reach out directly to info@algonomicon.com.</p>
 
     <p>We support open source software. If you like our content, please join our mission and collaborate with us on <a href="https://github.com/algonomicon">Github</a>.</p>
-  </div>
+  </Main>
 )
 
 export default MainContainer

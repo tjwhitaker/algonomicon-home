@@ -1,31 +1,30 @@
-import { Component } from 'inferno'
-import { PostContainer } from './Post/PostContainer'
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import { ArticleContainer } from './Post/ArticleContainer'
+import { DatasetContainer } from './Post/DatasetContainer'
+import { EventContainer } from './Post/EventContainer'
+import { PaperContainer } from './Post/PaperContainer'
+import { PostContainer } from './Post/PostContainer'
+import { ProjectContainer } from './Post/ProjectContainer'
 
-const feed = css({
+const Feed = createComponent(() => ({
   maxHeight: '100%',
   marginRight: '-50px',
   paddingRight: '42px',
   overflow: 'scroll',
   position: 'absolute'
-})
+}))
 
-@inject('FeedStore')
-@observer class FeedContainer extends Component {
-  componentDidMount() {
-    this.props.FeedStore.fetchFeed()
-  }
+const FeedContainer = ({ FeedStore }) => {
+  FeedStore.fetchFeed()
 
-  render() {
-    return (
-      <div {...feed}>
-        {this.props.FeedStore.feed.map(item => (
-          <PostContainer data={item} />
-        ))}
-      </div>
-    )
-  }
+  return (
+    <Feed>
+      { FeedStore.feed.map(item => (
+        <PostContainer item={item} />
+      ))}
+    </Feed>
+  )
 }
 
-export default FeedContainer
+export default inject('FeedStore')(observer(FeedContainer))

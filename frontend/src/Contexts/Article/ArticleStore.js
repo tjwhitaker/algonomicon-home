@@ -5,12 +5,14 @@ class ArticleStore {
   @observable loading = false
 
   fetchArticles = async () => {
-    const response = await fetch(`${process.env.INFERNO_APP_API}/articles`)
-    const articles = await response.json()  
+    if (this.articles.length === 0) {
+      const response = await fetch(`${process.env.INFERNO_APP_API}/articles`)
+      const articles = await response.json()  
 
-    runInAction(() => {
-      this.articles = articles
-    })
+      runInAction(() => {
+        this.articles = articles
+      })
+    }
   }
 
   fetchArticle = (slug) => {

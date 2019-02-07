@@ -1,38 +1,39 @@
-import { css } from 'glamor'
-import { brevier, longPrimer, pica } from '../../../../../../Shared/Theme/Text'
+import { createComponent } from 'inferno-fela'
 import { ArticleContainer } from './ArticleContainer'
 import { DatasetContainer } from './DatasetContainer'
 import { EventContainer } from './EventContainer'
 import { PaperContainer } from './PaperContainer'
 import { ProjectContainer } from './ProjectContainer'
+import { Brevier, LongPrimer, Pica } from '../../../../../../Shared/Theme/Text'
 
-const post = css({
-    paddingTop: '1.5rem',
-    paddingBottom: '1.5rem',
-    borderBottom: '1px solid #ccc'
-})
+const Post = createComponent(() => ({
+  paddingTop: '1.5rem',
+  paddingBottom: '1.5rem',
+  borderBottom: '1px solid #ccc'
+}))
 
-export const title = css({
-  marginBottom: '0.2rem'
-}, pica)
+export const Name = createComponent(() => ({
+  marginBottom: '0.2rem',
+  color: '#111'
+}), Pica)
 
-export const content = css({
+export const Content = createComponent(() => ({
   fontWeight: 'normal',
   color: '#111',
   marginBottom: '0.2rem'
-}, longPrimer)
+}), LongPrimer)
 
-export const meta = css({
+export const Meta = createComponent(() => ({
   marginBottom: 0
-}, brevier)
+}), Brevier)
 
-export const PostContainer = (props) => (
-  <div {...post}>
-    {{ article: <ArticleContainer data={props.data} />,
-      dataset: <DatasetContainer data={props.data} />,
-      event: <EventContainer data={props.data} />,
-      paper: <PaperContainer data={props.data} />,
-      project: <ProjectContainer data={props.data} />
-    }[props.data.type]}
-  </div>
+export const PostContainer = ({ item }) => (
+  <Post>
+    {{ article: <ArticleContainer article={item} />,
+       dataset: <DatasetContainer dataset={item} />,
+       event: <EventContainer event={item} />,
+       paper: <PaperContainer paper={item} />,
+       project: <ProjectContainer project={item} />
+    }[item.type]}
+  </Post>
 )

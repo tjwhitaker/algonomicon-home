@@ -1,12 +1,12 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 
-const flex = css({
+const Form = createComponent(() => ({
   flex: '0 0 50%',
   paddingRight: '0.7rem'
-})
+}))
 
 const FormContainer = () => (
-  <div {...flex}>
+  <Form>
     <div>
       <label>Name</label>
       <input type="text" />
@@ -21,7 +21,7 @@ const FormContainer = () => (
       <label>Content</label>
       <textarea rows="10" />
     </div>
-  </div>
+  </Form>
 )
 
 export default FormContainer

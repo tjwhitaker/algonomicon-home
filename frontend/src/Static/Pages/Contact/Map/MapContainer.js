@@ -1,24 +1,20 @@
 import { Helmet } from 'inferno-helmet'
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import mapboxgl from 'mapbox-gl'
 
-const flex = css({
-  flex: '0 0 50%',
-  paddingLeft: '0.7rem'
-})
-
-const map = css({
-  height: '370px'
-})
-
 const MapContainer = () => (
-  <div {...flex}>
+  <Container>
     <Helmet>
       <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' /> 
     </Helmet>
-    <div {...map} id="map"></div>
-  </div>
+    <div style={{height: '370px'}} id="map"></div>
+  </Container>
 )
+
+const Container = createComponent(() => ({
+  flex: '0 0 50%',
+  paddingLeft: '0.7rem'
+}))
 
 MapContainer.defaultHooks = {
   onComponentDidMount() {

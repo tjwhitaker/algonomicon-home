@@ -1,4 +1,4 @@
-import { MainContainer } from './Main/MainContainer'
+import MainContainer from './Main/MainContainer'
 import { SidebarContainer } from './Sidebar/SidebarContainer'
 import { grid } from '../../../Shared/Theme/Layout'
 

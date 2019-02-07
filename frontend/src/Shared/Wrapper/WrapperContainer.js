@@ -1,15 +1,15 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 
-const wrapper = css({
+const Wrapper = createComponent(() => ({
   maxWidth: '110rem',
   margin: '0 auto',
   padding: '1.5rem',
   position: 'relative',
   height: '100%'
-})
+}))
 
 const WrapperContainer = (props) => (
-  <div {...wrapper} {...props}>{props.children}</div>
+  <Wrapper {...props}>{props.children}</Wrapper>
 )
 
 export default WrapperContainer

@@ -1,11 +1,11 @@
 import { Link } from 'inferno-router'
-import { title, content, meta } from './PostContainer'
+import { Name, Content, Meta } from './PostContainer'
 import moment from 'moment'
 
-export const DatasetContainer = (props) => (
-  <Link to={'/datasets/' + props.data.slug}>
-    <h2 {...title}>{props.data.name}</h2>
-    <p {...content}>{props.data.description.substring(0, 100)}...</p>
-    <p {...meta}>Dataset from {moment(props.data.created_at).fromNow()}</p>
+export const DatasetContainer = ({ dataset }) => (
+  <Link to={'/datasets/' + dataset.slug}>
+    <Name>{dataset.name}</Name>
+    <Content>{dataset.description.substring(0, 100)}...</Content>
+    <Meta>Dataset from {moment(dataset.created_at).fromNow()}</Meta>
   </Link>
 )

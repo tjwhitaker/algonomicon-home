@@ -1,18 +1,18 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import CopyrightContainer from './Copyright/CopyrightContainer'
 import WrapperContainer from '../../Wrapper/WrapperContainer'
 
-const container = css({
+const Footer = createComponent(() => ({
   background: '#111',
   marginTop: '1.4rem'
-})
+}))
 
 const FooterContainer = () => (
-  <footer {...container}>
+  <Footer>
     <WrapperContainer>
       <CopyrightContainer />
     </WrapperContainer>
-  </footer>
+  </Footer>
 )
 
 export default FooterContainer

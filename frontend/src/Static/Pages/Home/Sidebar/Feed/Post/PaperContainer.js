@@ -1,11 +1,11 @@
 import { Link } from 'inferno-router'
-import { title, content, meta } from './PostContainer'
+import { Name, Content, Meta } from './PostContainer'
 import moment from 'moment'
 
-export const PaperContainer = (props) => (
-  <Link to={'/papers/' + props.data.slug}>
-    <h2 {...title}>{props.data.name}</h2>
-    <p {...content}>{props.data.abstract.substring(0, 100)}...</p>
-    <p {...meta}>Paper from {moment(props.data.created_at).fromNow()}</p>
+export const PaperContainer = ({ paper }) => (
+  <Link to={'/papers/' + paper.slug}>
+    <Name>{paper.name}</Name>
+    <Content>{paper.abstract.substring(0, 100)}...</Content>
+    <Meta>Paper from {moment(paper.created_at).fromNow()}</Meta>
   </Link>
 )

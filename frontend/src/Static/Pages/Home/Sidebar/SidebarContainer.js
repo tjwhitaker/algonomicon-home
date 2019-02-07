@@ -1,19 +1,19 @@
 import FeedContainer from './Feed/FeedContainer'
-import { css } from 'glamor'
-import { minion } from '../../../../Shared/Theme/Text'
+import { createComponent } from 'inferno-fela'
+import { Minion } from '../../../../Shared/Theme/Text'
 
-const sidebar = css({
+const Sidebar = createComponent(() => ({
   paddingLeft: '1.5rem',
   maxHeight: '100%',
   overflow: 'hidden',
   position: 'relative'
-})
+}))
 
 const SidebarContainer = () => (
-  <div {...sidebar}>
-    <h3 {...minion}>FEED</h3>
+  <Sidebar>
+    <Minion>FEED</Minion>
     <FeedContainer />
-  </div>
+  </Sidebar>
 )
 
 export default SidebarContainer

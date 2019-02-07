@@ -1,22 +1,22 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import FormContainer from './Form/FormContainer'
 import MapContainer from './Map/MapContainer'
 import MessageContainer from './Message/MessageContainer'
 
-const flex = css({
+const Contact = createComponent(() => ({
   display: 'flex',
   flexWrap: 'wrap'
-})
+}))
 
 const ContactContainer = () => {
   document.title = 'Contact | Algonomicon'
 
   return (
-    <div {...flex}>
+    <Contact>
       <MessageContainer />
       <FormContainer />
       <MapContainer />
-    </div>
+    </Contact>
   )
 }
 
