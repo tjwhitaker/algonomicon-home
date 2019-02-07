@@ -1,14 +1,19 @@
+import { createComponent } from 'inferno-fela'
 import MainContainer from './Main/MainContainer'
-import { SidebarContainer } from './Sidebar/SidebarContainer'
-import { grid } from '../../../Shared/Theme/Layout'
+import SidebarContainer from './Sidebar/SidebarContainer'
+
+const ArticleIndex = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
 
 export const ArticleIndexContainer = () => {
   document.title = 'Articles | Algonomicon'
 
   return (
-    <div {...grid}>
+    <ArticleIndex>
       <MainContainer />
       <SidebarContainer />
-    </div>
+    </ArticleIndex>
   )
 }

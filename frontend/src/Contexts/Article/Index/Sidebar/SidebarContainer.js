@@ -1,12 +1,14 @@
-import FiltersContainer from './Filters/FiltersContainer'
 import { createComponent } from 'inferno-fela'
+import FiltersContainer from './Filters/FiltersContainer'
 
 const Sidebar = createComponent(() => ({
-  paddingLeft: '1.4rem'
+  paddingLeft: '1.5rem'
 }))
 
-export const SidebarContainer = () => (
+const SidebarContainer = () => (
   <Sidebar>
     <FiltersContainer />
   </Sidebar>
 )
+
+export default SidebarContainer

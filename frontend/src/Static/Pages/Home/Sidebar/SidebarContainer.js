@@ -11,7 +11,7 @@ const Sidebar = createComponent(() => ({
 
 const SidebarContainer = () => (
   <Sidebar>
-    <Minion>FEED</Minion>
+    <Minion>Feed</Minion>
     <FeedContainer />
   </Sidebar>
 )
