@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { Link } from 'inferno-router'
+import { NavLink } from 'inferno-router'
 
 // Long Primer
 const CategoryLink = createComponent(() => ({
@@ -8,6 +8,6 @@ const CategoryLink = createComponent(() => ({
   fontWeight: 'bold',
   fontSize: '1.4rem',
   lineHeight: '1.8rem'
-}), Link, ['to', 'activeClassName'])
+}), NavLink, ['to', 'exact', 'activeClassName'])
 
 export default CategoryLink

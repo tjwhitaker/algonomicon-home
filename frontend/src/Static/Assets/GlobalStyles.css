@@ -99,6 +99,9 @@ button {
 a {
   transition:all 0.1s ease;
 }
+a.active {
+  color:#0056b3;
+}
 
 .glitch {
   position: relative;

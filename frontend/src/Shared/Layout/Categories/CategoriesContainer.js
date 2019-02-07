@@ -11,7 +11,7 @@ const Categories = createComponent(() => ({
 
 const CategoriesContainer = () => (
   <Categories>
-    <CategoryLink to="/" activeClassName="active">Home</CategoryLink>
+    <CategoryLink to="/" exact activeClassName="active">Home</CategoryLink>
     <CategoryLink to="/articles" activeClassName="active">Articles</CategoryLink>
     <CategoryLink to="/datasets" activeClassName="active">Datasets</CategoryLink>
     <CategoryLink to="/events" activeClassName="active">Events</CategoryLink>
