@@ -7,7 +7,7 @@ const ArticleIndex = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-export const ArticleIndexContainer = () => {
+const ArticleIndexContainer = () => {
   document.title = 'Articles | Algonomicon'
 
   return (
@@ -17,3 +17,5 @@ export const ArticleIndexContainer = () => {
     </ArticleIndex>
   )
 }
+
+export default ArticleIndexContainer

@@ -1,14 +1,14 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 import { main } from '../../../../Shared/Theme/Layout'
 import FeatureContainer from './Feature/FeatureContainer'
 import GridContainer from './Grid/GridContainer'
 
-const showcase = css({
+const Showcase = createComponent(() => ({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-between'
-})
+}))
 
 const MainContainer = ({ ArticleStore }) => {
   ArticleStore.fetchArticles()
@@ -17,10 +17,10 @@ const MainContainer = ({ ArticleStore }) => {
   return (
     <div {...main}>
       { feature && articles && (
-        <div {...showcase}>
+        <Showcase>
           <FeatureContainer article={feature} />
           <GridContainer articles={articles} />
-        </div>
+        </Showcase>
       )}
     </div>
   )
