@@ -1,13 +1,27 @@
 import { createComponent } from 'inferno-fela'
 
+// Large titles
+export const Paragon = createComponent(() => ({
+  fontSize: '2.8rem',
+  lineHeight: '3.2rem',
+  fontWeight: 'bold'
+}))
+
+// Medium titles
+export const GreatPrimer = createComponent(() => ({
+  fontSize: '2.0rem',
+  lineHeight: '2.4rem',
+  fontWeight: 'bold'
+}))
+
 // Body text
 export const Copy = createComponent(() => ({
   fontSize: '1.6rem',
-  lineHeight: '1.8rem',
+  lineHeight: '2.2rem',
   fontWeight: 'normal'
 }))
 
-// Sidebar titles
+// Sidebar + Small titles
 export const Pica = createComponent(() => ({
   fontSize: '1.6rem',
   lineHeight: '1.8rem',
@@ -39,5 +53,5 @@ export const Minion = createComponent(() => ({
   color: '#777',
   textTransform: 'uppercase',
   padding: '1.5rem 0',
-  borderBottom: '1px solid #aaa'
+  borderBottom: '1px solid #ccc'
 }))

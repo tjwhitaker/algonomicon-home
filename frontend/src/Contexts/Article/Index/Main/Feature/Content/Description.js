@@ -1,8 +1,9 @@
 import { createComponent } from 'inferno-fela'
+import { Copy } from '../../../../../../Shared/Theme/Text'
 
 const Description = createComponent(() => ({
   color: '#aaa',
   fontWeight: 'normal'
-}), 'p')
+}), Copy)
 
 export default Description
