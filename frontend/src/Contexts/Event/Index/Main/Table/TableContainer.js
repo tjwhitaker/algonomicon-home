@@ -6,10 +6,10 @@ const Table = createComponent(() => ({
   width: '100%'
 }), 'table')
 
-const TableContainer = ({ datasets }) => (
+const TableContainer = ({ events }) => (
   <Table>
     <HeadContainer />
-    <BodyContainer datasets={datasets} />
+    <BodyContainer events={events} />
   </Table>
 )
 

@@ -6,10 +6,10 @@ const Main = createComponent(() => ({
   borderRight: '1px solid #ccc'
 }))
 
-const MainContainer = ({ datasets }) => {
+const MainContainer = ({ events }) => {
   return (
     <Main>
-      <TableContainer datasets={datasets} />
+      <TableContainer events={events} />
     </Main>
   )
 }

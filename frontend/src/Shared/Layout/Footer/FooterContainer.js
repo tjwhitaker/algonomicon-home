@@ -3,8 +3,7 @@ import CopyrightContainer from './Copyright/CopyrightContainer'
 import WrapperContainer from '../../Wrapper/WrapperContainer'
 
 const Footer = createComponent(() => ({
-  background: '#111',
-  marginTop: '1.4rem'
+  background: '#111'
 }))
 
 const FooterContainer = () => (

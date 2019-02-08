@@ -1,29 +1,15 @@
 import { createComponent } from 'inferno-fela'
-import { inject, observer } from 'inferno-mobx'
-import { main } from '../../../../Shared/Theme/Layout'
-import FeatureContainer from './Feature/FeatureContainer'
-import GridContainer from './Grid/GridContainer'
+import ShowcaseContainer from './Showcase/ShowcaseContainer'
 
-const Showcase = createComponent(() => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between'
+const Main = createComponent(() => ({
+  borderRight: '1px solid #ccc',
+  paddingRight: '1.5rem'
 }))
 
-const MainContainer = ({ ArticleStore }) => {
-  ArticleStore.fetchArticles()
-  const [feature, ...articles] = ArticleStore.articles
+const MainContainer = () => (
+  <Main>
+    <ShowcaseContainer />
+  </Main>
+)
 
-  return (
-    <div {...main}>
-      { feature && articles && (
-        <Showcase>
-          <FeatureContainer article={feature} />
-          <GridContainer articles={articles} />
-        </Showcase>
-      )}
-    </div>
-  )
-}
-
-export default inject('ArticleStore')(observer(MainContainer))
+export default MainContainer

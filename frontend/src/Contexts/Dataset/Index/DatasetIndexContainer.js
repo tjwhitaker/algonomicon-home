@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import { inject, observer } from 'inferno-mobx'
 import MainContainer from './Main/MainContainer'
 import SidebarContainer from './Sidebar/SidebarContainer'
 
@@ -7,15 +8,16 @@ const DatasetIndex = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const DatasetIndexContainer = () => {
+const DatasetIndexContainer = ({ DatasetStore }) => {
   document.title = 'Datasets | Algonomicon'
+  DatasetStore.fetchDatasets()
 
   return (
     <DatasetIndex>
-      <MainContainer />
+      <MainContainer datasets={DatasetStore.datasets} />
       <SidebarContainer />
     </DatasetIndex>
   )
 }
 
-export default DatasetIndexContainer
+export default inject('DatasetStore')(observer(DatasetIndexContainer))

@@ -1,8 +1,8 @@
 import { createComponent } from 'inferno-fela'
-import { Pica } from '../../../../../../../Shared/Theme/Text'
+import { GreatPrimer } from '../../../../../../../Shared/Theme/Text'
 
 const Title = createComponent(() => ({
-  color: '#111'
-}), Pica)
+  color: 'white'
+}), GreatPrimer)
 
 export default Title
