@@ -1,17 +1,26 @@
-import { action, observable } from 'mobx'
+import { observable, runInAction } from 'mobx'
 
 class PaperStore {
   @observable papers = []
   @observable loading = false
+  
+  fetchPapers = async () => {
+    if (this.papers.length === 0) {
+      const response = await fetch(`${process.env.INFERNO_APP_API}/papers`)
+      const papers = await response.json()
 
-  @action fetchPapers() {
-    this.loading = true
+      runInAction(() => {
+        this.papers = papers
+      })
+    }
+  }
 
-    fetch(`${process.env.INFERNO_APP_API}/papers`)
-      .then(response => response.json())
-      .then(papers => this.papers = papers)
-      .catch(error => console.log(error))
-      .finally(() => this.loading = false)
+  fetchPaper = (slug) => {
+    if (this.papers.length === 0) {
+      this.fetchPapers()
+    }
+
+    return this.papers.find(paper => paper.slug === slug)
   }
 }
 

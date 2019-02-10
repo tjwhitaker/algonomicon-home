@@ -1,5 +1,4 @@
 import { createComponent } from 'inferno-fela'
-import { inject, observer } from 'inferno-mobx'
 import FeatureContainer from './Feature/FeatureContainer'
 import GridContainer from './Grid/GridContainer'
 
@@ -9,16 +8,15 @@ const Showcase = createComponent(() => ({
   justifyContent: 'space-between'
 }))
 
-const ShowcaseContainer = ({ ArticleStore }) => {
-  ArticleStore.fetchArticles()
-  const [feature, ...articles] = ArticleStore.articles
+const ShowcaseContainer = ({ articles }) => {
+  const [head, ...tail] = articles
 
   return (
     <Showcase>
-      { feature && <FeatureContainer article={feature} /> }
-      { articles && <GridContainer articles={articles} /> }
+      { head && <FeatureContainer article={head} /> }
+      { tail && <GridContainer articles={tail} /> }
     </Showcase>
   )
 }
 
-export default inject('ArticleStore')(observer(ShowcaseContainer))
+export default ShowcaseContainer

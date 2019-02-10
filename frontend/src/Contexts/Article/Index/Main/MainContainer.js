@@ -6,9 +6,9 @@ const Main = createComponent(() => ({
   paddingRight: '1.5rem'
 }))
 
-const MainContainer = () => (
+const MainContainer = ({ articles }) => (
   <Main>
-    <ShowcaseContainer />
+    <ShowcaseContainer articles={articles} />
   </Main>
 )
 

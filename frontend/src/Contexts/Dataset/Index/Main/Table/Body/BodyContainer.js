@@ -4,7 +4,7 @@ import Row from './Row'
 const BodyContainer = ({ datasets }) => (
   <tbody>
     { datasets.map(dataset => (
-        <Row to={'/datasets/' + dataset.slug}>
+        <Row to={`/datasets/${dataset.slug}`}>
           <Cell>{dataset.name}</Cell>
           <Cell>{dataset.description}</Cell>
         </Row>

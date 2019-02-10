@@ -10,7 +10,7 @@ const Item = createComponent(() => ({
 
 const ItemContainer = ({ article }) => (
   <Item>
-    <Link to={'/articles/' + article.slug}>
+    <Link to={`/articles/${article.slug}`}>
       <ImageContainer src={article.hero} alt="" />
       <ContentContainer name={article.name} description={article.description.substring(0, 100)} />
     </Link>

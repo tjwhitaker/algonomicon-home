@@ -1,44 +1,20 @@
-import { Component } from 'inferno'
-import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
 
-const styles = {
-  title: () => ({
-    marginBottom: '1.4rem'
-  })
+const PaperDetailContainer = ({ PaperStore, match: {params} }) => {
+  const paper = PaperStore.fetchPaper(params.slug)
+
+  if (paper) { document.title = paper.name + ' | Algonomicon' }
+
+  return (
+    <div>
+      { paper && (
+        <div>
+          <h1>{paper.name}</h1>
+          <p>{paper.abstract}</p>
+        </div>
+      )}
+    </div>
+  )
 }
 
-const Title = createComponent(styles.title, 'h1')
-
-@inject('PaperStore')
-@observer class PaperDetailComponent extends Component {
-  componentDidMount() {
-    const { PaperStore } = this.props
-
-    if (PaperStore.papers.length === 0) {
-      PaperStore.fetchPapers()
-    }
-  }
-
-  render() {
-    const { PaperStore: { papers, loading } , match: {params} } = this.props
-    const paper = papers.find(paper => paper.slug === params.slug)
-    const error = paper ? '' : 'Can\'t find paper.'
-
-    if (paper) { document.title = paper.name + ' | Algonomicon' }
-
-    return (
-      <div>
-        { loading ? <LoadingContainer /> :
-          error ? <p>{error}</p> :
-          paper && (
-            <Title>{paper.name}</Title>
-          )
-        }
-      </div>
-    )
-  }
-}
-
-export default PaperDetailComponent
+export default inject('PaperStore')(observer(PaperDetailContainer))

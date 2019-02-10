@@ -6,12 +6,10 @@ const Main = createComponent(() => ({
   borderRight: '1px solid #ccc'
 }))
 
-const MainContainer = ({ events }) => {
-  return (
-    <Main>
-      <TableContainer events={events} />
-    </Main>
-  )
-}
+const MainContainer = ({ events }) => (
+  <Main>
+    <TableContainer events={events} />
+  </Main>
+)
 
 export default MainContainer

@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import { inject, observer } from 'inferno-mobx'
 import MainContainer from './Main/MainContainer'
 import SidebarContainer from './Sidebar/SidebarContainer'
 
@@ -7,15 +8,16 @@ const ArticleIndex = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const ArticleIndexContainer = () => {
+const ArticleIndexContainer = ({ ArticleStore }) => {
   document.title = 'Articles | Algonomicon'
+  ArticleStore.fetchArticles()
 
   return (
     <ArticleIndex>
-      <MainContainer />
+      <MainContainer articles={ArticleStore.articles}/>
       <SidebarContainer />
     </ArticleIndex>
   )
 }
 
-export default ArticleIndexContainer
+export default inject('ArticleStore')(observer(ArticleIndexContainer))
