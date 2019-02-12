@@ -3,7 +3,7 @@ import { inject, observer } from 'inferno-mobx'
 const PaperDetailContainer = ({ PaperStore, match: {params} }) => {
   const paper = PaperStore.fetchPaper(params.slug)
 
-  if (paper) { document.title = paper.name + ' | Algonomicon' }
+  if (paper) { document.title = `${paper.name} | Algonomicon` }
 
   return (
     <div>

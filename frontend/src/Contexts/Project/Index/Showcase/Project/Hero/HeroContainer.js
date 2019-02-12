@@ -9,7 +9,7 @@ const Hero = createComponent(() => ({
 
 const HeroContainer = ({ project }) => (
   <Hero>
-    <ImageContainer src={project.hero} alt={project.name} />
+    <ImageContainer src={project.hero} alt="" />
   </Hero>
 )
 

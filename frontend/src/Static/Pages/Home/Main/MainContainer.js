@@ -8,7 +8,7 @@ const Main = createComponent(() => ({
 
 const MainContainer = () => (
   <Main>
-    <h3>Welcome to The Open Source Machine Learning Community!</h3>
+    <h3>An Exploration into how ML is Changing the World</h3>
 
     <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
 

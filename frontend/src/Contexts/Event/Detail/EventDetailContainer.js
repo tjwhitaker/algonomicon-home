@@ -3,7 +3,7 @@ import { inject, observer } from 'inferno-mobx'
 const EventDetailContainer = ({ EventStore, match: {params} }) => {
   const event = EventStore.fetchEvent(params.slug)
   
-  if (event) { document.title = event.name + ' | Algonomicon' }
+  if (event) { document.title = `${event.name} | Algonomicon` }
 
   return (
     <div>

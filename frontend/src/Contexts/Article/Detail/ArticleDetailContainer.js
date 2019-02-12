@@ -24,6 +24,8 @@ const image = css({
 const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
   const article = ArticleStore.fetchArticle(params.slug)
 
+  if (article) { document.title = `${article.name} | Algonomicon` }
+
   return (
     <div>
       { article && (
