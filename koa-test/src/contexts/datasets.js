@@ -2,7 +2,9 @@ import Router from 'koa-router'
 
 const Datasets = new Router()
 
-Datasets.get('/datasets', (ctx, next) => {})
+Datasets.get('/datasets', (ctx, next) => {
+  ctx.body = 'datasets'
+})
 
 Datasets.post('/datasets', (ctx, next) => {})
 

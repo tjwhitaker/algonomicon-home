@@ -1,19 +1,13 @@
 import Koa from 'koa'
-import logger from 'koa-logger'
+import Logger from 'koa-logger'
+import Router from './router'
+import initDatabase from './database'
 
-import Articles from './contexts/articles'
-import Datasets from './contexts/datasets'
-import Events from './contexts/events'
-import Papers from './contexts/papers'
-import Projects from './contexts/projects'
+const App = new Koa()
 
-const app = new Koa()
-app.use(logger())
+initDatabase()
 
-app.use(Articles.routes())
-app.use(Datasets.routes())
-app.use(Events.routes())
-app.use(Papers.routes())
-app.use(Projects.routes())
+App.use(Logger())
+App.use(Router())
 
-app.listen(8000)
+App.listen(8000)
