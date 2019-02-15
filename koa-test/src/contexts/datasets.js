@@ -1,17 +1,32 @@
-import Router from 'koa-router'
+import Router from 'koa-tree-router'
 
-const Datasets = new Router()
+////////////
+// Schema //
+////////////
 
-Datasets.get('/datasets', (ctx, next) => {
-  ctx.body = 'datasets'
+const Dataset = mongoose.model('Article', {
+  name: String,
+  slug: String,
+  description: String,
+  content: String,
+  createdAt: {type: Date, default: Date.now},
+  updatedAt: {type: Date, default: Date.now}
 })
 
-Datasets.post('/datasets', (ctx, next) => {})
+////////////
+// Routes //
+////////////
 
-Datasets.get('/datasets/:id', (ctx, next) => {})
+const router = new Router()
 
-Datasets.put('/datasets/:id', (ctx, next) => {})
+router.get('/datasets', (ctx) => {})
 
-Datasets.delete('/datasets/:id', (ctx, next) => {})
+router.post('/datasets', (ctx) => {})
 
-export default Datasets
+router.get('/datasets/:id', (ctx) => {})
+
+router.put('/datasets/:id', (ctx) => {})
+
+router.delete('/datasets/:id', (ctx) => {})
+
+export default router 

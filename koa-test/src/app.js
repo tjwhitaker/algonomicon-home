@@ -1,13 +1,15 @@
 import Koa from 'koa'
-import Logger from 'koa-logger'
-import Router from './router'
+import logger from 'koa-logger'
+import parser from 'koa-body'
+import router from './router'
 import initDatabase from './database'
 
-const App = new Koa()
+const app = new Koa()
 
 initDatabase()
 
-App.use(Logger())
-App.use(Router())
+app.use(logger())
+app.use(parser())
+app.use(router())
 
-App.listen(8000)
+app.listen(8000)

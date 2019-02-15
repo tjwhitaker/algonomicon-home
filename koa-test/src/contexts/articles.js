@@ -1,9 +1,9 @@
-import Router from 'koa-router'
+import Router from 'koa-tree-router'
 import mongoose from 'mongoose'
 
-//////////////////
-// Model Schema //
-//////////////////
+////////////
+// Schema //
+////////////
 
 const Article = mongoose.model('Article', {
   name: String,
@@ -21,42 +21,35 @@ const Article = mongoose.model('Article', {
 
 const router = new Router()
 
-router.get('/articles', async (ctx, next) => {
+router.get('/articles', async (ctx) => {
   const articles = await Article.find()
 
-  ctx.response.body = {
-    status: 'success',
-    data: articles
-  }
+  ctx.response.body = articles
 })
 
-router.post('/articles', async (ctx, next) => {
-  console.log(ctx.request.body)
+router.post('/articles', async (ctx) => {
+  const article = new Article(ctx.request.body)
+  await article.save()
 
-  ctx.response.body = {}
+  ctx.response.body = article
 })
 
-router.get('/articles/:id', async (ctx, next) => {
+router.get('/articles/:id', async (ctx) => {
   const article = await Article.findById(ctx.params.id)
 
-  ctx.response.body = {
-    status: 'success',
-    data: article
-  }
+  ctx.response.body = article
 })
 
-router.put('/articles/:id', async (ctx, next) => {
-  const article = await Article.findById(ctx.params.id)
+router.put('/articles/:id', async (ctx) => {
+  const article = await Article.findByIdAndUpdate(ctx.params.id, ctx.request.body)
 
-  console.log(ctx.request.body)
-
-  ctx.response.body = {}
+  ctx.response.body = article
 })
 
-router.delete('/articles/:id', async (ctx, next) => {
-  const article = await Article.findById(ctx.params.id)
+router.delete('/articles/:id', async (ctx) => {
+  const article = await Article.findByIdAndRemove(ctx.params.id)
 
-  ctx.response.body = {}
+  ctx.response.body = 'Deleted'
 })
 
 export default router
