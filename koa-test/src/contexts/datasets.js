@@ -1,10 +1,11 @@
 import Router from 'koa-tree-router'
+import mongoose from 'mongoose'
 
 ////////////
 // Schema //
 ////////////
 
-const Dataset = mongoose.model('Article', {
+const Dataset = mongoose.model('Dataset', {
   name: String,
   slug: String,
   description: String,
@@ -19,14 +20,37 @@ const Dataset = mongoose.model('Article', {
 
 const router = new Router()
 
-router.get('/datasets', (ctx) => {})
+router.get('/datasets', async (ctx) => {
+  const datasets = await Dataset.find()
 
-router.post('/datasets', (ctx) => {})
+  ctx.response.body = datasets
+})
 
-router.get('/datasets/:id', (ctx) => {})
+router.post('/datasets', async (ctx) => {
+  const dataset = new Dataset(ctx.request.body)
+  await dataset.save()
 
-router.put('/datasets/:id', (ctx) => {})
+  ctx.response.body = dataset
+})
 
-router.delete('/datasets/:id', (ctx) => {})
+router.get('/datasets/:id', async (ctx) => {
+  const dataset = await Dataset.findById(ctx.params.id)
+
+  ctx.response.body = dataset
+})
+
+router.put('/datasets/:id', async (ctx) => {
+  const dataset = await Dataset.findByIdAndUpdate(ctx.params.id, ctx.request.body)
+
+  ctx.response.body = dataset
+})
+
+router.delete('/datasets/:id', async (ctx) => {
+  await Dataset.findByIdAndRemove(ctx.params.id)
+
+  ctx.response.body = {
+    status: `Deleted dataset:${ctx.params.id}`
+  }
+})
 
 export default router 

@@ -1,15 +1,49 @@
-import Router from 'koa-router'
+import Router from 'koa-tree-router'
+import mongoose from 'mongoose'
 
-const Events = new Router()
+const Event = mongoose.model('Event', {
+  name: String,
+  slug: String,
+  url: String,
+  location: String,
+  date: String,
+  createdAt: {type: Date, default: Date.now},
+  updatedAt: {type: Date, default: Date.now}
+})
 
-Events.get('/events', (ctx, next) => {})
+const router = new Router()
 
-Events.post('/events', (ctx, next) => {})
+router.get('/events', async (ctx) => {
+  const events = await Event.find()
 
-Events.get('/events/:id', (ctx, next) => {})
+  ctx.response.body = events
+})
 
-Events.put('/events/:id', (ctx, next) => {})
+router.post('/events', async (ctx) => {
+  const event = new Event(ctx.request.body)
+  await event.save()
 
-Events.delete('/events/:id', (ctx, next) => {})
+  ctx.response.body = event
+})
 
-export default Events
+router.get('/events/:id', async (ctx) => {
+  const event = await Event.findById(ctx.params.id)
+
+  ctx.response.body = event
+})
+
+router.put('/events/:id', async (ctx) => {
+  const event = await Event.findByIdAndUpdate(ctx.params.id, ctx.request.body)
+
+  ctx.response.body = event
+})
+
+router.delete('/events/:id', async (ctx) => {
+  await Event.findByIdAndRemove(ctx.params.id)
+
+  ctx.response.body {
+    status: `Deleted event:${ctx.params.id}`
+  }
+})
+
+export default router

@@ -1,15 +1,49 @@
-import Router from 'koa-router'
+import Router from 'koa-tree-router'
+import mongoose from 'mongoose'
 
-const Projects = new Router()
+const Project = mongoose.model('Project', {
+  name: String,
+  slug: String,
+  description: String,
+  content: String,
+  hero: String,
+  createdAt: {type: Date, default: Date.now},
+  updatedAt: {type: Date, default: Date.now}
+})
 
-Projects.get('/projects', (ctx, next) => {})
+const router = new Router()
 
-Projects.post('/projects', (ctx, next) => {})
+router.get('/projects', async (ctx) => {
+  const projects = await Project.find()
 
-Projects.get('/projects/:id', (ctx, next) => {})
+  ctx.response.body = projects 
+})
 
-Projects.put('/projects/:id', (ctx, next) => {})
+router.post('/projects', async (ctx) => {
+  const project = new Project(ctx.request.body)
+  await project.save()
 
-Projects.delete('/projects/:id', (ctx, next) => {})
+  ctx.response.body = project
+})
 
-export default Projects
+router.get('/projects/:id', async (ctx) => {
+  const project = await Project.findById(ctx.params.id)
+
+  ctx.response.body = project
+})
+
+router.put('/projects/:id', async (ctx) => {
+  const project = await Project.findByIdAndUpdate(ctx.params.id, ctx.request.body)
+
+  ctx.response.body = project
+})
+
+router.delete('/projects/:id', async (ctx) => {
+  await Project.findByIdAndRemove(ctx.params.id)
+
+  ctx.response.body {
+    status: `Deleted project:${ctx.params.id}`
+  }
+})
+
+export default router

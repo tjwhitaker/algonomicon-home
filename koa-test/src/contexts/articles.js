@@ -47,9 +47,11 @@ router.put('/articles/:id', async (ctx) => {
 })
 
 router.delete('/articles/:id', async (ctx) => {
-  const article = await Article.findByIdAndRemove(ctx.params.id)
+  await Article.findByIdAndRemove(ctx.params.id)
 
-  ctx.response.body = 'Deleted'
+  ctx.response.body = {
+    status: `Deleted article:${ctx.params.id}`
+  }
 })
 
 export default router
