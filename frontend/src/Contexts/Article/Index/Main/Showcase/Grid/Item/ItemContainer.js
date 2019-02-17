@@ -1,6 +1,5 @@
 import { Link } from 'inferno-router'
 import { createComponent } from 'inferno-fela'
-import { css } from 'glamor'
 import ContentContainer from './Content/ContentContainer'
 import ImageContainer from './Image/ImageContainer'
 

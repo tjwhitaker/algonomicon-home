@@ -1,6 +1,6 @@
 import Router from 'koa-tree-router'
 import mongoose from 'mongoose'
-import validateGod from '../auth'
+import authorize from '../auth'
 
 ////////////
 // Schema //
@@ -28,7 +28,7 @@ router.get('/datasets', async (ctx) => {
 })
 
 router.post('/datasets', async (ctx) => {
-  validateGod(ctx)
+  authorize(ctx)
 
   const dataset = new Dataset(ctx.request.body)
   await dataset.save()
@@ -43,7 +43,7 @@ router.get('/datasets/:id', async (ctx) => {
 })
 
 router.put('/datasets/:id', async (ctx) => {
-  validateGod(ctx)
+  authorize(ctx)
 
   const dataset = await Dataset.findByIdAndUpdate(ctx.params.id, ctx.request.body)
 
@@ -51,7 +51,7 @@ router.put('/datasets/:id', async (ctx) => {
 })
 
 router.delete('/datasets/:id', async (ctx) => {
-  validateGod(ctx)
+  authorize(ctx)
 
   await Dataset.findByIdAndRemove(ctx.params.id)
 

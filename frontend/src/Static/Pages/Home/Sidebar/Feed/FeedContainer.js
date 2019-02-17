@@ -1,11 +1,6 @@
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import { ArticleContainer } from './Post/ArticleContainer'
-import { DatasetContainer } from './Post/DatasetContainer'
-import { EventContainer } from './Post/EventContainer'
-import { PaperContainer } from './Post/PaperContainer'
 import { PostContainer } from './Post/PostContainer'
-import { ProjectContainer } from './Post/ProjectContainer'
 
 const Feed = createComponent(() => ({
   maxHeight: '100%',

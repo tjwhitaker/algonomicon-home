@@ -37,7 +37,7 @@ const seedArticles = () => {
       uri: 'http://localhost:8000/articles',
       method: 'POST',
       json: article,
-      headers: {'Authorization': 'test'}
+      headers: {'Authorization': process.env.GOD_TOKEN}
     }
 
     request.post(options, () => {
@@ -115,7 +115,7 @@ const seedDatasets = () => {
       uri: 'http://localhost:8000/datasets',
       method: 'POST',
       json: dataset,
-      headers: {'Authorization': 'test'}
+      headers: {'Authorization': process.env.GOD_TOKEN}
     }
 
     request.post(options, () => {
@@ -202,7 +202,7 @@ const seedEvents = () => {
       uri: 'http://localhost:8000/events',
       method: 'POST',
       json: event,
-      headers: {'Authorization': 'test'}
+      headers: {'Authorization': process.env.GOD_TOKEN}
     }
 
     request.post(options, () => {
@@ -245,7 +245,7 @@ const seedPapers = () => {
       uri: 'http://localhost:8000/papers',
       method: 'POST',
       json: paper,
-      headers: {'Authorization': 'test'}
+      headers: {'Authorization': process.env.GOD_TOKEN}
     }
 
     request.post(options, () => {
@@ -275,7 +275,7 @@ const seedProjects = () => {
       uri: 'http://localhost:8000/projects',
       method: 'POST',
       json: project,
-      headers: {'Authorization': 'test'}
+      headers: {'Authorization': process.env.GOD_TOKEN}
     }
 
     request.post(options, () => {

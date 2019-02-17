@@ -3,7 +3,7 @@ import cors from '@koa/cors'
 import logger from 'koa-logger'
 import parser from 'koa-body'
 import router from './router'
-import initDatabase from './database'
+import initDatabase from './db'
 
 const app = new Koa()
 

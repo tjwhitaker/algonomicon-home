@@ -1,4 +1,3 @@
-import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
 
 const ProjectDetailContainer = ({ ProjectStore, match: {params} }) => {
