@@ -1,5 +1,6 @@
 import Router from 'koa-tree-router'
 import mongoose from 'mongoose'
+import validateGod from '../auth'
 
 ////////////
 // Schema //
@@ -28,6 +29,8 @@ router.get('/articles', async (ctx) => {
 })
 
 router.post('/articles', async (ctx) => {
+  validateGod(ctx)
+
   const article = new Article(ctx.request.body)
   await article.save()
 
@@ -41,12 +44,16 @@ router.get('/articles/:id', async (ctx) => {
 })
 
 router.put('/articles/:id', async (ctx) => {
+  validateGod(ctx)
+
   const article = await Article.findByIdAndUpdate(ctx.params.id, ctx.request.body)
 
   ctx.response.body = article
 })
 
 router.delete('/articles/:id', async (ctx) => {
+  validateGod(ctx)
+    
   await Article.findByIdAndRemove(ctx.params.id)
 
   ctx.response.body = {

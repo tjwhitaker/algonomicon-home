@@ -1,5 +1,10 @@
 import Router from 'koa-tree-router'
 import mongoose from 'mongoose'
+import validateGod from '../auth'
+
+////////////
+// Schema //
+////////////
 
 const Project = mongoose.model('Project', {
   name: String,
@@ -11,6 +16,10 @@ const Project = mongoose.model('Project', {
   updatedAt: {type: Date, default: Date.now}
 })
 
+////////////
+// Routes //
+////////////
+
 const router = new Router()
 
 router.get('/projects', async (ctx) => {
@@ -20,6 +29,8 @@ router.get('/projects', async (ctx) => {
 })
 
 router.post('/projects', async (ctx) => {
+  validateGod(ctx)
+
   const project = new Project(ctx.request.body)
   await project.save()
 
@@ -33,15 +44,19 @@ router.get('/projects/:id', async (ctx) => {
 })
 
 router.put('/projects/:id', async (ctx) => {
+  validateGod(ctx)
+
   const project = await Project.findByIdAndUpdate(ctx.params.id, ctx.request.body)
 
   ctx.response.body = project
 })
 
 router.delete('/projects/:id', async (ctx) => {
+  validateGod(ctx)
+
   await Project.findByIdAndRemove(ctx.params.id)
 
-  ctx.response.body {
+  ctx.response.body = {
     status: `Deleted project:${ctx.params.id}`
   }
 })

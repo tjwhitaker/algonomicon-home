@@ -36,7 +36,8 @@ const seedArticles = () => {
     let options = {
       uri: 'http://localhost:8000/articles',
       method: 'POST',
-      json: article
+      json: article,
+      headers: {'Authorization': 'test'}
     }
 
     request.post(options, () => {
@@ -113,7 +114,8 @@ const seedDatasets = () => {
     let options = {
       uri: 'http://localhost:8000/datasets',
       method: 'POST',
-      json: dataset
+      json: dataset,
+      headers: {'Authorization': 'test'}
     }
 
     request.post(options, () => {
@@ -199,7 +201,8 @@ const seedEvents = () => {
     let options = {
       uri: 'http://localhost:8000/events',
       method: 'POST',
-      json: event
+      json: event,
+      headers: {'Authorization': 'test'}
     }
 
     request.post(options, () => {
@@ -241,7 +244,8 @@ const seedPapers = () => {
     let options = {
       uri: 'http://localhost:8000/papers',
       method: 'POST',
-      json: paper
+      json: paper,
+      headers: {'Authorization': 'test'}
     }
 
     request.post(options, () => {
@@ -270,7 +274,8 @@ const seedProjects = () => {
     let options = {
       uri: 'http://localhost:8000/projects',
       method: 'POST',
-      json: project
+      json: project,
+      headers: {'Authorization': 'test'}
     }
 
     request.post(options, () => {

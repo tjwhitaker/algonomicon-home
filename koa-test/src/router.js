@@ -4,6 +4,7 @@ import Datasets from './contexts/datasets'
 import Events from './contexts/events'
 import Papers from './contexts/papers'
 import Projects from './contexts/projects'
+import Feed from './feed'
 
 const Router = () => { 
   return compose([
@@ -11,7 +12,8 @@ const Router = () => {
     Datasets.routes(),
     Events.routes(),
     Papers.routes(),
-    Projects.routes()
+    Projects.routes(),
+    Feed.routes()
   ])
 }
 

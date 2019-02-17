@@ -1,5 +1,10 @@
 import Router from 'koa-tree-router'
 import mongoose from 'mongoose'
+import validateGod from '../auth'
+
+////////////
+// Schema //
+////////////
 
 const Event = mongoose.model('Event', {
   name: String,
@@ -11,6 +16,10 @@ const Event = mongoose.model('Event', {
   updatedAt: {type: Date, default: Date.now}
 })
 
+////////////
+// Routes //
+////////////
+
 const router = new Router()
 
 router.get('/events', async (ctx) => {
@@ -20,6 +29,8 @@ router.get('/events', async (ctx) => {
 })
 
 router.post('/events', async (ctx) => {
+  validateGod(ctx)
+
   const event = new Event(ctx.request.body)
   await event.save()
 
@@ -33,15 +44,19 @@ router.get('/events/:id', async (ctx) => {
 })
 
 router.put('/events/:id', async (ctx) => {
+  validateGod(ctx)
+
   const event = await Event.findByIdAndUpdate(ctx.params.id, ctx.request.body)
 
   ctx.response.body = event
 })
 
 router.delete('/events/:id', async (ctx) => {
+  validateGod(ctx)
+
   await Event.findByIdAndRemove(ctx.params.id)
 
-  ctx.response.body {
+  ctx.response.body = {
     status: `Deleted event:${ctx.params.id}`
   }
 })
