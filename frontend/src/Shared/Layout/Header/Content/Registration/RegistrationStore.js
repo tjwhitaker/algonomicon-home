@@ -1,13 +1,13 @@
-import { action, observable } from 'mobx'
+import { observable } from 'mobx'
 
 class RegistrationStore {
   @observable email = '' 
 
-  @action handleChange(event) {
-    this.email = event.target.value 
+  handleChange = (event) => {
+      this.email = event.target.value 
   }
 
-  @action handleSubmit() {
+  handleSubmit = async () => {
     let data = {email: this.email}
 
     let options = {
@@ -16,7 +16,7 @@ class RegistrationStore {
       body: JSON.stringify(data)
     }
 
-    return fetch('http://localhost:8000/users', options)
+    return await fetch('http://localhost:8000/users', options)
   }
 }
 
