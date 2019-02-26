@@ -1,47 +1,35 @@
+const fs = require('fs')
+const matter = require('gray-matter')
 const request = require('request')
 
 const seedArticles = () => {
-  const articles = [
-    {
-      "name": "Reinforcement Learning and Dominance Hierarchies",
-      "slug": "reinforcement-learning-and-dominance-hierarchies",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-      "hero": "https://source.unsplash.com/600x300"
-    },
-    {
-      "name": "Why can we still not accurately describe what AI is?",
-      "slug": "why-can-we-still-not-accurately-describe-what-ai-is",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-      "hero": "https://source.unsplash.com/600x300"
-    },
-    {
-      "name": "Can a reinforcement agent choose its own reward function?",
-      "slug": "can-a-reinforcmenet-agent-choose-its-own-reward-function",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-      "hero": "https://source.unsplash.com/600x300"
-    },
-    {
-      "name": "Are thoughts deterministic?",
-      "slug": "are-thoughts-deterministic",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus id provident, velit quasi vitae ut quia ab, laudantium omnis. Autem, molestiae totam error voluptate recusandae natus non mollitia laboriosam beatae.",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-      "hero": "https://source.unsplash.com/600x300"
-    }
-  ]
-  
-  articles.forEach(article => {
-    let options = {
-      uri: 'http://localhost:8000/articles',
-      method: 'POST',
-      json: article,
-      headers: {'Authorization': process.env.GOD_TOKEN}
-    }
 
-    request.post(options, () => {
-      console.log('Posted')
+  fs.readdir('../../../articles', (err, files) => {
+    files = files.filter(file => file.endsWith('.md'))
+
+    files.forEach((filename) => {
+      fs.readFile('../../../articles/' + filename, 'utf-8', (err, data) => {
+        const matter = matter(data)
+
+        const article = {
+          name: matter.data.name,
+          slug: matter.data.slug,
+          hero: matter.data.hero,
+          description: matter.data.description,
+          content: matter.content
+        }
+
+        const options = {
+          uri: 'http://localhost:8000/articles',
+          method: 'POST',
+          json: article,
+          headers: {'Authorization': process.env.GOD_TOKEN}
+        }
+
+        request.post(options, () => {
+          console.log('Posted')
+        })
+      })
     })
   })
 }
@@ -127,73 +115,270 @@ const seedDatasets = () => {
 const seedEvents = () => {
   const events = [
     {
-      "name": "NIPS: Neural Information Processing Systems",
-      "slug": "nips-neural-information-processing-systems",
-      "url": "#",
-      "location": "Montreal, Canada",
-      "date": "Dec 02 - Dec 08"
+      name: "Applied Machine Learning Days",
+      slug: "applied-machine-learning-days",
+      url: "https://www.appliedmldays.org/",
+      date: "Jan 26 - Jan 29, 2019",
+      location: "Lausanne, CH"
     },
     {
-      "name": "SC: The International Conference for High Performance Computing",
-      "slug": "sc-the-international-conference-for-high-performance-computing",
-      "location": "Dallas, TX",
-      "date": "Aug 19 - Aug 23"
+      name: "AAAI-19",
+      slug: "aaai-19",
+      url: "https://aaai.org/Conferences/AAAI-19/",
+      date: "Jan 27 - Feb 1, 2019",
+      location: "Honolulu, Hawaii"
     },
     {
-      "name": "ICML: International Conference on Machine Learning",
-      "slug": "icml-international-conference-on-machine-learning",
-      "url": "#",
-      "location": "Stockholm, Sweden",
-      "date": "Jul 10 - Jul 15"
+      name: "H2O AI World San Francisco 2019",
+      slug: "h2o-ai-world-san-francisco-2019",
+      url: "http://h2oworld.h2o.ai/h2o-world-san-francisco/",
+      date: "Feb 4 - Feb 5, 2019",
+      location: "San Francisco, CA"
     },
     {
-      "name": "CVPR: Computer Vision and Pattern Recognition",
-      "slug": "cvpr-computer-vision-and-pattern-recognition",
-      "url": "#",
-      "location": "Long Beach, CA",
-      "date": "Jun 15 - Jun 21"
+      name: "Artificial Intelligence Dev Conference",
+      slug: "artificial-intelligence-dev-conference",
+      url: "https://www.developerweek.com/conference/artificial-intelligence-dev-conference/",
+      date: "Feb 20 - Feb 21, 2019",
+      location: "Oakland, CA"
     },
     {
-      "name": "KDD: Knowledge Discovery and Data Mining",
-      "slug": "kdd-knowledge-discovery-and-data-mining",
-      "url": "#",
-      "location": "London, UK",
-      "date": "Aug 19, Aug 23"
+      name: "Data Science Salon Austin (Technology and IoT)",
+      slug: "data-science-salon-austin-technology-and-iot",
+      url: "https://datascience.salon/austin/",
+      date: "Feb 21 - Feb 22, 2019",
+      location: "Austin, TX"
     },
     {
-      "name": "NIPS: Neural Information Processing Systems",
-      "slug": "nips-neural-information-processing-systems",
-      "url": "#",
-      "location": "Montreal, Canada",
-      "date": "Dec 02 - Dec 08"
+      name: "Big Data & Analytics Summit",
+      slug: "big-data-and-analytics-summit",
+      url: "https://www.bigdatasummitcanada.com/",
+      date: "Mar 5 - Mar 6, 2019",
+      location: "Toronto, CA"
     },
     {
-      "name": "SC: The International Conference for High Performance Computing",
-      "slug": "sc-the-international-conference-for-high-performance-computing",
-      "url": "#",
-      "location": "Dallas, TX",
-      "date": "Aug 19 - Aug 23"
+      name: "GPU Technology Conference",
+      slug: "gpu-technology-conference",
+      url: "https://www.nvidia.com/en-us/gtc/",
+      date: "Mar 17 - Mar 21, 2019",
+      location: "Silicon Valley, CA"
     },
     {
-      "name": "ICML: International Conference on Machine Learning",
-      "slug": "icml-international-conference-on-machine-learning",
-      "url": "#",
-      "location": "Stockholm, Sweden",
-      "date": "Jul 10 - Jul 15"
+      name: "Rework Deep Learning in Finance Summit",
+      slug: "rework-deep-learning-in-finance-summit",
+      url: "https://www.re-work.co/events/deep-learning-in-finance-summit-london-2019",
+      date: "Mar 19 - Mar 20, 2019",
+      location: "London, England"
     },
     {
-      "name": "CVPR: Computer Vision and Pattern Recognition",
-      "slug": "cvpr-computer-vision-and-pattern-recognition",
-      "url": "#",
-      "location": "Long Beach, CA",
-      "date": "Jun 15 - Jun 21"
+      name: "Reinforce AI Conference",
+      slug: "reinforce-ai-conference",
+      url: "https://reinforceconf.com/",
+      date: "Mar 21 - Mar 22, 2019",
+      location: "Budapest, Hungary"
     },
     {
-      "name": "KDD: Knowledge Discovery and Data Mining",
-      "slug": "kdd-knowledge-discovery-and-data-mining",
-      "url": "#",
-      "location": "London, UK",
-      "date": "Aug 19, Aug 23"
+      name: "O'Reilly Strata Data Conference",
+      slug: "oreilly-strata-data-conference",
+      url: "https://conferences.oreilly.com/strata/strata-ca",
+      date: "Mar 25 - Mar 28, 2019",
+      location: "San Francisco, CA"
+    },
+    {
+      name: "Big Data & AI Leaders Summit",
+      slug: "big-data-and-ai-leaders-summit",
+      url: "https://forwardleading.co.uk/summits/big-data-ai-boston-2019",
+      date: "Apr 11 - Apr 12, 2019",
+      location: "Boston , MA"
+    },
+    {
+      name: "Southern Data Science Conference",
+      slug: "southern-data-science-conference",
+      url: "https://www.southerndatascience.com/",
+      date: "Apr 11 - Apr 12, 2019",
+      location: "Atlanta, GA"
+    },
+    {
+      name: "O'Reilly AI Conference",
+      slug: "oreilly-ai-conference-ny",
+      url: "https://conferences.oreilly.com/artificial-intelligence/ai-ny",
+      date: "Apr 15 - Apr 18, 2019",
+      location: "New York, NY"
+    },
+    {
+      name: "Spark + AI Summit",
+      slug: "spark-and-ai-summit",
+      url: "https://databricks.com/sparkaisummit/north-america",
+      date: "Apr 23 - Apr 25, 2019",
+      location: "San Francisco, CA"
+    },
+    {
+      name: "Computer Vision Conference (CVC) 2019",
+      slug: "computer-vision-conference-cvc-2019",
+      url: "http://saiconference.com/CVC",
+      date: "Apr 25 - Apr 26, 2019",
+      location: "Las Vegas, NV"
+    },
+    {
+      name: "AI & Big Data Expo Global",
+      slug: "ai-and-big-data-expo-global",
+      url: "https://www.ai-expo.net/global/",
+      date: "Apr 25 - Apr 26, 2019",
+      location: "London, England"
+    },
+    {
+      name: "ODSC East",
+      slug: "odsc-east",
+      url: "https://odsc.com/boston",
+      date: "Apr 30 - May 3, 2019",
+      location: "Boston, MA"
+    },
+    {
+      name: "Predictive Analytics World for Industry 4.0",
+      slug: "predictive-analytics-world-for-industry-4-0",
+      url: "https://predictiveanalyticsworld.de/en/industry4-0/muenchen2019/",
+      date: "May 6 - May 7, 2019",
+      location: "Munich, Germany"
+    },
+    {
+      name: "Embedded Vision Summit",
+      slug: "embedded-vision-summit",
+      url: "https://www.embedded-vision.com/summit",
+      date: "May 20 - May 23, 2019",
+      location: "Santa Clara, CA"
+    },
+    {
+      name: "The Data Science Conference",
+      slug: "the-data-science-conference",
+      url: "https://www.thedatascienceconference.com/",
+      date: "May 23 - May 24, 2019",
+      location: "Boston, MA"
+    },
+    {
+      name: "Rework Deep Learning in Healthcare Summit",
+      slug: "rework-deep-learning-in-healthcare-summit",
+      url: "https://www.re-work.co/events/deep-learning-in-healthcare-summit-boston-2019",
+      date: "May 23 - May 24, 2019",
+      location: "Boston, MA"
+    },
+    {
+      name: "International Conference on Machine Learning (ICML)",
+      slug: "international-conference-on-machine-learning-icml",
+      url: "https://icml.cc/Conferences/2019",
+      date: "Jun 10 - Jun 15, 2019",
+      location: "Long Beach, CA"
+    },
+    {
+      name: "Deep Learning World",
+      slug: "deep-learning-world",
+      url: "https://www.deeplearningworld.com/",
+      date: "Jun 16 - Jun 20, 2019",
+      location: "Las Vegas, NV"
+    },
+    {
+      name: "CVPR 2019",
+      slug: "cvpr-2019",
+      url: "http://cvpr2019.thecvf.com/",
+      date: "Jun 16 - Jun 21, 2019",
+      location: "Long Beach, CA"
+    },
+    {
+      name: "AI & Big Data Expo Europe",
+      slug: "ai-and-big-data-expo-europe",
+      url: "https://www.ai-expo.net/europe/",
+      date: "Jun 19 - Jun 20, 2019",
+      location: "Amsterdam, Netherlands"
+    },
+    {
+      name: "Rework Applied AI Summit",
+      slug: "rework-applied-ai-summit",
+      url: "https://www.re-work.co/events/applied-ai-summit-san-francisco-2019",
+      date: "Jun 20 - Jun 21, 2019",
+      location: "San Francisco, CA"
+    },
+    {
+      name: "AIME Conference on Artificial Intelligence in Medicine",
+      slug: "aime-conference-on-artificial-intelligence-in-medicine",
+      url: "http://aime19.aimedicine.info/",
+      date: "Jun 26 - Jun 29, 2019",
+      location: "Poznan, Poland"
+    },
+    {
+      name: "MLDM International Conference on Machine Learning and Data Mining",
+      slug: "mldm-internation-conference-on-machine-learning-and-data-mining",
+      url: "http://www.mldm.de/",
+      date: "Jul 20 - Jul 25, 2019",
+      location: "New York, NY"
+    },
+    {
+      name: "Rework AI in Finance Summit",
+      slug: "rework-ai-in-finance-summit",
+      url: "https://www.re-work.co/events/ai-in-finance-summit-new-york-2019",
+      date: "Sep 5 - Sep 6, 2019",
+      location: "New York, NY"
+    },
+    {
+      name: "O'Reilly AI Conference",
+      slug: "oreilly-ai-conference-san-jose",
+      url: "https://conferences.oreilly.com/artificial-intelligence/ai-ca",
+      date: "Sep 9 - Sep 12, 2019",
+      location: "San Jose, CA"
+    },
+    {
+      name: "LOD 2019",
+      slug: "lod-2019",
+      url: "https://lod2019.icas.xyz/",
+      date: "Sep 10 - Sep 13, 2019",
+      location: "Siena, Italy"
+    },
+    {
+      name: "The ACM Conference Series on Recommender Systems",
+      slug: "the-acm-conference-series-on-recommender-systems",
+      url: "https://recsys.acm.org/recsys19/",
+      date: "Sep 16 - Sep 20, 2019",
+      location: "Copenhagen, Denmark"
+    },
+    {
+      name: "Rework AI in Retail & Advertising Summit",
+      slug: "rework-ai-in-retail-and-advertising-summit",
+      url: "https://www.re-work.co/events/ai-in-retail-&-advertising-summit-london-2019",
+      date: "Sep 19 - Sep 20, 2019",
+      location: "London, England"
+    },
+    {
+      name: "Rework Deep Learning Summit",
+      slug: "rework-deep-learning-summit",
+      url: "https://www.re-work.co/events/deep-learning-summit-london-2019",
+      date: "Sep 19 - Sep 20, 2019",
+      location: "London, England"
+    },
+    {
+      name: "IEEE MLSP Workshop on ML for Signal Processing",
+      slug: "ieee-mlsp-workshop-on-ml-for-signal-processing",
+      url: "https://www.ieeemlsp.cc/",
+      date: "Oct 13 - Oct 16, 2019",
+      location: "Pittsburgh, PA"
+    },
+    {
+      name: "O'Reilly AI Conference",
+      slug: "oreilly-ai-conference-london",
+      url: "https://conferences.oreilly.com/artificial-intelligence/ai-eu",
+      date: "Oct 14 - Oct 19, 2019",
+      location: "London, England"
+    },
+    {
+      name: "ICCV 2019 International Conference on Computer Vision",
+      slug: "iccv-2019-international-conference-on-computer-vision",
+      url: "http://iccv2019.thecvf.com/",
+      date: "Oct 27 - Nov 3, 2019",
+      location: "Seoul, Korea"
+    },
+    {
+      name: "AI & Big Data Expo",
+      slug: "ai-and-big-data-expo-na",
+      url: "https://www.ai-expo.net/northamerica/",
+      date: "Nov 13 - Nov 14, 2019",
+      location: "Santa Clara, CA"
     }
   ]
 
@@ -285,7 +470,7 @@ const seedProjects = () => {
 }
 
 seedArticles()
-seedEvents()
-seedDatasets()
-seedPapers()
-seedProjects()
+// seedEvents()
+// seedDatasets()
+// seedPapers()
+// seedProjects()
