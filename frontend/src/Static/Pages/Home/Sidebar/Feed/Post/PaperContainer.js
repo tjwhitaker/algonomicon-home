@@ -6,6 +6,6 @@ export const PaperContainer = ({ paper }) => (
   <Link to={'/papers/' + paper.slug}>
     <Name>{paper.name}</Name>
     <Content>{paper.abstract.substring(0, 100)}...</Content>
-    <Meta>Paper from {moment(paper.created_at).fromNow()}</Meta>
+    <Meta>Paper from {moment(paper.createdAt).fromNow()}</Meta>
   </Link>
 )

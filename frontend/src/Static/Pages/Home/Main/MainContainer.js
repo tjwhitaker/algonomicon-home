@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import { Brevier } from '../../../../Shared/Theme/Text'
 import inception from './inception.jpg'
 
 const Main = createComponent(() => ({
@@ -6,15 +7,29 @@ const Main = createComponent(() => ({
   paddingRight: '1.5rem'
 }))
 
+const Caption = createComponent(() => ({
+  paddingTop: '1.5rem'
+}), 'i')
+
+const Author = createComponent(() => ({
+  paddingTop: '0.2rem'
+}), Brevier)
+
 const MainContainer = () => (
   <Main>
-    <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we plan to use this power to work on some of the grand challenges that humanity faces.</p>
+    <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we want to tell the stories of people using it to change the world.</p>
 
     <img src={inception} alt="Inception Architecture" />
 
-    <i>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</i>
+    <Caption>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</Caption>
 
-    <blockquote>{'↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵'}</blockquote>
+    <blockquote>
+      All are architects of Fate,<br/>
+      Working in these walls of Time;<br/>
+      Some with massive deeds and great,<br/>
+      Some with ornaments of rhyme.
+      <Author>- Alan Turing</Author>
+    </blockquote>
 
     <p>We're particularly interested in the following research topics:</p>
     

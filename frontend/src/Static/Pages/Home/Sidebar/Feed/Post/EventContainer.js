@@ -6,6 +6,6 @@ export const EventContainer = ({ event }) => (
   <Link to={'/events/' + event.slug}>
     <Name>{event.name}</Name>
     <Content>{event.location}</Content>
-    <Meta>Event from {moment(event.created_at).fromNow()}</Meta>
+    <Meta>Event from {moment(event.createdAt).fromNow()}</Meta>
   </Link>
 )

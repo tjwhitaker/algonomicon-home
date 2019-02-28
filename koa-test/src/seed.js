@@ -1,15 +1,14 @@
 const fs = require('fs')
-const matter = require('gray-matter')
+const parser = require('gray-matter')
 const request = require('request')
 
-const seedArticles = () => {
-
-  fs.readdir('../../../articles', (err, files) => {
+const seedArticles = (dirname) => {
+  fs.readdir(dirname, (err, files) => {
     files = files.filter(file => file.endsWith('.md'))
 
     files.forEach((filename) => {
-      fs.readFile('../../../articles/' + filename, 'utf-8', (err, data) => {
-        const matter = matter(data)
+      fs.readFile(dirname + filename, (err, data) => {
+        const matter = parser(data)
 
         const article = {
           name: matter.data.name,
@@ -469,8 +468,8 @@ const seedProjects = () => {
   })
 }
 
-seedArticles()
-// seedEvents()
-// seedDatasets()
-// seedPapers()
-// seedProjects()
+seedArticles('../../../articles/')
+seedEvents()
+seedDatasets()
+seedPapers()
+seedProjects()

@@ -1,5 +1,7 @@
 import { css } from 'glamor'
 import { inject, observer } from 'inferno-mobx'
+import marked from 'marked'
+
 
 const title = css({
   marginBottom: '1.5rem'
@@ -34,7 +36,7 @@ const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
           <div {...imageContainer}>
             <img {...image} src={article.hero} alt="" />
           </div>
-          <div>{article.content}</div>
+          <div dangerouslySetInnerHTML={{__html: marked(article.content)}} />
         </div>
       )}
     </div>

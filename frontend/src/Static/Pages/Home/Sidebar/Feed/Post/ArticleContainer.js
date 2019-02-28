@@ -6,6 +6,6 @@ export const ArticleContainer = ({ article }) => (
   <Link to={'/articles/' + article.slug}>
     <Name>{article.name}</Name>
     <Content>{article.description.substring(0, 100)}...</Content>
-    <Meta>Article from {moment(article.created_at).fromNow()}</Meta>
+    <Meta>Article from {moment(article.createdAt).fromNow()}</Meta>
   </Link>
 )
