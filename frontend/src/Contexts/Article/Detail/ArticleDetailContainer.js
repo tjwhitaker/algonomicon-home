@@ -1,27 +1,12 @@
-import { css } from 'glamor'
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import marked from 'marked'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
 
-
-const title = css({
-  marginBottom: '1.5rem'
-})
-
-const imageContainer = css({
-  position:'relative',
-  width: '100%',
-  paddingBottom: '50%',
-  height: '0',
-  background: '#eee',
-  marginBottom: '1.5rem'
-})
-
-const image = css({
-  position: 'absolute',
-  height:'100%',
-  width: '100%',
-  left: '0'
-})
+const ArticleDetail = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
 
 const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
   const article = ArticleStore.fetchArticle(params.slug)
@@ -29,17 +14,10 @@ const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
   if (article) { document.title = `${article.name} | Algonomicon` }
 
   return (
-    <div>
-      { article && (
-        <div>
-          <h1 {...title}>{article.name}</h1>
-          <div {...imageContainer}>
-            <img {...image} src={article.hero} alt="" />
-          </div>
-          <div dangerouslySetInnerHTML={{__html: marked(article.content)}} />
-        </div>
-      )}
-    </div>
+    <ArticleDetail>
+      <MainContainer article={article} />
+      <SidebarContainer />
+    </ArticleDetail>
   )
 }
 

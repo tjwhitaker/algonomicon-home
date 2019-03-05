@@ -26,7 +26,7 @@ const seedArticles = (dirname) => {
         }
 
         request.post(options, () => {
-          console.log('Posted')
+          console.log('Posted Article')
         })
       })
     })
@@ -36,64 +36,40 @@ const seedArticles = (dirname) => {
 const seedDatasets = () => {
   const datasets = [
     {
-      "name": "Biodiversity Information",
-      "slug": "biodiversity-information",
-      "description": "Worldwide terrorist attacks from 1970-2017",
+      "name": "MNIST",
+      "slug": "mnist",
+      "description": "Hand drawn digits",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
     },
-    {
-      "name": "World Development Indicators",
-      "slug": "world-development-indicators",
-      "description": "Country development indicators from around the world",
+      {
+      "name": "Fashion MNIST",
+      "slug": "fashion-mnist",
+      "description": "Clothing Benchmarks",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
     },
-    {
-      "name": "Earthquakes",
-      "slug": "earthquakes",
-      "description": "This is a test description of a fake dataset",
+      {
+      "name": "CIFAR10",
+      "slug": "cifar10",
+      "description": "Canadian Institue for Advanced Research",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
     },
-    {
-      "name": "Global Happiness",
-      "slug": "global-happiness",
-      "description": "This is a test description of a fake dataset",
+      {
+      "name": "CIFAR100",
+      "slug": "cifar100",
+      "description": "Canadian Institue for Advanced Research",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
     },
-    {
-      "name": "Game of Thrones",
-      "slug": "game-of-thrones",
-      "description": "This is a test description of a fake dataset",
+      {
+      "name": "PTBLM",
+      "slug": "ptblm",
+      "description": "Penn Treebank for language modeling",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
     },
-    {
-      "name": "Wildfires",
-      "slug": "wildfires",
-      "description": "Worldwide terrorist attacks from 1970-2017",
+      {
+      "name": "SVHN",
+      "slug": "svhn",
+      "description": "Street View House Numbers",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!"
-    },
-    {
-      "name": "Ice Caps",
-      "slug": "ice-caps",
-      "description": "Country development indicators from around the world",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-    },
-    {
-      "name": "Glacial Movements",
-      "slug": "glacial-movements",
-      "description": "This is a test description of a fake dataset",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-    },
-    {
-      "name": "Rainforest Coverage",
-      "slug": "rainforest-coverage",
-      "description": "This is a test description of a fake dataset",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
-    },
-    {
-      "name": "Endangered Species",
-      "slug": "endangered-species",
-      "description": "This is a test description of a fake dataset",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
     }
   ]
 
@@ -441,14 +417,8 @@ const seedPapers = () => {
 const seedProjects = () => {
   const projects = [
     {
-      "name": "Launch Pad",
-      "slug": "launch-pad",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
-      "hero": "https://source.unsplash.com/600x300"
-    },
-    {
-      "name": "Mission Control",
-      "slug": "mission-control",
+      "name": "Coming Soon",
+      "slug": "coming-soon",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
       "hero": "https://source.unsplash.com/600x300"
     }

@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { Brevier } from '../../../../Shared/Theme/Text'
+import { Brevier, LongPrimer } from '../../../../Shared/Theme/Text'
 import inception from './inception.jpg'
 
 const Main = createComponent(() => ({
@@ -8,8 +8,9 @@ const Main = createComponent(() => ({
 }))
 
 const Caption = createComponent(() => ({
-  paddingTop: '1.5rem'
-}), 'i')
+  margin: '1.5rem 0',
+  fontStyle: 'italic'
+}), LongPrimer)
 
 const Author = createComponent(() => ({
   paddingTop: '0.2rem'
@@ -24,11 +25,8 @@ const MainContainer = () => (
     <Caption>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</Caption>
 
     <blockquote>
-      All are architects of Fate,<br/>
-      Working in these walls of Time;<br/>
-      Some with massive deeds and great,<br/>
-      Some with ornaments of rhyme.
-      <Author>- Alan Turing</Author>
+      Truth is much too complicated to allow anything but approximations.
+      <Author>- John Von Neumann</Author>
     </blockquote>
 
     <p>We're particularly interested in the following research topics:</p>
