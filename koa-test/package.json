@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node src/app.js",
-    "seed": "node src/seed.js"
+    "seed": "node src/seed.js",
+    "doom": "node src/doom.js"
   },
   "author": "",
   "license": "ISC",

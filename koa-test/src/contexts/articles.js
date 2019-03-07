@@ -11,6 +11,7 @@ const Article = mongoose.model('Article', {
   slug: String,
   hero: String,
   description: String,
+  outline: String,
   content: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}

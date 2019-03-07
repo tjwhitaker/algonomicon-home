@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 
 const initDatabase = () => {
-  mongoose.connect('mongodb://127.0.0.1:27017/test', {useNewUrlParser: true})
+  const options = {useNewUrlParser: true}
+  
+  mongoose.connect('mongodb://127.0.0.1:27017/test', options)
 
   mongoose.connection
     .on('error', (error) => console.log(error))
