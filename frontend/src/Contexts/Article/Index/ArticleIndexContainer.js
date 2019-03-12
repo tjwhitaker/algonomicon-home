@@ -14,7 +14,7 @@ const ArticleIndexContainer = ({ ArticleStore }) => {
 
   return (
     <ArticleIndex>
-      <MainContainer articles={ArticleStore.articles}/>
+      <MainContainer articles={ArticleStore.articles} />
       <SidebarContainer />
     </ArticleIndex>
   )
