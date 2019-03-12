@@ -4,6 +4,7 @@ import Datasets from './contexts/datasets'
 import Events from './contexts/events'
 import Papers from './contexts/papers'
 import Projects from './contexts/projects'
+import Videos from './contexts/videos'
 import Feed from './feed'
 
 const Router = () => { 
@@ -13,6 +14,7 @@ const Router = () => {
     Events.routes(),
     Papers.routes(),
     Projects.routes(),
+    Videos.routes(),
     Feed.routes()
   ])
 }

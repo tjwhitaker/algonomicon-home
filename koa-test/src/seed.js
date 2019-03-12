@@ -84,7 +84,7 @@ const seedDatasets = () => {
     }
 
     request.post(options, () => {
-      console.log('Posted')
+      console.log('Posted Dataset')
     })
   })
 }
@@ -368,7 +368,7 @@ const seedEvents = () => {
     }
 
     request.post(options, () => {
-      console.log('Posted')
+      console.log('Posted Event')
     })
   })
 }
@@ -411,7 +411,7 @@ const seedPapers = () => {
     }
 
     request.post(options, () => {
-      console.log('Posted')
+      console.log('Posted Paper')
     })
   })
 }
@@ -435,7 +435,32 @@ const seedProjects = () => {
     }
 
     request.post(options, () => {
-      console.log('Posted')
+      console.log('Posted Project')
+    })
+  })
+}
+
+const seedVideos = () => {
+  const videos = [
+    {
+      "name": "Lorem Ipsum",
+      "slug": "lorem-ipsum",
+      "hero": "https://placehold.it/600x300",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam incidunt officia ipsa odit autem eveniet dicta, modi asperiores! Necessitatibus fuga dolores dolorum distinctio tempora reiciendis odio voluptatibus voluptas velit, accusamus!",
+      "url": "https://www.youtube.com/watch?v=salrwSVWpC4"
+    }
+  ]
+
+  videos.forEach(video => {
+    let options = {
+      uri: 'http://localhost:8000/videos',
+      method: 'POST',
+      json: video,
+      headers: {'Authorization': process.env.GOD_TOKEN}
+    }
+
+    request.post(options, () => {
+      console.log('Posted Video')
     })
   })
 }
@@ -445,3 +470,4 @@ seedEvents()
 seedDatasets()
 seedPapers()
 seedProjects()
+seedVideos()
