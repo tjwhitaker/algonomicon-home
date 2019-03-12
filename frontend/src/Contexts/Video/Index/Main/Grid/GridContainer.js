@@ -3,14 +3,14 @@ import ItemContainer from './Item/ItemContainer'
 
 const Grid = createComponent(() => ({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
+  gridTemplateColumns: '1fr 1fr',
   gridColumnGap: '1.5rem'
 }))
 
-const GridContainer = ({ articles }) => (
+const GridContainer = ({ videos }) => (
   <Grid>
-    { articles.map(article => 
-      <ItemContainer article={article} />
+    { videos.map(video => 
+      <ItemContainer video={video} />
     )}
   </Grid>
 )

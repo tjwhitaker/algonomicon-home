@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import GridContainer from './Grid/GridContainer'
 
 const Main = createComponent(() => ({
   paddingRight: '1.5rem',
@@ -7,9 +8,7 @@ const Main = createComponent(() => ({
 
 const MainContainer = ({ videos }) => (
   <Main>
-    { videos.map(video => (
-      <div>{video.name}</div>
-    ))}
+    <GridContainer videos={videos} />
   </Main>
 )
 
