@@ -18,6 +18,8 @@ import PaperIndexContainer from '../Contexts/Paper/Index/PaperIndexContainer'
 import PaperDetailContainer from '../Contexts/Paper/Detail/PaperDetailContainer'
 import ProjectIndexContainer from '../Contexts/Project/Index/ProjectIndexContainer'
 import ProjectDetailContainer from '../Contexts/Project/Detail/ProjectDetailContainer'
+import VideoIndexContainer from '../Contexts/Video/Index/VideoIndexContainer'
+import VideoDetailContainer from '../Contexts/Video/Detail/VideoDetailContainer'
 
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={ props => (
@@ -55,6 +57,9 @@ const Routes = (
     
     <AppRoute path="/projects" component={ProjectIndexContainer} exact />
     <AppRoute path="/projects/:slug" component={ProjectDetailContainer} />
+
+    <AppRoute path="/videos" component={VideoIndexContainer} exact />
+    <AppRoute path="/videos/:slug" component={VideoDetailContainer} />
 
     <ErrorRoute path="*" component={NotFoundContainer} />
   </Switch>

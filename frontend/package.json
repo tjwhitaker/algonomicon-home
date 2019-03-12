@@ -26,7 +26,6 @@
     "fela": "^6.2.3",
     "file-loader": "2.0.0",
     "fs-extra": "7.0.0",
-    "glamor": "^2.20.40",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "inferno": "^6.1.4",

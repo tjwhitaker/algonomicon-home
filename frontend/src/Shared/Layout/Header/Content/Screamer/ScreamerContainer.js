@@ -8,8 +8,8 @@ const Screamer = createComponent(() => ({
 
 const ScreamerContainer = () => (
   <Screamer>
-    <Headline>Artificial Intelligence Algorithms</Headline>
-    <Tagline>Still under construction. Thanks for bearing with us! Sign up for early access.</Tagline>
+    <Headline>Artificial Intelligence Research</Headline>
+    <Tagline>Still under construction. Thanks for bearing with us! Sign up for updates.</Tagline>
   </Screamer>
 )
 

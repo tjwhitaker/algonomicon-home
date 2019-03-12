@@ -16,7 +16,7 @@ const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
   return (
     <ArticleDetail>
       <MainContainer article={article} />
-      <SidebarContainer />
+      <SidebarContainer article={article} />
     </ArticleDetail>
   )
 }

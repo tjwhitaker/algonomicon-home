@@ -6,6 +6,7 @@ import FlashStore from '../Shared/Layout/Flash/FlashStore'
 import PaperStore from '../Contexts/Paper/PaperStore'
 import ProjectStore from '../Contexts/Project/ProjectStore'
 import RegistrationStore from '../Shared/Layout/Header/Content/Registration/RegistrationStore'
+import VideoStore from '../Contexts/Video/VideoStore'
 
 export default {
   ArticleStore: new ArticleStore(),
@@ -15,5 +16,6 @@ export default {
   FlashStore: new FlashStore(),
   PaperStore: new PaperStore(),
   ProjectStore: new ProjectStore(),
-  RegistrationStore: new RegistrationStore()
+  RegistrationStore: new RegistrationStore(),
+  VideoStore: new VideoStore()
 }

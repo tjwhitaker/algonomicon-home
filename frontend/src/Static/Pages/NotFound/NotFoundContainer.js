@@ -1,9 +1,10 @@
 import { createComponent } from 'inferno-fela'
 import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
-import bg from './space.jpg'
+import bg from './BG.png'
+import FG from './FG'
 
 const NotFound = createComponent(() => ({
-  background: 'url(' + bg + ')',
+  backgroundImage: 'url(' + bg + ')',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   height: '100vh',
@@ -13,7 +14,7 @@ const NotFound = createComponent(() => ({
 const NotFoundContainer = () => (
   <NotFound>
     <WrapperContainer>
-      <h1>Not Found</h1>
+      <FG />
     </WrapperContainer>
   </NotFound>
 )

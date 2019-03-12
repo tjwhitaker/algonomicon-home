@@ -1,20 +1,24 @@
 import { createComponent } from 'inferno-fela'
-import marked from 'marked'
+import { Paragon } from '../../../../../Shared/Theme/Text'
 
 const Content = createComponent(() => ({
-}))
+}), 'div', ['dangerouslySetInnerHTML'])
+
+const Title = createComponent(() => ({
+  marginBottom: '1.5rem'
+}), Paragon)
 
 
 const ContentContainer = ({ article }) => (
-  <Content>
+  <div>
     { article && (
       <div>
-        <h1>{article.name}</h1>
+        <Title>{article.name}</Title>
         <img src={article.hero} alt="" />
-        <div dangerouslySetInnerHTML={{__html: marked(article.content)}} />
+        <Content dangerouslySetInnerHTML={{__html: article.content}} />
       </div>
     )}
-  </Content>
+  </div>
 )
 
 

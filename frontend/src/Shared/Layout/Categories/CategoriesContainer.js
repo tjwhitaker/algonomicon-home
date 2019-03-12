@@ -14,9 +14,10 @@ const CategoriesContainer = () => (
     <CategoryLink to="/" exact activeClassName="active">Home</CategoryLink>
     <CategoryLink to="/articles" activeClassName="active">Articles</CategoryLink>
     <CategoryLink to="/datasets" activeClassName="active">Datasets</CategoryLink>
-    <CategoryLink to="/events" activeClassName="active">Events</CategoryLink>
+    {/* <CategoryLink to="/events" activeClassName="active">Events</CategoryLink>*/}
     <CategoryLink to="/papers" activeClassName="active">Papers</CategoryLink>
     <CategoryLink to="/projects" activeClassName="active">Projects</CategoryLink>
+    <CategoryLink to="/videos" activeClassName="active">Videos</CategoryLink>
   </Categories>
 )
 

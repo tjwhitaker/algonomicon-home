@@ -6,7 +6,6 @@ import GlobalStyles from './Static/Assets/GlobalStyles.css'
 import Routes from './Config/Routes'
 import Stores from './Config/Stores'
 import './Static/Assets/AppStyles.scss'
-import 'glamor/reset'
 
 const renderer = createRenderer()
 renderer.renderStatic(GlobalStyles.toString())
