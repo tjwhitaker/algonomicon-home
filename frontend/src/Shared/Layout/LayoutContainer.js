@@ -1,19 +1,28 @@
-import { Component } from 'inferno'
-import FlashContainer from '../Flash/FlashContainer'
-import HeaderContainer from '../Header/HeaderContainer'
-import FooterContainer from '../Footer/FooterContainer'
+import { createComponent } from 'inferno-fela'
+import CategoriesContainer from './Categories/CategoriesContainer'
+import FlashContainer from './Flash/FlashContainer'
+import HeaderContainer from './Header/HeaderContainer'
+import FooterContainer from './Footer/FooterContainer'
+import WrapperContainer from '../Wrapper/WrapperContainer'
 
-class LayoutContainer extends Component {
-  render() {
-    return (
-      <div>
-        <FlashContainer />
-        <HeaderContainer />
-        <main>{ this.props.children }</main>
-        <FooterContainer />
-      </div>
-    )
-  }
-}
+const Main = createComponent(() => ({
+  background: '#fff',
+  paddingBottom: '1.5rem',
+  minHeight: '50vh'
+}))
+
+const LayoutContainer = (props) => (
+  <div>
+    <FlashContainer />
+    <HeaderContainer />
+    <Main>
+      <WrapperContainer>
+        <CategoriesContainer />
+        { props.children }
+      </WrapperContainer>
+    </Main>
+    <FooterContainer />
+  </div>
+)
 
 export default LayoutContainer

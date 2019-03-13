@@ -1,59 +1,23 @@
-import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import FiltersContainer from './Filters/FiltersContainer'
-import ShowcaseContainer from './Showcase/ShowcaseContainer'
-import CategoriesContainer from '../../../Shared/Categories/CategoriesContainer'
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import { inject, observer } from 'inferno-mobx'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
 
-const styles = {
-  grid: () => ({
-    display: 'grid',
-    gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
-    gridTemplateAreas: 
-      `'nav nav'
-       'main sidebar'`
-  }),
-  nav: () => ({
-    gridArea: 'nav'
-  }),
-  main: () => ({
-    gridArea: 'main',
-    borderRight: '1px solid #ccc',
-    paddingRight: '1.4rem'
-  }),
-  sidebar: () => ({
-    gridArea: 'sidebar',
-    paddingLeft: '1.4rem'
-  })
+const ArticleIndex = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
+
+const ArticleIndexContainer = ({ ArticleStore }) => {
+  document.title = 'Articles | Algonomicon'
+  ArticleStore.fetchArticles()
+
+  return (
+    <ArticleIndex>
+      <MainContainer articles={ArticleStore.articles} />
+      <SidebarContainer />
+    </ArticleIndex>
+  )
 }
 
-const Grid = createComponent(styles.grid)
-const Nav = createComponent(styles.nav)
-const Main = createComponent(styles.main)
-const Sidebar = createComponent(styles.sidebar)
-
-class ArticleIndexContainer extends Component {
-  componentDidMount() {
-    document.title = 'Articles | Algonomicon'
-  }
-
-  render() {
-    return (
-      <WrapperContainer>
-        <Grid>
-          <Nav>
-            <CategoriesContainer />
-          </Nav>
-          <Main>
-            <ShowcaseContainer />
-          </Main>
-          <Sidebar>
-            <FiltersContainer />
-          </Sidebar>
-        </Grid>
-      </WrapperContainer>
-    )
-  }
-}
-
-export default ArticleIndexContainer
+export default inject('ArticleStore')(observer(ArticleIndexContainer))

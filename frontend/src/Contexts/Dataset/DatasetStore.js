@@ -1,17 +1,26 @@
-import { action, observable } from 'mobx'
+import { observable, runInAction } from 'mobx'
 
 class DatasetStore {
   @observable datasets = []
   @observable loading = false
 
-  @action fetchDatasets() {
-    this.loading = true
+  fetchDatasets = async () => {
+    if (this.datasets.length === 0) {
+      const response = await fetch(`${process.env.INFERNO_APP_API}/datasets`)
+      const datasets = await response.json()
 
-    fetch(`${process.env.INFERNO_APP_API}/datasets`)
-      .then(response => response.json())
-      .then(datasets => this.datasets = datasets)
-      .catch(error => console.log(error))
-      .finally(() => this.loading = false)
+      runInAction(() => {
+        this.datasets = datasets
+      })
+    }
+  }
+
+  fetchDataset = (slug) => {
+    if (this.datasets.length === 0) {
+      this.fetchDatasets()
+    }
+
+    return this.datasets.find(dataset => dataset.slug === slug)
   }
 }
 

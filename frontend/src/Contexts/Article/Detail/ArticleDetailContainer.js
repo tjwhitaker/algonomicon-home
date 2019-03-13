@@ -1,49 +1,24 @@
-import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
-import CategoriesContainer from '../../../Shared/Categories/CategoriesContainer'
-import ErrorContainer from '../../../Shared/Error/ErrorContainer'
-import LoadingContainer from '../../../Shared/Loading/LoadingContainer'
-import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
 
-const styles = {
-  title: () => ({})
+const ArticleDetail = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
+
+const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
+  const article = ArticleStore.fetchArticle(params.slug)
+
+  if (article) { document.title = `${article.name} | Algonomicon` }
+
+  return (
+    <ArticleDetail>
+      <MainContainer article={article} />
+      <SidebarContainer article={article} />
+    </ArticleDetail>
+  )
 }
 
-const Title = createComponent(styles.title, 'h1')
-
-@inject('ArticleStore')
-@observer class ArticleDetailContainer extends Component {
-  componentDidMount() {
-    const { ArticleStore } = this.props
-
-    if (ArticleStore.articles.length === 0) {
-      ArticleStore.fetchArticles()
-    }
-  }
-
-  render() {
-    const { ArticleStore: { articles, loading } , match: {params} } = this.props
-    const article = articles.find(article => article.slug === params.slug)
-    const error = article ? '' : 'Can\'t find article.'
-
-    if (article) { document.title = article.name + ' | Algonomicon' }
-
-    return (
-      <WrapperContainer>
-        <CategoriesContainer />
-        { loading ? <LoadingContainer /> :
-          error ? <ErrorContainer error={error} /> :
-          article && (
-            <div>
-              <Title>{article.name}</Title>
-              <div>{article.content}</div>
-            </div>
-          )
-        }
-      </WrapperContainer>
-    )
-  }
-}
-
-export default ArticleDetailContainer
+export default inject('ArticleStore')(observer(ArticleDetailContainer))

@@ -1,17 +1,26 @@
-import { action, observable } from 'mobx'
+import { observable, runInAction } from 'mobx'
 
 class EventStore {
   @observable events = []
   @observable loading = false
 
-  @action fetchEvents() {
-    this.loading = true
-    
-    fetch(`${process.env.INFERNO_APP_API}/events`)
-      .then(response => response.json())
-      .then(events => this.events = events)
-      .catch(error => console.log(error))
-      .finally(() => this.loading = false)
+  fetchEvents = async () => {
+    if (this.events.length === 0) {
+      const response = await fetch(`${process.env.INFERNO_APP_API}/events`)
+      const events = await response.json()
+
+      runInAction(() => {
+        this.events = events
+      })
+    }
+  }
+
+  fetchEvent = (slug) => {
+    if (this.events.length === 0) {
+      this.fetchEvents()
+    }
+
+    return this.events.find(event => event.slug === slug)
   }
 }
 

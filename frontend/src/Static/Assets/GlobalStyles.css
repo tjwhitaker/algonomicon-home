@@ -28,6 +28,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  background: #111;
 }
 ol, ul {
   list-style: inside;
@@ -69,7 +70,7 @@ body {
   line-height:1.4;
 }
 
-p, ol, ul, img {
+p, ol, ul {
   margin-bottom:1.4rem;
 }
 
@@ -98,6 +99,9 @@ button {
 
 a {
   transition:all 0.1s ease;
+}
+a.active {
+  color:#0056b3;
 }
 
 .glitch {

@@ -1,30 +1,22 @@
-import { Component } from 'inferno'
 import { createComponent } from 'inferno-fela'
-import bg from './space.jpg'
 import WrapperContainer from '../../../Shared/Wrapper/WrapperContainer'
+import bg from './BG.png'
+import FG from './FG'
 
-const styles = {
-  background: () => ({
-    background: 'url(' + bg + ')',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '100vh',
-    width: '100vw'
-  })
-}
+const NotFound = createComponent(() => ({
+  backgroundImage: 'url(' + bg + ')',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '100vh',
+  width: '100vw'
+}))
 
-const BackgroundContainer = createComponent(styles.background)
-
-class NotFoundContainer extends Component {
-  render() {
-    return (
-      <BackgroundContainer>
-        <WrapperContainer>
-          <h1>Not Found</h1>
-        </WrapperContainer>
-      </BackgroundContainer>
-    )
-  }
-}
+const NotFoundContainer = () => (
+  <NotFound>
+    <WrapperContainer>
+      <FG />
+    </WrapperContainer>
+  </NotFound>
+)
 
 export default NotFoundContainer

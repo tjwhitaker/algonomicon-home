@@ -1,0 +1,35 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node src/app.js",
+    "seed": "node src/seed.js",
+    "doom": "node src/doom.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@koa/cors": "^2.2.3",
+    "dotenv": "^6.2.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.0.8",
+    "koa-compose": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-tree-router": "^0.4.4",
+    "marked": "^0.6.1",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "gray-matter": "^4.0.2",
+    "request": "^2.88.0"
+  }
+}
