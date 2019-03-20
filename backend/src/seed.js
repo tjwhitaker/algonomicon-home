@@ -455,6 +455,13 @@ const seedVideos = () => {
       "hero": "https://placehold.it/600x300",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam incidunt officia ipsa odit autem eveniet dicta, modi asperiores! Necessitatibus fuga dolores dolorum distinctio tempora reiciendis odio voluptatibus voluptas velit, accusamus!",
       "url": "https://www.youtube.com/watch?v=salrwSVWpC4"
+    },
+    {
+      "name": "Hello World",
+      "slug": "hello-world",
+      "hero": "https://placehold.it/600x300",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam incidunt officia ipsa odit autem eveniet dicta, modi asperiores! Necessitatibus fuga dolores dolorum distinctio tempora reiciendis odio voluptatibus voluptas velit, accusamus!",
+      "url": "https://www.youtube.com/watch?v=salrwSVWpC4"
     }
   ]
 

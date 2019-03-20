@@ -3,7 +3,7 @@ import ItemContainer from './Item/ItemContainer'
 
 const Grid = createComponent(() => ({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: '1fr 1fr 1fr',
   gridColumnGap: '1.5rem'
 }))
 

@@ -5,7 +5,8 @@ import MessageContainer from './Message/MessageContainer'
 
 const Contact = createComponent(() => ({
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  marginBottom: '5rem'
 }))
 
 const ContactContainer = () => {

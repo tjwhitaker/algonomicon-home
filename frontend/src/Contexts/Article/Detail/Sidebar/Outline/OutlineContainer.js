@@ -12,8 +12,17 @@ const Outline = createComponent(() => ({
       padding: '0.5rem 0',
 
       '> ul': {
-        margin: '1rem 0 1.5rem 0',
-        paddingLeft: '1.5rem'
+        margin: '0.5rem 0',
+        paddingLeft: '1.5rem',
+
+        '> li': {
+
+          '> ul': {
+            margin: '0',
+            paddingLeft: '1.5rem',
+            listStyle: 'inside circle'
+          }
+        }
       }
     }
   }

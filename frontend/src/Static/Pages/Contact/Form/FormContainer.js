@@ -1,26 +1,32 @@
 import { createComponent } from 'inferno-fela'
+import Button from './Button'
+import FieldGroup from './FieldGroup'
+import Input from './Input'
+import Textarea from './Textarea'
 
 const Form = createComponent(() => ({
   flex: '0 0 50%',
-  paddingRight: '0.7rem'
+  paddingRight: '0.7rem',
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative'
 }))
 
 const FormContainer = () => (
   <Form>
-    <div>
-      <label>Name</label>
-      <input type="text" />
-    </div>
+    <FieldGroup flex="0">
+      <Input type="text" placeholder="Name" />
+    </FieldGroup>
 
-    <div>
-      <label>Email</label>
-      <input type="email" />
-    </div>
+    <FieldGroup flex="0">
+      <Input type="email" placeholder="Email" />
+    </FieldGroup>
 
-    <div>
-      <label>Content</label>
-      <textarea rows="10" />
-    </div>
+    <FieldGroup flex="1">
+      <Textarea placeholder="Content" />
+    </FieldGroup>
+
+    <Button>Send</Button>
   </Form>
 )
 
