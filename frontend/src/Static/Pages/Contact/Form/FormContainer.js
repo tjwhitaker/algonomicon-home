@@ -2,7 +2,7 @@ import { createComponent } from 'inferno-fela'
 import Button from './Button'
 import FieldGroup from './FieldGroup'
 import Input from './Input'
-import Textarea from './Textarea'
+import TextArea from './TextArea'
 
 const Form = createComponent(() => ({
   flex: '0 0 50%',
@@ -23,7 +23,7 @@ const FormContainer = () => (
     </FieldGroup>
 
     <FieldGroup flex="1">
-      <Textarea placeholder="Content" />
+      <TextArea placeholder="Content" />
     </FieldGroup>
 
     <Button>Send</Button>
