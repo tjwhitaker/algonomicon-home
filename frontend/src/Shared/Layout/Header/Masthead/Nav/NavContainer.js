@@ -10,7 +10,7 @@ const NavContainer = () => (
   <Nav>
     <NavLink to="/about">About</NavLink>
     <NavLink to="/contact">Contact</NavLink>
-    <NavLink to="/support">Support</NavLink>
+    <NavLink to="/forum">Forum</NavLink>
   </Nav>
 )
 
