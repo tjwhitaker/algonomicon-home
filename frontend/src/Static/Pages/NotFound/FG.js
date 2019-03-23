@@ -21,7 +21,7 @@ const FG = () => (
        transform="translate(-42.857143,-291.29077)">
       <text
          id="text3344"
-         style="font-size:180px;line-height:125%;font-family:'04b03';letter-spacing:0px;word-spacing:0px;fill:#ffffff"
+         style={{'font-size':'180px','line-height':'125%','font-family':'04b03','letter-spacing':'0px','word-spacing':'0px','fill':'#ffffff'}}
          xml:space="preserve"
          font-size="180px"
          y="403.79077"
