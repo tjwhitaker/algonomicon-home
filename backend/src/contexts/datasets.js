@@ -11,6 +11,8 @@ const Dataset = mongoose.model('Dataset', {
   slug: String,
   description: String,
   content: String,
+  instances: String,
+  format: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
 })

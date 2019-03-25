@@ -6,6 +6,8 @@ const HeadContainer = () => (
     <Row>
       <Cell>Name</Cell>
       <Cell>Description</Cell>
+      <Cell>Instances</Cell>
+      <Cell>Format</Cell>
     </Row>
   </thead>
 )
