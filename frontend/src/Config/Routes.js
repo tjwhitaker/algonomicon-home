@@ -12,8 +12,6 @@ import ArticleIndexContainer from '../Contexts/Article/Index/ArticleIndexContain
 import ArticleDetailContainer from '../Contexts/Article/Detail/ArticleDetailContainer'
 import DatasetIndexContainer from '../Contexts/Dataset/Index/DatasetIndexContainer'
 import DatasetDetailContainer from '../Contexts/Dataset/Detail/DatasetDetailContainer'
-import EventIndexContainer from '../Contexts/Event/Index/EventIndexContainer'
-import EventDetailContainer from '../Contexts/Event/Detail/EventDetailContainer'
 import PaperIndexContainer from '../Contexts/Paper/Index/PaperIndexContainer'
 import PaperDetailContainer from '../Contexts/Paper/Detail/PaperDetailContainer'
 import ProjectIndexContainer from '../Contexts/Project/Index/ProjectIndexContainer'
@@ -48,9 +46,6 @@ const Routes = (
 
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
     <AppRoute path="/datasets/:slug" component={DatasetDetailContainer} />
-    
-    <AppRoute path="/events" component={EventIndexContainer} exact />
-    <AppRoute path="/events/:slug" component={EventDetailContainer} />
     
     <AppRoute path="/papers" component={PaperIndexContainer} exact />
     <AppRoute path="/papers/:slug" component={PaperDetailContainer} />
