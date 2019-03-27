@@ -1,4 +1,12 @@
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
+
+const DatasetDetail = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
 
 const DatasetDetailContainer = ({ DatasetStore, match: {params} }) => {
   const dataset = DatasetStore.fetchDataset(params.slug)
@@ -6,14 +14,10 @@ const DatasetDetailContainer = ({ DatasetStore, match: {params} }) => {
   if (dataset) { document.title = `${dataset.name} | Algonomicon` }
     
   return (
-    <div>
-      { dataset && (
-        <div>
-          <h1>{dataset.name}</h1>
-          <p>{dataset.content}</p>
-        </div>
-      )}
-    </div>
+    <DatasetDetail>
+      <MainContainer dataset={dataset} />
+      <SidebarContainer dataset={dataset} />
+    </DatasetDetail>
   )
 }
 

@@ -1,4 +1,12 @@
+import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import MainContainer from './Main/MainContainer'
+import SidebarContainer from './Sidebar/SidebarContainer'
+
+const PaperDetail = createComponent(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
+}))
 
 const PaperDetailContainer = ({ PaperStore, match: {params} }) => {
   const paper = PaperStore.fetchPaper(params.slug)
@@ -6,14 +14,10 @@ const PaperDetailContainer = ({ PaperStore, match: {params} }) => {
   if (paper) { document.title = `${paper.name} | Algonomicon` }
 
   return (
-    <div>
-      { paper && (
-        <div>
-          <h1>{paper.name}</h1>
-          <p>{paper.abstract}</p>
-        </div>
-      )}
-    </div>
+    <PaperDetail>
+      <MainContainer paper={paper} />
+      <SidebarContainer paper={paper} />
+    </PaperDetail>
   )
 }
 
