@@ -18,7 +18,7 @@ const Author = createComponent(() => ({
 
 const MainContainer = () => (
   <Main>
-    <p>Thanks to increased computational power and vast amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are powering self driving cars, searching for life beyond the stars, and finding subatomic particles in the Large Hadron Collider. Machine learning has the power to do a lot of good and we want to tell the stories of people using it to change the world.</p>
+    <p>Thanks to increased power and large amounts of data, machine learning models are capable of solving problems previously thought to be impossible. Machine Learning applications are driving cars, improving healthcare diagnosis, and sequencing new proteins. Machine learning has the power to do a lot of good and we want to tell the stories of people using it to change the world.</p>
 
     <img src={inception} alt="Inception Architecture" />
 
