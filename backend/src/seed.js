@@ -16,6 +16,7 @@ const seedArticles = (dirname) => {
           slug: matter.data.slug,
           hero: matter.data.hero,
           description: matter.data.description,
+          author: matter.data.author,
           outline: marked(matter.data.outline),
           content: marked(matter.content)
         }
