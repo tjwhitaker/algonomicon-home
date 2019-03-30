@@ -9,10 +9,11 @@ import authorize from '../auth'
 const Dataset = mongoose.model('Dataset', {
   name: String,
   slug: String,
-  description: String,
-  content: String,
+  creator: String,
   instances: String,
   format: String,
+  description: String,
+  content: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
 })
