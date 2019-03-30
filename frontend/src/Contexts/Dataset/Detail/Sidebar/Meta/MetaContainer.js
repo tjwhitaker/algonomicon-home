@@ -2,18 +2,14 @@ import { createComponent } from 'inferno-fela'
 import { Minion, LongPrimer } from '../../../../../Shared/Theme/Text'
 
 const Meta = createComponent(() => ({
-  padding: '1.5rem 0'
+  padding: '1.5rem'
 }), LongPrimer)
 
-const MetaContainer = ({ article }) => (
+const MetaContainer = ({ dataset }) => (
   <div>
     <Minion>Meta</Minion>
-    { article && 
-      <Meta>
-        <p>Author: { article.author }</p>
-        <p>Created: { article.createdAt }</p>
-        <p>Updated: { article.updatedAt }</p>
-      </Meta>
+    { dataset && 
+      <Meta></Meta>
     }
   </div>
 )
