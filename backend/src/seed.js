@@ -44,7 +44,8 @@ const seedDatasets = () => {
       "description": "Hand drawn digits",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     },
       {
       "name": "Fashion MNIST",
@@ -52,7 +53,8 @@ const seedDatasets = () => {
       "description": "Clothing Benchmarks",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     },
       {
       "name": "CIFAR10",
@@ -60,7 +62,8 @@ const seedDatasets = () => {
       "description": "Canadian Institue for Advanced Research",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     },
       {
       "name": "CIFAR100",
@@ -68,7 +71,8 @@ const seedDatasets = () => {
       "description": "Canadian Institue for Advanced Research",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     },
       {
       "name": "PTBLM",
@@ -76,7 +80,8 @@ const seedDatasets = () => {
       "description": "Penn Treebank for language modeling",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     },
       {
       "name": "SVHN",
@@ -84,7 +89,8 @@ const seedDatasets = () => {
       "description": "Street View House Numbers",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae explicabo sequi ipsam provident harum dolorum natus. Voluptas consequatur id explicabo inventore iure enim neque asperiores a minus. Hic, perspiciatis, et!",
       "instances": "1234567",
-      "format": "Text"
+      "format": "Text",
+      "creator": "Lorem Ipsum"
     }
   ]
 
@@ -208,7 +214,7 @@ const seedVideos = () => {
   })
 }
 
-seedArticles('../../articles/')
+// seedArticles('../../articles/')
 seedDatasets()
 seedPapers()
 seedProjects()

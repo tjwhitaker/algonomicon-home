@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import MetaContainer from './Meta/MetaContainer'
 
 const Sidebar = createComponent(() => ({
   paddingLeft: '1.5rem'
@@ -6,7 +7,7 @@ const Sidebar = createComponent(() => ({
 
 const SidebarContainer = ({ dataset }) => (
   <Sidebar>
-    <p>Lorem</p>
+    <MetaContainer dataset={dataset} />
   </Sidebar>
 )
 
