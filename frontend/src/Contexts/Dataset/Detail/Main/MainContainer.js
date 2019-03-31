@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import ContentContainer from './Content/ContentContainer'
 
 const Main = createComponent(() => ({
   paddingRight: '1.5rem',
@@ -7,7 +8,7 @@ const Main = createComponent(() => ({
 
 const MainContainer = ({ dataset }) => (
   <Main>
-    <p>Lorem</p>
+    <ContentContainer dataset={dataset} />
   </Main>
 )
 
