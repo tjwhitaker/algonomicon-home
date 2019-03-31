@@ -2,19 +2,18 @@ import { createComponent } from 'inferno-fela'
 import Title from './Title'
 
 const Content = createComponent(() => ({
+
 }), 'div', ['dangerouslySetInnerHTML'])
 
-const ContentContainer = ({ article }) => (
+const ContentContainer = ({ dataset }) => (
   <div>
-    { article && (
+    { dataset &&
       <div>
-        <Title>{article.name}</Title>
-        <img src={article.hero} alt="" />
-        <Content dangerouslySetInnerHTML={{__html: article.content}} />
+        <Title>{ dataset.name }</Title>
+        <Content dangerouslySetInnerHTML={{__html: dataset.content}} />
       </div>
-    )}
+    }
   </div>
 )
-
 
 export default ContentContainer

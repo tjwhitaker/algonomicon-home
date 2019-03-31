@@ -4,17 +4,15 @@ import Title from './Title'
 const Content = createComponent(() => ({
 }), 'div', ['dangerouslySetInnerHTML'])
 
-const ContentContainer = ({ article }) => (
+const ContentContainer = ({ paper }) => (
   <div>
-    { article && (
+    { paper &&
       <div>
-        <Title>{article.name}</Title>
-        <img src={article.hero} alt="" />
-        <Content dangerouslySetInnerHTML={{__html: article.content}} />
+        <Title>{paper.name}</Title>
+        <Content dangerouslySetInnerHTML={{__html: paper.abstract}} />
       </div>
-    )}
+    }
   </div>
 )
-
 
 export default ContentContainer

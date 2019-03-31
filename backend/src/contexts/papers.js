@@ -9,6 +9,7 @@ import authorize from '../auth'
 const Paper = mongoose.model('Paper', {
   name: String,
   slug: String,
+  author: String,
   abstract: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
