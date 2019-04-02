@@ -1,6 +1,6 @@
 import ArticleStore from '../Contexts/Article/ArticleStore'
 import DatasetStore from '../Contexts/Dataset/DatasetStore'
-import FeedStore from '../Static/Pages/Home/Sidebar/Feed/FeedStore'
+import FeedStore from '../Contexts/Home/Sidebar/Feed/FeedStore'
 import FlashStore from '../Shared/Layout/Flash/FlashStore'
 import PaperStore from '../Contexts/Paper/PaperStore'
 import ProjectStore from '../Contexts/Project/ProjectStore'
