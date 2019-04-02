@@ -219,7 +219,7 @@ const seedVideos = () => {
   })
 }
 
-// seedArticles('../../articles/')
+seedArticles('../../articles/')
 seedDatasets()
 seedPapers()
 seedProjects()

@@ -13,6 +13,7 @@ const MetaContainer = ({ dataset }) => (
       <Meta>
         <Field>Creator: { dataset.creator }</Field>
         <Field>Instances: { dataset.instances }</Field>
+        <Field>Format: { dataset.format }</Field>
         <Field>Created: { dataset.createdAt }</Field>
         <Field>Updated: { dataset.updatedAt }</Field>
       </Meta>
