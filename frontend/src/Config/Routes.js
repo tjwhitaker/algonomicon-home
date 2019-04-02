@@ -2,10 +2,10 @@ import { Route, Switch } from 'inferno-router'
 
 import LayoutContainer from '../Shared/Layout/LayoutContainer'
 
-import AboutContainer from '../Static/Pages/About/AboutContainer'
-import ContactContainer from '../Static/Pages/Contact/ContactContainer'
-import HomeContainer from '../Static/Pages/Home/HomeContainer'
-import ErrorContainer from '../Static/Pages/Error/ErrorContainer'
+import AboutContainer from '../Contexts/About/AboutContainer'
+import ContactContainer from '../Contexts/Contact/ContactContainer'
+import HomeContainer from '../Contexts/Home/HomeContainer'
+import ErrorContainer from '../Contexts/Error/ErrorContainer'
 
 import ArticleIndexContainer from '../Contexts/Article/Index/ArticleIndexContainer'
 import ArticleDetailContainer from '../Contexts/Article/Detail/ArticleDetailContainer'

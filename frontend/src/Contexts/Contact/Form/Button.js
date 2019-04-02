@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { LongPrimer } from '../../../../Shared/Theme/Text'
+import { LongPrimer } from '../../../Shared/Theme/Text'
 
 const Button = createComponent(() => ({
   background: 'black',

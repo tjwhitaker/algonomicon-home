@@ -1,6 +1,6 @@
 import FeedContainer from './Feed/FeedContainer'
 import { createComponent } from 'inferno-fela'
-import { Minion } from '../../../../Shared/Theme/Text'
+import { Minion } from '../../../Shared/Theme/Text'
 
 const Sidebar = createComponent(() => ({
   paddingLeft: '1.5rem',

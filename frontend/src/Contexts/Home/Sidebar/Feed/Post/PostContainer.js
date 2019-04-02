@@ -4,7 +4,7 @@ import { DatasetContainer } from './DatasetContainer'
 import { EventContainer } from './EventContainer'
 import { PaperContainer } from './PaperContainer'
 import { ProjectContainer } from './ProjectContainer'
-import { Brevier, LongPrimer, Pica } from '../../../../../../Shared/Theme/Text'
+import { Brevier, LongPrimer, Pica } from '../../../../../Shared/Theme/Text'
 
 const Post = createComponent(() => ({
   paddingTop: '1.5rem',

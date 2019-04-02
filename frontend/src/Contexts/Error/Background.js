@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import astronaut from '../../Assets/images/astronaut.png'
+import astronaut from '../../Static/Assets/images/astronaut.png'
 
 const Background = createComponent(() => ({
   position: 'absolute',

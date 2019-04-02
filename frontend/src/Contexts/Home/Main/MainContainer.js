@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { Brevier, LongPrimer } from '../../../../Shared/Theme/Text'
+import { Brevier, LongPrimer } from '../../../Shared/Theme/Text'
 import inception from './inception.jpg'
 
 const Main = createComponent(() => ({
