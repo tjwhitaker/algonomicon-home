@@ -1,6 +1,5 @@
-import FeedContainer from './Feed/FeedContainer'
 import { createComponent } from 'inferno-fela'
-import { Minion } from '../../../Shared/Theme/Text'
+import FeedContainer from './Feed/FeedContainer'
 
 const Sidebar = createComponent(() => ({
   paddingLeft: '1.5rem',
@@ -11,7 +10,6 @@ const Sidebar = createComponent(() => ({
 
 const SidebarContainer = () => (
   <Sidebar>
-    <Minion>Feed</Minion>
     <FeedContainer />
   </Sidebar>
 )

@@ -1,5 +1,6 @@
 import { createComponent } from 'inferno-fela'
 import { inject, observer } from 'inferno-mobx'
+import { Minion } from '../../../../Shared/Theme/Text'
 import { PostContainer } from './Post/PostContainer'
 
 const Feed = createComponent(() => ({
@@ -14,11 +15,14 @@ const FeedContainer = ({ FeedStore }) => {
   FeedStore.fetchFeed()
 
   return (
-    <Feed>
-      { FeedStore.feed.map(item => (
-        <PostContainer item={item} />
-      ))}
-    </Feed>
+    <div>
+      <Minion>Feed</Minion>
+      <Feed>
+        { FeedStore.feed.map(item => (
+          <PostContainer item={item} />
+        ))}
+      </Feed>
+    </div>
   )
 }
 
