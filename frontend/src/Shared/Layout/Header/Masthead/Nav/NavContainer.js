@@ -11,6 +11,7 @@ const NavContainer = () => (
     <NavLink to="/about">About</NavLink>
     <NavLink to="/contact">Contact</NavLink>
     <NavLink to="/forum">Forum</NavLink>
+    <NavLink to="/store">Store</NavLink>
   </Nav>
 )
 

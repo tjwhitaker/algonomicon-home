@@ -5,9 +5,17 @@ const Main = createComponent(() => ({
   borderRight: '1px solid #ccc'
 }))
 
-const MainContainer = ({ dataset }) => (
+const MainContainer = ({ video }) => (
   <Main>
-    <p>Lorem</p>
+    { video && 
+      <div>
+        <div style={{position: 'relative', 'padding-bottom':'56.25%', width: '100%'}}>
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/p_di4Zn4wz4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"  allowfullscreen></iframe>
+        </div>
+        <p>{ video.description }</p>
+      </div>
+    }
   </Main>
 )
 
