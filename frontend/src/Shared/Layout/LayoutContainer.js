@@ -8,7 +8,7 @@ import WrapperContainer from '../Wrapper/WrapperContainer'
 const Main = createComponent(() => ({
   background: '#fff',
   paddingBottom: '1.5rem',
-  minHeight: '50vh'
+  minHeight: '60vh'
 }))
 
 const LayoutContainer = (props) => (

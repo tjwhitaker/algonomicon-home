@@ -8,7 +8,7 @@ const Screamer = createComponent(() => ({
 
 const ScreamerContainer = () => (
   <Screamer>
-    <Headline>Artificial Intelligence Research</Headline>
+    <Headline>Code, Math, and Machine Learning</Headline>
     <Tagline>Still under construction. Thanks for bearing with us! Sign up for updates.</Tagline>
   </Screamer>
 )

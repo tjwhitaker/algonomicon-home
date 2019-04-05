@@ -11,8 +11,7 @@ const MetaContainer = ({ video }) => (
     <Minion>Meta</Minion>
     { video &&
       <Meta>
-        <Field>Credits: { video.credits }</Field>
-        <Field>Category: { video.category }</Field>
+        <Field>Creator: { video.creator }</Field>
         <Field>Views: { video.views }</Field>
         <Field>Created: { video.createdAt }</Field>
         <Field>Updated: { video.updatedAt }</Field>
