@@ -91,6 +91,15 @@ const seedDatasets = () => {
       "instances": "1234567",
       "format": "Text",
       "creator": "Lorem Ipsum"
+    },
+    {
+      "name": "Omniglot",
+      "slug": "omniglot",
+      "description": "World Alphabets",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur quod nam libero sint natus, autem inventore officia iusto tenetur distinctio odit, laudantium consequatur corporis! Exercitationem ullam fugiat fuga, praesentium optio.",
+      "instances" : "123",
+      "format": "Images",
+      "creator": "Your mom"
     }
   ]
 
