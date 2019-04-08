@@ -1,5 +1,7 @@
 const AdminHomeContainer = () => (
-  <div></div>
+  <div>
+    Home
+  </div>
 )
 
 export default AdminHomeContainer
