@@ -3,7 +3,7 @@ import CategoriesContainer from './Categories/CategoriesContainer'
 import FlashContainer from './Flash/FlashContainer'
 import HeaderContainer from './Header/HeaderContainer'
 import FooterContainer from './Footer/FooterContainer'
-import WrapperContainer from '../Wrapper/WrapperContainer'
+import WrapperContainer from '../../Wrapper/WrapperContainer'
 
 const Main = createComponent(() => ({
   background: '#fff',
@@ -11,7 +11,7 @@ const Main = createComponent(() => ({
   minHeight: '60vh'
 }))
 
-const LayoutContainer = (props) => (
+const AppLayoutContainer = (props) => (
   <div>
     <FlashContainer />
     <HeaderContainer />
@@ -25,4 +25,4 @@ const LayoutContainer = (props) => (
   </div>
 )
 
-export default LayoutContainer
+export default AppLayoutContainer

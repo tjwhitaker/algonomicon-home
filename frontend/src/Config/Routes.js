@@ -1,10 +1,14 @@
-import { Route, Switch } from 'inferno-router'
+import { Redirect, Route, Switch } from 'inferno-router'
 
-import LayoutContainer from '../Shared/Layout/LayoutContainer'
+import Authentication from './Authentication'
+
+import AppLayoutContainer from '../Shared/Layout/App/AppLayoutContainer'
+import AdminLayoutContainer from '../Shared/Layout/Admin/AdminLayoutContainer'
 
 import AboutContainer from '../Contexts/About/AboutContainer'
 import ContactContainer from '../Contexts/Contact/ContactContainer'
 import HomeContainer from '../Contexts/Home/HomeContainer'
+import LoginContainer from '../Contexts/Login/LoginContainer'
 import ErrorContainer from '../Contexts/Error/ErrorContainer'
 
 import ArticleIndexContainer from '../Contexts/Article/Index/ArticleIndexContainer'
@@ -18,11 +22,24 @@ import ProjectDetailContainer from '../Contexts/Project/Detail/ProjectDetailCont
 import VideoIndexContainer from '../Contexts/Video/Index/VideoIndexContainer'
 import VideoDetailContainer from '../Contexts/Video/Detail/VideoDetailContainer'
 
+import AdminHomeContainer from '../Contexts/Admin/Home/AdminHomeContainer'
+import AdminDashboardContainer from '../Contexts/Admin/Dashboard/AdminDashboardContainer'
+
 const AppRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={ props => (
-    <LayoutContainer {...props}>
+  <Route {...rest} render={props => (
+    <AppLayoutContainer {...props}>
       <Component {...props} />
-    </LayoutContainer>  
+    </AppLayoutContainer>  
+  )} />
+)
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    Authentication.isAuthenticated 
+      ? <AdminLayoutContainer {...props}>
+          <Component {...props} />
+        </AdminLayoutContainer>
+      : <Redirect to="/login" />
   )} />
 )
 
@@ -37,6 +54,7 @@ const Routes = (
     <AppRoute path="/" component={HomeContainer} exact />
     <AppRoute path="/about" component={AboutContainer} exact />
     <AppRoute path="/contact" component={ContactContainer} exact />
+    <AppRoute path="/login" component={LoginContainer} exact />
     
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
     <AppRoute path="/articles/:slug" component={ArticleDetailContainer} />
@@ -52,6 +70,9 @@ const Routes = (
 
     <AppRoute path="/videos" component={VideoIndexContainer} exact />
     <AppRoute path="/videos/:slug" component={VideoDetailContainer} />
+
+    <PrivateRoute path="/admin" component={AdminHomeContainer} exact />
+    <PrivateRoute path="/admin/dashboard" component={AdminDashboardContainer} exact />
 
     <ErrorRoute path="*" component={ErrorContainer} />
   </Switch>

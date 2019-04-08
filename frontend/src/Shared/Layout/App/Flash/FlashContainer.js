@@ -1,6 +1,6 @@
 import { inject, observer } from 'inferno-mobx'
 import { Motion, spring, presets } from 'inferno-motion'
-import WrapperContainer from '../../Wrapper/WrapperContainer'
+import WrapperContainer from '../../../Wrapper/WrapperContainer'
 
 const onRest = (flash) => {
   if (flash.isOpen) {
