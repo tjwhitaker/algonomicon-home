@@ -8,7 +8,7 @@ const Sidebar = createComponent(() => ({
 
 const SidebarContainer = () => (
   <Sidebar>
-    sidebar
+    Sidebar
   </Sidebar>
 )
 

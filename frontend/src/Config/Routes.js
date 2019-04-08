@@ -26,15 +26,15 @@ import AdminHomeContainer from '../Contexts/Admin/Home/AdminHomeContainer'
 import AdminDashboardContainer from '../Contexts/Admin/Dashboard/AdminDashboardContainer'
 
 const AppRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
+  <Route {...rest} render={(props) => (
     <AppLayoutContainer {...props}>
       <Component {...props} />
     </AppLayoutContainer>  
   )} />
 )
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
+const AdminRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
     Authentication.isAuthenticated 
       ? <AdminLayoutContainer {...props}>
           <Component {...props} />
@@ -44,7 +44,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 )
 
 const ErrorRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={ props => (
+  <Route {...rest} render={(props) => (
     <Component {...props} />
   )} />
 )
@@ -55,24 +55,37 @@ const Routes = (
     <AppRoute path="/about" component={AboutContainer} exact />
     <AppRoute path="/contact" component={ContactContainer} exact />
     <AppRoute path="/login" component={LoginContainer} exact />
-    
     <AppRoute path="/articles" component={ArticleIndexContainer} exact />
     <AppRoute path="/articles/:slug" component={ArticleDetailContainer} />
-
     <AppRoute path="/datasets" component={DatasetIndexContainer} exact />
     <AppRoute path="/datasets/:slug" component={DatasetDetailContainer} />
-    
     <AppRoute path="/papers" component={PaperIndexContainer} exact />
     <AppRoute path="/papers/:slug" component={PaperDetailContainer} />
-    
     <AppRoute path="/projects" component={ProjectIndexContainer} exact />
     <AppRoute path="/projects/:slug" component={ProjectDetailContainer} />
-
     <AppRoute path="/videos" component={VideoIndexContainer} exact />
     <AppRoute path="/videos/:slug" component={VideoDetailContainer} />
 
-    <PrivateRoute path="/admin" component={AdminHomeContainer} exact />
-    <PrivateRoute path="/admin/dashboard" component={AdminDashboardContainer} exact />
+    <AdminRoute path="/admin" component={AdminHomeContainer} exact />
+    <AdminRoute path="/admin/dashboard" component={AdminDashboardContainer} exact />
+    <AdminRoute path="/admin/articles" />
+    <AdminRoute path="/admin/articles/new" />
+    <AdminRoute path="/admin/articles/:slug" />
+    <AdminRoute path="/admin/datasets" />
+    <AdminRoute path="/admin/datasets/new" />
+    <AdminRoute path="/admin/datasets/:slug" />
+    <AdminRoute path="/admin/papers" />
+    <AdminRoute path="/admin/papers/new" />
+    <AdminRoute path="/admin/papers/:slug" />
+    <AdminRoute path="/admin/projects" />
+    <AdminRoute path="/admin/projects/new" />
+    <AdminRoute path="/admin/projects/:slug" />
+    <AdminRoute path="/admin/papers" />
+    <AdminRoute path="/admin/papers/new" />
+    <AdminRoute path="/admin/papers/:slug" />
+    <AdminRoute path="/admin/videos" />
+    <AdminRoute path="/admin/videos/new" />
+    <AdminRoute path="/admin/videos/:slug" />
 
     <ErrorRoute path="*" component={ErrorContainer} />
   </Switch>
