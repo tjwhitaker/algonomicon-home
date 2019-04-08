@@ -1,5 +1,16 @@
-const AdminProjectIndexContainer = () => (
-  <div>Project Index</div>
-)
+import { inject, observer } from 'inferno-mobx'
 
-export default AdminProjectIndexContainer
+const AdminProjectIndexContainer = ({ ProjectStore }) => {
+  ProjectStore.fetchProjects()
+
+  return (
+    <div>
+      { ProjectStore.projects.map(project => (
+        <p>{project.name}</p>
+      ))}
+    </div>
+  )
+}
+
+
+export default inject('ProjectStore')(observer(AdminProjectIndexContainer))

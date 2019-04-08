@@ -1,5 +1,16 @@
-const AdminVideoIndexContainer = () => (
-  <div>Video Index</div>
-)
+import { inject, observer } from 'inferno-mobx'
 
-export default AdminVideoIndexContainer
+const AdminVideoIndexContainer = ({ VideoStore }) => {
+  VideoStore.fetchVideos()
+
+  return (
+    <div>
+      { VideoStore.videos.map(video => (
+        <p>{video.name}</p>
+      ))}
+    </div>
+  )
+}
+
+
+export default inject('VideoStore')(observer(AdminVideoIndexContainer))
