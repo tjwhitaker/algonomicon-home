@@ -1,11 +1,11 @@
-import ArticleStore from '../Contexts/Article/ArticleStore'
-import DatasetStore from '../Contexts/Dataset/DatasetStore'
+import ArticleStore from '../Stores/ArticleStore'
+import DatasetStore from '../Stores/DatasetStore'
 import FeedStore from '../Contexts/Home/Sidebar/Feed/FeedStore'
 import FlashStore from '../Shared/Layout/App/Flash/FlashStore'
-import PaperStore from '../Contexts/Paper/PaperStore'
-import ProjectStore from '../Contexts/Project/ProjectStore'
+import PaperStore from '../Stores/PaperStore'
+import ProjectStore from '../Stores/ProjectStore'
 import RegistrationStore from '../Shared/Layout/App/Header/Content/Registration/RegistrationStore'
-import VideoStore from '../Contexts/Video/VideoStore'
+import VideoStore from '../Stores/VideoStore'
 
 export default {
   ArticleStore: new ArticleStore(),
