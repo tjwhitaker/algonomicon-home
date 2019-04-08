@@ -1,5 +1,5 @@
 import { createComponent } from 'inferno-fela'
-import { Minion, LongPrimer } from '../../../../../Shared/Theme/Text'
+import { Minion } from '../../../../../Shared/Theme/Text'
 import Field from './Field'
 
 const Meta = createComponent(() => ({
