@@ -1,10 +1,10 @@
 import ArticleStore from '../Stores/ArticleStore'
 import DatasetStore from '../Stores/DatasetStore'
-import FeedStore from '../Contexts/Home/Sidebar/Feed/FeedStore'
-import FlashStore from '../Shared/Layout/App/Flash/FlashStore'
+import FeedStore from '../Stores/FeedStore'
+import FlashStore from '../Stores/FlashStore'
 import PaperStore from '../Stores/PaperStore'
 import ProjectStore from '../Stores/ProjectStore'
-import RegistrationStore from '../Shared/Layout/App/Header/Content/Registration/RegistrationStore'
+import RegistrationStore from '../Stores/RegistrationStore'
 import VideoStore from '../Stores/VideoStore'
 
 export default {
