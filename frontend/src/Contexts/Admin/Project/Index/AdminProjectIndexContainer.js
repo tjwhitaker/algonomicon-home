@@ -1,4 +1,5 @@
 import { inject, observer } from 'inferno-mobx'
+import { Link } from 'inferno-router'
 
 const AdminProjectIndexContainer = ({ ProjectStore }) => {
   ProjectStore.fetchProjects()
@@ -6,7 +7,7 @@ const AdminProjectIndexContainer = ({ ProjectStore }) => {
   return (
     <div>
       { ProjectStore.projects.map(project => (
-        <p>{project.name}</p>
+        <Link to={`/admin/projects/${project.slug}`}>{project.name}</Link>
       ))}
     </div>
   )

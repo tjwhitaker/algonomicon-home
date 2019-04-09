@@ -1,4 +1,5 @@
 import { inject, observer } from 'inferno-mobx'
+import { Link } from 'inferno-router'
 
 const AdminDatasetIndexContainer = ({ DatasetStore }) => {
   DatasetStore.fetchDatasets()
@@ -6,7 +7,9 @@ const AdminDatasetIndexContainer = ({ DatasetStore }) => {
   return (
     <div>
       { DatasetStore.datasets.map(dataset => (
-        <p>{dataset.name}</p>
+        <div>
+          <Link to={`/admin/datasets/${dataset.slug}`}>{dataset.name}</Link>
+        </div>
       ))}
     </div>
   )

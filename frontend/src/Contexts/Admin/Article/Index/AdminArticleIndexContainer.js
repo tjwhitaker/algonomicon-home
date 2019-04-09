@@ -1,4 +1,5 @@
 import { inject, observer } from 'inferno-mobx'
+import { Link } from 'inferno-router'
 
 const AdminArticleIndexContainer = ({ ArticleStore }) => {
   ArticleStore.fetchArticles()
@@ -6,7 +7,9 @@ const AdminArticleIndexContainer = ({ ArticleStore }) => {
   return (
     <div>
       { ArticleStore.articles.map(article => (
-        <p>{article.name}</p>
+        <div>
+          <Link to={`/admin/articles/${article.slug}`}>{article.name}</Link>
+        </div>
       ))}
     </div>
   )
