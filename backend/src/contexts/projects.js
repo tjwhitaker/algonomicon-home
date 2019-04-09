@@ -9,9 +9,9 @@ import authorize from '../auth'
 const Project = mongoose.model('Project', {
   name: String,
   slug: String,
+  hero: String,
   description: String,
   content: String,
-  hero: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
 })

@@ -1,7 +1,7 @@
 import { inject, observer } from 'inferno-mobx'
 
-const ProjectDetailContainer = ({ ProjectStore, match: {params} }) => {
-  const project = ProjectStore.fetchProject(params.slug)
+const ProjectDetailContainer = ({ ProjectStore, match }) => {
+  const project = ProjectStore.fetchProject(match.params.slug)
 
   if (project) { document.title = `${project.name} | Algonomicon` }
 

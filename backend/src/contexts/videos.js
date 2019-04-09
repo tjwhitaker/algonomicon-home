@@ -10,8 +10,8 @@ const Video = mongoose.model('Video', {
   name: String,
   slug: String,
   hero: String,
-  description: String,
   url: String,
+  description: String,
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
 })

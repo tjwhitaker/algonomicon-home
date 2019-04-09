@@ -8,8 +8,8 @@ const DatasetDetail = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const DatasetDetailContainer = ({ DatasetStore, match: {params} }) => {
-  const dataset = DatasetStore.fetchDataset(params.slug)
+const DatasetDetailContainer = ({ DatasetStore, match }) => {
+  const dataset = DatasetStore.fetchDataset(match.params.slug)
 
   if (dataset) { document.title = `${dataset.name} | Algonomicon` }
     

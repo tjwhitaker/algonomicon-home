@@ -8,8 +8,8 @@ const ArticleDetail = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const ArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
-  const article = ArticleStore.fetchArticle(params.slug)
+const ArticleDetailContainer = ({ ArticleStore, match }) => {
+  const article = ArticleStore.fetchArticle(match.params.slug)
 
   if (article) { document.title = `${article.name} | Algonomicon` }
 

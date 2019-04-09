@@ -8,8 +8,8 @@ const PaperDetail = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const PaperDetailContainer = ({ PaperStore, match: {params} }) => {
-  const paper = PaperStore.fetchPaper(params.slug)
+const PaperDetailContainer = ({ PaperStore, match }) => {
+  const paper = PaperStore.fetchPaper(match.params.slug)
 
   if (paper) { document.title = `${paper.name} | Algonomicon` }
 

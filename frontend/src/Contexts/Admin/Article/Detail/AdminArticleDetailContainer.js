@@ -1,7 +1,7 @@
 import { inject, observer } from 'inferno-mobx'
 
-const AdminArticleDetailContainer = ({ ArticleStore, match: {params} }) => {
-  const article = ArticleStore.fetchArticle(params.slug)
+const AdminArticleDetailContainer = ({ ArticleStore, match }) => {
+  const article = ArticleStore.fetchArticle(match.params.slug)
 
   return (
     <div>

@@ -171,6 +171,7 @@ const seedProjects = () => {
       "name": "Coming Soon",
       "slug": "coming-soon",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi ipsa voluptatum expedita nobis quod enim, mollitia incidunt alias deleniti laboriosam provident aliquam dolorem voluptas asperiores dolorum nostrum fugiat? Repellat."
       "hero": "https://source.unsplash.com/600x300"
     }
   ]

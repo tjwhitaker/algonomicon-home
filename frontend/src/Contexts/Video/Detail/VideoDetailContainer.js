@@ -8,8 +8,9 @@ const VideoDetail = createComponent(() => ({
   gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)'
 }))
 
-const VideoDetailContainer = ({ VideoStore, match: {params} }) => {
-  const video = VideoStore.fetchVideo(params.slug)
+const VideoDetailContainer = ({ VideoStore, match }) => {
+  const video = VideoStore.fetchVideo(match.params.slug)
+  
   if (video) { document.title = `${video.name} | Algonomicon` }
 
   return (
