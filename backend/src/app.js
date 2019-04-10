@@ -9,9 +9,11 @@ const app = new Koa()
 
 initDatabase()
 
-app.use(cors())
 app.use(logger())
 app.use(parser())
+app.use(cors())
 app.use(open.routes())
+//app.use(auth())
+app.use(closed.routes())
 
 app.listen(8000)

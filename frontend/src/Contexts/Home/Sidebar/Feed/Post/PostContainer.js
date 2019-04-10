@@ -1,10 +1,10 @@
 import { createComponent } from 'inferno-fela'
-import { ArticleContainer } from './ArticleContainer'
-import { DatasetContainer } from './DatasetContainer'
-import { EventContainer } from './EventContainer'
-import { PaperContainer } from './PaperContainer'
-import { ProjectContainer } from './ProjectContainer'
 import { Brevier, LongPrimer, Pica } from '../../../../../Shared/Theme/Text'
+import ArticleContainer from './ArticleContainer'
+import DatasetContainer from './DatasetContainer'
+import PaperContainer from './PaperContainer'
+import ProjectContainer from './ProjectContainer'
+import VideoContainer from './VideoContainer'
 
 const Post = createComponent(() => ({
   paddingTop: '1.5rem',
@@ -31,9 +31,9 @@ export const PostContainer = ({ item }) => (
   <Post>
     {{ article: <ArticleContainer article={item} />,
        dataset: <DatasetContainer dataset={item} />,
-       event: <EventContainer event={item} />,
        paper: <PaperContainer paper={item} />,
-       project: <ProjectContainer project={item} />
+       project: <ProjectContainer project={item} />,
+       video: <VideoContainer video={item} />
     }[item.type]}
   </Post>
 )
