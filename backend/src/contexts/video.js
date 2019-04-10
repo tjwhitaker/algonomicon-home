@@ -20,10 +20,7 @@ const video = {
   },
 
   create: async (ctx) => {
-    const video = new video.model(ctx.request.body)
-    await video.save()
-
-    ctx.response.body = video
+    ctx.response.body = await new video.model(ctx.request.body).save()
   },
 
   update: async (ctx) => {

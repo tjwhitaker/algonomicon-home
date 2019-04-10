@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const initDatabase = () => {
+const connectDatabase = () => {
   const options = {useNewUrlParser: true}
   
   mongoose.connect('mongodb://127.0.0.1:27017/test', options)
@@ -11,4 +11,4 @@ const initDatabase = () => {
     .once('open', () => console.log('Database opened'))
 }
 
-export default initDatabase
+export default connectDatabase

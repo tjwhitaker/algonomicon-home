@@ -4,6 +4,7 @@ import dataset from './contexts/dataset'
 import paper from './contexts/paper'
 import project from './contexts/project'
 import video from './contexts/video'
+import user from './contexts/user'
 import feed from './contexts/feed'
 
 const open = new Router()
@@ -39,6 +40,8 @@ closed.post('/videos', video.create)
 closed.put('/videos/:id', video.update)
 closed.delete('/videos/:id', video.destroy)
 
+open.post('/login', user.login)
+open.post('/register', user.register)
 open.get('/feed', feed.index)
 
 export { open, closed } 

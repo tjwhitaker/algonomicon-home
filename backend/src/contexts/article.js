@@ -22,10 +22,7 @@ const article = {
   },
 
   create: async (ctx) => {
-    const article = new article.model(ctx.request.body)
-    await article.save()
-
-    ctx.response.body = article
+    ctx.response.body = await new article.model(ctx.request.body).save()
   },
 
   update: async (ctx) => {

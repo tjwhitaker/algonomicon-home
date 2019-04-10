@@ -22,10 +22,7 @@ const dataset = {
   },
 
   create: async (ctx) => {
-    const dataset = new dataset.model(ctx.request.body)
-    await dataset.save()
-
-    ctx.response.body = dataset
+    ctx.response.body = await new dataset.model(ctx.request.body).save()
   },
 
   update: async (ctx) => {

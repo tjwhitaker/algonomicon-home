@@ -171,7 +171,7 @@ const seedProjects = () => {
       "name": "Coming Soon",
       "slug": "coming-soon",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis consequatur voluptatibus sequi, dolorum deleniti maiores eos fugiat. Velit voluptatum aperiam repellat architecto doloremque vero accusantium, quia officia corporis optio.",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi ipsa voluptatum expedita nobis quod enim, mollitia incidunt alias deleniti laboriosam provident aliquam dolorem voluptas asperiores dolorum nostrum fugiat? Repellat."
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eligendi ipsa voluptatum expedita nobis quod enim, mollitia incidunt alias deleniti laboriosam provident aliquam dolorem voluptas asperiores dolorum nostrum fugiat? Repellat.",
       "hero": "https://source.unsplash.com/600x300"
     }
   ]
@@ -229,8 +229,26 @@ const seedVideos = () => {
   })
 }
 
+const seedUsers = () => {
+  const user = {
+    email: 'test@algonomicon.com',
+    password: 'test'
+  }
+
+  let options = {
+    uri: 'http://localhost:8000/register',
+    method: 'POST',
+    json: user
+  }
+
+  request.post(options, () => {
+    console.log('Posted User')
+  })
+}
+
 seedArticles('../../articles/')
 seedDatasets()
 seedPapers()
 seedProjects()
 seedVideos()
+seedUsers()

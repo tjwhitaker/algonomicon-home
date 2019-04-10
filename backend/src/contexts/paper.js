@@ -19,10 +19,7 @@ const paper = {
   },
 
   create: async (ctx) => {
-    const paper = new paper.model(ctx.request.body)
-    await paper.save()
-
-    ctx.response.body = paper
+    ctx.response.body = await new paper.model(ctx.request.body).save()
   },
 
   update: async (ctx) => {

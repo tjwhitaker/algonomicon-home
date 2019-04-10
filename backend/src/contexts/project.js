@@ -20,10 +20,7 @@ const project = {
   },
 
   create: async (ctx) => {
-    const project = new project.model(ctx.request.body)
-    await project.save()
-
-    ctx.response.body = project
+    ctx.response.body = await new project.model(ctx.request.body).save()
   },
 
   update: async (ctx) => {
