@@ -29,11 +29,12 @@ export const Meta = createComponent(() => ({
 
 export const PostContainer = ({ item }) => (
   <Post>
-    {{ article: <ArticleContainer article={item} />,
-       dataset: <DatasetContainer dataset={item} />,
-       paper: <PaperContainer paper={item} />,
-       project: <ProjectContainer project={item} />,
-       video: <VideoContainer video={item} />
+    { item && { 
+      article: <ArticleContainer article={item} />,
+      dataset: <DatasetContainer dataset={item} />,
+      paper: <PaperContainer paper={item} />,
+      project: <ProjectContainer project={item} />,
+      video: <VideoContainer video={item} />
     }[item.type]}
   </Post>
 )
