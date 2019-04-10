@@ -23,10 +23,7 @@ const user = {
       }
 
       ctx.cookies.set('token', jwt.sign(payload, process.env.SECRET)) 
-
-      ctx.response.body = {
-        status: 'Success'
-      }
+      ctx.response.body = 'Success'
     }
     else {
       ctx.throw(401, 'Unauthorized')

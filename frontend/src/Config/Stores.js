@@ -1,3 +1,4 @@
+import UserStore from '../Stores/UserStore'
 import ArticleStore from '../Stores/ArticleStore'
 import DatasetStore from '../Stores/DatasetStore'
 import FeedStore from '../Stores/FeedStore'
@@ -8,6 +9,7 @@ import RegistrationStore from '../Stores/RegistrationStore'
 import VideoStore from '../Stores/VideoStore'
 
 export default {
+  UserStore: new UserStore(),
   ArticleStore: new ArticleStore(),
   DatasetStore: new DatasetStore(),
   FeedStore: new FeedStore(),
