@@ -1,5 +1,5 @@
 import { inject, observer } from 'inferno-mobx'
-import { Redirect, Link } from 'inferno-router'
+import { Redirect } from 'inferno-router'
 
 const LoginContainer = ({ UserStore }) => (
   UserStore.authenticated
@@ -15,8 +15,7 @@ const LoginContainer = ({ UserStore }) => (
         <input type="password" name="password" value={UserStore.password} onInput={UserStore.handleChange} />
       </div>
 
-      <button onClick={UserStore.handleSubmit}>Submit</button>
-      <Link to="/admin">Admin</Link>
+      <button onClick={UserStore.login}>Submit</button>
     </div>
 )
 

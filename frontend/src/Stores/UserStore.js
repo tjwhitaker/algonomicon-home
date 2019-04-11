@@ -12,7 +12,7 @@ class UserStore {
     }[event.target.name]()
   }
 
-  handleSubmit = async () => {
+  login = async () => {
     const payload = { email: this.email, password: this.password }
 
     const options = {
@@ -25,8 +25,10 @@ class UserStore {
     const data = await response.json()
 
     runInAction(() => {
-      document.cookie = `token=${data.token}`
-      this.authenticated = true
+      if (data.token) {
+        document.cookie = `token=${data.token}`
+        this.authenticated = true
+      }
     })
   }
 }

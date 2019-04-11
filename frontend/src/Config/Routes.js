@@ -46,18 +46,15 @@ const AppRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
-const AdminRoute = inject('UserStore')(observer(({ UserStore, component: Component, ...rest }) => {
-
-  return (
-    <Route {...rest} render={(props) => (
-      UserStore.authenticated
-        ? <AdminLayoutContainer {...props}>
-            <Component {...props} />
-          </AdminLayoutContainer>
-        : <Redirect to="/login" />
-    )} />
-  )
-}))
+const AdminRoute = inject('UserStore')(observer(({ UserStore, component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    UserStore.authenticated
+      ? <AdminLayoutContainer {...props}>
+          <Component {...props} />
+        </AdminLayoutContainer>
+      : <Redirect to="/login" />
+  )} />
+)))
 
 const ErrorRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
