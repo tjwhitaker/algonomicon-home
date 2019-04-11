@@ -22,8 +22,9 @@ const user = {
         expires: Date.now() + (24 * 60 * 60 * 1000)
       }
 
-      ctx.cookies.set('token', jwt.sign(payload, process.env.SECRET)) 
-      ctx.response.body = 'Success'
+      ctx.response.body = {
+        token: jwt.sign(payload, process.env.SECRET)
+      }
     }
     else {
       ctx.throw(401, 'Unauthorized')

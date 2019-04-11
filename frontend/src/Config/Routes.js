@@ -1,6 +1,5 @@
 import { Redirect, Route, Switch } from 'inferno-router'
-
-import Authentication from './Authentication'
+import { inject, observer } from 'inferno-mobx'
 
 import AppLayoutContainer from '../Shared/Layout/App/AppLayoutContainer'
 import AdminLayoutContainer from '../Shared/Layout/Admin/AdminLayoutContainer'
@@ -47,15 +46,18 @@ const AppRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
-const AdminRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    Authentication.isAuthenticated 
-      ? <AdminLayoutContainer {...props}>
-          <Component {...props} />
-        </AdminLayoutContainer>
-      : <Redirect to="/login" />
-  )} />
-)
+const AdminRoute = inject('UserStore')(observer(({ UserStore, component: Component, ...rest }) => {
+
+  return (
+    <Route {...rest} render={(props) => (
+      UserStore.authenticated
+        ? <AdminLayoutContainer {...props}>
+            <Component {...props} />
+          </AdminLayoutContainer>
+        : <Redirect to="/login" />
+    )} />
+  )
+}))
 
 const ErrorRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (

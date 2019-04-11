@@ -1,11 +1,17 @@
 const Authentication = {
-  isAuthenticated: false,
   
   async checkAuthentication() {
-    const response = await fetch(`${process.env.INFERNO_APP_API}/authenticate`)
-    const value = await response.json()
+    const options = {
+      method: 'GET',
+      credentials: 'include'
+    }
 
-    this.isAuthenticated = value
+    const response = await fetch(`${process.env.INFERNO_APP_API}/validate`, options)
+    const data = await response.json()
+
+    console.log(data)
+
+    return false 
   }
 } 
 

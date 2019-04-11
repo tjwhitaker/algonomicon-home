@@ -1,8 +1,10 @@
 import { inject, observer } from 'inferno-mobx'
+import { Redirect, Link } from 'inferno-router'
 
-const LoginContainer = ({ UserStore }) => {
-  return (
-    <div>
+const LoginContainer = ({ UserStore }) => (
+  UserStore.authenticated
+  ? <Redirect to="/admin" />
+  : <div>
       <div>
         <label>Email</label>
         <input type="text" name="email" value={UserStore.email} onInput={UserStore.handleChange} />
@@ -14,9 +16,9 @@ const LoginContainer = ({ UserStore }) => {
       </div>
 
       <button onClick={UserStore.handleSubmit}>Submit</button>
+      <Link to="/admin">Admin</Link>
     </div>
-  )
-}
+)
 
 
 export default inject('UserStore')(observer(LoginContainer))
