@@ -1,4 +1,5 @@
 import { createComponent } from 'inferno-fela'
+import marked from 'marked'
 import Title from './Title'
 
 const Content = createComponent(() => ({
@@ -10,7 +11,7 @@ const ContentContainer = ({ article }) => (
       <div>
         <Title>{article.name}</Title>
         <img src={article.hero} alt="" />
-        <Content dangerouslySetInnerHTML={{__html: article.content}} />
+        <Content dangerouslySetInnerHTML={{__html: marked(article.content)}} />
       </div>
     )}
   </div>

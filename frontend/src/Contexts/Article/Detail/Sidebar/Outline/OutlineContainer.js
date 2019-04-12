@@ -1,5 +1,6 @@
 import { createComponent } from 'inferno-fela'
 import { Minion, LongPrimer } from '../../../../../Shared/Theme/Text'
+import marked from 'marked'
 
 const Outline = createComponent(() => ({
   padding: '1.5rem 0',
@@ -32,7 +33,7 @@ const OutlineContainer = ({ article }) => (
   <div>
     <Minion>Outline</Minion>
     { article && 
-      <Outline dangerouslySetInnerHTML={{__html: article.outline}} />
+      <Outline dangerouslySetInnerHTML={{__html: marked(article.outline)}} />
     }
   </div>
 )

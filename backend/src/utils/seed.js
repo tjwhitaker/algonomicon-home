@@ -1,6 +1,5 @@
 const fs = require('fs')
 const parser = require('gray-matter')
-const marked = require('marked')
 const request = require('request')
 
 const seedArticles = (dirname) => {
@@ -17,8 +16,8 @@ const seedArticles = (dirname) => {
           hero: matter.data.hero,
           description: matter.data.description,
           author: matter.data.author,
-          outline: marked(matter.data.outline),
-          content: marked(matter.content)
+          outline: matter.data.outline,
+          content: matter.content
         }
 
         const options = {
