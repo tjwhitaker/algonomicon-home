@@ -41,7 +41,7 @@ closed.put('/videos/:id', video.update)
 closed.delete('/videos/:id', video.destroy)
 
 open.post('/login', user.login)
-// open.post('/register', user.register)
+open.post('/register', user.register)
 open.get('/feed', feed.index)
 
 export { open, closed } 

@@ -1,23 +1,46 @@
-import { inject, observer } from 'inferno-mobx'
-import { Redirect } from 'inferno-router'
+import { observable, toJS } from 'mobx'
+import { observer } from 'inferno-mobx'
 
-const LoginContainer = ({ UserStore }) => (
-  UserStore.authenticated
-  ? <Redirect to="/admin" />
-  : <div>
-      <div>
-        <label>Email</label>
-        <input type="text" name="email" value={UserStore.email} onInput={UserStore.handleChange} />
-      </div>
+const state = observable({
+  email: '',
+  password: ''
+})
 
-      <div>
-        <label>Password</label>
-        <input type="password" name="password" value={UserStore.password} onInput={UserStore.handleChange} />
-      </div>
+const handleInput = (event) => {
+  state[event.target.name] = event.target.value
+}
 
-      <button onClick={UserStore.login}>Submit</button>
+const handleClick = async () => {
+  const payload = toJS(state)
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {'Content-Type': 'application/json'}
+  }
+  
+  const response = await fetch(`${process.env.INFERNO_APP_API}/login`, options)
+  const data = await response.json()
+
+  if (data.token) {
+    document.cookie = `token=${data.token}`
+  }
+}
+
+const LoginContainer = observer(() => (
+  <div>
+    <div>
+      <label>Email</label>
+      <input type="text" name="email" value={state.email} onInput={handleInput} />
     </div>
-)
 
+    <div>
+      <label>Password</label>
+      <input type="password" name="password" value={state.password} onInput={handleInput} />
+    </div>
 
-export default inject('UserStore')(observer(LoginContainer))
+    <button onClick={handleClick}>Submit</button>
+  </div>
+))
+
+export default LoginContainer

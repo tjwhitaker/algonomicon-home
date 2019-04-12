@@ -14,7 +14,7 @@ app.use(logger())
 app.use(parser())
 app.use(cors())
 app.use(open.routes())
-app.use(jwt({ secret: process.env.SECRET, cookie: 'token' }))
+// app.use(jwt({ secret: process.env.SECRET, cookie: 'token' }))
 app.use(closed.routes())
 
 app.listen(8000)

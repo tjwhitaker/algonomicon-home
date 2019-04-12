@@ -5,7 +5,7 @@ class UserStore {
   @observable password = ''
   @observable authenticated = false 
 
-  handleChange = (event) => {
+  handleInput = (event) => {
     return {
       email: () => { this.email = event.target.value },
       password: () => { this.password = event.target.value }
