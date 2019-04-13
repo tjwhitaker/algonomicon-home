@@ -3,7 +3,7 @@ import CategoriesContainer from './Categories/CategoriesContainer'
 import FlashContainer from './Flash/FlashContainer'
 import HeaderContainer from './Header/HeaderContainer'
 import FooterContainer from './Footer/FooterContainer'
-import WrapperContainer from '../../Wrapper/WrapperContainer'
+import WrapperContainer from '../Wrapper/WrapperContainer'
 
 const Main = createComponent(() => ({
   background: '#fff',

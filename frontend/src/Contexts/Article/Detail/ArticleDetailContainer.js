@@ -9,7 +9,9 @@ const ArticleDetail = createComponent(() => ({
 }))
 
 const ArticleDetailContainer = ({ ArticleStore, match }) => {
-  const article = ArticleStore.fetchArticle(match.params.slug)
+  ArticleStore.fetchArticles()
+  
+  const article = ArticleStore.articles.find(article => article.slug === match.params.slug)
 
   if (article) { document.title = `${article.name} | Algonomicon` }
 
