@@ -6,6 +6,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import article from './article'
 import dataset from './dataset'
+import paper from './paper'
+import project from './project'
+import video from './video'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -15,6 +18,9 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     article,
-    dataset
+    dataset,
+    paper,
+    project,
+    video
   ])
 })

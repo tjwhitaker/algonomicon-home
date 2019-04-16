@@ -1,6 +1,6 @@
 export default {
-  title: "Dataset",
-  name: "dataset",
+  title: "Project",
+  name: "project",
   type: "document",
   fields: [
     {
@@ -17,19 +17,9 @@ export default {
       }
     },
     {
-      title: "Creator",
-      name: "creator",
-      type: "string"
-    },
-    {
-      title: "Format",
-      name: "format",
-      type: "string"
-    },
-    {
-      title: "Instances",
-      name: "instances",
-      type: "number"
+      title: "Hero Image",
+      name: "heroImage",
+      type: "image"
     },
     {
       title: "Description",
