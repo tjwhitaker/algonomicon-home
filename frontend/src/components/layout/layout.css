@@ -43,6 +43,37 @@ ul li {
   margin-bottom: 0;
 }
 
+table {
+  width:100%;
+}
+
+tr {
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  font-weight: bold;
+  color: #777;
+  text-transform:uppercase;
+  margin:0;
+  font-size:0.81225rem;
+  line-height: 1.1;
+}
+
+td,th {
+  padding: 1rem 0.5rem;
+  vertical-align:middle;
+}
+
+td:first-child, th:first-child {
+  padding-left:0;
+}
+
+td:last-child, th:last-child {
+  padding-right:0;
+}
+
+
 .glitch {
   position: relative;
   width: 260px;
