@@ -35,7 +35,7 @@ export default ({ data }) => {
           <div>
             { tail.map(({ node }) =>
               <div>
-                <Link to="">
+                <Link to={`/articles/${node.slug.current}`}>
                   <div>
                     <img src={node.heroImage.asset.url} />
                   </div>
