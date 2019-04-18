@@ -28,17 +28,17 @@ const Content = styled.div`
 
 export default ({ data }) => (
   <Layout>
-        { data.allSanityProject.edges.map(({node}) => 
-          <Project>
-            <Preview>
-              <img src={node.heroImage.asset.url} />
-            </Preview>
-            <Content>
-              <h3>{node.title}</h3>
-              <p>{node.description}</p>
-            </Content>
-          </Project>
-        )}
+    { data.allSanityProject.edges.map(({node}) => 
+      <Project>
+        <Preview>
+          <img src={node.heroImage.asset.url} />
+        </Preview>
+        <Content>
+          <h3>{node.title}</h3>
+          <p>{node.description}</p>
+        </Content>
+      </Project>
+    )}
   </Layout>
 )
 
