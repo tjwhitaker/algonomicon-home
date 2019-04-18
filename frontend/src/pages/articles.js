@@ -1,13 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from 'styled-components'
-import Layout from '../components/layout/layout'
-import Grid from '../components/layout/grid/grid'
-import Main from '../components/layout/grid/main'
-import Sidebar from '../components/layout/grid/sidebar'
-import Search from '../components/sidebar/search'
-import Sort from '../components/sidebar/sort'
-import Tags from '../components/sidebar/tags'
+import styled from "styled-components"
+import Layout from "../components/layout/layout"
+import Grid from "../components/layout/grid/grid"
+import Main from "../components/layout/grid/main"
+import Sidebar from "../components/layout/grid/sidebar"
+import Search from "../components/sidebar/search"
+import Sort from "../components/sidebar/sort"
+import Tags from "../components/sidebar/tags"
+import Image from "gatsby-image"
 
 const Feature = styled.div`
   flex: 0 0 100%;
@@ -16,7 +17,7 @@ const Feature = styled.div`
 
 export default ({ data }) => {
   const [head, ...tail] = data.allSanityArticle.edges
-  
+
   return (
     <Layout>
       <Grid>
@@ -24,7 +25,7 @@ export default ({ data }) => {
           <Feature>
             <Link to={`/articles/${head.node.slug.current}`}>
               <div>
-                <img src={head.node.heroImage.asset.url} />
+                <Image fluid={head.node.heroImage.asset.fluid} />
               </div>
               <div>
                 <h3>{head.node.title}</h3>
@@ -33,11 +34,11 @@ export default ({ data }) => {
             </Link>
           </Feature>
           <div>
-            { tail.map(({ node }) =>
+            {tail.map(({ node }) => (
               <div>
                 <Link to={`/articles/${node.slug.current}`}>
                   <div>
-                    <img src={node.heroImage.asset.url} />
+                    <Image fluid={node.heroImage.asset.fluid} />
                   </div>
                   <div>
                     <h3>{node.title}</h3>
@@ -45,7 +46,7 @@ export default ({ data }) => {
                   </div>
                 </Link>
               </div>
-            )}
+            ))}
           </div>
         </Main>
         <Sidebar>
@@ -63,15 +64,17 @@ export const query = graphql`
     allSanityArticle {
       edges {
         node {
-          title,
+          title
           slug {
             current
-          },
+          }
           heroImage {
             asset {
-              url
+              fluid {
+                ...GatsbySanityImageFluid
+              }
             }
-          },
+          }
           description
         }
       }

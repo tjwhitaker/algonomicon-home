@@ -1,6 +1,6 @@
 import React from "react"
 import Wrapper from "../../wrapper"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Footer = styled.div`
   background: #111;

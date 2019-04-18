@@ -5,8 +5,9 @@ import Grid from "../components/layout/grid/grid"
 import Main from "../components/layout/grid/main"
 import Sidebar from "../components/layout/grid/sidebar"
 import Feed from "../components/sidebar/feed"
+import Image from "gatsby-image"
 
-export default () => (
+export default ({ data }) => (
   <Layout>
     <Grid>
       <Main>
@@ -19,13 +20,23 @@ export default () => (
           people using it to change the world.
         </p>
 
-        <img src="/inception.jpg" alt="Inception Architecture" />
+        <Image
+          fluid={data.file.childImageSharp.fluid}
+          alt="Inception Architecture"
+        />
 
-        <p><i>Inception: A state of the art deep learning architecture developed by the AI research team at Google.</i></p>
+        <p>
+          <i>
+            Inception: A state of the art deep learning architecture developed
+            by the AI research team at Google.
+          </i>
+        </p>
 
         <blockquote>
           Truth is much too complicated to allow anything but approximations.
-          <p><i>- John Von Neumann</i></p>
+          <p>
+            <i>- John Von Neumann</i>
+          </p>
         </blockquote>
 
         <p>We're particularly interested in the following research topics:</p>
@@ -59,3 +70,15 @@ export default () => (
     </Grid>
   </Layout>
 )
+
+export const query = graphql`
+  {
+    file(relativePath: { eq: "inception.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

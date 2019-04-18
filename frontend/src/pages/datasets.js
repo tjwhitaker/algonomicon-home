@@ -1,23 +1,22 @@
 import React from "react"
-import styled from 'styled-components'
-import Layout from '../components/layout/layout'
-import Grid from '../components/layout/grid/grid'
-import Main from '../components/layout/grid/main'
-import Sidebar from '../components/layout/grid/sidebar'
-import Search from '../components/sidebar/search'
-import Sort from '../components/sidebar/sort'
-import Tags from '../components/sidebar/tags'
-import { Link } from 'gatsby'
+import styled from "styled-components"
+import Layout from "../components/layout/layout"
+import Grid from "../components/layout/grid/grid"
+import Main from "../components/layout/grid/main"
+import Sidebar from "../components/layout/grid/sidebar"
+import Search from "../components/sidebar/search"
+import Sort from "../components/sidebar/sort"
+import Tags from "../components/sidebar/tags"
+import { Link } from "gatsby"
 
 const LinkRow = styled(Link)`
   display: table-row;
-  color: hsla(0,0%,0%,0.8);
-  font-weight:normal;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: normal;
 
   &:hover {
-    color: hsla(0,0%,0%,0.8);
+    color: hsla(0, 0%, 0%, 0.8);
   }
-
 `
 
 export default ({ data }) => (
@@ -34,7 +33,7 @@ export default ({ data }) => (
             </tr>
           </thead>
           <tbody>
-            { data.allSanityDataset.edges.map(({ node }) => (
+            {data.allSanityDataset.edges.map(({ node }) => (
               <LinkRow to={`/datasets/${node.slug.current}`}>
                 <td>{node.title}</td>
                 <td>{node.description}</td>
@@ -59,12 +58,12 @@ export const query = graphql`
     allSanityDataset {
       edges {
         node {
-          title,
+          title
           slug {
             current
-          },
-          description,
-          format,
+          }
+          description
+          format
           instances
         }
       }

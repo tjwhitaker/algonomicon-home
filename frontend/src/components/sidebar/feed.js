@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Minion from '../text/minion'
+import React from "react"
+import styled from "styled-components"
+import Minion from "../text/minion"
 
 const Feed = styled.div`
   padding: 1rem 0;
@@ -9,6 +9,6 @@ const Feed = styled.div`
 export default () => (
   <div>
     <Minion>Feed</Minion>
-    <Feed></Feed>
+    <Feed />
   </div>
 )

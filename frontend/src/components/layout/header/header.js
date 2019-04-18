@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const Header = styled.div`
+  background-color: #111;
   background-image: url(/nebula-small.jpg);
   background-size: cover;
   background-position: center bottom;

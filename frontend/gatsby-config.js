@@ -1,11 +1,21 @@
 module.exports = {
   plugins: [
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/static/`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
+      }
     },
     {
       resolve: 'gatsby-source-sanity',

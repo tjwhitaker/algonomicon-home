@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Minion from '../text/minion'
+import Minion from "../text/minion"
 
 const Sort = styled.div`
   display: flex;
