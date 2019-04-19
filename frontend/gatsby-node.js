@@ -8,10 +8,18 @@ exports.createPages = async({graphql, actions}) => {
 
   const result = await graphql(`
     {
-      allSanityArticle(filter: {slug: {current: {ne: null}}}) {
+      articles: allSanityArticle(filter: {slug: {current: {ne: null}}}) {
         edges {
           node {
-            title,
+            slug {
+              current
+            }
+          }
+        }
+      }
+      datasets: allSanityDataset(filter: {slug: {current: {ne: null}}}) {
+        edges {
+          node {
             slug {
               current
             }
@@ -21,7 +29,8 @@ exports.createPages = async({graphql, actions}) => {
     }
   `)
 
-  const articles = result.data.allSanityArticle.edges || []
+  const articles = result.data.articles.edges || []
+  const datasets = result.data.datasets.edges || []
 
   articles.forEach((edge, index) => {
     const path = `/articles/${edge.node.slug.current}`
@@ -29,6 +38,18 @@ exports.createPages = async({graphql, actions}) => {
     createPage({
       path,
       component: require.resolve('./src/templates/article-detail.js'),
+      context: {slug: edge.node.slug.current}
+    })
+
+    createPageDependency({path, nodeId: edge.node.id})
+  })
+
+  datasets.forEach((edge, index) => {
+    const path = `/datasets/${edge.node.slug.current}`
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/dataset-detail.js'),
       context: {slug: edge.node.slug.current}
     })
 
