@@ -9,6 +9,7 @@ import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import { Link } from "gatsby"
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const LinkRow = styled(Link)`
   display: table-row;
@@ -22,6 +23,9 @@ const LinkRow = styled(Link)`
 
 export default ({ data }) => (
   <Layout>
+    <Helmet>
+      <title>Datasets | Algonomicon</title>
+    </Helmet>
     <Grid>
       <Main>
         <table>

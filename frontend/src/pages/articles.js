@@ -10,6 +10,7 @@ import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import Image from "gatsby-image"
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const Feature = styled.div`
   flex: 0 0 100%;
@@ -21,6 +22,9 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Articles | Algonomicon</title>
+      </Helmet>
       <Grid>
         <Main>
           <Feature>

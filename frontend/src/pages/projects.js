@@ -4,6 +4,7 @@ import Layout from "../components/layout/layout"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const Project = styled.div`
   display: flex;
@@ -31,6 +32,9 @@ const Content = styled.div`
 
 export default ({ data }) => (
   <Layout>
+    <Helmet>
+      <title>Projects | Algonomicon</title>
+    </Helmet>
     {data.projects.edges.map(({ node }) => (
       <Link to={`/projects/${node.slug.current}`}>
         <Project>

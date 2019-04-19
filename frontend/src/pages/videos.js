@@ -10,9 +10,13 @@ import Tags from "../components/sidebar/tags"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 export default ({ data }) => (
   <Layout>
+    <Helmet>
+      <title>Videos | Algonomicon</title>
+    </Helmet>
     <Grid>
       <Main>
         <div>

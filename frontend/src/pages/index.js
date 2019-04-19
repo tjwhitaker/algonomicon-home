@@ -5,9 +5,13 @@ import Main from "../components/layout/grid/main"
 import Sidebar from "../components/layout/grid/sidebar"
 import Feed from "../components/sidebar/feed"
 import Image from "gatsby-image"
+import { Helmet } from 'react-helmet'
 
 export default ({ data }) => (
   <Layout>
+    <Helmet>
+      <title>Home | Algonomicon</title>
+    </Helmet>
     <Grid>
       <Main>
         <p>

@@ -9,6 +9,7 @@ import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import { Link } from "gatsby"
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const Post = styled.div`
   padding: 1rem 0;
@@ -31,6 +32,9 @@ const Post = styled.div`
 
 export default ({ data }) => (
   <Layout>
+    <Helmet>
+      <title>Papers | Algonomicon</title>
+    </Helmet>
     <Grid>
       <Main>
         {data.papers.edges.map(({ node }) => (
