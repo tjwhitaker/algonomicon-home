@@ -11,13 +11,20 @@ const Container = styled.div`
   min-height: 60vh;
 `
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+`
+
 export default ({ children }) => (
   <div>
     <Header />
     <Container>
       <Wrapper>
         <Categories />
-        {children}
+        <Grid>
+          {children}
+        </Grid>
       </Wrapper>
     </Container>
     <Footer />

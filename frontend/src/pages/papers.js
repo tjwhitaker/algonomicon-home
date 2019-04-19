@@ -1,9 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/layout/layout"
-import Grid from "../components/layout/grid/grid"
-import Main from "../components/layout/grid/main"
-import Sidebar from "../components/layout/grid/sidebar"
+import SidebarLayout from "../components/layout/sidebar-layout"
+import Main from "../components/layout/main"
+import Sidebar from "../components/layout/sidebar"
 import Search from "../components/sidebar/search"
 import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
@@ -31,28 +30,26 @@ const Post = styled.div`
 `
 
 export default ({ data }) => (
-  <Layout>
+  <SidebarLayout>
     <Helmet>
       <title>Papers | Algonomicon</title>
     </Helmet>
-    <Grid>
-      <Main>
-        {data.papers.edges.map(({ node }) => (
-          <Post>
-            <Link to={`/papers/${node.slug.current}`}>
-              <h3>{node.title}</h3>
-              <p>{node.abstract.substring(0, 300)}...</p>
-            </Link>
-          </Post>
-        ))}
-      </Main>
-      <Sidebar>
-        <Search />
-        <Sort />
-        <Tags />
-      </Sidebar>
-    </Grid>
-  </Layout>
+    <Main>
+      {data.papers.edges.map(({ node }) => (
+        <Post>
+          <Link to={`/papers/${node.slug.current}`}>
+            <h3>{node.title}</h3>
+            <p>{node.abstract.substring(0, 300)}...</p>
+          </Link>
+        </Post>
+      ))}
+    </Main>
+    <Sidebar>
+      <Search />
+      <Sort />
+      <Tags />
+    </Sidebar>
+  </SidebarLayout>
 )
 
 export const query = graphql`

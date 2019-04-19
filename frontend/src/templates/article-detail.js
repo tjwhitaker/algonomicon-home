@@ -1,24 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from "../components/layout/layout"
-import Grid from "../components/layout/grid/grid"
-import Main from "../components/layout/grid/main"
-import Sidebar from "../components/layout/grid/sidebar"
+import SidebarLayout from "../components/layout/sidebar-layout"
+import Main from "../components/layout/main"
+import Sidebar from "../components/layout/sidebar"
 import { Helmet } from 'react-helmet'
 
 export default ({ data }) => (
-  <Layout>
+  <SidebarLayout>
     <Helmet>
       <title>{data.article.title} | Algonomicon</title>
     </Helmet>
-    <Grid>
-      <Main>
-        <p>{data.article.title}</p>
-        <p>{data.article.description}</p>
-      </Main>
-      <Sidebar></Sidebar>
-    </Grid>
-  </Layout>
+    <Main>
+      <p>{data.article.title}</p>
+      <p>{data.article.description}</p>
+    </Main>
+    <Sidebar></Sidebar>
+  </SidebarLayout>
 )
 
 export const query = graphql`

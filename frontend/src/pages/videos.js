@@ -1,9 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/layout/layout"
-import Grid from "../components/layout/grid/grid"
-import Main from "../components/layout/grid/main"
-import Sidebar from "../components/layout/grid/sidebar"
+import SidebarLayout from "../components/layout/sidebar-layout"
+import Main from "../components/layout/main"
+import Sidebar from "../components/layout/sidebar"
 import Search from "../components/sidebar/search"
 import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
@@ -13,33 +12,31 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 export default ({ data }) => (
-  <Layout>
+  <SidebarLayout>
     <Helmet>
       <title>Videos | Algonomicon</title>
     </Helmet>
-    <Grid>
-      <Main>
-        <div>
-          {data.videos.edges.map(({ node }) => (
-            <Video>
-              <Link to={`/videos/${node.slug.current}`}>
-                <Image fluid={node.heroImage.asset.fluid} />
-                <Title>{node.title}</Title>
-                <Description>
-                  {node.description.substring(0, 300)}...
-                </Description>
-              </Link>
-            </Video>
-          ))}
-        </div>
-      </Main>
-      <Sidebar>
-        <Search />
-        <Sort />
-        <Tags />
-      </Sidebar>
-    </Grid>
-  </Layout>
+    <Main>
+      <div>
+        {data.videos.edges.map(({ node }) => (
+          <Video>
+            <Link to={`/videos/${node.slug.current}`}>
+              <Image fluid={node.heroImage.asset.fluid} />
+              <Title>{node.title}</Title>
+              <Description>
+                {node.description.substring(0, 300)}...
+              </Description>
+            </Link>
+          </Video>
+        ))}
+      </div>
+    </Main>
+    <Sidebar>
+      <Search />
+      <Sort />
+      <Tags />
+    </Sidebar>
+  </SidebarLayout>
 )
 
 export const query = graphql`

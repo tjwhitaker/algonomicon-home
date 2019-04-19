@@ -1,6 +1,6 @@
 import React from "react"
 import Logo from "./logo"
-import Wrapper from "../../wrapper"
+import Wrapper from "../wrapper"
 import styled from "styled-components"
 import { Link } from "gatsby"
 

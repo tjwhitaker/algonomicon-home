@@ -1,5 +1,5 @@
 import React from "react"
-import Wrapper from "../../wrapper"
+import Wrapper from "../wrapper"
 import styled from "styled-components"
 
 const Footer = styled.div`
