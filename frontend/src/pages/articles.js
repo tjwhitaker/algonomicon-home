@@ -9,6 +9,7 @@ import Search from "../components/sidebar/search"
 import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import Image from "gatsby-image"
+import { graphql } from 'gatsby'
 
 const Feature = styled.div`
   flex: 0 0 100%;

@@ -8,6 +8,7 @@ import Search from "../components/sidebar/search"
 import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 const LinkRow = styled(Link)`
   display: table-row;

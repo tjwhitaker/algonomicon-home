@@ -9,6 +9,7 @@ import Sort from "../components/sidebar/sort"
 import Tags from "../components/sidebar/tags"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 export default ({ data }) => (
   <Layout>
