@@ -1,12 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Layout from "../components/layout/layout"
 
 export default ({ data }) => (
-  <div>
+  <Layout>
     <p>{data.project.title}</p>
     <p>{data.project.description}</p>
-  </div>
+  </Layout>
 )
+
 
 export const query = graphql`
   query($slug: String!) {

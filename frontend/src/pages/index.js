@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import Layout from "../components/layout/layout"
 import Grid from "../components/layout/grid/grid"
 import Main from "../components/layout/grid/main"
