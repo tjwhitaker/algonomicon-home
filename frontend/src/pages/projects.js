@@ -28,7 +28,7 @@ const Content = styled.div`
 
 export default ({ data }) => (
   <Layout>
-    {data.allSanityProject.edges.map(({ node }) => (
+    {data.projects.edges.map(({ node }) => (
       <Project>
         <Preview>
           <Image fluid={node.heroImage.asset.fluid} />
@@ -44,7 +44,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    allSanityProject {
+    projects: allSanityProject {
       edges {
         node {
           title

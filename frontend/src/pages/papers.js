@@ -32,7 +32,7 @@ export default ({ data }) => (
   <Layout>
     <Grid>
       <Main>
-        {data.allSanityPaper.edges.map(({ node }) => (
+        {data.papers.edges.map(({ node }) => (
           <Post>
             <Link to={`/papers/${node.slug.current}`}>
               <h3>{node.title}</h3>
@@ -52,7 +52,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    allSanityPaper {
+    papers: allSanityPaper {
       edges {
         node {
           title

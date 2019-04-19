@@ -33,7 +33,7 @@ export default ({ data }) => (
             </tr>
           </thead>
           <tbody>
-            {data.allSanityDataset.edges.map(({ node }) => (
+            {data.datasets.edges.map(({ node }) => (
               <LinkRow to={`/datasets/${node.slug.current}`}>
                 <td>{node.title}</td>
                 <td>{node.description}</td>
@@ -55,7 +55,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    allSanityDataset {
+    datasets: allSanityDataset {
       edges {
         node {
           title

@@ -16,7 +16,7 @@ const Feature = styled.div`
 `
 
 export default ({ data }) => {
-  const [head, ...tail] = data.allSanityArticle.edges
+  const [head, ...tail] = data.articles.edges
 
   return (
     <Layout>
@@ -61,7 +61,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allSanityArticle {
+    articles: allSanityArticle {
       edges {
         node {
           title

@@ -15,7 +15,7 @@ export default ({ data }) => (
     <Grid>
       <Main>
         <div>
-          {data.allSanityVideo.edges.map(({ node }) => (
+          {data.videos.edges.map(({ node }) => (
             <Video>
               <Link to={`/videos/${node.slug.current}`}>
                 <Image fluid={node.heroImage.asset.fluid} />
@@ -39,7 +39,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    allSanityVideo {
+    videos: allSanityVideo {
       edges {
         node {
           title
