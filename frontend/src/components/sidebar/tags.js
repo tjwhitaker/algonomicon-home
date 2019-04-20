@@ -1,36 +1,41 @@
 import React from "react"
 import styled from "styled-components"
 import Minion from "../text/minion"
+import { Link } from 'gatsby'
 
 const Tags = styled.div`
   padding: 1rem 0;
+`
+
+const Tag = styled(Link)`
+  margin-left:0.5rem;
 `
 
 export default () => (
   <div>
     <Minion>Tags</Minion>
     <Tags>
-      <span>Art</span>
-      <span>Fun</span>
-      <span>Games</span>
-      <span>General</span>
-      <span>News</span>
-      <span>Language</span>
-      <span>Vision</span>
-      <span>Art</span>
-      <span>Fun</span>
-      <span>Games</span>
-      <span>General</span>
-      <span>News</span>
-      <span>Language</span>
-      <span>Vision</span>
-      <span>Art</span>
-      <span>Fun</span>
-      <span>Games</span>
-      <span>General</span>
-      <span>News</span>
-      <span>Language</span>
-      <span>Vision</span>
+      <Tag to="/tags/art">Art</Tag>
+      <Tag>Fun</Tag>
+      <Tag>Games</Tag>
+      <Tag>General</Tag>
+      <Tag>News</Tag>
+      <Tag>Language</Tag>
+      <Tag>Vision</Tag>
+      <Tag>Reinforcment</Tag>
+      <Tag>Unsupervised</Tag>
+      <Tag>Games</Tag>
+      <Tag>General</Tag>
+      <Tag>News</Tag>
+      <Tag>Language</Tag>
+      <Tag>Vision</Tag>
+      <Tag>Art</Tag>
+      <Tag>Fun</Tag>
+      <Tag>Games</Tag>
+      <Tag>General</Tag>
+      <Tag>News</Tag>
+      <Tag>Language</Tag>
+      <Tag>Vision</Tag>
     </Tags>
   </div>
 )

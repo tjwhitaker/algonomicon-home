@@ -10,25 +10,6 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-const Post = styled.div`
-  padding: 1rem 0;
-  border-bottom: 1px solid #ccc;
-
-  h3 {
-    color: hsla(0, 0%, 0%, 0.8);
-    margin-top: 0;
-  }
-
-  p {
-    color: hsla(0, 0%, 0%, 0.8);
-    font-weight: normal;
-  }
-
-  &:first-child {
-    padding-top: 0;
-  }
-`
-
 export default ({ data }) => (
   <SidebarLayout>
     <Helmet>
@@ -66,5 +47,24 @@ export const query = graphql`
         }
       }
     }
+  }
+`
+
+const Post = styled.div`
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+
+  h3 {
+    color: hsla(0, 0%, 0%, 0.8);
+    margin-top: 0;
+  }
+
+  p {
+    color: hsla(0, 0%, 0%, 0.8);
+    font-weight: normal;
+  }
+
+  &:first-child {
+    padding-top: 0;
   }
 `

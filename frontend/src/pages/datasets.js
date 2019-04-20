@@ -10,16 +10,6 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-const LinkRow = styled(Link)`
-  display: table-row;
-  color: hsla(0, 0%, 0%, 0.8);
-  font-weight: normal;
-
-  &:hover {
-    color: hsla(0, 0%, 0%, 0.8);
-  }
-`
-
 export default ({ data }) => (
   <SidebarLayout>
     <Helmet>
@@ -70,5 +60,15 @@ export const query = graphql`
         }
       }
     }
+  }
+`
+
+const LinkRow = styled(Link)`
+  display: table-row;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: normal;
+
+  &:hover {
+    color: hsla(0, 0%, 0%, 0.8);
   }
 `

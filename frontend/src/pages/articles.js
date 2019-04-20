@@ -11,11 +11,6 @@ import Image from "gatsby-image"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-const Feature = styled.div`
-  flex: 0 0 100%;
-  position: relative;
-`
-
 export default ({ data }) => {
   const [head, ...tail] = data.articles.edges
 
@@ -30,13 +25,13 @@ export default ({ data }) => {
             <div>
               <Image fluid={head.node.heroImage.asset.fluid} />
             </div>
-            <div>
+            <Content>
               <h3>{head.node.title}</h3>
               <p>{head.node.description.substring(0, 100)}...</p>
-            </div>
+            </Content>
           </Link>
         </Feature>
-        <div>
+        <Grid>
           {tail.map(({ node }) => (
             <div>
               <Link to={`/articles/${node.slug.current}`}>
@@ -50,7 +45,7 @@ export default ({ data }) => {
               </Link>
             </div>
           ))}
-        </div>
+        </Grid>
       </Main>
       <Sidebar>
         <Search />
@@ -82,4 +77,34 @@ export const query = graphql`
       }
     }
   }
+`
+
+const Feature = styled.div`
+  flex: 0 0 100%;
+  position: relative;
+`
+
+const Content = styled.div`
+  background: hsla(0, 0%, 0%, 0.8);
+  position:absolute;
+  bottom:1rem;
+  left:1rem;
+  max-width:60%;
+  padding:1rem;
+
+  h3 {
+    color: #fff;
+    margin-top:0;
+  }
+
+  p {
+    font-weight:normal;
+    color: #eee;
+  }
+`
+
+const Grid = styled.div`
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
 `
