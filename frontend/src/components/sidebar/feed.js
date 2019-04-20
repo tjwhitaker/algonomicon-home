@@ -24,6 +24,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: hsla(0, 0%, 0%, 0.8);
+  margin-bottom:0;
   font-weight:normal;
 `
 
@@ -41,23 +42,38 @@ const Article = ({ data }) => (
 )
 
 const Dataset = ({ data }) => (
-  <div>dataset</div>
+  <Post to={`/datasets/${data.slug.current}`}>
+    <Title>{data.title}</Title>
+    <Description>{data.description.substring(0, 100)}...</Description>
+    <Meta>Dataset from time ago</Meta>
+  </Post>
 )
 
 const Paper = ({ data }) => (
-  <div>paper</div>
+  <Post to={`/papers/${data.slug.current}`}>
+    <Title>{data.title}</Title>
+    <Description>{data.abstract.substring(0, 100)}...</Description>
+    <Meta>Paper from time ago</Meta>
+  </Post>
 )
 
 const Project = ({ data }) => (
-  <div>project</div>
+  <Post to={`/projects/${data.slug.current}`}>
+    <Title>{data.title}</Title>
+    <Description>{data.description.substring(0, 100)}...</Description>
+    <Meta>Project from time ago</Meta>
+  </Post>
 )
 
 const Video = ({ data }) => (
-  <div>video</div>
+  <Post to={`/videos/${data.slug.current}`}>
+    <Title>{data.title}</Title>
+    <Description>{data.description.substring(0, 100)}...</Description>
+    <Meta>Video from time ago</Meta>
+  </Post>
 )
 
 const Feed = ({ data }) => {
-
   const items = [
     ...data.articles.edges,
     ...data.datasets.edges,
@@ -69,8 +85,6 @@ const Feed = ({ data }) => {
   items.sort((a, b) => {
     return new Date(b.createdAt) - new Date(a.createdAt)
   })
-
-console.log(items)
 
   return (
     <div>
@@ -114,6 +128,8 @@ export default () => (
             node {
               _type
               _createdAt
+              title
+              description
               slug {
                 current
               }
@@ -125,6 +141,8 @@ export default () => (
             node {
               _type
               _createdAt
+              title
+              abstract
               slug {
                 current
               }
@@ -136,6 +154,8 @@ export default () => (
             node {
               _type
               _createdAt
+              title
+              description
               slug {
                 current
               }
@@ -147,6 +167,8 @@ export default () => (
             node {
               _type
               _createdAt
+              title
+              description
               slug {
                 current
               }
