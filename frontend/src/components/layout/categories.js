@@ -23,19 +23,19 @@ export default () => (
     <CategoryLink to="/" activeClassName="active">
       Home
     </CategoryLink>
-    <CategoryLink to="/articles" activeClassName="active">
+    <CategoryLink to="/articles" activeClassName="active" partiallyActive={true}>
       Articles
     </CategoryLink>
-    <CategoryLink to="/datasets" activeClassName="active">
+    <CategoryLink to="/datasets" activeClassName="active" partiallyActive={true}>
       Datasets
     </CategoryLink>
-    <CategoryLink to="/papers" activeClassName="active">
+    <CategoryLink to="/papers" activeClassName="active" partiallyActive={true}>
       Papers
     </CategoryLink>
-    <CategoryLink to="/projects" activeClassName="active">
+    <CategoryLink to="/projects" activeClassName="active" partiallyActive={true}>
       Projects
     </CategoryLink>
-    <CategoryLink to="/videos" activeClassName="active">
+    <CategoryLink to="/videos" activeClassName="active" partiallyActive={true}>
       Videos
     </CategoryLink>
   </Categories>
