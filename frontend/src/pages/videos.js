@@ -21,7 +21,11 @@ export default ({ data }) => (
         {data.videos.edges.map(({ node }) => (
           <Video>
             <Link to={`/videos/${node.slug.current}`}>
-              <Image fluid={node.heroImage.asset.fluid} />
+              <ImageContainer>
+                <Image fluid={node.heroImage.asset.fluid} />
+                <PlayIcon>
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-play fa-w-14"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" class=""></path></svg>                </PlayIcon>
+              </ImageContainer>
               <Title>{node.title}</Title>
               <Description>
                 {node.description.substring(0, 300)}...
@@ -69,6 +73,12 @@ const Video = styled.div`
   &:first-child {
     padding-top: 0;
   }
+
+  &:hover {
+    svg {
+      color: hsla(0, 100%, 100%, 1);
+    }
+  }
 `
 
 const Title = styled.h3`
@@ -78,4 +88,20 @@ const Title = styled.h3`
 const Description = styled.p`
   color: hsla(0, 0%, 0%, 0.8);
   font-weight: normal;
+`
+
+const ImageContainer = styled.div`
+  position:relative;
+`
+
+const PlayIcon = styled.div`
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:hsla(0, 100%, 100%, 0.8);
+
+  svg {
+    width:2rem;
+  }
 `

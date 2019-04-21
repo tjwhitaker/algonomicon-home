@@ -9,7 +9,7 @@ const Header = styled.div`
   background-image: url(/nebula-small.jpg);
   background-size: cover;
   background-position: center bottom;
-  height: 20rem;
+  height: 18rem;
   position: relative;
 `
 
