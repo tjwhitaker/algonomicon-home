@@ -1,10 +1,17 @@
 import React from "react"
+import styled from 'styled-components'
 import SidebarLayout from "../components/layout/sidebar-layout"
 import Main from "../components/layout/main"
-import Sidebar from "../components/layout/sidebar"
 import Feed from "../components/sidebar/feed"
 import Image from "gatsby-image"
 import { Helmet } from 'react-helmet'
+
+const Sidebar = styled.div`
+  padding-left: 1rem;
+  max-height:100%;
+  overflow: hidden;
+  position: relative;
+`
 
 export default ({ data }) => (
   <SidebarLayout>
