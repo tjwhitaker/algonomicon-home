@@ -31,9 +31,7 @@ export default ({ data }) => (
       <div>
         <Minion>Outline</Minion>
         <Outline>
-          <BlockContent 
-            blocks={data.article._rawOutline}
-          />
+          <BlockContent blocks={data.article._rawOutline} />
         </Outline>
       </div>
     </Sidebar>
@@ -75,4 +73,23 @@ const Field = styled.p`
 
 const Outline = styled.div`
   padding: 1rem 0;
+
+  ul {
+    list-style:inside;
+    margin-left:0;
+
+    li {
+      margin-bottom:1rem;
+
+      ul {
+        list-style: inside circle;
+        margin-left: 1.625rem;
+        margin-top:0;
+
+        li {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 `
