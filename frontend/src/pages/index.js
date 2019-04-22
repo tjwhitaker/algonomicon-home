@@ -81,7 +81,7 @@ export const query = graphql`
   {
     file(relativePath: { eq: "inception.jpg" }) {
       childImageSharp {
-        fluid {
+        fluid(quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
