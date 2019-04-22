@@ -24,6 +24,7 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-source-sanity": "^2.0.3",
     "gatsby-transformer-sharp": "^2.1.18",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",

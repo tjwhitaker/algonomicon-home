@@ -30,12 +30,12 @@ export default ({ data }) => (
 
       <Image
         fluid={data.file.childImageSharp.fluid}
-        alt="Fully Convolutional Network"
+        alt="Inception"
       />
 
       <p>
         <i>
-          Fully Convolutional Network: A state of the art image segmentation architecture.
+          Inception: A state of the art deep learning architecture developed by the AI research team at Google.
         </i>
       </p>
 
@@ -79,7 +79,7 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    file(relativePath: { eq: "fcn8.png" }) {
+    file(relativePath: { eq: "inception.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

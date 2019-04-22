@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import moment from 'moment'
 import Minion from "../text/minion"
 import { StaticQuery, Link, graphql } from 'gatsby'
 
@@ -37,7 +38,7 @@ const Article = ({ data }) => (
   <Post to={`/articles/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Article from time ago</Meta>
+    <Meta>Article from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -45,7 +46,7 @@ const Dataset = ({ data }) => (
   <Post to={`/datasets/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Dataset from time ago</Meta>
+    <Meta>Dataset from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -53,7 +54,7 @@ const Paper = ({ data }) => (
   <Post to={`/papers/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.abstract.substring(0, 100)}...</Description>
-    <Meta>Paper from time ago</Meta>
+    <Meta>Paper from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -61,7 +62,7 @@ const Project = ({ data }) => (
   <Post to={`/projects/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Project from time ago</Meta>
+    <Meta>Project from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -69,7 +70,7 @@ const Video = ({ data }) => (
   <Post to={`/videos/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Video from time ago</Meta>
+    <Meta>Video from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -83,7 +84,7 @@ const Feed = ({ data }) => {
   ]
   
   items.sort((a, b) => {
-    return new Date(b.createdAt) - new Date(a.createdAt)
+    return new Date(b.node._createdAt) - new Date(a.node._createdAt)
   })
 
   return (
