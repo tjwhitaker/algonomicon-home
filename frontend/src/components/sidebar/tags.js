@@ -8,7 +8,9 @@ const Tags = styled.div`
 `
 
 const Tag = styled(Link)`
-  margin-left:0.5rem;
+  margin-right:0.5rem;
+  display:inline-block;
+  color:#aaa;
 `
 
 export default () => (
