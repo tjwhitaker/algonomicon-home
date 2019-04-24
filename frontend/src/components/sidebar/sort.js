@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Minion from "../text/minion"
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
 
 const Sort = styled.div`
   display: flex;
@@ -13,8 +13,8 @@ const Group = styled.div`
 `
 
 const Option = styled(Link)`
-  color:#aaa;
-  display:block;
+  color: #aaa;
+  display: block;
 `
 
 export default () => (

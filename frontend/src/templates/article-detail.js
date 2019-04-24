@@ -8,30 +8,31 @@ import Minion from '../components/text/minion'
 import BlockContent from '@sanity/block-content-to-react'
 import Image from 'gatsby-image'
 import { Helmet } from 'react-helmet'
+import serializers from '../utils/serializers'
 
-export default ({ data }) => (
+export default ({ data: {article} }) => (
   <SidebarLayout>
     <Helmet>
-      <title>{data.article.title} | Algonomicon</title>
+      <title>{article.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{data.article.title}</Title>
-      <Image fluid={data.article.heroImage.asset.fluid} />
-      <BlockContent blocks={data.article._rawContent} />
+      <Title>{article.title}</Title>
+      <Image fluid={article.heroImage.asset.fluid} />
+      <BlockContent blocks={article._rawContent} serializers={serializers} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Author: {data.article.author}</Field>
-          <Field>Created: {data.article._createdAt}</Field>
-          <Field>Updated: {data.article._updatedAt}</Field>
+          <Field>Author: {article.author}</Field>
+          <Field>Created: {article._createdAt}</Field>
+          <Field>Updated: {article._updatedAt}</Field>
         </Meta>
       </div>
       <div>
         <Minion>Outline</Minion>
         <Outline>
-          <BlockContent blocks={data.article._rawOutline} />
+          <BlockContent blocks={article._rawOutline} />
         </Outline>
       </div>
     </Sidebar>

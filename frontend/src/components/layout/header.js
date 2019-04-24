@@ -124,7 +124,6 @@ export default () => (
         <Nav>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/store">Store</NavLink>
         </Nav>
       </Masthead>
       <Intro>
