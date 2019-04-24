@@ -17,6 +17,11 @@ export default {
       }
     },
     {
+      title: "Creator",
+      name: "creator",
+      type: "string"
+    },
+    {
       title: "Hero Image",
       name: "heroImage",
       type: "image"

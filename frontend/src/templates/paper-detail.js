@@ -4,17 +4,28 @@ import SidebarLayout from "../components/layout/sidebar-layout"
 import Main from "../components/layout/main"
 import Sidebar from "../components/layout/sidebar"
 import { Helmet } from 'react-helmet'
+import styled from 'styled-components'
+import Minion from '../components/text/minion'
 
-export default ({ data }) => (
+export default ({ data: {paper} }) => (
   <SidebarLayout>
     <Helmet>
-      <title>{data.paper.title} | Algonomicon</title>
+      <title>{paper.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <p>{data.paper.title}</p>
-      <p>{data.paper.abstract}</p>
+      <Title>{paper.title}</Title>
+      <p>{paper.abstract}</p>
     </Main>
-    <Sidebar></Sidebar>
+    <Sidebar>
+      <div>
+        <Minion>Meta</Minion>
+        <Meta>
+          <Field>Author: {paper.author}</Field>
+          <Field>Created: {paper._createdAt}</Field>
+          <Field>Updated: {paper._updatedAt}</Field>
+        </Meta>
+      </div>
+    </Sidebar>
   </SidebarLayout>
 )
 
@@ -22,8 +33,23 @@ export default ({ data }) => (
 export const query = graphql`
   query($slug: String!) {
     paper: sanityPaper(slug: {current: {eq: $slug}}) {
-      title,
+      title
+      author
       abstract
+      _createdAt
+      _updatedAt
     }
   }
+`
+
+const Title = styled.h1`
+  margin-top: 0;
+`
+
+const Meta = styled.div`
+  padding: 1rem 0;
+`
+
+const Field = styled.p`
+  margin: 0;
 `
