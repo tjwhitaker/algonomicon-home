@@ -11,8 +11,8 @@ import Image from "gatsby-image"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => {
-  const [head, ...tail] = data.articles.edges
+export default ({ data: {articles} }) => {
+  const [head, ...tail] = articles.edges
 
   return (
     <SidebarLayout>

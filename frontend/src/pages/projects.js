@@ -6,12 +6,12 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => (
+export default ({ data: {projects} }) => (
   <Layout>
     <Helmet>
       <title>Projects | Algonomicon</title>
     </Helmet>
-    {data.projects.edges.map(({ node }) => (
+    {projects.edges.map(({ node }) => (
       <Link to={`/projects/${node.slug.current}`}>
         <Project>
             <Preview>

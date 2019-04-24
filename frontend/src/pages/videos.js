@@ -11,14 +11,14 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => (
+export default ({ data: {videos} }) => (
   <SidebarLayout>
     <Helmet>
       <title>Videos | Algonomicon</title>
     </Helmet>
     <Main>
       <div>
-        {data.videos.edges.map(({ node }) => (
+        {videos.edges.map(({ node }) => (
           <Video>
             <Link to={`/videos/${node.slug.current}`}>
               <ImageContainer>

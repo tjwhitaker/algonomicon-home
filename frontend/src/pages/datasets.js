@@ -10,7 +10,7 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => (
+export default ({ data: {datasets} }) => (
   <SidebarLayout>
     <Helmet>
       <title>Datasets | Algonomicon</title>
@@ -26,7 +26,7 @@ export default ({ data }) => (
           </tr>
         </thead>
         <tbody>
-          {data.datasets.edges.map(({ node }) => (
+          {datasets.edges.map(({ node }) => (
             <LinkRow to={`/datasets/${node.slug.current}`}>
               <td>{node.title}</td>
               <td>{node.description}</td>

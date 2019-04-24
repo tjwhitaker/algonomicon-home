@@ -10,13 +10,13 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => (
+export default ({ data: {papers} }) => (
   <SidebarLayout>
     <Helmet>
       <title>Papers | Algonomicon</title>
     </Helmet>
     <Main>
-      {data.papers.edges.map(({ node }) => (
+      {papers.edges.map(({ node }) => (
         <Post>
           <Link to={`/papers/${node.slug.current}`}>
             <h3>{node.title}</h3>
