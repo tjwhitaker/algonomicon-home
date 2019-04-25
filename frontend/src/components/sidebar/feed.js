@@ -20,7 +20,8 @@ const Post = styled(Link)`
 
 const Title = styled.h3`
   color: hsla(0, 0%, 0%, 0.8);
-  margin-top:0;
+  margin:0;
+  line-height:1.625;
 `
 
 const Description = styled.p`
@@ -30,7 +31,7 @@ const Description = styled.p`
 `
 
 const Meta = styled.small`
-  color: #ccc;
+  color: #aaa;
   font-weight: normal;
 `
 

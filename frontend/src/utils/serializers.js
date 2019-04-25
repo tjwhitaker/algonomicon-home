@@ -1,11 +1,13 @@
 import React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export default {
   types: {
     code: props => (
-      <pre data-language={props.node.language}>
-        <code>{props.node.code}</code>
-      </pre>
+      <SyntaxHighlighter language={props.node.language || "julia"} style={tomorrow}>
+        {props.node.code}
+      </SyntaxHighlighter>
     )
   }
 }
