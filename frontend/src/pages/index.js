@@ -33,7 +33,7 @@ export default ({ data }) => (
         alt="Inception"
       />
 
-      <p>
+      <p style={{margin: '1rem 0'}}>
         <i>
           Inception: A state of the art deep learning architecture developed by the AI research team at Google.
         </i>
