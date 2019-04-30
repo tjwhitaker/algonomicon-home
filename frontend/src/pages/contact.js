@@ -45,7 +45,7 @@ export default () => (
 const Contact = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom:3rem;
+  margin-bottom:2.5rem;
 `
 
 const Message = styled.div`
@@ -90,7 +90,7 @@ const Button = styled.button`
   border: none;
   padding: 0.5rem 1rem;
   position: absolute;
-  bottom: -4rem;
+  bottom: -3.5rem;
 `
 
 const Map = styled.div`
