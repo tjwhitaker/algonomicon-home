@@ -127,7 +127,7 @@ export default () => (
         </Nav>
       </Masthead>
       <Intro>
-        <Headline>Machine Learning for Science</Headline>
+        <Headline>Machine Learning for Fun and Profit</Headline>
         <Tagline>
           Still under construction. Thanks for bearing with us! Sign up for
           updates.

@@ -8,7 +8,7 @@ import "./layout.css"
 
 const Container = styled.div`
   padding-bottom: 1rem;
-  min-height: 60vh;
+  min-height: 65vh;
 `
 
 export default ({ children }) => (
