@@ -18,7 +18,7 @@ const Post = styled(Link)`
   display: block;
 `
 
-const Title = styled.h3`
+const Title = styled.h4`
   color: hsla(0, 0%, 0%, 0.8);
   margin:0;
   line-height:1.625;
