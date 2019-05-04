@@ -112,7 +112,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query FeedQuery {
-        articles: allSanityArticle(filter: {slug: {current: {ne: null}}}) {
+        articles: allSanityArticle {
           edges {
             node {
               _type
@@ -125,7 +125,7 @@ export default () => (
             }
           }
         }
-        datasets: allSanityDataset(filter: {slug: {current: {ne: null}}}) {
+        datasets: allSanityDataset {
           edges {
             node {
               _type
@@ -138,7 +138,7 @@ export default () => (
             }
           }
         }
-        papers: allSanityPaper(filter: {slug: {current: {ne: null}}}) {
+        papers: allSanityPaper {
           edges {
             node {
               _type
@@ -151,7 +151,7 @@ export default () => (
             }
           }
         }
-        projects: allSanityProject(filter: {slug: {current: {ne: null}}}) {
+        projects: allSanityProject {
           edges {
             node {
               _type
@@ -164,7 +164,7 @@ export default () => (
             }
           }
         }
-        videos: allSanityVideo(filter: {slug: {current: {ne: null}}}) {
+        videos: allSanityVideo {
           edges {
             node {
               _type
