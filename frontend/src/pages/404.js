@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 export default () => (
   <div>
     <Helmet>
-      <title>Articles | Algonomicon</title>
+      <title>Not Found | Algonomicon</title>
     </Helmet>
   </div>
 )
