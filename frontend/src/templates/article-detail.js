@@ -17,7 +17,6 @@ export default ({ data: {article} }) => (
     </Helmet>
     <Main>
       <Title>{article.title}</Title>
-      <Image fluid={article.heroImage.asset.fluid} />
       <BlockContent blocks={article._rawContent} serializers={serializers} />
     </Main>
     <Sidebar>
@@ -49,13 +48,6 @@ export const query = graphql`
       _rawContent
       _createdAt
       _updatedAt
-      heroImage {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
     }
   }
 `
