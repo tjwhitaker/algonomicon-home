@@ -8,7 +8,7 @@ exports.createPages = async({graphql, actions}) => {
 
   const result = await graphql(`
     {
-      articles: allSanityArticle(filter: {slug: {current: {ne: null}}}) {
+      articles: allSanityArticle {
         edges {
           node {
             slug {
@@ -17,7 +17,7 @@ exports.createPages = async({graphql, actions}) => {
           }
         }
       }
-      datasets: allSanityDataset(filter: {slug: {current: {ne: null}}}) {
+      datasets: allSanityDataset {
         edges {
           node {
             slug {
@@ -26,7 +26,7 @@ exports.createPages = async({graphql, actions}) => {
           }
         }
       }
-      papers: allSanityPaper(filter: {slug: {current: {ne: null}}}) {
+      papers: allSanityPaper {
         edges {
           node {
             slug {
@@ -35,7 +35,7 @@ exports.createPages = async({graphql, actions}) => {
           }
         }
       }
-      projects: allSanityProject(filter: {slug: {current: {ne: null}}}) {
+      projects: allSanityProject {
         edges {
           node {
             slug {
@@ -44,7 +44,7 @@ exports.createPages = async({graphql, actions}) => {
           }
         }
       }
-      videos: allSanityVideo(filter: {slug: {current: {ne: null}}}) {
+      snippets: allSanitySnippet {
         edges {
           node {
             slug {
@@ -60,7 +60,7 @@ exports.createPages = async({graphql, actions}) => {
   const datasets = result.data.datasets.edges || []
   const papers = result.data.papers.edges || []
   const projects = result.data.projects.edges || []
-  const videos = result.data.videos.edges || []
+  const snippets = result.data.snippets.edges || []
 
   articles.forEach((edge, index) => {
     const path = `/articles/${edge.node.slug.current}`
@@ -110,12 +110,12 @@ exports.createPages = async({graphql, actions}) => {
     createPageDependency({path, nodeId: edge.node.id})
   })
 
-  videos.forEach((edge, index) => {
-    const path = `/videos/${edge.node.slug.current}`
+  snippets.forEach((edge, index) => {
+    const path = `/snippets/${edge.node.slug.current}`
 
     createPage({
       path,
-      component: require.resolve('./src/templates/video-detail.js'),
+      component: require.resolve('./src/templates/snippet-detail.js'),
       context: {slug: edge.node.slug.current}
     })
 
