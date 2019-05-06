@@ -8,7 +8,7 @@ import article from './article'
 import dataset from './dataset'
 import paper from './paper'
 import project from './project'
-import video from './video'
+import snippet from './snippet'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,6 +21,6 @@ export default createSchema({
     dataset,
     paper,
     project,
-    video
+    snippet
   ])
 })

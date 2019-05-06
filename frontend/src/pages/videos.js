@@ -81,7 +81,7 @@ const Video = styled.div`
   }
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
   color: hsla(0, 0%, 0%, 0.8);
 `
 

@@ -35,8 +35,8 @@ export default () => (
     <CategoryLink to="/projects" activeClassName="active" partiallyActive={true}>
       Projects
     </CategoryLink>
-    <CategoryLink to="/videos" activeClassName="active" partiallyActive={true}>
-      Videos
+    <CategoryLink to="/snippets" activeClassName="active" partiallyActive={true}>
+      Snippets
     </CategoryLink>
   </Categories>
 )

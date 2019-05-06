@@ -22,11 +22,6 @@ export default {
       type: "string"
     },
     {
-      title: "Hero Image",
-      name: "heroImage",
-      type: "image"
-    },
-    {
       title: "Description",
       name: "description",
       type: "text"
