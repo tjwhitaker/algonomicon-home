@@ -25,6 +25,15 @@ export default {
       title: "Abstract",
       name: "abstract",
       type: "text"
+    },
+    {
+      title: "Content",
+      name: "content",
+      type: "array",
+      of: [
+        {type: "block"},
+        {type: "code"}
+      ]
     }
   ]
 }

@@ -6,7 +6,6 @@ import Main from "../components/layout/main"
 import Sidebar from "../components/layout/sidebar"
 import Minion from '../components/text/minion'
 import BlockContent from '@sanity/block-content-to-react'
-import Image from 'gatsby-image'
 import { Helmet } from 'react-helmet'
 import serializers from '../utils/serializers'
 
