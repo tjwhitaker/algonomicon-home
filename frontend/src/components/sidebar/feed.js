@@ -67,11 +67,11 @@ const Project = ({ data }) => (
   </Post>
 )
 
-const Video = ({ data }) => (
-  <Post to={`/videos/${data.slug.current}`}>
+const Snippet = ({ data }) => (
+  <Post to={`/snippets/${data.slug.current}`}>
     <Title>{data.title}</Title>
     <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Video from {moment(data._createdAt).fromNow()}</Meta>
+    <Meta>Snippet from {moment(data._createdAt).fromNow()}</Meta>
   </Post>
 )
 
@@ -81,7 +81,7 @@ const Feed = ({ data }) => {
     ...data.datasets.edges,
     ...data.papers.edges,
     ...data.projects.edges,
-    ...data.videos.edges
+    ...data.snippets.edges
   ]
   
   items.sort((a, b) => {
@@ -99,7 +99,7 @@ const Feed = ({ data }) => {
               dataset: <Dataset data={node} key={i} />,
               paper: <Paper data={node} key={i} />,
               project: <Project data={node} key={i} />,
-              video: <Video data={node} key={i} />
+              snippet: <Snippet data={node} key={i} />
             }[node._type]}
           </div>
         )}
@@ -164,7 +164,7 @@ export default () => (
             }
           }
         }
-        videos: allSanityVideo {
+        snippets: allSanitySnippet {
           edges {
             node {
               _type
