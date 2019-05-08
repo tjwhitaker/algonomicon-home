@@ -1,5 +1,9 @@
+html {
+  background: #111;
+}
 body {
   transition:filter 1s ease;
+  background: white;
 }
 
 body.glitched {
