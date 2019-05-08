@@ -6,6 +6,9 @@ import Sidebar from "../components/layout/sidebar"
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import Minion from '../components/text/minion'
+import BlockContent from '@sanity/block-content-to-react'
+import serializers from '../utils/serializers'
+import { Link } from 'gatsby'
 
 export default ({ data: {paper} }) => (
   <SidebarLayout>
@@ -14,13 +17,14 @@ export default ({ data: {paper} }) => (
     </Helmet>
     <Main>
       <Title>{paper.title}</Title>
-      <p>{paper.abstract}</p>
+      <BlockContent blocks={paper._rawContent} serializers={serializers} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
           <Field>Author: {paper.author}</Field>
+          <Field>Source: <Link to={paper.source}>{paper.source}</Link></Field>
           <Field>Created: {paper._createdAt}</Field>
           <Field>Updated: {paper._updatedAt}</Field>
         </Meta>
@@ -35,7 +39,8 @@ export const query = graphql`
     paper: sanityPaper(slug: {current: {eq: $slug}}) {
       title
       author
-      abstract
+      source
+      _rawContent
       _createdAt
       _updatedAt
     }

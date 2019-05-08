@@ -17,6 +17,11 @@ export default {
       }
     },
     {
+      title: "Source",
+      name: "source",
+      type: "string"
+    },
+    {
       title: "Author",
       name: "author",
       type: "string"

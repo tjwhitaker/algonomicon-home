@@ -7,6 +7,7 @@ import Minion from "../components/text/minion"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import BlockContent from "@sanity/block-content-to-react"
+import serializers from '../utils/serializers'
 
 export default ({ data: { dataset } }) => (
   <SidebarLayout>
@@ -15,7 +16,7 @@ export default ({ data: { dataset } }) => (
     </Helmet>
     <Main>
       <Title>{dataset.title}</Title>
-      <BlockContent blocks={dataset._rawContent} />
+      <BlockContent blocks={dataset._rawContent} serializers={serializers} />
     </Main>
     <Sidebar>
       <div>
