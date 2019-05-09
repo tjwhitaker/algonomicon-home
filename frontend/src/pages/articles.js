@@ -10,6 +10,28 @@ import Tags from "../components/sidebar/tags"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+
+export const query = graphql`
+  {
+    articles: allSanityArticle(
+      sort: {
+        fields: [_createdAt]
+        order: DESC 
+    }) 
+    {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+          description
+        }
+      }
+    }
+  }
+`
+
 export default ({ data: {articles} }) => {
   return (
     <SidebarLayout>
@@ -36,27 +58,6 @@ export default ({ data: {articles} }) => {
     </SidebarLayout>
   )
 }
-
-export const query = graphql`
-  {
-    articles: allSanityArticle(
-      sort: {
-        fields: [_createdAt]
-        order: DESC 
-    }) 
-    {
-      edges {
-        node {
-          title
-          slug {
-            current
-          }
-          description
-        }
-      }
-    }
-  }
-`
 
 const Post = styled.div`
   padding:1rem 0;

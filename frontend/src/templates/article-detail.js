@@ -9,6 +9,20 @@ import BlockContent from '@sanity/block-content-to-react'
 import { Helmet } from 'react-helmet'
 import serializers from '../utils/serializers'
 
+export const query = graphql`
+  query($slug: String!) {
+    article: sanityArticle(slug: {current: {eq: $slug}}) {
+      title
+      description
+      author
+      _rawOutline
+      _rawContent
+      _createdAt
+      _updatedAt
+    }
+  }
+`
+
 export default ({ data: {article} }) => (
   <SidebarLayout>
     <Helmet>
@@ -36,20 +50,6 @@ export default ({ data: {article} }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  query($slug: String!) {
-    article: sanityArticle(slug: {current: {eq: $slug}}) {
-      title
-      description
-      author
-      _rawOutline
-      _rawContent
-      _createdAt
-      _updatedAt
-    }
-  }
-`
 
 const Title = styled.h1`
   margin-top: 0;

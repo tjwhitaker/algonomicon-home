@@ -6,27 +6,6 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export default ({ data: {projects} }) => (
-  <Layout>
-    <Helmet>
-      <title>Projects | Algonomicon</title>
-    </Helmet>
-    {projects.edges.map(({ node }) => (
-      <Link to={`/projects/${node.slug.current}`}>
-        <Project>
-            <Preview>
-              <Image fluid={node.heroImage.asset.fluid} />
-            </Preview>
-            <Content>
-              <h3>{node.title}</h3>
-              <p>{node.description}</p>
-            </Content>
-        </Project>
-      </Link>
-    ))}
-  </Layout>
-)
-
 export const query = graphql`
   {
     projects: allSanityProject {
@@ -49,6 +28,27 @@ export const query = graphql`
     }
   }
 `
+
+export default ({ data: {projects} }) => (
+  <Layout>
+    <Helmet>
+      <title>Projects | Algonomicon</title>
+    </Helmet>
+    {projects.edges.map(({ node }) => (
+      <Link to={`/projects/${node.slug.current}`}>
+        <Project>
+            <Preview>
+              <Image fluid={node.heroImage.asset.fluid} />
+            </Preview>
+            <Content>
+              <h3>{node.title}</h3>
+              <p>{node.description}</p>
+            </Content>
+        </Project>
+      </Link>
+    ))}
+  </Layout>
+)
 
 const Project = styled.div`
   display: flex;

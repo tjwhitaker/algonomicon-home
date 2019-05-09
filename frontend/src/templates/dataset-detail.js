@@ -9,6 +9,21 @@ import styled from "styled-components"
 import BlockContent from "@sanity/block-content-to-react"
 import serializers from '../utils/serializers'
 
+export const query = graphql`
+  query($slug: String!) {
+    dataset: sanityDataset(slug: { current: { eq: $slug } }) {
+      title
+      description
+      creator
+      format
+      instances
+      _createdAt
+      _updatedAt
+      _rawContent
+    }
+  }
+`
+
 export default ({ data: { dataset } }) => (
   <SidebarLayout>
     <Helmet>
@@ -32,21 +47,6 @@ export default ({ data: { dataset } }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  query($slug: String!) {
-    dataset: sanityDataset(slug: { current: { eq: $slug } }) {
-      title
-      description
-      creator
-      format
-      instances
-      _createdAt
-      _updatedAt
-      _rawContent
-    }
-  }
-`
 
 const Title = styled.h1`
   margin-top: 0;

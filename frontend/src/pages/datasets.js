@@ -10,6 +10,24 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+export const query = graphql`
+  {
+    datasets: allSanityDataset {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+          description
+          format
+          instances
+        }
+      }
+    }
+  }
+`
+
 export default ({ data: {datasets} }) => (
   <SidebarLayout>
     <Helmet>
@@ -44,24 +62,6 @@ export default ({ data: {datasets} }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  {
-    datasets: allSanityDataset {
-      edges {
-        node {
-          title
-          slug {
-            current
-          }
-          description
-          format
-          instances
-        }
-      }
-    }
-  }
-`
 
 const LinkRow = styled(Link)`
   display: table-row;

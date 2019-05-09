@@ -10,6 +10,19 @@ import BlockContent from '@sanity/block-content-to-react'
 import serializers from '../utils/serializers'
 import { Link } from 'gatsby'
 
+export const query = graphql`
+  query($slug: String!) {
+    paper: sanityPaper(slug: {current: {eq: $slug}}) {
+      title
+      author
+      source
+      _rawContent
+      _createdAt
+      _updatedAt
+    }
+  }
+`
+
 export default ({ data: {paper} }) => (
   <SidebarLayout>
     <Helmet>
@@ -32,20 +45,6 @@ export default ({ data: {paper} }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-
-export const query = graphql`
-  query($slug: String!) {
-    paper: sanityPaper(slug: {current: {eq: $slug}}) {
-      title
-      author
-      source
-      _rawContent
-      _createdAt
-      _updatedAt
-    }
-  }
-`
 
 const Title = styled.h1`
   margin-top: 0;

@@ -10,6 +10,24 @@ import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+
+export const query = graphql`
+  {
+    papers: allSanityPaper {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+          author
+          abstract
+        }
+      }
+    }
+  }
+`
+
 export default ({ data: {papers} }) => (
   <SidebarLayout>
     <Helmet>
@@ -32,23 +50,6 @@ export default ({ data: {papers} }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  {
-    papers: allSanityPaper {
-      edges {
-        node {
-          title
-          slug {
-            current
-          }
-          author
-          abstract
-        }
-      }
-    }
-  }
-`
 
 const Post = styled.div`
   padding: 1rem 0;

@@ -7,6 +7,18 @@ import { Helmet } from 'react-helmet'
 import Image from 'gatsby-image'
 import Minion from '../components/text/minion'
 
+export const query = graphql`
+  {
+    file(relativePath: { eq: "tim.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
+
 export default ({data}) => (
   <SidebarLayout>
     <Helmet>
@@ -32,18 +44,6 @@ export default ({data}) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  {
-    file(relativePath: { eq: "tim.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`
 
 const Container = styled.div`
   margin-top:1rem;

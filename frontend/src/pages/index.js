@@ -6,11 +6,16 @@ import Feed from "../components/sidebar/feed"
 import Image from "gatsby-image"
 import { Helmet } from 'react-helmet'
 
-const Sidebar = styled.div`
-  padding-left: 1rem;
-  max-height:100%;
-  overflow: hidden;
-  position: relative;
+export const query = graphql`
+  {
+    file(relativePath: { eq: "inception.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
 `
 
 export default ({ data }) => (
@@ -77,14 +82,9 @@ export default ({ data }) => (
   </SidebarLayout>
 )
 
-export const query = graphql`
-  {
-    file(relativePath: { eq: "inception.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
+const Sidebar = styled.div`
+  padding-left: 1rem;
+  max-height:100%;
+  overflow: hidden;
+  position: relative;
 `

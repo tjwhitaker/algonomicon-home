@@ -9,6 +9,17 @@ import serializers from '../utils/serializers'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+export const query = graphql`
+  query($slug: String!) {
+    snippet: sanitySnippet(slug: {current: {eq: $slug}}) {
+      title
+      _rawContent
+      _createdAt
+      _updatedAt
+    }
+  }
+`
+
 export default ({ data: {snippet}}) => (
   <SidebarLayout>
     <Helmet>
@@ -29,17 +40,6 @@ export default ({ data: {snippet}}) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  query($slug: String!) {
-    snippet: sanitySnippet(slug: {current: {eq: $slug}}) {
-      title
-      _rawContent
-      _createdAt
-      _updatedAt
-    }
-  }
-`
 
 const Title = styled.h1`
   margin-top: 0;

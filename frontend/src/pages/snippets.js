@@ -9,6 +9,21 @@ import Tags from '../components/sidebar/tags'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+export const query = graphql`
+  {
+    snippets: allSanitySnippet {
+      edges {
+        node {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`
+
 export default ({ data: {snippets} }) => (
   <SidebarLayout>
     <Helmet>
@@ -37,21 +52,6 @@ export default ({ data: {snippets} }) => (
     </Sidebar>
   </SidebarLayout>
 )
-
-export const query = graphql`
-  {
-    snippets: allSanitySnippet {
-      edges {
-        node {
-          title
-          slug {
-            current
-          }
-        }
-      }
-    }
-  }
-`
 
 const LinkRow = styled(Link)`
   display:table-row;
