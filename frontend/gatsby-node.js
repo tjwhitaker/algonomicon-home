@@ -67,7 +67,7 @@ exports.createPages = async({graphql, actions}) => {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/article-detail.js'),
+      component: require.resolve('./src/templates/article.js'),
       context: {slug: edge.node.slug.current}
     })
 
@@ -79,7 +79,7 @@ exports.createPages = async({graphql, actions}) => {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/dataset-detail.js'),
+      component: require.resolve('./src/templates/dataset.js'),
       context: {slug: edge.node.slug.current}
     })
 
@@ -91,7 +91,7 @@ exports.createPages = async({graphql, actions}) => {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/paper-detail.js'),
+      component: require.resolve('./src/templates/paper.js'),
       context: {slug: edge.node.slug.current}
     })
 
@@ -103,7 +103,7 @@ exports.createPages = async({graphql, actions}) => {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/project-detail.js'),
+      component: require.resolve('./src/templates/project.js'),
       context: {slug: edge.node.slug.current}
     })
 
@@ -115,7 +115,7 @@ exports.createPages = async({graphql, actions}) => {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/snippet-detail.js'),
+      component: require.resolve('./src/templates/snippet.js'),
       context: {slug: edge.node.slug.current}
     })
 
