@@ -1,15 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
-import SidebarLayout from "../components/layout/sidebar-layout"
-import Main from "../components/layout/main"
-import Sidebar from "../components/layout/sidebar"
-import Search from "../components/sidebar/search"
-import Sort from "../components/sidebar/sort"
-import Tags from "../components/sidebar/tags"
-import { graphql } from 'gatsby'
+import { Layout, Main, Sidebar } from '../components/layout'
+import { Search, Sort, Tags } from '../components/sidebar'
 import { Helmet } from 'react-helmet'
-
+import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 export const query = graphql`
   {
@@ -34,7 +29,7 @@ export const query = graphql`
 
 export default ({ data: {articles} }) => {
   return (
-    <SidebarLayout>
+    <Layout>
       <Helmet>
         <title>Articles | Algonomicon</title>
       </Helmet>
@@ -55,7 +50,7 @@ export default ({ data: {articles} }) => {
         <Sort />
         <Tags />
       </Sidebar>
-    </SidebarLayout>
+    </Layout>
   )
 }
 
