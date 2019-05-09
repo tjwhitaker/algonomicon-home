@@ -1,13 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import SidebarLayout from '../components/layout/sidebar-layout'
-import Main from '../components/layout/main'
-import Sidebar from '../components/layout/sidebar'
-import Search from '../components/sidebar/search'
-import Sort from '../components/sidebar/sort'
-import Tags from '../components/sidebar/tags'
-import { Link, graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import React from "react"
+import styled from "styled-components"
+import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
 export const query = graphql`
   {
@@ -24,8 +19,8 @@ export const query = graphql`
   }
 `
 
-export default ({ data: {snippets} }) => (
-  <SidebarLayout>
+export default ({ data: { snippets } }) => (
+  <Layout>
     <Helmet>
       <title>Snippets | Algonomicon</title>
     </Helmet>
@@ -37,7 +32,7 @@ export default ({ data: {snippets} }) => (
           </tr>
         </thead>
         <tbody>
-          { snippets.edges.map(({node}) => (
+          {snippets.edges.map(({ node }) => (
             <LinkRow to={`/snippets/${node.slug.current}`}>
               <td>{node.title}</td>
             </LinkRow>
@@ -50,13 +45,13 @@ export default ({ data: {snippets} }) => (
       <Sort />
       <Tags />
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const LinkRow = styled(Link)`
-  display:table-row;
-  color:hsla(0, 0%, 0%, 0.8);
-  font-weight:normal;
+  display: table-row;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: normal;
 
   &:hover {
     color: hsla(0, 0%, 0%, 0.8);

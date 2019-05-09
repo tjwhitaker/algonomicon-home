@@ -1,13 +1,10 @@
 import React from "react"
-import { graphql } from "gatsby"
-import SidebarLayout from "../components/layout/sidebar-layout"
-import Main from "../components/layout/main"
-import Sidebar from "../components/layout/sidebar"
-import Minion from "../components/text/minion"
-import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import BlockContent from "@sanity/block-content-to-react"
-import serializers from '../utils/serializers'
+import serializers from "../utils/serializers"
+import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout, Main, Sidebar, Minion } from "../components"
 
 export const query = graphql`
   query($slug: String!) {
@@ -25,7 +22,7 @@ export const query = graphql`
 `
 
 export default ({ data: { dataset } }) => (
-  <SidebarLayout>
+  <Layout>
     <Helmet>
       <title>{dataset.title} | Algonomicon</title>
     </Helmet>
@@ -45,7 +42,7 @@ export default ({ data: { dataset } }) => (
         </Meta>
       </div>
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const Title = styled.h1`

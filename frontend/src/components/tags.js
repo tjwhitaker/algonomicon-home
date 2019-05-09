@@ -1,16 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import Minion from "../text/minion"
-import { Link } from 'gatsby'
+import Minion from "./minion"
+import { Link } from "gatsby"
 
 const Tags = styled.div`
   padding: 1rem 0;
 `
 
 const Tag = styled(Link)`
-  margin-right:0.5rem;
-  display:inline-block;
-  color:#aaa;
+  margin-right: 0.5rem;
+  display: inline-block;
+  color: #aaa;
 `
 
 export default () => (

@@ -1,15 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import SidebarLayout from "../components/layout/sidebar-layout"
-import Main from "../components/layout/main"
-import Sidebar from "../components/layout/sidebar"
-import Search from "../components/sidebar/search"
-import Sort from "../components/sidebar/sort"
-import Tags from "../components/sidebar/tags"
-import { Link } from "gatsby"
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-
+import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
 export const query = graphql`
   {
@@ -28,8 +21,8 @@ export const query = graphql`
   }
 `
 
-export default ({ data: {papers} }) => (
-  <SidebarLayout>
+export default ({ data: { papers } }) => (
+  <Layout>
     <Helmet>
       <title>Papers | Algonomicon</title>
     </Helmet>
@@ -48,7 +41,7 @@ export default ({ data: {papers} }) => (
       <Sort />
       <Tags />
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const Post = styled.div`

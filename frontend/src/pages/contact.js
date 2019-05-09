@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../components/layout/layout"
-import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
-import ReactMapGL from 'react-map-gl'
+import { Layout } from "../components"
+import { Helmet } from "react-helmet"
+import styled from "styled-components"
+import ReactMapGL from "react-map-gl"
 
 export default () => (
   <Layout>
@@ -12,7 +12,11 @@ export default () => (
     <Contact>
       <Message>
         <Title>Contact</Title>
-        <p>Thanks for your interest! I'd love to talk more if you have any questions, concerns or ideas. Feel free to use the form to email me, or get in touch through one of these other means.</p>
+        <p>
+          Thanks for your interest! I'd love to talk more if you have any
+          questions, concerns or ideas. Feel free to use the form to email me,
+          or get in touch through one of these other means.
+        </p>
       </Message>
       <Form>
         <FieldGroup flex="0">
@@ -30,7 +34,7 @@ export default () => (
         <Button>Send</Button>
       </Form>
       <Map>
-        <ReactMapGL 
+        <ReactMapGL
           mapboxApiAccessToken="pk.eyJ1IjoiY2FtcDRjbGltYmVyIiwiYSI6ImNpdzhwM2VzbjAyc24yb21zZjduZHh3dmMifQ.k42_5Mnh3NX7pUqkQTA2SA"
           height="370px"
           width="100%"
@@ -45,7 +49,7 @@ export default () => (
 const Contact = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom:2.5rem;
+  margin-bottom: 2.5rem;
 `
 
 const Message = styled.div`
@@ -59,7 +63,7 @@ const Title = styled.h1`
 const Form = styled.div`
   flex: 0 0 50%;
   padding-right: 0.5rem;
-  display:flex;
+  display: flex;
   flex-direction: column;
   position: relative;
 `

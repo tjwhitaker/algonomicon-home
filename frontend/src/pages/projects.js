@@ -1,10 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/layout/layout"
 import Image from "gatsby-image"
-import { Link } from "gatsby"
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout } from "../components"
 
 export const query = graphql`
   {
@@ -29,7 +28,7 @@ export const query = graphql`
   }
 `
 
-export default ({ data: {projects} }) => (
+export default ({ data: { projects } }) => (
   <Layout>
     <Helmet>
       <title>Projects | Algonomicon</title>
@@ -37,13 +36,13 @@ export default ({ data: {projects} }) => (
     {projects.edges.map(({ node }) => (
       <Link to={`/projects/${node.slug.current}`}>
         <Project>
-            <Preview>
-              <Image fluid={node.heroImage.asset.fluid} />
-            </Preview>
-            <Content>
-              <h3>{node.title}</h3>
-              <p>{node.description}</p>
-            </Content>
+          <Preview>
+            <Image fluid={node.heroImage.asset.fluid} />
+          </Preview>
+          <Content>
+            <h3>{node.title}</h3>
+            <p>{node.description}</p>
+          </Content>
         </Project>
       </Link>
     ))}
@@ -65,11 +64,12 @@ const Content = styled.div`
   flex: 0 0 50%;
   padding-left: 1rem;
 
-  p, h3 {
+  p,
+  h3 {
     color: hsla(0, 0%, 0%, 0.8);
   }
 
   p {
-    font-weight:normal;
+    font-weight: normal;
   }
 `

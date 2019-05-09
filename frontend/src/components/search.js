@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Minion from "../text/minion"
+import Minion from "./minion"
 
 const Search = styled.div`
   padding: 1rem 0;

@@ -1,19 +1,19 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from "../components/layout/layout"
-import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
+import React from "react"
+import { graphql } from "gatsby"
+import { Layout } from "../components"
+import { Helmet } from "react-helmet"
+import styled from "styled-components"
 
 export const query = graphql`
   query($slug: String!) {
-    project: sanityProject(slug: {current: {eq: $slug}}) {
-      title,
+    project: sanityProject(slug: { current: { eq: $slug } }) {
+      title
       description
     }
   }
 `
 
-export default ({ data: {project} }) => (
+export default ({ data: { project } }) => (
   <Layout>
     <Helmet>
       <title>{project.title} | Algonomicon</title>

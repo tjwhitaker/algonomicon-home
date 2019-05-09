@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Categories from "./categories"
 import Header from "./header"
 import Footer from "./footer"
-import Wrapper from "../wrapper"
+import Wrapper from "./wrapper"
 import "../../static/layout.css"
 
 export default ({ children }) => (
@@ -12,9 +12,7 @@ export default ({ children }) => (
     <Container>
       <Wrapper>
         <Categories />
-        <Grid>
-          {children}
-        </Grid>
+        <Grid>{children}</Grid>
       </Wrapper>
     </Container>
     <Footer />

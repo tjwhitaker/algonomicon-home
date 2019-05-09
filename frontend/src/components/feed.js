@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import moment from 'moment'
-import Minion from "../text/minion"
-import { StaticQuery, Link, graphql } from 'gatsby'
+import moment from "moment"
+import Minion from "./minion"
+import { StaticQuery, Link, graphql } from "gatsby"
 
 const Container = styled.div`
   max-height: 100%;
@@ -13,21 +13,21 @@ const Container = styled.div`
 `
 
 const Post = styled(Link)`
-  padding:1rem 0;
-  border-bottom:1px solid #ccc;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
   display: block;
 `
 
 const Title = styled.h4`
   color: hsla(0, 0%, 0%, 0.8);
-  margin:0;
-  line-height:1.625;
+  margin: 0;
+  line-height: 1.625;
 `
 
 const Description = styled.p`
   color: hsla(0, 0%, 0%, 0.8);
-  margin-bottom:0;
-  font-weight:normal;
+  margin-bottom: 0;
+  font-weight: normal;
 `
 
 const Meta = styled.small`
@@ -81,9 +81,9 @@ const Feed = ({ data }) => {
     ...data.datasets.edges,
     ...data.papers.edges,
     ...data.projects.edges,
-    ...data.snippets.edges
+    ...data.snippets.edges,
   ]
-  
+
   items.sort((a, b) => {
     return new Date(b.node._createdAt) - new Date(a.node._createdAt)
   })
@@ -92,17 +92,19 @@ const Feed = ({ data }) => {
     <div>
       <Minion>Feed</Minion>
       <Container>
-        { items.map(({ node }, i) => 
+        {items.map(({ node }, i) => (
           <div>
-            {{
-              article: <Article data={node} key={i} />,
-              dataset: <Dataset data={node} key={i} />,
-              paper: <Paper data={node} key={i} />,
-              project: <Project data={node} key={i} />,
-              snippet: <Snippet data={node} key={i} />
-            }[node._type]}
+            {
+              {
+                article: <Article data={node} key={i} />,
+                dataset: <Dataset data={node} key={i} />,
+                paper: <Paper data={node} key={i} />,
+                project: <Project data={node} key={i} />,
+                snippet: <Snippet data={node} key={i} />,
+              }[node._type]
+            }
           </div>
-        )}
+        ))}
       </Container>
     </div>
   )
@@ -180,5 +182,5 @@ export default () => (
       }
     `}
     render={data => <Feed data={data} />}
-    />
+  />
 )

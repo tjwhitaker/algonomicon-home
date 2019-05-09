@@ -1,10 +1,8 @@
 import React from "react"
-import styled from 'styled-components'
-import SidebarLayout from "../components/layout/sidebar-layout"
-import Main from "../components/layout/main"
-import Feed from "../components/sidebar/feed"
+import styled from "styled-components"
 import Image from "gatsby-image"
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet"
+import { Layout, Main, Feed } from "../components"
 
 export const query = graphql`
   {
@@ -19,7 +17,7 @@ export const query = graphql`
 `
 
 export default ({ data }) => (
-  <SidebarLayout>
+  <Layout>
     <Helmet>
       <title>Home | Algonomicon</title>
     </Helmet>
@@ -28,19 +26,17 @@ export default ({ data }) => (
         Thanks to increased power and large amounts of data, machine learning
         models are capable of solving problems previously thought to be
         impossible. Machine Learning applications are driving cars, improving
-        healthcare diagnosis, and sequencing new proteins. Machine learning
-        has the power to do a lot of good and we want to tell the stories of
-        people using it to change the world.
+        healthcare diagnosis, and sequencing new proteins. Machine learning has
+        the power to do a lot of good and we want to tell the stories of people
+        using it to change the world.
       </p>
 
-      <Image
-        fluid={data.file.childImageSharp.fluid}
-        alt="Inception"
-      />
+      <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
 
-      <p style={{margin: '1rem 0'}}>
+      <p style={{ margin: "1rem 0" }}>
         <i>
-          Inception: A state of the art deep learning architecture developed by the AI research team at Google.
+          Inception: A state of the art deep learning architecture developed by
+          the AI research team at Google.
         </i>
       </p>
 
@@ -79,12 +75,12 @@ export default ({ data }) => (
     <Sidebar>
       <Feed />
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const Sidebar = styled.div`
   padding-left: 1rem;
-  max-height:100%;
+  max-height: 100%;
   overflow: hidden;
   position: relative;
 `

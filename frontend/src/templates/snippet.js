@@ -1,17 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import SidebarLayout from '../components/layout/sidebar-layout'
-import Main from '../components/layout/main'
-import Sidebar from '../components/layout/sidebar'
-import Minion from '../components/text/minion'
-import BlockContent from '@sanity/block-content-to-react'
-import serializers from '../utils/serializers'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import React from "react"
+import styled from "styled-components"
+import BlockContent from "@sanity/block-content-to-react"
+import serializers from "../utils/serializers"
+import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout, Main, Sidebar, Minion } from "../components"
 
 export const query = graphql`
   query($slug: String!) {
-    snippet: sanitySnippet(slug: {current: {eq: $slug}}) {
+    snippet: sanitySnippet(slug: { current: { eq: $slug } }) {
       title
       _rawContent
       _createdAt
@@ -20,8 +17,8 @@ export const query = graphql`
   }
 `
 
-export default ({ data: {snippet}}) => (
-  <SidebarLayout>
+export default ({ data: { snippet } }) => (
+  <Layout>
     <Helmet>
       <title>{snippet.title} | Algonomicon</title>
     </Helmet>
@@ -38,7 +35,7 @@ export default ({ data: {snippet}}) => (
         </Meta>
       </div>
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const Title = styled.h1`

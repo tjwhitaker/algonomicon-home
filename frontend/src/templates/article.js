@@ -1,17 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import SidebarLayout from "../components/layout/sidebar-layout"
-import Main from "../components/layout/main"
-import Sidebar from "../components/layout/sidebar"
-import Minion from '../components/text/minion'
-import BlockContent from '@sanity/block-content-to-react'
-import { Helmet } from 'react-helmet'
-import serializers from '../utils/serializers'
+import React from "react"
+import BlockContent from "@sanity/block-content-to-react"
+import styled from "styled-components"
+import serializers from "../utils/serializers"
+import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { Layout, Main, Sidebar, Minion } from "../components"
 
 export const query = graphql`
   query($slug: String!) {
-    article: sanityArticle(slug: {current: {eq: $slug}}) {
+    article: sanityArticle(slug: { current: { eq: $slug } }) {
       title
       description
       author
@@ -23,8 +20,8 @@ export const query = graphql`
   }
 `
 
-export default ({ data: {article} }) => (
-  <SidebarLayout>
+export default ({ data: { article } }) => (
+  <Layout>
     <Helmet>
       <title>{article.title} | Algonomicon</title>
     </Helmet>
@@ -48,7 +45,7 @@ export default ({ data: {article} }) => (
         </Outline>
       </div>
     </Sidebar>
-  </SidebarLayout>
+  </Layout>
 )
 
 const Title = styled.h1`
@@ -67,16 +64,16 @@ const Outline = styled.div`
   padding: 1rem 0;
 
   ul {
-    list-style:inside;
-    margin-left:0;
+    list-style: inside;
+    margin-left: 0;
 
     li {
-      margin-bottom:1rem;
+      margin-bottom: 1rem;
 
       ul {
         list-style: inside circle;
         margin-left: 1.625rem;
-        margin-top:0;
+        margin-top: 0;
 
         li {
           margin-bottom: 0;

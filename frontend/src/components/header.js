@@ -1,6 +1,6 @@
 import React from "react"
 import Logo from "./logo"
-import Wrapper from "../wrapper"
+import Wrapper from "./wrapper"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -10,8 +10,12 @@ export default () => (
       <Masthead>
         <Logo />
         <Nav>
-          <NavLink to="/about" activeClassName="active">About</NavLink>
-          <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+          <NavLink to="/about" activeClassName="active">
+            About
+          </NavLink>
+          <NavLink to="/contact" activeClassName="active">
+            Contact
+          </NavLink>
         </Nav>
       </Masthead>
       <Intro>
