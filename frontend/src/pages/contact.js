@@ -50,6 +50,7 @@ const Contact = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 2.5rem;
+  grid-column: 1 / span 2;
 `
 
 const Message = styled.div`

@@ -33,21 +33,27 @@ export default ({ data: { projects } }) => (
     <Helmet>
       <title>Projects | Algonomicon</title>
     </Helmet>
-    {projects.edges.map(({ node }) => (
-      <Link to={`/projects/${node.slug.current}`}>
-        <Project>
-          <Preview>
-            <Image fluid={node.heroImage.asset.fluid} />
-          </Preview>
-          <Content>
-            <h3>{node.title}</h3>
-            <p>{node.description}</p>
-          </Content>
-        </Project>
-      </Link>
-    ))}
+    <Projects>
+      {projects.edges.map(({ node }) => (
+        <Link to={`/projects/${node.slug.current}`}>
+          <Project>
+            <Preview>
+              <Image fluid={node.heroImage.asset.fluid} />
+            </Preview>
+            <Content>
+              <h3>{node.title}</h3>
+              <p>{node.description}</p>
+            </Content>
+          </Project>
+        </Link>
+      ))}
+    </Projects>
   </Layout>
 )
+
+const Projects = styled.div`
+  grid-column: 1 / span 2;
+`
 
 const Project = styled.div`
   display: flex;
