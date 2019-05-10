@@ -107,7 +107,7 @@ export const PureFeed = ({ data }) => {
         ))}
       </Container>
     </div>
-  );
+  )
 }
 
 export default () => (

@@ -5,9 +5,7 @@ import { Tags } from "../../src/components"
 
 describe("Tags", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<Tags />)
-      .toJSON()
+    const tree = renderer.create(<Tags />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

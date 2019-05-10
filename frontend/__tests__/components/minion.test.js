@@ -5,9 +5,7 @@ import { Minion } from "../../src/components"
 
 describe("Minion", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<Minion />)
-      .toJSON()
+    const tree = renderer.create(<Minion />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
