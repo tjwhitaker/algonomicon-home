@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { Header } from "../../src/components"
+import { Layout } from "../../src/components"
 
-describe("Header", () => {
+describe("Layout", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<Header />)
+      .create(<Layout />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feed renders correctly 1`] = `
+<div>
+  <h6
+    className="sc-bdVaJa ghwPxc"
+  >
+    Feed
+  </h6>
+  <div
+    className="sc-bwzfXH hEOmVO"
+  >
+    <div>
+      <a
+        className="sc-htpNat jfvCDE"
+        href="/snippets/hello-world"
+      >
+        <h4
+          className="sc-bxivhb eHikNP"
+        >
+          Hello World
+        </h4>
+        <p
+          className="sc-ifAKCX hnIqYZ"
+        >
+          Lorem ipsum dolor sit amet.
+          ...
+        </p>
+        <small
+          className="sc-EHOje eFciqo"
+        >
+          Snippet from 
+          6 days ago
+        </small>
+      </a>
+    </div>
+    <div>
+      <a
+        className="sc-htpNat jfvCDE"
+        href="/articles/getting-flux-and-cuda-to-work-with-julia-pro"
+      >
+        <h4
+          className="sc-bxivhb eHikNP"
+        >
+          Getting Flux and Cuda to Work with Julia Pro
+        </h4>
+        <p
+          className="sc-ifAKCX hnIqYZ"
+        >
+          The fundamental concepts of classical physics, space, time, mass, and derived concepts, velocity, mo
+          ...
+        </p>
+        <small
+          className="sc-EHOje eFciqo"
+        >
+          Article from 
+          8 days ago
+        </small>
+      </a>
+    </div>
+    <div>
+      <a
+        className="sc-htpNat jfvCDE"
+        href="/projects/coming-soon"
+      >
+        <h4
+          className="sc-bxivhb eHikNP"
+        >
+          Coming Soon
+        </h4>
+        <p
+          className="sc-ifAKCX hnIqYZ"
+        >
+          Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approache
+          ...
+        </p>
+        <small
+          className="sc-EHOje eFciqo"
+        >
+          Project from 
+          22 days ago
+        </small>
+      </a>
+    </div>
+    <div>
+      <a
+        className="sc-htpNat jfvCDE"
+        href="/papers/a-neural-algorithm-of-artistic-style"
+      >
+        <h4
+          className="sc-bxivhb eHikNP"
+        >
+          A Neural Algorithm of Artistic Style
+        </h4>
+        <p
+          className="sc-ifAKCX hnIqYZ"
+        >
+          In fine art, especially painting, humans have mastered the skill to create unique visual experiences
+          ...
+        </p>
+        <small
+          className="sc-EHOje eFciqo"
+        >
+          Paper from 
+          22 days ago
+        </small>
+      </a>
+    </div>
+    <div>
+      <a
+        className="sc-htpNat jfvCDE"
+        href="/datasets/mnist"
+      >
+        <h4
+          className="sc-bxivhb eHikNP"
+        >
+          MNIST
+        </h4>
+        <p
+          className="sc-ifAKCX hnIqYZ"
+        >
+          Handwritten digits
+          ...
+        </p>
+        <small
+          className="sc-EHOje eFciqo"
+        >
+          Dataset from 
+          23 days ago
+        </small>
+      </a>
+    </div>
+  </div>
+</div>
+`;

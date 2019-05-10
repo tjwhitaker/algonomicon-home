@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { Header } from "../../src/components"
+import { Search } from "../../src/components"
 
-describe("Header", () => {
+describe("Search", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<Header />)
+      .create(<Search />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

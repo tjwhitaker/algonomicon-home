@@ -1,12 +1,12 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { Header } from "../../src/components"
+import { Wrapper } from "../../src/components"
 
-describe("Header", () => {
+describe("Wrapper", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<Header />)
+      .create(<Wrapper />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

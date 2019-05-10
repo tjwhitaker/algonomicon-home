@@ -75,7 +75,7 @@ const Snippet = ({ data }) => (
   </Post>
 )
 
-const Feed = ({ data }) => {
+export const PureFeed = ({ data }) => {
   const items = [
     ...data.articles.edges,
     ...data.datasets.edges,
@@ -93,21 +93,21 @@ const Feed = ({ data }) => {
       <Minion>Feed</Minion>
       <Container>
         {items.map(({ node }, i) => (
-          <div>
+          <div key={i}>
             {
               {
-                article: <Article data={node} key={i} />,
-                dataset: <Dataset data={node} key={i} />,
-                paper: <Paper data={node} key={i} />,
-                project: <Project data={node} key={i} />,
-                snippet: <Snippet data={node} key={i} />,
+                article: <Article data={node} />,
+                dataset: <Dataset data={node} />,
+                paper: <Paper data={node} />,
+                project: <Project data={node} />,
+                snippet: <Snippet data={node} />,
               }[node._type]
             }
           </div>
         ))}
       </Container>
     </div>
-  )
+  );
 }
 
 export default () => (
@@ -181,6 +181,6 @@ export default () => (
         }
       }
     `}
-    render={data => <Feed data={data} />}
+    render={data => <PureFeed data={data} />}
   />
 )
