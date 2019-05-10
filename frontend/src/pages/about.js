@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "gatsby-image"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 
@@ -50,7 +51,7 @@ export default ({ data }) => (
       <div>
         <Minion>Team</Minion>
         <Container>
-          <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
+          <Image fluid={data.file.childImageSharp.fluid} alt="Profile" />
         </Container>
       </div>
     </Sidebar>
