@@ -1,7 +1,7 @@
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { PureFeed } from "../../src/components/feed"
+import { Feed } from "../../src/components"
 
 describe("Feed", () => {
   it("renders correctly", () => {
@@ -86,7 +86,7 @@ describe("Feed", () => {
       },
     }
 
-    const tree = renderer.create(<PureFeed data={data} />).toJSON()
+    const tree = renderer.create(<Feed data={data} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

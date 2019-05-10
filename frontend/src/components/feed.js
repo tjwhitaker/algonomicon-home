@@ -75,7 +75,7 @@ const Snippet = ({ data }) => (
   </Post>
 )
 
-export const PureFeed = ({ data }) => {
+export default ({ data }) => {
   const items = [
     ...data.articles.edges,
     ...data.datasets.edges,
@@ -110,77 +110,72 @@ export const PureFeed = ({ data }) => {
   )
 }
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query FeedQuery {
-        articles: allSanityArticle {
-          edges {
-            node {
-              _type
-              _createdAt
-              title
-              description
-              slug {
-                current
-              }
-            }
-          }
-        }
-        datasets: allSanityDataset {
-          edges {
-            node {
-              _type
-              _createdAt
-              title
-              description
-              slug {
-                current
-              }
-            }
-          }
-        }
-        papers: allSanityPaper {
-          edges {
-            node {
-              _type
-              _createdAt
-              title
-              abstract
-              slug {
-                current
-              }
-            }
-          }
-        }
-        projects: allSanityProject {
-          edges {
-            node {
-              _type
-              _createdAt
-              title
-              description
-              slug {
-                current
-              }
-            }
-          }
-        }
-        snippets: allSanitySnippet {
-          edges {
-            node {
-              _type
-              _createdAt
-              title
-              description
-              slug {
-                current
-              }
-            }
+export const FeedQuery = graphql`
+  fragment FeedQuery on Query {
+    articles: allSanityArticle {
+      edges {
+        node {
+          _type
+          _createdAt
+          title
+          description
+          slug {
+            current
           }
         }
       }
-    `}
-    render={data => <PureFeed data={data} />}
-  />
-)
+    }
+    datasets: allSanityDataset {
+      edges {
+        node {
+          _type
+          _createdAt
+          title
+          description
+          slug {
+            current
+          }
+        }
+      }
+    }
+    papers: allSanityPaper {
+      edges {
+        node {
+          _type
+          _createdAt
+          title
+          abstract
+          slug {
+            current
+          }
+        }
+      }
+    }
+    projects: allSanityProject {
+      edges {
+        node {
+          _type
+          _createdAt
+          title
+          description
+          slug {
+            current
+          }
+        }
+      }
+    }
+    snippets: allSanitySnippet {
+      edges {
+        node {
+          _type
+          _createdAt
+          title
+          description
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`

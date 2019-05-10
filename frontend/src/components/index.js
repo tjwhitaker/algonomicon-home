@@ -1,5 +1,5 @@
 export { default as Categories } from "./categories"
-export { default as Feed } from "./feed"
+export { default as Feed, FeedQuery } from "./feed"
 export { default as Footer } from "./footer"
 export { default as Header } from "./header"
 export { default as Layout } from "./layout"

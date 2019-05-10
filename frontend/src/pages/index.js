@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout, Main, Feed } from "../components"
+import { Layout, Main, Feed, FeedQuery } from "../components"
 
 export const query = graphql`
   {
@@ -14,6 +14,7 @@ export const query = graphql`
         }
       }
     }
+    ...FeedQuery
   }
 `
 
@@ -74,7 +75,7 @@ export default ({ data }) => (
       </p>
     </Main>
     <Sidebar>
-      <Feed />
+      <Feed data={data} />
     </Sidebar>
   </Layout>
 )
