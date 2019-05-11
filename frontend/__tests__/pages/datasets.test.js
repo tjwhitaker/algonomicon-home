@@ -6,21 +6,21 @@ import Datasets from "../../src/pages/datasets"
 describe("Datasets", () => {
   it("renders correctly", () => {
     const data = {
-      "datasets": {
-        "edges": [
+      datasets: {
+        edges: [
           {
-            "node": {
-              "title": "MNIST",
-              "slug": {
-                "current": "mnist"
+            node: {
+              title: "MNIST",
+              slug: {
+                current: "mnist",
               },
-              "description": "Handwritten digits",
-              "format": "CSV",
-              "instances": 70000
-            }
-          }
-        ]
-      }
+              description: "Handwritten digits",
+              format: "CSV",
+              instances: 70000,
+            },
+          },
+        ],
+      },
     }
 
     const tree = renderer.create(<Datasets data={data} />).toJSON()
