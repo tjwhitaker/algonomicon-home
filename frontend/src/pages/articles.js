@@ -27,8 +27,8 @@ export default ({ data: { articles } }) => {
         <title>Articles | Algonomicon</title>
       </Helmet>
       <Main>
-        {articles.edges.map(({ node }) => (
-          <Post>
+        {articles.edges.map(({ node }, i) => (
+          <Post key={i}>
             <Link to={`/articles/${node.slug.current}`}>
               <div>
                 <h3>{node.title}</h3>

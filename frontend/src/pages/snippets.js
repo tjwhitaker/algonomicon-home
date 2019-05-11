@@ -32,8 +32,8 @@ export default ({ data: { snippets } }) => (
           </tr>
         </thead>
         <tbody>
-          {snippets.edges.map(({ node }) => (
-            <LinkRow to={`/snippets/${node.slug.current}`}>
+          {snippets.edges.map(({ node }, i) => (
+            <LinkRow to={`/snippets/${node.slug.current}`} key={i}>
               <td>{node.title}</td>
             </LinkRow>
           ))}

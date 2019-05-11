@@ -38,8 +38,8 @@ export default ({ data: { datasets } }) => (
           </tr>
         </thead>
         <tbody>
-          {datasets.edges.map(({ node }) => (
-            <LinkRow to={`/datasets/${node.slug.current}`}>
+          {datasets.edges.map(({ node }, i) => (
+            <LinkRow to={`/datasets/${node.slug.current}`} key={i}>
               <td>{node.title}</td>
               <td>{node.description}</td>
               <td>{node.format}</td>

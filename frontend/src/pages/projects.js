@@ -34,8 +34,8 @@ export default ({ data: { projects } }) => (
       <title>Projects | Algonomicon</title>
     </Helmet>
     <Projects>
-      {projects.edges.map(({ node }) => (
-        <Link to={`/projects/${node.slug.current}`}>
+      {projects.edges.map(({ node }, i) => (
+        <Link to={`/projects/${node.slug.current}`} key={i}>
           <Project>
             <Preview>
               <Image fluid={node.heroImage.asset.fluid} />

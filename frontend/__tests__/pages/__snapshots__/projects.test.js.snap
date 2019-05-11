@@ -455,98 +455,102 @@ exports[`Projects renders correctly 1`] = `
       <div
         className="sc-ckVGcZ jecudI"
       >
-        <a
-          href="/projects/coming-soon"
+        <div
+          className="sc-cMljjf lkIsh"
         >
-          <div
-            className="sc-cMljjf deagiW"
+          <a
+            href="/projects/coming-soon"
           >
             <div
-              className="sc-jAaTju jqggIu"
+              className="sc-jAaTju dfKobZ"
             >
               <div
-                className=" gatsby-image-wrapper"
-                style={
-                  Object {
-                    "overflow": "hidden",
-                    "position": "relative",
-                  }
-                }
+                className="sc-jDwBTQ bRpAgi"
               >
                 <div
+                  className=" gatsby-image-wrapper"
                   style={
                     Object {
-                      "paddingBottom": "51.31086142322098%",
-                      "width": "100%",
+                      "overflow": "hidden",
+                      "position": "relative",
                     }
                   }
-                />
-                <img
-                  alt=""
-                  src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCBAb/xAAkEAABAwMDBAMAAAAAAAAAAAABAgMEAAUREiEiBgcTMTJhgf/EABUBAQEAAAAAAAAAAAAAAAAAAAQD/8QAGxEBAAICAwAAAAAAAAAAAAAAAQADAiERUYH/2gAMAwEAAhEDEQA/AMv0z26jyGnpMmR4ghOpCSfl9VXvLi7eGzAVhWnxFJp1OcWk4C1AavQNJWedxb1cuR970a3N29R9NfPsShyUNhkftFTuxxPdA2GaKgKxCBqf/9k="
-                  style={
-                    Object {
-                      "height": "100%",
-                      "left": 0,
-                      "objectFit": "cover",
-                      "objectPosition": "center",
-                      "opacity": 1,
-                      "position": "absolute",
-                      "top": 0,
-                      "transitionDelay": "0.5s",
-                      "width": "100%",
+                >
+                  <div
+                    style={
+                      Object {
+                        "paddingBottom": "51.31086142322098%",
+                        "width": "100%",
+                      }
                     }
-                  }
-                />
-                <picture>
+                  />
                   <img
                     alt=""
-                    onLoad={[Function]}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    src="https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop"
-                    srcSet="https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=200&h=103&fit=crop 200w,
-https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=400&h=205&fit=crop 400w,
-https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop 800w,
-https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=1200&h=616&fit=crop 1200w"
+                    src="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCBAb/xAAkEAABAwMDBAMAAAAAAAAAAAABAgMEAAUREiEiBgcTMTJhgf/EABUBAQEAAAAAAAAAAAAAAAAAAAQD/8QAGxEBAAICAwAAAAAAAAAAAAAAAQADAiERUYH/2gAMAwEAAhEDEQA/AMv0z26jyGnpMmR4ghOpCSfl9VXvLi7eGzAVhWnxFJp1OcWk4C1AavQNJWedxb1cuR970a3N29R9NfPsShyUNhkftFTuxxPdA2GaKgKxCBqf/9k="
                     style={
                       Object {
                         "height": "100%",
                         "left": 0,
                         "objectFit": "cover",
                         "objectPosition": "center",
-                        "opacity": 0,
+                        "opacity": 1,
                         "position": "absolute",
                         "top": 0,
-                        "transition": "opacity 0.5s",
+                        "transitionDelay": "0.5s",
                         "width": "100%",
                       }
                     }
                   />
-                </picture>
-                <noscript
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<picture><img sizes=\\"(max-width: 800px) 100vw, 800px\\" srcset=\\"https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=200&h=103&fit=crop 200w,
+                  <picture>
+                    <img
+                      alt=""
+                      onLoad={[Function]}
+                      sizes="(max-width: 800px) 100vw, 800px"
+                      src="https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop"
+                      srcSet="https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=200&h=103&fit=crop 200w,
+https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=400&h=205&fit=crop 400w,
+https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop 800w,
+https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=1200&h=616&fit=crop 1200w"
+                      style={
+                        Object {
+                          "height": "100%",
+                          "left": 0,
+                          "objectFit": "cover",
+                          "objectPosition": "center",
+                          "opacity": 0,
+                          "position": "absolute",
+                          "top": 0,
+                          "transition": "opacity 0.5s",
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </picture>
+                  <noscript
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<picture><img sizes=\\"(max-width: 800px) 100vw, 800px\\" srcset=\\"https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=200&h=103&fit=crop 200w,
 https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=400&h=205&fit=crop 400w,
 https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop 800w,
 https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=1200&h=616&fit=crop 1200w\\" src=\\"https://cdn.sanity.io/images/51bo9zth/production/f7497b733f3ac9fedc88246520ae00578c17ef53-1335x685.jpg?w=800&h=410&fit=crop\\" alt=\\"\\" style=\\"position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center\\"/></picture>",
+                      }
                     }
-                  }
-                />
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-gPEVay jzdeiM"
+              >
+                <h3>
+                  Coming Soon
+                </h3>
+                <p>
+                  Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+                </p>
               </div>
             </div>
-            <div
-              className="sc-jDwBTQ iGOYhn"
-            >
-              <h3>
-                Coming Soon
-              </h3>
-              <p>
-                Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-              </p>
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </div>
