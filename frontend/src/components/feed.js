@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import moment from "moment"
 import Minion from "./minion"
-import { StaticQuery, Link, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 const Container = styled.div`
   max-height: 100%;

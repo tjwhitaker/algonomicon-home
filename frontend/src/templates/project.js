@@ -19,11 +19,17 @@ export default ({ data: { project } }) => (
     <Helmet>
       <title>{project.title} | Algonomicon</title>
     </Helmet>
-    <Title>{project.title}</Title>
-    <p>{project.description}</p>
+    <Project>
+      <Title>{project.title}</Title>
+      <p>{project.description}</p>
+    </Project>
   </Layout>
 )
 
 const Title = styled.h1`
   margin-top: 0;
+`
+
+const Project = styled.div`
+  grid-column: 1 / span 2;
 `
