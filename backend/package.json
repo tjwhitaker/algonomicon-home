@@ -1,35 +1,33 @@
 {
-  "name": "koa-test",
+  "name": "algonomicon",
+  "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "package.json",
+  "author": "Tim Whitaker <camp4climber@gmail.com>",
+  "license": "UNLICENSED",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node src/app.js",
-    "seed": "node src/seed.js",
-    "doom": "node src/doom.js"
+    "start": "sanity start",
+    "test": "sanity check"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "sanity"
+  ],
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@koa/cors": "^2.2.3",
-    "dotenv": "^6.2.0",
-    "koa": "^2.7.0",
-    "koa-body": "^4.0.8",
-    "koa-compose": "^4.1.0",
-    "koa-logger": "^3.2.0",
-    "koa-tree-router": "^0.4.4",
-    "marked": "^0.6.1",
-    "mongodb": "^3.1.13",
-    "mongoose": "^5.4.11"
+    "@sanity/base": "^0.140.12",
+    "@sanity/code-input": "^0.140.12",
+    "@sanity/components": "^0.140.16",
+    "@sanity/core": "^0.140.16",
+    "@sanity/default-layout": "^0.140.16",
+    "@sanity/default-login": "^0.140.15",
+    "@sanity/desk-tool": "^0.140.16",
+    "prop-types": "^15.6",
+    "react": "^16.2",
+    "react-dom": "^16.2"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "gray-matter": "^4.0.2",
-    "request": "^2.88.0"
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/algonomicon/universe"
   }
 }

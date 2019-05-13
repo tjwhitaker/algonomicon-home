@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories renders correctly 1`] = `
+<div
+  className="sc-bdVaJa knWkmq"
+>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/"
+  >
+    Home
+  </a>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/articles"
+    partiallyActive={true}
+  >
+    Articles
+  </a>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/datasets"
+    partiallyActive={true}
+  >
+    Datasets
+  </a>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/papers"
+    partiallyActive={true}
+  >
+    Papers
+  </a>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/projects"
+    partiallyActive={true}
+  >
+    Projects
+  </a>
+  <a
+    className="sc-bwzfXH FtMCK"
+    href="/snippets"
+    partiallyActive={true}
+  >
+    Snippets
+  </a>
+</div>
+`;
