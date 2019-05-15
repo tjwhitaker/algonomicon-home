@@ -10,8 +10,7 @@
     "format": "prettier --write {src,__{tests,mocks}__}/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest",
-    "write-good": "write-good src/content/articles/*.md"
+    "test": "jest"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.6",
