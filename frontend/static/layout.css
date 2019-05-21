@@ -13,13 +13,13 @@ body.glitched {
 
 a {
   transition:all 0.1s ease;
-  color:#007bff;
+  color:#039BE5;
   font-weight:bold;
   text-decoration:none;
 }
 
 a.active, a:hover {
-  color:#0056b3;
+  color:#0277BD;
   text-decoration:none;
 }
 

@@ -1,0 +1,23 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+gatsby:
+  stage: build
+  before_script:
+    - cd frontend
+  script:
+    - yarn install
+    - ./node_modules/.bin/gatsby build
+  artifacts:
+    paths:
+      - frontend/public
+  only:
+    - master
