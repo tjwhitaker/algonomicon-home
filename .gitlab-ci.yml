@@ -30,6 +30,7 @@ digitalocean:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - 'which rsync || ( apt-get update -y && apt-get install rsync -y)'
     - cd frontend
   script:
     - rsync -r -v --stats --delete public gitlab@104.248.181.56:/home/universe
