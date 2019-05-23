@@ -1,7 +1,11 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: 'https://algonomicon.com'
+  },
   plugins: [
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
