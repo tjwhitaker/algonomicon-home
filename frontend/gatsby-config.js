@@ -9,6 +9,14 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://algonomicon.com',
+        sitemap: 'https://algonomicon.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
