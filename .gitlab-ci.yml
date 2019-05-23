@@ -36,3 +36,5 @@ digitalocean:
     - cd frontend
   script:
     - rsync -r -v --stats --delete public gitlab@104.248.181.56:/home/universe
+  only:
+    - master
