@@ -47,6 +47,10 @@ const Categories = styled.div`
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+
+  @media screen and (max-width: 600px) {
+    overflow-X: hidden;
+  }
 `
 
 const CategoryLink = styled(Link)`
@@ -55,4 +59,13 @@ const CategoryLink = styled(Link)`
   font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+
+  @media screen and (max-width: 600px) {
+    font-size:0.75rem;
+    margin-right:1.25rem;
+  }
+
+  &:first-child {
+    display:none;
+  }
 `

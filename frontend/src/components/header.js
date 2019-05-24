@@ -203,6 +203,10 @@ const Button = styled.button`
     color: white;
     background-position: -100px 0;
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `
 
 const InputContainer = styled.div`
@@ -219,6 +223,11 @@ const Icon = styled.div`
   width: 2rem;
   line-height: 1;
   color: #aaa;
+
+  @media screen and (max-width: 600px) {
+    width: 1.5rem;
+    left: 0.75rem;
+  }
 `
 
 const Input = styled.input`
@@ -232,5 +241,10 @@ const Input = styled.input`
     border: none;
     outline: none;
     box-shadow: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0.8rem 1.5rem 0.8rem 3rem;
+    font-size:0.8rem;
   }
 `
