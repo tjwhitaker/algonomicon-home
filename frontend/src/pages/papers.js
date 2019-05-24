@@ -6,7 +6,7 @@ import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
 export const query = graphql`
   {
-    papers: allSanityPaper {
+    papers: allSanityPaper(sort: { fields: [_createdAt], order: DESC }) {
       edges {
         node {
           title

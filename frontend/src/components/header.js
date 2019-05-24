@@ -11,7 +11,7 @@ export default () => (
       {
         file(relativePath: { eq: "nebula-small.jpg" }) {
           childImageSharp {
-            fluid(quality: 100) {
+            fluid(quality: 100, maxWidth: 2160) {
               ...GatsbyImageSharpFluid
             }
           }
