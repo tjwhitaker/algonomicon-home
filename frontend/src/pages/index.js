@@ -85,4 +85,8 @@ const Sidebar = styled.div`
   max-height: 100%;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 600px) {
+    display:none;
+  }
 `
