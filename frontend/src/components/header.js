@@ -32,9 +32,14 @@ export default () => (
                   Contact
                 </NavLink>
               </Nav>
+              <MobileNav>
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-5x"><path fill="white" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg>
+              </MobileNav>
             </Masthead>
             <Intro>
               <Headline>Machine Learning for Fun and Profit</Headline>
+              <MobileHeadline>Machine Learning for Fun and Profit! Still under construction. Thanks for bearing with us! Sign up
+                for updates.</MobileHeadline>
               <Tagline>
                 Still under construction. Thanks for bearing with us! Sign up
                 for updates.
@@ -76,6 +81,10 @@ const Header = styled(BackgroundImage)`
   background-position: center bottom;
   height: 18rem;
   position: relative;
+
+  @media screen and (max-width:600px) {
+    height:15rem;
+  }
 `
 
 const Masthead = styled.div`
@@ -88,6 +97,25 @@ const Masthead = styled.div`
 const Nav = styled.div`
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    display:none;
+  }
+`
+
+const MobileNav = styled.div`
+  display:none;
+  position:absolute;
+  top:0; right:0;
+  cursor: pointer;
+
+  svg {
+    height:25px;
+  }
+
+  @media screen and (max-width: 600px) {
+    display:block;
+  }
 `
 
 const NavLink = styled(Link)`
@@ -113,6 +141,7 @@ const Intro = styled.div`
   position: absolute;
   width: 100%;
   bottom: 1rem;
+  padding-right:1rem;
 `
 
 const Headline = styled.h1`
@@ -120,11 +149,31 @@ const Headline = styled.h1`
   margin: 0;
   padding-bottom: 0.2rem;
   border: none;
+
+  @media screen and (max-width: 600px) {
+    display:none;
+  }
+`
+
+const MobileHeadline = styled.h4`
+  display:none;
+  color:white;
+  margin:0;
+  padding-right:1rem;
+  line-height:1.625;
+
+  @media screen and (max-width: 600px) {
+    display:block;
+  }
 `
 
 const Tagline = styled.h4`
   color: white;
   margin: 0;
+
+  @media screen and (max-width: 600px) {
+    display:none;
+  }
 `
 
 const Register = styled.div`
@@ -148,6 +197,7 @@ const Button = styled.button`
   font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  white-space: nowrap;
 
   &:hover {
     color: white;
