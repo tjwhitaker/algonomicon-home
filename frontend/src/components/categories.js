@@ -49,7 +49,7 @@ const Categories = styled.div`
   border-bottom: 1px solid #ccc;
 
   @media screen and (max-width: 600px) {
-    overflow-X: hidden;
+    overflow-x: hidden;
   }
 `
 
@@ -61,11 +61,11 @@ const CategoryLink = styled(Link)`
     sans-serif;
 
   @media screen and (max-width: 600px) {
-    font-size:0.75rem;
-    margin-right:1.25rem;
-  }
+    font-size: 0.75rem;
+    margin-right: 1.25rem;
 
-  &:first-child {
-    display:none;
+    &:first-child {
+      display: none;
+    }
   }
 `
