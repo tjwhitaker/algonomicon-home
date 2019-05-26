@@ -37,8 +37,8 @@ export default () => (
               </MobileNav>
             </Masthead>
             <Intro>
-              <Headline>Machine Learning for Fun and Profit</Headline>
-              <MobileHeadline>Machine Learning for Fun and Profit! Still under construction. Thanks for bearing with us! Sign up
+              <Headline>Machine Learning and Data Science</Headline>
+              <MobileHeadline>Machine Learning and Data Science! Still under construction. Thanks for bearing with us! Sign up
                 for updates.</MobileHeadline>
               <Tagline>
                 Still under construction. Thanks for bearing with us! Sign up
