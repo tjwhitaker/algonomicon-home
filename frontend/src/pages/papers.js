@@ -31,6 +31,7 @@ export default ({ data: { papers } }) => (
         <Post key={i}>
           <Link to={`/papers/${node.slug.current}`}>
             <h3>{node.title}</h3>
+            <small>{node.author}</small>
             <p>{node.abstract.substring(0, 300)}...</p>
           </Link>
         </Post>
@@ -51,6 +52,12 @@ const Post = styled.div`
   h3 {
     color: hsla(0, 0%, 0%, 0.8);
     margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  small {
+    color: #aaa;
+    font-weight: normal;
   }
 
   p {
