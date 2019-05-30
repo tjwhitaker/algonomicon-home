@@ -15,8 +15,7 @@ export const query = graphql`
           slug {
             current
           }
-          author
-          abstract
+          description
         }
       }
     }
@@ -33,7 +32,7 @@ export default ({ data: { algorithms } }) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.slug.current}`}>
             <h3>{node.title}</h3>
-            <p>{node.abstract.substring(0, 300)}...</p>
+            <p>{node.description.substring(0, 300)}...</p>
           </Link>
         </Post>
       ))}
@@ -53,7 +52,6 @@ const Post = styled.div`
   h3 {
     color: hsla(0, 0%, 0%, 0.8);
     margin-top: 0;
-    margin-bottom: 0;
   }
 
   p {
