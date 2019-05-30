@@ -4,8 +4,12 @@ import { Link } from "gatsby"
 
 export default () => (
   <Categories>
-    <CategoryLink to="/" activeClassName="active">
-      Home
+    <CategoryLink
+      to="/algorithms"
+      activeClassName="active"
+      partiallyActive={true}
+    >
+      Algorithms
     </CategoryLink>
     <CategoryLink
       to="/articles"
@@ -13,13 +17,6 @@ export default () => (
       partiallyActive={true}
     >
       Articles
-    </CategoryLink>
-    <CategoryLink
-      to="/datasets"
-      activeClassName="active"
-      partiallyActive={true}
-    >
-      Datasets
     </CategoryLink>
     <CategoryLink to="/papers" activeClassName="active" partiallyActive={true}>
       Papers
