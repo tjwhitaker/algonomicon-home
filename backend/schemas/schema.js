@@ -6,7 +6,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type"
 
 import algorithm from "./algorithm"
 import article from "./article"
-import dataset from "./dataset"
 import paper from "./paper"
 import project from "./project"
 import snippet from "./snippet"
@@ -20,7 +19,6 @@ export default createSchema({
     /* Your types here! */
     algorithm,
     article,
-    dataset,
     paper,
     project,
     snippet
