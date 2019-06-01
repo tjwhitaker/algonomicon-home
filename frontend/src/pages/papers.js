@@ -57,7 +57,10 @@ const Post = styled.div`
 
   small {
     color: #aaa;
+    line-height: 1.5;
     font-weight: normal;
+    display: block;
+    margin: 0.5rem 0;
   }
 
   p {
