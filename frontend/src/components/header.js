@@ -58,7 +58,7 @@ export default () => (
                 Still under construction. Thanks for bearing with us! Sign up
                 for updates.
               </Tagline>
-              <Register>
+              <Register netlify>
                 <InputContainer>
                   <Icon>
                     <svg
@@ -191,10 +191,11 @@ const Tagline = styled.h4`
   }
 `
 
-const Register = styled.div`
+const Register = styled.form`
   display: flex;
   position: relative;
   margin-top: 1rem;
+  margin-bottom: 0;
 `
 
 const Button = styled.button`
