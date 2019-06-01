@@ -4,8 +4,12 @@ import { Link } from "gatsby"
 
 export default () => (
   <Categories>
-    <CategoryLink to="/" activeClassName="active">
-      Home
+    <CategoryLink
+      to="/algorithms"
+      activeClassName="active"
+      partiallyActive={true}
+    >
+      Algorithms
     </CategoryLink>
     <CategoryLink
       to="/articles"
@@ -13,13 +17,6 @@ export default () => (
       partiallyActive={true}
     >
       Articles
-    </CategoryLink>
-    <CategoryLink
-      to="/datasets"
-      activeClassName="active"
-      partiallyActive={true}
-    >
-      Datasets
     </CategoryLink>
     <CategoryLink to="/papers" activeClassName="active" partiallyActive={true}>
       Papers
@@ -49,7 +46,7 @@ const Categories = styled.div`
   border-bottom: 1px solid #ccc;
 
   @media screen and (max-width: 600px) {
-    overflow-X: hidden;
+    overflow-x: hidden;
   }
 `
 
@@ -61,11 +58,11 @@ const CategoryLink = styled(Link)`
     sans-serif;
 
   @media screen and (max-width: 600px) {
-    font-size:0.75rem;
-    margin-right:1.25rem;
-  }
+    font-size: 0.75rem;
+    margin-right: 1.25rem;
 
-  &:first-child {
-    display:none;
+    &:first-child {
+      display: none;
+    }
   }
 `

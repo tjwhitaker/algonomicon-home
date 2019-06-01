@@ -6,33 +6,33 @@ import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
 export const query = graphql`
   {
-    papers: allSanityPaper(sort: { fields: [_createdAt], order: DESC }) {
+    algorithms: allSanityAlgorithm(
+      sort: { fields: [_createdAt], order: DESC }
+    ) {
       edges {
         node {
           title
           slug {
             current
           }
-          author
-          abstract
+          description
         }
       }
     }
   }
 `
 
-export default ({ data: { papers } }) => (
+export default ({ data: { algorithms } }) => (
   <Layout>
     <Helmet>
-      <title>Papers | Algonomicon</title>
+      <title>Algorithms | Algonomicon</title>
     </Helmet>
     <Main>
-      {papers.edges.map(({ node }, i) => (
+      {algorithms.edges.map(({ node }, i) => (
         <Post key={i}>
-          <Link to={`/papers/${node.slug.current}`}>
+          <Link to={`/algorithms/${node.slug.current}`}>
             <h3>{node.title}</h3>
-            <small>{node.author}</small>
-            <p>{node.abstract.substring(0, 300)}...</p>
+            <p>{node.description.substring(0, 300)}...</p>
           </Link>
         </Post>
       ))}
@@ -52,12 +52,6 @@ const Post = styled.div`
   h3 {
     color: hsla(0, 0%, 0%, 0.8);
     margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  small {
-    color: #aaa;
-    font-weight: normal;
   }
 
   p {
