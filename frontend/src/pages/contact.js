@@ -18,7 +18,7 @@ export default () => (
           or get in touch through one of these other means.
         </p>
       </Message>
-      <Form>
+      <Form netlify>
         <FieldGroup flex="0">
           <Input type="text" placeholder="Name" />
         </FieldGroup>
@@ -61,12 +61,13 @@ const Title = styled.h1`
   margin-top: 0;
 `
 
-const Form = styled.div`
+const Form = styled.form`
   flex: 0 0 50%;
   padding-right: 0.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 0;
 `
 
 const FieldGroup = styled.div`
