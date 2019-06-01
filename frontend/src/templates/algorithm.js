@@ -8,37 +8,30 @@ import { Layout, Main, Sidebar, Minion } from "../components"
 
 export const query = graphql`
   query($slug: String!) {
-    dataset: sanityDataset(slug: { current: { eq: $slug } }) {
+    algorithm: sanityAlgorithm(slug: { current: { eq: $slug } }) {
       title
-      description
-      creator
-      format
-      instances
+      _rawContent
       _createdAt
       _updatedAt
-      _rawContent
     }
   }
 `
 
-export default ({ data: { dataset } }) => (
+export default ({ data: { algorithm } }) => (
   <Layout>
     <Helmet>
-      <title>{dataset.title} | Algonomicon</title>
+      <title>{algorithm.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{dataset.title}</Title>
-      <BlockContent blocks={dataset._rawContent} serializers={serializers} />
+      <Title>{algorithm.title}</Title>
+      <BlockContent blocks={algorithm._rawContent} serializers={serializers} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Creator: {dataset.creator}</Field>
-          <Field>Format: {dataset.format}</Field>
-          <Field>Instances: {dataset.instances}</Field>
-          <Field>Created: {dataset._createdAt}</Field>
-          <Field>Updated: {dataset._updatedAt}</Field>
+          <Field>Created: {algorithm._createdAt}</Field>
+          <Field>Updated: {algorithm._updatedAt}</Field>
         </Meta>
       </div>
     </Sidebar>
