@@ -58,7 +58,13 @@ export default () => (
                 Still under construction. Thanks for bearing with us! Sign up
                 for updates.
               </Tagline>
-              <Register netlify>
+              <Register
+                name="subscribe"
+                method="post"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="bot-field" />
                 <InputContainer>
                   <Icon>
                     <svg
@@ -77,7 +83,11 @@ export default () => (
                       />
                     </svg>
                   </Icon>
-                  <Input type="text" placeholder="example@algonomicon.com" />
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="example@gmail.com"
+                  />
                 </InputContainer>
                 <Button>Sign Up!</Button>
               </Register>

@@ -18,7 +18,13 @@ export default () => (
           or get in touch through one of these other means.
         </p>
       </Message>
-      <Form netlify>
+      <Form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="bot-field" />
         <FieldGroup flex="0">
           <Input type="text" placeholder="Name" />
         </FieldGroup>
