@@ -4,18 +4,34 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
+// export const query = graphql`
+//   {
+//     algorithms: allSanityAlgorithm(
+//       sort: { fields: [_createdAt], order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           title
+//           slug {
+//             current
+//           }
+//           description
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const query = graphql`
   {
-    algorithms: allSanityAlgorithm(
-      sort: { fields: [_createdAt], order: DESC }
-    ) {
+    algorithms: allMarkdownRemark {
       edges {
         node {
-          title
-          slug {
-            current
+          html
+          frontmatter {
+            title
+            slug
           }
-          description
         }
       }
     }
@@ -30,9 +46,9 @@ export default ({ data: { algorithms } }) => (
     <Main>
       {algorithms.edges.map(({ node }, i) => (
         <Post key={i}>
-          <Link to={`/algorithms/${node.slug.current}`}>
-            <h3>{node.title}</h3>
-            <p>{node.description.substring(0, 300)}...</p>
+          <Link to={`/algorithms/${node.frontmatter.slug}`}>
+            <h3>{node.frontmatter.title}</h3>
+            {/* <p>{node.description.substring(0, 300)}...</p> */}
           </Link>
         </Post>
       ))}
