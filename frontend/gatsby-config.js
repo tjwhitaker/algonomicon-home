@@ -4,12 +4,17 @@ module.exports = {
   },
   plugins: [
     "gatsby-transformer-sharp",
-    "gatsby-transformer-remark",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-remark-collection",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [],
+      },
+    },
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {

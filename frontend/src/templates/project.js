@@ -5,11 +5,21 @@ import { graphql } from "gatsby"
 import { Layout } from "../components"
 import { Helmet } from "react-helmet"
 
+// export const query = graphql`
+//   query($slug: String!) {
+//     project: sanityProject(slug: { current: { eq: $slug } }) {
+//       title
+//       description
+//     }
+//   }
+// `
+
 export const query = graphql`
   query($slug: String!) {
-    project: sanityProject(slug: { current: { eq: $slug } }) {
-      title
-      description
+    project: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+      }
     }
   }
 `
@@ -17,11 +27,11 @@ export const query = graphql`
 export default ({ data: { project } }) => (
   <Layout>
     <Helmet>
-      <title>{project.title} | Algonomicon</title>
+      <title>{project.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Project>
-      <Title>{project.title}</Title>
-      <p>{project.description}</p>
+      <Title>{project.frontmatter.title}</Title>
+      {/* <p>{project.description}</p> */}
     </Project>
   </Layout>
 )

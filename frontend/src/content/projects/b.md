@@ -1,6 +1,6 @@
 ---
 title: Lorem Ipsum
-slug: lorem-ipsum
+slug: b
 date: "6-3-2019"
 ---
 

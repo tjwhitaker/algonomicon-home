@@ -6,16 +6,27 @@ import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 
+// export const query = graphql`
+//   query($slug: String!) {
+//     article: sanityArticle(slug: { current: { eq: $slug } }) {
+//       title
+//       description
+//       author
+//       _rawOutline
+//       _rawContent
+//       _createdAt
+//       _updatedAt
+//     }
+//   }
+// `
+
 export const query = graphql`
   query($slug: String!) {
-    article: sanityArticle(slug: { current: { eq: $slug } }) {
-      title
-      description
-      author
-      _rawOutline
-      _rawContent
-      _createdAt
-      _updatedAt
+    article: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        authors
+      }
     }
   }
 `
@@ -23,26 +34,24 @@ export const query = graphql`
 export default ({ data: { article } }) => (
   <Layout>
     <Helmet>
-      <title>{article.title} | Algonomicon</title>
+      <title>{article.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{article.title}</Title>
-      <BlockContent blocks={article._rawContent} serializers={serializers} />
+      <Title>{article.frontmatter.title}</Title>
+      {/* <BlockContent blocks={article._rawContent} serializers={serializers} /> */}
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Author: {article.author}</Field>
-          <Field>Created: {article._createdAt}</Field>
-          <Field>Updated: {article._updatedAt}</Field>
+          <Field>Author: {article.frontmatter.authors}</Field>
+          {/* <Field>Created: {article._createdAt}</Field> */}
+          {/* <Field>Updated: {article._updatedAt}</Field> */}
         </Meta>
       </div>
       <div>
         <Minion>Outline</Minion>
-        <Outline>
-          <BlockContent blocks={article._rawOutline} />
-        </Outline>
+        <Outline>{/* <BlockContent blocks={article._rawOutline} /> */}</Outline>
       </div>
     </Sidebar>
   </Layout>

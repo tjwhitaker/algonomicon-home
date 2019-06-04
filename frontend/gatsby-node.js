@@ -7,47 +7,57 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      algorithms: allSanityAlgorithm {
+      algorithms: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "algorithms" } } }
+      ) {
         edges {
           node {
-            slug {
-              current
+            frontmatter {
+              slug
             }
           }
         }
       }
-      articles: allSanityArticle {
+      articles: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "articles" } } }
+      ) {
         edges {
           node {
-            slug {
-              current
+            frontmatter {
+              slug
             }
           }
         }
       }
-      papers: allSanityPaper {
+      papers: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "papers" } } }
+      ) {
         edges {
           node {
-            slug {
-              current
+            frontmatter {
+              slug
             }
           }
         }
       }
-      projects: allSanityProject {
+      projects: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "projects" } } }
+      ) {
         edges {
           node {
-            slug {
-              current
+            frontmatter {
+              slug
             }
           }
         }
       }
-      snippets: allSanitySnippet {
+      snippets: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "snippets" } } }
+      ) {
         edges {
           node {
-            slug {
-              current
+            frontmatter {
+              slug
             }
           }
         }
@@ -62,60 +72,60 @@ exports.createPages = async ({ graphql, actions }) => {
   const snippets = result.data.snippets.edges || []
 
   algorithms.forEach((edge, index) => {
-    const path = `/algorithms/${edge.node.slug.current}`
+    const path = `/algorithms/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/algorithm.js"),
-      context: { slug: edge.node.slug.current },
+      context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
   articles.forEach((edge, index) => {
-    const path = `/articles/${edge.node.slug.current}`
+    const path = `/articles/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/article.js"),
-      context: { slug: edge.node.slug.current },
+      context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
   papers.forEach((edge, index) => {
-    const path = `/papers/${edge.node.slug.current}`
+    const path = `/papers/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/paper.js"),
-      context: { slug: edge.node.slug.current },
+      context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
   projects.forEach((edge, index) => {
-    const path = `/projects/${edge.node.slug.current}`
+    const path = `/projects/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/project.js"),
-      context: { slug: edge.node.slug.current },
+      context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
   snippets.forEach((edge, index) => {
-    const path = `/snippets/${edge.node.slug.current}`
+    const path = `/snippets/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/snippet.js"),
-      context: { slug: edge.node.slug.current },
+      context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })

@@ -1,6 +1,6 @@
 ---
 title: Lorem Ipsum
-slug: lorem-ipsum
+slug: a
 date: "6-3-2019"
 authors: "Timothy J. Whitaker"
 ---
