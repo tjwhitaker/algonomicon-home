@@ -35,66 +35,20 @@ const Meta = styled.small`
   font-weight: normal;
 `
 
-const Algorithm = ({ data }) => (
-  <Post to={`/algorithms/${data.frontmatter.slug}`}>
+const Item = ({ data }) => (
+  <Post to={`/${data.fields.collection}/${data.frontmatter.slug}`}>
     <Title>{data.frontmatter.title}</Title>
     <Description>{data.excerpt}</Description>
     <Meta>
-      Algorithm from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
-    </Meta>
-  </Post>
-)
-
-const Article = ({ data }) => (
-  <Post to={`/articles/${data.frontmatter.slug}`}>
-    <Title>{data.frontmatter.title}</Title>
-    <Description>{data.excerpt}</Description>
-    <Meta>
-      Article from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
-    </Meta>
-  </Post>
-)
-
-const Paper = ({ data }) => (
-  <Post to={`/papers/${data.frontmatter.slug}`}>
-    <Title>{data.frontmatter.title}</Title>
-    <Description>{data.excerpt}</Description>
-    <Meta>
-      Paper from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
-    </Meta>
-  </Post>
-)
-
-const Project = ({ data }) => (
-  <Post to={`/projects/${data.frontmatter.slug}`}>
-    <Title>{data.frontmatter.title}</Title>
-    <Description>{data.excerpt}</Description>
-    <Meta>
-      Project from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
-    </Meta>
-  </Post>
-)
-
-const Snippet = ({ data }) => (
-  <Post to={`/snippets/${data.frontmatter.slug}`}>
-    <Title>{data.frontmatter.title}</Title>
-    <Description>{data.excerpt}</Description>
-    <Meta>
-      Snippet from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+      {data.fields.collection[0].toUpperCase() +
+        data.fields.collection.slice(1, -1)}{" "}
+      from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
     </Meta>
   </Post>
 )
 
 export default ({ data }) => {
-  const items = [
-    ...data.algorithms.edges,
-    ...data.articles.edges,
-    ...data.papers.edges,
-    ...data.projects.edges,
-    ...data.snippets.edges,
-  ]
-
-  items.sort((a, b) => {
+  const items = data.allMarkdownRemark.edges.sort((a, b) => {
     return moment(a.node.frontmatter.date, "MM-DD-YYYY").isBefore(
       moment(b.node.frontmatter.date, "MM-DD-YYYY")
     )
@@ -105,17 +59,7 @@ export default ({ data }) => {
       <Minion>Feed</Minion>
       <Container>
         {items.map(({ node }, i) => (
-          <div key={i}>
-            {
-              {
-                algorithms: <Algorithm data={node} />,
-                articles: <Article data={node} />,
-                papers: <Paper data={node} />,
-                projects: <Project data={node} />,
-                snippets: <Snippet data={node} />,
-              }[node.fields.collection]
-            }
-          </div>
+          <Item key={i} data={node} />
         ))}
       </Container>
     </div>
@@ -124,77 +68,7 @@ export default ({ data }) => {
 
 export const FeedQuery = graphql`
   fragment FeedQuery on Query {
-    algorithms: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "algorithms" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-          fields {
-            collection
-          }
-        }
-      }
-    }
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-          fields {
-            collection
-          }
-        }
-      }
-    }
-    papers: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "papers" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-          fields {
-            collection
-          }
-        }
-      }
-    }
-    projects: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "projects" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-          fields {
-            collection
-          }
-        }
-      }
-    }
-    snippets: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "snippets" } } }
-    ) {
+    allMarkdownRemark {
       edges {
         node {
           excerpt
