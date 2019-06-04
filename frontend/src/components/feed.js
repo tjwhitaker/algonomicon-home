@@ -35,57 +35,69 @@ const Meta = styled.small`
   font-weight: normal;
 `
 
-const Article = ({ data }) => (
-  <Post to={`/articles/${data.slug.current}`}>
-    <Title>{data.title}</Title>
-    <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Article from {moment(data._createdAt).fromNow()}</Meta>
+const Algorithm = ({ data }) => (
+  <Post to={`/algorithms/${data.frontmatter.slug}`}>
+    <Title>{data.frontmatter.title}</Title>
+    <Description>{data.excerpt}</Description>
+    <Meta>
+      Algorithm from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+    </Meta>
   </Post>
 )
 
-const Dataset = ({ data }) => (
-  <Post to={`/datasets/${data.slug.current}`}>
-    <Title>{data.title}</Title>
-    <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Dataset from {moment(data._createdAt).fromNow()}</Meta>
+const Article = ({ data }) => (
+  <Post to={`/articles/${data.frontmatter.slug}`}>
+    <Title>{data.frontmatter.title}</Title>
+    <Description>{data.excerpt}</Description>
+    <Meta>
+      Article from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+    </Meta>
   </Post>
 )
 
 const Paper = ({ data }) => (
-  <Post to={`/papers/${data.slug.current}`}>
-    <Title>{data.title}</Title>
-    <Description>{data.abstract.substring(0, 100)}...</Description>
-    <Meta>Paper from {moment(data._createdAt).fromNow()}</Meta>
+  <Post to={`/papers/${data.frontmatter.slug}`}>
+    <Title>{data.frontmatter.title}</Title>
+    <Description>{data.excerpt}</Description>
+    <Meta>
+      Paper from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+    </Meta>
   </Post>
 )
 
 const Project = ({ data }) => (
-  <Post to={`/projects/${data.slug.current}`}>
-    <Title>{data.title}</Title>
-    <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Project from {moment(data._createdAt).fromNow()}</Meta>
+  <Post to={`/projects/${data.frontmatter.slug}`}>
+    <Title>{data.frontmatter.title}</Title>
+    <Description>{data.excerpt}</Description>
+    <Meta>
+      Project from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+    </Meta>
   </Post>
 )
 
 const Snippet = ({ data }) => (
-  <Post to={`/snippets/${data.slug.current}`}>
-    <Title>{data.title}</Title>
-    <Description>{data.description.substring(0, 100)}...</Description>
-    <Meta>Snippet from {moment(data._createdAt).fromNow()}</Meta>
+  <Post to={`/snippets/${data.frontmatter.slug}`}>
+    <Title>{data.frontmatter.title}</Title>
+    <Description>{data.excerpt}</Description>
+    <Meta>
+      Snippet from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+    </Meta>
   </Post>
 )
 
 export default ({ data }) => {
   const items = [
+    ...data.algorithms.edges,
     ...data.articles.edges,
-    ...data.datasets.edges,
     ...data.papers.edges,
     ...data.projects.edges,
     ...data.snippets.edges,
   ]
 
   items.sort((a, b) => {
-    return new Date(b.node._createdAt) - new Date(a.node._createdAt)
+    return moment(a.node.frontmatter.date, "MM-DD-YYYY").isBefore(
+      moment(b.node.frontmatter.date, "MM-DD-YYYY")
+    )
   })
 
   return (
@@ -96,12 +108,12 @@ export default ({ data }) => {
           <div key={i}>
             {
               {
-                article: <Article data={node} />,
-                dataset: <Dataset data={node} />,
-                paper: <Paper data={node} />,
-                project: <Project data={node} />,
-                snippet: <Snippet data={node} />,
-              }[node._type]
+                algorithms: <Algorithm data={node} />,
+                articles: <Article data={node} />,
+                papers: <Paper data={node} />,
+                projects: <Project data={node} />,
+                snippets: <Snippet data={node} />,
+              }[node.fields.collection]
             }
           </div>
         ))}
@@ -112,67 +124,87 @@ export default ({ data }) => {
 
 export const FeedQuery = graphql`
   fragment FeedQuery on Query {
-    articles: allSanityArticle {
+    algorithms: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "algorithms" } } }
+    ) {
       edges {
         node {
-          _type
-          _createdAt
-          title
-          description
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+          fields {
+            collection
           }
         }
       }
     }
-    datasets: allSanityDataset {
+    articles: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+    ) {
       edges {
         node {
-          _type
-          _createdAt
-          title
-          description
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+          fields {
+            collection
           }
         }
       }
     }
-    papers: allSanityPaper {
+    papers: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "papers" } } }
+    ) {
       edges {
         node {
-          _type
-          _createdAt
-          title
-          abstract
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+          fields {
+            collection
           }
         }
       }
     }
-    projects: allSanityProject {
+    projects: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "projects" } } }
+    ) {
       edges {
         node {
-          _type
-          _createdAt
-          title
-          description
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+          fields {
+            collection
           }
         }
       }
     }
-    snippets: allSanitySnippet {
+    snippets: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "snippets" } } }
+    ) {
       edges {
         node {
-          _type
-          _createdAt
-          title
-          description
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+          fields {
+            collection
           }
         }
       }
