@@ -4,16 +4,36 @@ import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
+// export const query = graphql`
+//   {
+//     articles: allSanityArticle(sort: { fields: [_createdAt], order: DESC }) {
+//       edges {
+//         node {
+//           title
+//           slug {
+//             current
+//           }
+//           description
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const query = graphql`
   {
-    articles: allSanityArticle(sort: { fields: [_createdAt], order: DESC }) {
+    articles: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
-          title
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
           }
-          description
         }
       }
     }
@@ -29,10 +49,10 @@ export default ({ data: { articles } }) => {
       <Main>
         {articles.edges.map(({ node }, i) => (
           <Post key={i}>
-            <Link to={`/articles/${node.slug.current}`}>
+            <Link to={`/articles/${node.frontmatter.slug}`}>
               <div>
-                <h3>{node.title}</h3>
-                <p>{node.description.substring(0, 300)}...</p>
+                <h3>{node.frontmatter.title}</h3>
+                <p>{node.excerpt}</p>
               </div>
             </Link>
           </Post>

@@ -24,10 +24,12 @@ import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
 export const query = graphql`
   {
-    algorithms: allMarkdownRemark {
+    algorithms: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "algorithms" } } }
+    ) {
       edges {
         node {
-          html
+          excerpt
           frontmatter {
             title
             slug
@@ -48,7 +50,7 @@ export default ({ data: { algorithms } }) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>
-            {/* <p>{node.description.substring(0, 300)}...</p> */}
+            <p>{node.excerpt}</p>
           </Link>
         </Post>
       ))}

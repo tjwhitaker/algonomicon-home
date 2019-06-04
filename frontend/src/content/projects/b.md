@@ -1,6 +1,6 @@
 ---
-title: Linear Regression
-slug: linear-regression
+title: Lorem Ipsum
+slug: lorem-ipsum
 date: "6-3-2019"
 ---
 

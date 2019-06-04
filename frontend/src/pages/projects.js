@@ -5,23 +5,41 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout } from "../components"
 
+// export const query = graphql`
+//   {
+//     projects: allSanityProject(sort: { fields: [_createdAt], order: DESC }) {
+//       edges {
+//         node {
+//           title
+//           slug {
+//             current
+//           }
+//           heroImage {
+//             asset {
+//               fluid {
+//                 ...GatsbySanityImageFluid
+//               }
+//             }
+//           }
+//           description
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const query = graphql`
   {
-    projects: allSanityProject(sort: { fields: [_createdAt], order: DESC }) {
+    projects: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "projects" } } }
+    ) {
       edges {
         node {
-          title
-          slug {
-            current
+          excerpt
+          frontmatter {
+            title
+            slug
           }
-          heroImage {
-            asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
-          description
         }
       }
     }
@@ -35,14 +53,14 @@ export default ({ data: { projects } }) => (
     </Helmet>
     <Projects>
       {projects.edges.map(({ node }, i) => (
-        <Link to={`/projects/${node.slug.current}`} key={i}>
+        <Link to={`/projects/${node.frontmatter.slug}`} key={i}>
           <Project>
-            <Preview>
+            {/* <Preview>
               <Image fluid={node.heroImage.asset.fluid} />
-            </Preview>
+            </Preview> */}
             <Content>
-              <h3>{node.title}</h3>
-              <p>{node.description}</p>
+              <h3>{node.frontmatter.title}</h3>
+              <p>{node.excerpt}</p>
             </Content>
           </Project>
         </Link>
