@@ -12,7 +12,14 @@ module.exports = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [],
+        plugins: [
+          "gatsby-remark-autolink-headers",
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-external-links",
+          "gatsby-remark-katex",
+          "gatsby-remark-prismjs",
+          "gatsby-remark-component",
+        ],
       },
     },
     {
@@ -24,61 +31,49 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        pathToConfigModule: "src/utils/typography",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `data`,
+        name: "data",
         path: `${__dirname}/static/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
+        ignore: ["**/.*"], // ignore files starting with a dot
       },
     },
     {
-      resolve: "gatsby-source-sanity",
-      options: {
-        projectId: "51bo9zth",
-        dataset: "production",
-        // To enable preview of drafts, copy .env-example into .env,
-        // and add a token with read permissions
-        token: process.env.SANITY_TOKEN,
-        watchMode: true,
-        overlayDrafts: true,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/algorithms`,
         name: "algorithms",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/articles`,
         name: "articles",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/papers`,
         name: "papers",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/projects`,
         name: "projects",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/snippets`,
         name: "snippets",
