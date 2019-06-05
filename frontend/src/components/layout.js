@@ -5,6 +5,7 @@ import Header from "./header"
 import Footer from "./footer"
 import Wrapper from "./wrapper"
 import "../../static/layout.css"
+import "../../static/syntax.css"
 
 export default ({ children }) => (
   <div>
