@@ -18,7 +18,6 @@ module.exports = {
           "gatsby-remark-external-links",
           "gatsby-remark-katex",
           "gatsby-remark-prismjs",
-          "gatsby-remark-component",
         ],
       },
     },
