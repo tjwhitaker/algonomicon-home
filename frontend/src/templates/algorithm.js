@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import BlockContent from "@sanity/block-content-to-react"
-import serializers from "../utils/serializers"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"

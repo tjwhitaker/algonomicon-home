@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import BlockContent from "@sanity/block-content-to-react"
-import serializers from "../utils/serializers"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
@@ -20,6 +18,7 @@ import { Layout, Main, Sidebar, Minion } from "../components"
 export const query = graphql`
   query($slug: String!) {
     snippet: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         title
       }
@@ -35,6 +34,7 @@ export default ({ data: { snippet } }) => (
     <Main>
       <Title>{snippet.frontmatter.title}</Title>
       {/* <BlockContent blocks={snippet._rawContent} serializers={serializers} /> */}
+      <div dangerouslySetInnerHTML={{ __html: snippet.html }} />
     </Main>
     <Sidebar>
       <div>
