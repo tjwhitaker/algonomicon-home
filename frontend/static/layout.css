@@ -1,26 +1,27 @@
 html {
-  background: #111;
+  background: #272822;
 }
 body {
-  transition:filter 1s ease;
+  transition: filter 1s ease;
   background: white;
 }
 
 body.glitched {
-  filter:grayscale(1);
-  transition:filter 2s ease;
+  filter: grayscale(1);
+  transition: filter 2s ease;
 }
 
 a {
-  transition:all 0.1s ease;
-  color:#039BE5;
-  font-weight:bold;
-  text-decoration:none;
+  transition: all 0.1s ease;
+  color: #039be5;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-a.active, a:hover {
-  color:#0277BD;
-  text-decoration:none;
+a.active,
+a:hover {
+  color: #0277bd;
+  text-decoration: none;
 }
 
 blockquote {
@@ -29,18 +30,19 @@ blockquote {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
-  margin-left:0;
+  margin-left: 0;
 }
 
 button {
-  cursor:pointer;
+  cursor: pointer;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
-  background:white;
-  border:1px solid #ccc;
-  padding:0.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
 }
 
 ul li {
@@ -48,7 +50,7 @@ ul li {
 }
 
 table {
-  width:100%;
+  width: 100%;
 }
 
 tr {
@@ -58,23 +60,26 @@ tr {
 th {
   font-weight: bold;
   color: #777;
-  text-transform:uppercase;
-  margin:0;
-  font-size:0.81225rem;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.81225rem;
   line-height: 1.1;
 }
 
-td,th {
+td,
+th {
   padding: 1rem 0.5rem;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
-td:first-child, th:first-child {
-  padding-left:0;
+td:first-child,
+th:first-child {
+  padding-left: 0;
 }
 
-td:last-child, th:last-child {
-  padding-right:0;
+td:last-child,
+th:last-child {
+  padding-right: 0;
 }
 
 .glitch {
@@ -83,16 +88,16 @@ td:last-child, th:last-child {
   height: 25px;
   overflow: hidden;
   margin: 0 auto;
-  display:block;
+  display: block;
 }
 .glitch svg {
-  fill:white;
-  max-height:25px;
-  width:auto;
-  shape-rendering:crispedges;
+  fill: white;
+  max-height: 25px;
+  width: auto;
+  shape-rendering: crispedges;
 }
 .glitch:hover svg {
-  opacity:1;
+  opacity: 1;
 }
 
 .glitch:hover {
@@ -102,61 +107,61 @@ td:last-child, th:last-child {
 .glitch__img {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
 }
 
-.glitch__img:nth-child(n+2) {
+.glitch__img:nth-child(n + 2) {
   opacity: 0;
 }
 
-.glitch:hover .glitch__img:nth-child(n+2) {
+.glitch:hover .glitch__img:nth-child(n + 2) {
   opacity: 1;
 }
 
 .glitch:hover .glitch__img:nth-child(2) {
-  transform: translate3d(10px,0,0);
+  transform: translate3d(10px, 0, 0);
   animation: glitch-anim-1 2s infinite linear alternate;
 }
 
 .glitch:hover > .glitch__img:nth-child(3) {
-  transform: translate3d(calc(-1 * 10px),0,0);
+  transform: translate3d(calc(-1 * 10px), 0, 0);
   animation: glitch-anim-2 3s infinite linear alternate;
 }
 
 .glitch:hover > .glitch__img:nth-child(4) {
-  transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1,-1,1);
+  transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1, -1, 1);
   animation: glitch-anim-3 2s infinite linear alternate;
 }
 
 /* Hover flash animation on last image */
 .glitch:hover > .glitch__img:nth-child(5) {
-  animation: glitch-anim-flash-1 0.5s steps(1,end) infinite alternate;
-  background-color:black;
-  background-blend-mode:overlay;
+  animation: glitch-anim-flash-1 0.5s steps(1, end) infinite alternate;
+  background-color: black;
+  background-blend-mode: overlay;
 }
 
 .glitch:hover > .glitch__img:nth-child(6) {
-  animation: glitch-anim-flash-2 0.8s steps(1,end) infinite;
-  background-color:$purple1;
-  background-blend-mode:overlay;
+  animation: glitch-anim-flash-2 0.8s steps(1, end) infinite;
+  background-color: $purple1;
+  background-blend-mode: overlay;
 }
 
 @keyframes glitch-anim-flash {
-  0% { 
-    opacity: 0.2; 
+  0% {
+    opacity: 0.2;
     transform: translate3d(10px, 5px, 0);
   }
-  33%, 100% { 
+  33%,
+  100% {
     opacity: 0;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-
 @keyframes glitch-anim-1 {
-  0% { 
+  0% {
     opacity: 1;
-    transform: translate3d(10px,0,0);
+    transform: translate3d(10px, 0, 0);
     -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
     clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
   }
@@ -202,20 +207,21 @@ td:last-child, th:last-child {
   }
   21.9% {
     opacity: 1;
-    transform: translate3d(10px,0,0);
+    transform: translate3d(10px, 0, 0);
   }
-  22%, 100% {
+  22%,
+  100% {
     opacity: 0;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   }
 }
 
 @keyframes glitch-anim-2 {
-  0% { 
+  0% {
     opacity: 1;
-    transform: translate3d(calc(-1 * 10px),0,0);
+    transform: translate3d(calc(-1 * 10px), 0, 0);
     -webkit-clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
     clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
   }
@@ -261,20 +267,21 @@ td:last-child, th:last-child {
   }
   21.9% {
     opacity: 1;
-    transform: translate3d(calc(-1 * 10px),0,0);
+    transform: translate3d(calc(-1 * 10px), 0, 0);
   }
-  22%, 100% {
+  22%,
+  100% {
     opacity: 0;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   }
 }
 
 @keyframes glitch-anim-3 {
-  0% { 
+  0% {
     opacity: 1;
-    transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1,-1,1);
+    transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1, -1, 1);
     -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
     clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
   }
@@ -352,11 +359,12 @@ td:last-child, th:last-child {
   }
   21.9% {
     opacity: 1;
-    transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1,-1,1);
+    transform: translate3d(0, calc(-1 * 5px), 0) scale3d(-1, -1, 1);
   }
-  22%, 100% {
+  22%,
+  100% {
     opacity: 0;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   }
@@ -364,22 +372,26 @@ td:last-child, th:last-child {
 
 /* Flash */
 @keyframes glitch-anim-flash-1 {
-  0%, 5% { 
-    opacity: 0.3; 
+  0%,
+  5% {
+    opacity: 0.3;
     transform: translate3d(5px, 2px, 0);
   }
-  5.5%, 100% {
+  5.5%,
+  100% {
     opacity: 0;
     transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes glitch-anim-flash-2 {
-  0%, 5% { 
-    opacity: 0.3; 
+  0%,
+  5% {
+    opacity: 0.3;
     transform: translate3d(-2px, 0px, 0);
   }
-  5.5%, 100% {
+  5.5%,
+  100% {
     opacity: 0;
     transform: translate3d(0, 0, 0);
   }

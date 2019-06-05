@@ -11,7 +11,7 @@ export default () => (
 )
 
 const Footer = styled.div`
-  background: #111;
+  background: #272822;
 `
 
 const Copyright = styled.p`

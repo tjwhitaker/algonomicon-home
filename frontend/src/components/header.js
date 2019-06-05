@@ -100,7 +100,7 @@ export default () => (
 )
 
 const Header = styled(BackgroundImage)`
-  background-color: #111;
+  background-color: #272822;
   background-size: cover;
   background-position: center bottom;
   height: 18rem;
