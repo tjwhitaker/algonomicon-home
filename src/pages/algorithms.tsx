@@ -4,49 +4,29 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
-// export const query = graphql`
-//   {
-//     algorithms: allSanityAlgorithm(
-//       sort: { fields: [_createdAt], order: DESC }
-//     ) {
-//       edges {
-//         node {
-//           title
-//           slug {
-//             current
-//           }
-//           description
-//         }
-//       }
-//     }
-//   }
-// `
-
-export const query = graphql`
-  {
-    algorithms: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "algorithms" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
+export type AlgorithmProps = {
+  data: {
+    algorithms: {
+      edges: {
+        node: {
+          excerpt: string
+          frontmatter: {
+            title: string
+            slug: string
           }
         }
-      }
+      }[]
     }
   }
-`
+}
 
-export default ({ data: { algorithms } }) => (
+export default ({ data }: AlgorithmProps) => (
   <Layout>
     <Helmet>
       <title>Algorithms | Algonomicon</title>
     </Helmet>
     <Main>
-      {algorithms.edges.map(({ node }, i) => (
+      {data.algorithms.edges.map(({ node }, i: number) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>
@@ -79,5 +59,23 @@ const Post = styled.div`
 
   &:first-child {
     padding-top: 0;
+  }
+`
+
+export const query = graphql`
+  {
+    algorithms: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "algorithms" } } }
+    ) {
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            slug
+          }
+        }
+      }
+    }
   }
 `

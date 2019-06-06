@@ -10,9 +10,16 @@
     "format": "prettier --write {src,__{tests,mocks}__}/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project ."
   },
   "dependencies": {
+    "@types/node": "^12.0.5",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
+    "@types/styled-components": "^4.1.16",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.16",
     "gatsby-background-image": "^0.6.2",
@@ -50,7 +57,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "prettier": "^1.17.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "typescript": "^3.5.1"
   },
   "repository": {
     "type": "git",
