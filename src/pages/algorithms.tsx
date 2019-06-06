@@ -3,30 +3,33 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
+import { AlgorithmsQuery } from "../graphql-types"
 
-export type AlgorithmProps = {
-  data: {
-    algorithms: {
-      edges: {
-        node: {
-          excerpt: string
-          frontmatter: {
-            title: string
-            slug: string
+export const query = graphql`
+  query Algorithms {
+    algorithms: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "algorithms" } } }
+    ) {
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            slug
           }
         }
-      }[]
+      }
     }
   }
-}
+`
 
-export default ({ data }: AlgorithmProps) => (
+export default (query: { data: AlgorithmsQuery }) => (
   <Layout>
     <Helmet>
       <title>Algorithms | Algonomicon</title>
     </Helmet>
     <Main>
-      {data.algorithms.edges.map(({ node }, i: number) => (
+      {query.data.algorithms.edges.map(({ node }, i) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>
@@ -59,23 +62,5 @@ const Post = styled.div`
 
   &:first-child {
     padding-top: 0;
-  }
-`
-
-export const query = graphql`
-  {
-    algorithms: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "algorithms" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-          }
-        }
-      }
-    }
   }
 `
