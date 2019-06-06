@@ -4,50 +4,31 @@ import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
-// export const query = graphql`
-//   {
-//     articles: allSanityArticle(sort: { fields: [_createdAt], order: DESC }) {
-//       edges {
-//         node {
-//           title
-//           slug {
-//             current
-//           }
-//           description
-//         }
-//       }
-//     }
-//   }
-// `
-
-export const query = graphql`
-  {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
+type ArticlesProps = {
+  data: {
+    articles: {
+      edges: {
+        node: {
+          excerpt: string
+          frontmatter: {
+            title: string
+            slug: string
+            date: string
           }
         }
-      }
+      }[]
     }
   }
-`
+}
 
-export default ({ data: { articles } }) => {
+export default ({ data }: ArticlesProps) => {
   return (
     <Layout>
       <Helmet>
         <title>Articles | Algonomicon</title>
       </Helmet>
       <Main>
-        {articles.edges.map(({ node }, i) => (
+        {data.articles.edges.map(({ node }, i) => (
           <Post key={i}>
             <Link to={`/articles/${node.frontmatter.slug}`}>
               <div>
@@ -83,5 +64,25 @@ const Post = styled.div`
 
   &:first-child {
     padding-top: 0;
+  }
+`
+
+export const query = graphql`
+  {
+    articles: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            slug
+            date
+          }
+        }
+      }
+    }
   }
 `
