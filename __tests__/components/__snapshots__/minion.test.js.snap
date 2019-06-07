@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Minion renders correctly 1`] = `
-<h6
-  className="sc-htpNat iacXlz"
-/>
-`;
