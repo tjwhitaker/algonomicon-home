@@ -2065,7 +2065,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsBrowserApIs = "pluginCreator___pluginOptions___plugins___browserAPIs",
   PluginCreatorPluginOptionsPluginsSsrApIs = "pluginCreator___pluginOptions___plugins___ssrAPIs",
   PluginCreatorPluginOptionsPluginsPluginFilepath = "pluginCreator___pluginOptions___plugins___pluginFilepath",
-  PluginCreatorPluginOptionsIgnoreFileExtensions = "pluginCreator___pluginOptions___ignoreFileExtensions",
   PluginCreatorPluginOptionsHost = "pluginCreator___pluginOptions___host",
   PluginCreatorPluginOptionsSitemap = "pluginCreator___pluginOptions___sitemap",
   PluginCreatorPluginOptionsPolicy = "pluginCreator___pluginOptions___policy",
@@ -2269,11 +2268,9 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsId = "pluginOptions___plugins___id",
   PluginOptionsPluginsName = "pluginOptions___plugins___name",
   PluginOptionsPluginsVersion = "pluginOptions___plugins___version",
-  PluginOptionsPluginsPluginOptionsIgnoreFileExtensions = "pluginOptions___plugins___pluginOptions___ignoreFileExtensions",
   PluginOptionsPluginsBrowserApIs = "pluginOptions___plugins___browserAPIs",
   PluginOptionsPluginsSsrApIs = "pluginOptions___plugins___ssrAPIs",
   PluginOptionsPluginsPluginFilepath = "pluginOptions___plugins___pluginFilepath",
-  PluginOptionsIgnoreFileExtensions = "pluginOptions___ignoreFileExtensions",
   PluginOptionsHost = "pluginOptions___host",
   PluginOptionsSitemap = "pluginOptions___sitemap",
   PluginOptionsPolicy = "pluginOptions___policy",
@@ -2404,7 +2401,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: "SitePluginPluginOptions"
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars["String"]>>>
   host?: Maybe<Scalars["String"]>
   sitemap?: Maybe<Scalars["String"]>
   policy?: Maybe<Array<Maybe<SitePluginPluginOptionsPolicy>>>
@@ -2417,7 +2413,6 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>
   host?: Maybe<StringQueryOperatorInput>
   sitemap?: Maybe<StringQueryOperatorInput>
   policy?: Maybe<SitePluginPluginOptionsPolicyFilterListInput>
@@ -2434,7 +2429,6 @@ export type SitePluginPluginOptionsPlugins = {
   id?: Maybe<Scalars["String"]>
   name?: Maybe<Scalars["String"]>
   version?: Maybe<Scalars["String"]>
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>
   browserAPIs?: Maybe<Array<Maybe<Scalars["String"]>>>
   ssrAPIs?: Maybe<Array<Maybe<Scalars["String"]>>>
   pluginFilepath?: Maybe<Scalars["String"]>
@@ -2445,7 +2439,6 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>
   name?: Maybe<StringQueryOperatorInput>
   version?: Maybe<StringQueryOperatorInput>
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>
   browserAPIs?: Maybe<StringQueryOperatorInput>
   ssrAPIs?: Maybe<StringQueryOperatorInput>
   pluginFilepath?: Maybe<StringQueryOperatorInput>
@@ -2453,15 +2446,6 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>
-}
-
-export type SitePluginPluginOptionsPluginsPluginOptions = {
-  __typename?: "SitePluginPluginOptionsPluginsPluginOptions"
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars["String"]>>>
-}
-
-export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsPolicy = {
@@ -2524,6 +2508,262 @@ export type WordCountFilterInput = {
   sentences?: Maybe<IntQueryOperatorInput>
   words?: Maybe<IntQueryOperatorInput>
 }
+export type FeedQueryFragment = { __typename?: "Query" } & {
+  allMarkdownRemark: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      edges: Array<
+        { __typename?: "MarkdownRemarkEdge" } & {
+          node: { __typename?: "MarkdownRemark" } & Pick<
+            MarkdownRemark,
+            "excerpt"
+          > & {
+              frontmatter: Maybe<
+                { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                  MarkdownRemarkFrontmatter,
+                  "title" | "slug" | "date"
+                >
+              >
+              fields: Maybe<
+                { __typename?: "MarkdownRemarkFields" } & Pick<
+                  MarkdownRemarkFields,
+                  "collection"
+                >
+              >
+            }
+        }
+      >
+    }
+  >
+}
+
+export type Unnamed_1_QueryVariables = {}
+
+export type Unnamed_1_Query = { __typename?: "Query" } & {
+  file: Maybe<
+    { __typename?: "File" } & {
+      childImageSharp: Maybe<
+        { __typename?: "ImageSharp" } & {
+          fluid: Maybe<
+            { __typename?: "ImageSharpFluid" } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+}
+
+export type AboutQueryVariables = {}
+
+export type AboutQuery = { __typename?: "Query" } & {
+  file: Maybe<
+    { __typename?: "File" } & {
+      childImageSharp: Maybe<
+        { __typename?: "ImageSharp" } & {
+          fluid: Maybe<
+            { __typename?: "ImageSharpFluid" } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+}
+
+export type AlgorithmsQueryVariables = {}
+
+export type AlgorithmsQuery = { __typename?: "Query" } & {
+  algorithms: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      nodes: Array<
+        { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "excerpt"> & {
+            frontmatter: Maybe<
+              { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                MarkdownRemarkFrontmatter,
+                "title" | "slug"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
+export type ArticlesQueryVariables = {}
+
+export type ArticlesQuery = { __typename?: "Query" } & {
+  articles: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      nodes: Array<
+        { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "excerpt"> & {
+            frontmatter: Maybe<
+              { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                MarkdownRemarkFrontmatter,
+                "title" | "slug" | "date"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
+export type Unnamed_2_QueryVariables = {}
+
+export type Unnamed_2_Query = { __typename?: "Query" } & {
+  file: Maybe<
+    { __typename?: "File" } & {
+      childImageSharp: Maybe<
+        { __typename?: "ImageSharp" } & {
+          fluid: Maybe<
+            { __typename?: "ImageSharpFluid" } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+} & FeedQueryFragment
+
+export type PapersQueryVariables = {}
+
+export type PapersQuery = { __typename?: "Query" } & {
+  papers: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      nodes: Array<
+        { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "excerpt"> & {
+            frontmatter: Maybe<
+              { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                MarkdownRemarkFrontmatter,
+                "title" | "slug" | "authors"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
+export type ProjectsQueryVariables = {}
+
+export type ProjectsQuery = { __typename?: "Query" } & {
+  projects: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      nodes: Array<
+        { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "excerpt"> & {
+            frontmatter: Maybe<
+              { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                MarkdownRemarkFrontmatter,
+                "title" | "slug"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
+export type SnippetsQueryVariables = {}
+
+export type SnippetsQuery = { __typename?: "Query" } & {
+  snippets: Maybe<
+    { __typename?: "MarkdownRemarkConnection" } & {
+      nodes: Array<
+        { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "excerpt"> & {
+            frontmatter: Maybe<
+              { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+                MarkdownRemarkFrontmatter,
+                "title" | "slug"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
+export type Unnamed_3_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_3_Query = { __typename?: "Query" } & {
+  algorithm: Maybe<
+    { __typename?: "MarkdownRemark" } & {
+      frontmatter: Maybe<
+        { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+          MarkdownRemarkFrontmatter,
+          "title"
+        >
+      >
+    }
+  >
+}
+
+export type Unnamed_4_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_4_Query = { __typename?: "Query" } & {
+  article: Maybe<
+    { __typename?: "MarkdownRemark" } & {
+      frontmatter: Maybe<
+        { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+          MarkdownRemarkFrontmatter,
+          "title" | "authors"
+        >
+      >
+    }
+  >
+}
+
+export type Unnamed_5_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_5_Query = { __typename?: "Query" } & {
+  paper: Maybe<
+    { __typename?: "MarkdownRemark" } & {
+      frontmatter: Maybe<
+        { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+          MarkdownRemarkFrontmatter,
+          "title" | "authors"
+        >
+      >
+    }
+  >
+}
+
+export type Unnamed_6_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_6_Query = { __typename?: "Query" } & {
+  project: Maybe<
+    { __typename?: "MarkdownRemark" } & {
+      frontmatter: Maybe<
+        { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+          MarkdownRemarkFrontmatter,
+          "title"
+        >
+      >
+    }
+  >
+}
+
+export type Unnamed_7_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_7_Query = { __typename?: "Query" } & {
+  snippet: Maybe<
+    { __typename?: "MarkdownRemark" } & Pick<MarkdownRemark, "html"> & {
+        frontmatter: Maybe<
+          { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+            MarkdownRemarkFrontmatter,
+            "title"
+          >
+        >
+      }
+  >
+}
+
 export type GatsbyImageSharpFixedFragment = {
   __typename?: "ImageSharpFixed"
 } & Pick<ImageSharpFixed, "base64" | "width" | "height" | "src" | "srcSet">

@@ -4,55 +4,31 @@ import Image from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout } from "../components"
-
-// export const query = graphql`
-//   {
-//     projects: allSanityProject(sort: { fields: [_createdAt], order: DESC }) {
-//       edges {
-//         node {
-//           title
-//           slug {
-//             current
-//           }
-//           heroImage {
-//             asset {
-//               fluid {
-//                 ...GatsbySanityImageFluid
-//               }
-//             }
-//           }
-//           description
-//         }
-//       }
-//     }
-//   }
-// `
+import { ProjectsQuery } from "../graphql-types"
 
 export const query = graphql`
-  {
+  query Projects {
     projects: allMarkdownRemark(
       filter: { fields: { collection: { eq: "projects" } } }
     ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-          }
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
         }
       }
     }
   }
 `
 
-export default ({ data: { projects } }) => (
+export default (query: { data: ProjectsQuery }) => (
   <Layout>
     <Helmet>
       <title>Projects | Algonomicon</title>
     </Helmet>
     <Projects>
-      {projects.edges.map(({ node }, i) => (
+      {query.data.projects.nodes.map((node, i) => (
         <Link to={`/projects/${node.frontmatter.slug}`} key={i}>
           <Project>
             {/* <Preview>

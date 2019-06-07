@@ -3,50 +3,50 @@ import styled from "styled-components"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
+import { ArticlesQuery } from "../graphql-types"
 
-type ArticlesProps = {
-  data: {
-    articles: {
-      edges: {
-        node: {
-          excerpt: string
-          frontmatter: {
-            title: string
-            slug: string
-            date: string
-          }
+export const query = graphql`
+  query Articles {
+    articles: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          date
         }
-      }[]
+      }
     }
   }
-}
+`
 
-export default ({ data }: ArticlesProps) => {
-  return (
-    <Layout>
-      <Helmet>
-        <title>Articles | Algonomicon</title>
-      </Helmet>
-      <Main>
-        {data.articles.edges.map(({ node }, i) => (
-          <Post key={i}>
-            <Link to={`/articles/${node.frontmatter.slug}`}>
-              <div>
-                <h3>{node.frontmatter.title}</h3>
-                <p>{node.excerpt}</p>
-              </div>
-            </Link>
-          </Post>
-        ))}
-      </Main>
-      <Sidebar>
-        <Search />
-        <Sort />
-        <Tags />
-      </Sidebar>
-    </Layout>
-  )
-}
+export default (query: { data: ArticlesQuery }) => (
+  <Layout>
+    <Helmet>
+      <title>Articles | Algonomicon</title>
+    </Helmet>
+    <Main>
+      {query.data.articles.nodes.map((node, i) => (
+        <Post key={i}>
+          <Link to={`/articles/${node.frontmatter.slug}`}>
+            <div>
+              <h3>{node.frontmatter.title}</h3>
+              <p>{node.excerpt}</p>
+            </div>
+          </Link>
+        </Post>
+      ))}
+    </Main>
+    <Sidebar>
+      <Search />
+      <Sort />
+      <Tags />
+    </Sidebar>
+  </Layout>
+)
 
 const Post = styled.div`
   padding: 1rem 0;
@@ -64,25 +64,5 @@ const Post = styled.div`
 
   &:first-child {
     padding-top: 0;
-  }
-`
-
-export const query = graphql`
-  {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-        }
-      }
-    }
   }
 `

@@ -10,13 +10,11 @@ export const query = graphql`
     algorithms: allMarkdownRemark(
       filter: { fields: { collection: { eq: "algorithms" } } }
     ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-          }
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
         }
       }
     }
@@ -29,7 +27,7 @@ export default (query: { data: AlgorithmsQuery }) => (
       <title>Algorithms | Algonomicon</title>
     </Helmet>
     <Main>
-      {query.data.algorithms.edges.map(({ node }, i) => (
+      {query.data.algorithms.nodes.map((node, i) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>

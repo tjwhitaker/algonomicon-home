@@ -3,50 +3,31 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-
-// export const query = graphql`
-//   {
-//     papers: allSanityPaper(sort: { fields: [_createdAt], order: DESC }) {
-//       edges {
-//         node {
-//           title
-//           slug {
-//             current
-//           }
-//           author
-//           abstract
-//         }
-//       }
-//     }
-//   }
-// `
+import { PapersQuery } from "../graphql-types"
 
 export const query = graphql`
-  {
+  query Papers {
     papers: allMarkdownRemark(
       filter: { fields: { collection: { eq: "papers" } } }
     ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            authors
-            date
-          }
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          authors
         }
       }
     }
   }
 `
-export default ({ data: { papers } }) => (
+export default (query: { data: PapersQuery }) => (
   <Layout>
     <Helmet>
       <title>Papers | Algonomicon</title>
     </Helmet>
     <Main>
-      {papers.edges.map(({ node }, i) => (
+      {query.data.papers.nodes.map((node, i) => (
         <Post key={i}>
           <Link to={`/papers/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>
