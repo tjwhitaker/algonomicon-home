@@ -12,6 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -23,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -34,6 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -45,6 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -56,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             frontmatter {
               slug
             }
@@ -71,60 +76,60 @@ exports.createPages = async ({ graphql, actions }) => {
   const projects = result.data.projects.edges || []
   const snippets = result.data.snippets.edges || []
 
-  algorithms.forEach((edge, index) => {
+  algorithms.forEach(edge => {
     const path = `/algorithms/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/algorithm.js"),
+      component: require.resolve("./src/templates/algorithm.tsx"),
       context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
-  articles.forEach((edge, index) => {
+  articles.forEach(edge => {
     const path = `/articles/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/article.js"),
+      component: require.resolve("./src/templates/article.tsx"),
       context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
-  papers.forEach((edge, index) => {
+  papers.forEach(edge => {
     const path = `/papers/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/paper.js"),
+      component: require.resolve("./src/templates/paper.tsx"),
       context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
-  projects.forEach((edge, index) => {
+  projects.forEach(edge => {
     const path = `/projects/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/project.js"),
+      component: require.resolve("./src/templates/project.tsx"),
       context: { slug: edge.node.frontmatter.slug },
     })
 
     createPageDependency({ path, nodeId: edge.node.id })
   })
 
-  snippets.forEach((edge, index) => {
+  snippets.forEach(edge => {
     const path = `/snippets/${edge.node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/snippet.js"),
+      component: require.resolve("./src/templates/snippet.tsx"),
       context: { slug: edge.node.frontmatter.slug },
     })
 

@@ -3,35 +3,26 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-
-// export const query = graphql`
-//   query($slug: String!) {
-//     algorithm: sanityAlgorithm(slug: { current: { eq: $slug } }) {
-//       title
-//       _rawContent
-//       _createdAt
-//       _updatedAt
-//     }
-//   }
-// `
+import { AlgorithmQuery } from "../graphql-types"
 
 export const query = graphql`
-  query($slug: String!) {
+  query Algorithm($slug: String!) {
     algorithm: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        slug
       }
     }
   }
 `
 
-export default ({ data: { algorithm } }) => (
+export default (query: { data: AlgorithmQuery }) => (
   <Layout>
     <Helmet>
-      <title>{algorithm.frontmatter.title} | Algonomicon</title>
+      <title>{query.data.algorithm.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{algorithm.frontmatter.title}</Title>
+      <Title>{query.data.algorithm.frontmatter.title}</Title>
       {/* <BlockContent blocks={algorithm._rawContent} serializers={serializers} /> */}
     </Main>
     <Sidebar>
