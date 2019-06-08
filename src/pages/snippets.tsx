@@ -3,15 +3,14 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-import { SnippetsQuery } from "../graphql-types"
+import { SnippetsProps } from "../types/content"
 
 export const query = graphql`
-  query Snippets {
+  {
     snippets: allMarkdownRemark(
       filter: { fields: { collection: { eq: "snippets" } } }
     ) {
       nodes {
-        excerpt
         frontmatter {
           title
           slug
@@ -21,7 +20,7 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: SnippetsQuery }) => (
+export default ({ data }: SnippetsProps) => (
   <Layout>
     <Helmet>
       <title>Snippets | Algonomicon</title>
@@ -34,7 +33,7 @@ export default (query: { data: SnippetsQuery }) => (
           </tr>
         </thead>
         <tbody>
-          {query.data.snippets.nodes.map((node, i) => (
+          {data.snippets.nodes.map((node, i) => (
             <LinkRow to={`/snippets/${node.frontmatter.slug}`} key={i}>
               <td>{node.frontmatter.title}</td>
             </LinkRow>

@@ -3,10 +3,10 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-import { AlgorithmsQuery } from "../graphql-types"
+import { AlgorithmsProps } from "../types/content"
 
 export const query = graphql`
-  query Algorithms {
+  {
     algorithms: allMarkdownRemark(
       filter: { fields: { collection: { eq: "algorithms" } } }
     ) {
@@ -21,13 +21,13 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: AlgorithmsQuery }) => (
+export default ({ data }: AlgorithmsProps) => (
   <Layout>
     <Helmet>
       <title>Algorithms | Algonomicon</title>
     </Helmet>
     <Main>
-      {query.data.algorithms.nodes.map((node, i) => (
+      {data.algorithms.nodes.map((node, i) => (
         <Post key={i}>
           <Link to={`/algorithms/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>

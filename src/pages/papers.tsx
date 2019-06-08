@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-import { PapersQuery } from "../graphql-types"
+import { PapersProps } from "../types/content"
 
 export const query = graphql`
   query Papers {
@@ -21,13 +21,13 @@ export const query = graphql`
     }
   }
 `
-export default (query: { data: PapersQuery }) => (
+export default ({ data }: PapersProps) => (
   <Layout>
     <Helmet>
       <title>Papers | Algonomicon</title>
     </Helmet>
     <Main>
-      {query.data.papers.nodes.map((node, i) => (
+      {data.papers.nodes.map((node, i) => (
         <Post key={i}>
           <Link to={`/papers/${node.frontmatter.slug}`}>
             <h3>{node.frontmatter.title}</h3>

@@ -3,19 +3,12 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Layout } from "../components"
 import { Helmet } from "react-helmet"
-
-// export const query = graphql`
-//   query($slug: String!) {
-//     project: sanityProject(slug: { current: { eq: $slug } }) {
-//       title
-//       description
-//     }
-//   }
-// `
+import { ProjectProps } from "../types/content"
 
 export const query = graphql`
   query($slug: String!) {
     project: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         title
       }
@@ -23,13 +16,13 @@ export const query = graphql`
   }
 `
 
-export default ({ data: { project } }) => (
+export default ({ data }: ProjectProps) => (
   <Layout>
     <Helmet>
-      <title>{project.frontmatter.title} | Algonomicon</title>
+      <title>{data.project.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Project>
-      <Title>{project.frontmatter.title}</Title>
+      <Title>{data.project.frontmatter.title}</Title>
       {/* <p>{project.description}</p> */}
     </Project>
   </Layout>
