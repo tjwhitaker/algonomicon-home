@@ -82,6 +82,10 @@ th:last-child {
   padding-right: 0;
 }
 
+.footnote-backref {
+  display: none;
+}
+
 .glitch {
   position: relative;
   width: 260px;

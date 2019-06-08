@@ -4,23 +4,10 @@ import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 
-// export const query = graphql`
-//   query($slug: String!) {
-//     article: sanityArticle(slug: { current: { eq: $slug } }) {
-//       title
-//       description
-//       author
-//       _rawOutline
-//       _rawContent
-//       _createdAt
-//       _updatedAt
-//     }
-//   }
-// `
-
 export const query = graphql`
   query($slug: String!) {
     article: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         title
         authors
@@ -36,7 +23,7 @@ export default ({ data: { article } }) => (
     </Helmet>
     <Main>
       <Title>{article.frontmatter.title}</Title>
-      {/* <BlockContent blocks={article._rawContent} serializers={serializers} /> */}
+      <div dangerouslySetInnerHTML={{ __html: article.html }} />
     </Main>
     <Sidebar>
       <div>

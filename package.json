@@ -53,9 +53,6 @@
     "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.2.0",
-    "@graphql-codegen/typescript": "^1.2.0",
-    "@graphql-codegen/typescript-operations": "^1.2.0",
     "babel-jest": "^24.8.0",
     "babel-preset-gatsby": "^0.1.11",
     "identity-obj-proxy": "^3.0.0",
