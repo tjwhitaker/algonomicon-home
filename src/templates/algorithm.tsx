@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-import { AlgorithmQuery } from "../graphql-types"
+import { AlgorithmProps } from "../types/content"
 
 export const query = graphql`
   query Algorithm($slug: String!) {
@@ -16,13 +16,13 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: AlgorithmQuery }) => (
+export default ({ data }: AlgorithmProps) => (
   <Layout>
     <Helmet>
-      <title>{query.data.algorithm.frontmatter.title} | Algonomicon</title>
+      <title>{data.algorithm.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{query.data.algorithm.frontmatter.title}</Title>
+      <Title>{data.algorithm.frontmatter.title}</Title>
       {/* <BlockContent blocks={algorithm._rawContent} serializers={serializers} /> */}
     </Main>
     <Sidebar>

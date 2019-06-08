@@ -3,17 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-
-// export const query = graphql`
-//   query($slug: String!) {
-//     snippet: sanitySnippet(slug: { current: { eq: $slug } }) {
-//       title
-//       _rawContent
-//       _createdAt
-//       _updatedAt
-//     }
-//   }
-// `
+import { SnippetProps } from "../types/content"
 
 export const query = graphql`
   query($slug: String!) {
@@ -26,15 +16,15 @@ export const query = graphql`
   }
 `
 
-export default ({ data: { snippet } }) => (
+export default ({ data }: SnippetProps) => (
   <Layout>
     <Helmet>
-      <title>{snippet.frontmatter.title} | Algonomicon</title>
+      <title>{data.snippet.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{snippet.frontmatter.title}</Title>
+      <Title>{data.snippet.frontmatter.title}</Title>
       {/* <BlockContent blocks={snippet._rawContent} serializers={serializers} /> */}
-      <div dangerouslySetInnerHTML={{ __html: snippet.html }} />
+      <div dangerouslySetInnerHTML={{ __html: data.snippet.html }} />
     </Main>
     <Sidebar>
       <div>

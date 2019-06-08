@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
+import { ArticleProps } from "../types/content"
 
 export const query = graphql`
   query($slug: String!) {
@@ -16,20 +17,20 @@ export const query = graphql`
   }
 `
 
-export default ({ data: { article } }) => (
+export default ({ data }: ArticleProps) => (
   <Layout>
     <Helmet>
-      <title>{article.frontmatter.title} | Algonomicon</title>
+      <title>{data.article.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{article.frontmatter.title}</Title>
-      <div dangerouslySetInnerHTML={{ __html: article.html }} />
+      <Title>{data.article.frontmatter.title}</Title>
+      <div dangerouslySetInnerHTML={{ __html: data.article.html }} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Author: {article.frontmatter.authors}</Field>
+          <Field>Author: {data.article.frontmatter.authors}</Field>
           {/* <Field>Created: {article._createdAt}</Field> */}
           {/* <Field>Updated: {article._updatedAt}</Field> */}
         </Meta>

@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout } from "../components"
-import { ProjectsQuery } from "../graphql-types"
+import { ProjectsProps } from "../types/content"
 
 export const query = graphql`
   query Projects {
@@ -22,13 +22,13 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: ProjectsQuery }) => (
+export default ({ data }: ProjectsProps) => (
   <Layout>
     <Helmet>
       <title>Projects | Algonomicon</title>
     </Helmet>
     <Projects>
-      {query.data.projects.nodes.map((node, i) => (
+      {data.projects.nodes.map((node, i) => (
         <Link to={`/projects/${node.frontmatter.slug}`} key={i}>
           <Project>
             {/* <Preview>

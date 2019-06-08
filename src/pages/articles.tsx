@@ -3,10 +3,10 @@ import styled from "styled-components"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-import { ArticlesQuery } from "../graphql-types"
+import { ArticlesProps } from "../types/content"
 
 export const query = graphql`
-  query Articles {
+  {
     articles: allMarkdownRemark(
       filter: { fields: { collection: { eq: "articles" } } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -23,13 +23,13 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: ArticlesQuery }) => (
+export default ({ data }: ArticlesProps) => (
   <Layout>
     <Helmet>
       <title>Articles | Algonomicon</title>
     </Helmet>
     <Main>
-      {query.data.articles.nodes.map((node, i) => (
+      {data.articles.nodes.map((node, i) => (
         <Post key={i}>
           <Link to={`/articles/${node.frontmatter.slug}`}>
             <div>

@@ -3,23 +3,12 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-
-// export const query = graphql`
-//   query($slug: String!) {
-//     paper: sanityPaper(slug: { current: { eq: $slug } }) {
-//       title
-//       author
-//       source
-//       _rawContent
-//       _createdAt
-//       _updatedAt
-//     }
-//   }
-// `
+import { PaperProps } from "../types/content"
 
 export const query = graphql`
   query($slug: String!) {
     paper: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         title
         authors
@@ -28,13 +17,13 @@ export const query = graphql`
   }
 `
 
-export default ({ data: { paper } }) => (
+export default ({ data }: PaperProps) => (
   <Layout>
     <Helmet>
-      <title>{paper.frontmatter.title} | Algonomicon</title>
+      <title>{data.paper.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{paper.frontmatter.title}</Title>
+      <Title>{data.paper.frontmatter.title}</Title>
       {/* <BlockContent blocks={paper._rawContent} serializers={serializers} /> */}
     </Main>
     <Sidebar>
