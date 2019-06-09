@@ -9,6 +9,7 @@ export const query = graphql`
   query Papers {
     papers: allMarkdownRemark(
       filter: { fields: { collection: { eq: "papers" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
         excerpt

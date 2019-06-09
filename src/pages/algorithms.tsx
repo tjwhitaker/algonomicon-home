@@ -9,6 +9,7 @@ export const query = graphql`
   {
     algorithms: allMarkdownRemark(
       filter: { fields: { collection: { eq: "algorithms" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
         excerpt
