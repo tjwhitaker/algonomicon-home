@@ -11,7 +11,7 @@ There are monitoring projects all over the world, like the LSST project, collect
 
 ### Getting Ready
 
-I downloaded a CSV from https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets. It contains all 3974 confirmed exoplanets.
+I downloaded a CSV from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets> that contains all 3974 confirmed exoplanets.
 
 [^1]: https://exoplanetarchive.ipac.caltech.edu/
 [^2]: https://www.lsst.org/

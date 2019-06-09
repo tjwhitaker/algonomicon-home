@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
+    title: "Algonomicon",
     siteUrl: "https://algonomicon.com",
+    description:
+      "A collection of content exploring the world of machine learning and data science. We're building cool projects, and we want to tell the stories of people using ML to change the world.",
   },
   plugins: [
     "gatsby-transformer-sharp",
