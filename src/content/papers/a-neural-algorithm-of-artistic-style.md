@@ -1,7 +1,7 @@
 ---
 title: A Neural Algorithm of Artistic Style (2015)
 slug: a-neural-algorithm-of-artistic-style
-date: 6-1-2019
+date: June 1st, 2019
 authors: Leon A. Gatys, Alexander S. Ecker, Matthias Bethge
 ---
 

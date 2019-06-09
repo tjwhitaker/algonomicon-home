@@ -43,15 +43,15 @@ const Item = ({ data }: FeedItemProps) => (
     <Meta>
       {data.fields.collection[0].toUpperCase() +
         data.fields.collection.slice(1, -1)}{" "}
-      from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+      from {moment(data.frontmatter.date, "MMMM Do, YYYY").fromNow()}
     </Meta>
   </Post>
 )
 
 export default ({ data }: FeedProps) => {
   const items = data.allMarkdownRemark.nodes.sort((a, b) => {
-    return moment(a.frontmatter.date, "MM-DD-YYYY").diff(
-      moment(b.frontmatter.date, "MM-DD-YYYY")
+    return moment(b.frontmatter.date, "MMMM Do, YYYY").diff(
+      moment(a.frontmatter.date, "MMMM Do, YYYY")
     )
   })
 

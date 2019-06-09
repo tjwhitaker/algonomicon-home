@@ -1,7 +1,7 @@
 ---
 title: Exoplanets
 slug: exoplanets
-date: 6-3-2019
+date: June 3rd, 2019
 authors: Timothy J. Whitaker
 ---
 
