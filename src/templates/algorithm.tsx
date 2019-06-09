@@ -38,7 +38,7 @@ export default ({ data }: AlgorithmProps) => (
 )
 
 const Title = styled.h1`
-  margin-top: 0;
+  margin: 0;
 `
 
 const Meta = styled.div`

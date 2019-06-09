@@ -29,7 +29,7 @@ export default ({ data }: ProjectProps) => (
 )
 
 const Title = styled.h1`
-  margin-top: 0;
+  margin: 0;
 `
 
 const Project = styled.div`
