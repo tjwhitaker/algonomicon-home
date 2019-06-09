@@ -20,6 +20,7 @@ export type AlgorithmProps = {
       html: string
       frontmatter: {
         title: string
+        date: string
       }
     }
   }
