@@ -12,6 +12,7 @@ export const query = graphql`
       frontmatter {
         title
         authors
+        date
       }
     }
   }
@@ -24,18 +25,14 @@ export default ({ data }: PaperProps) => (
     </Helmet>
     <Main>
       <Title>{data.paper.frontmatter.title}</Title>
-      {/* <BlockContent blocks={paper._rawContent} serializers={serializers} /> */}
+      <div dangerouslySetInnerHTML={{ __html: data.paper.html }} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          {/* <Field>Author: {paper.author}</Field> */}
-          <Field>
-            {/* Source: <Link to={paper.source}>{paper.source}</Link> */}
-          </Field>
-          {/* <Field>Created: {paper._createdAt}</Field> */}
-          {/* <Field>Updated: {paper._updatedAt}</Field> */}
+          <Field>Authors: {data.paper.frontmatter.authors}</Field>
+          <Field>Created: {data.paper.frontmatter.date}</Field>
         </Meta>
       </div>
     </Sidebar>

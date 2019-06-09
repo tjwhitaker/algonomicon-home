@@ -44,9 +44,11 @@ export type ArticleProps = {
   data: {
     article: {
       html: string
+      // tableOfContents: string
       frontmatter: {
         title: string
         authors: string
+        date: string
       }
     }
   }
@@ -74,6 +76,7 @@ export type PaperProps = {
       frontmatter: {
         title: string
         authors: string
+        date: string
       }
     }
   }
@@ -123,6 +126,7 @@ export type SnippetProps = {
       html: string
       frontmatter: {
         title: string
+        date: string
       }
     }
   }
