@@ -38,7 +38,7 @@ export default ({ data }: SnippetProps) => (
 )
 
 const Title = styled.h1`
-  margin: 0;
+  margin-top: 0;
 `
 
 const Meta = styled.div`

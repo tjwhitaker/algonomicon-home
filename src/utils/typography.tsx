@@ -35,8 +35,7 @@ const typography = new Typography({
   blockMarginBottom: 1 / 2,
   overrideStyles: ({ rhythm }) => ({
     h1: {
-      paddingBottom: `calc(${rhythm(1 / 4)} - 1px)`,
-      marginBottom: rhythm(3 / 4),
+      marginBottom: rhythm(1 / 2),
       marginTop: rhythm(1.5),
     },
     h2: {
