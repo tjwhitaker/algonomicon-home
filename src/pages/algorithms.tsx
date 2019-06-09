@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
+import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 import { AlgorithmsProps } from "../types/content"
 
 export const query = graphql`
@@ -44,22 +44,3 @@ export default ({ data }: AlgorithmsProps) => (
     </Sidebar>
   </Layout>
 )
-
-const Post = styled.div`
-  padding: 1rem 0;
-  border-bottom: 1px solid #ccc;
-
-  h3 {
-    color: hsla(0, 0%, 0%, 0.8);
-    margin-top: 0;
-  }
-
-  p {
-    color: hsla(0, 0%, 0%, 0.8);
-    font-weight: normal;
-  }
-
-  &:first-child {
-    padding-top: 0;
-  }
-`
