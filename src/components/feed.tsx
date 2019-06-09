@@ -3,7 +3,7 @@ import styled from "styled-components"
 import moment from "moment"
 import Minion from "./minion"
 import { Link, graphql } from "gatsby"
-import { FeedProps } from "../types/components"
+import { FeedProps, FeedItemProps } from "../types/components"
 
 const Container = styled.div`
   max-height: 100%;
@@ -36,7 +36,7 @@ const Meta = styled.small`
   font-weight: normal;
 `
 
-const Item = ({ data }: any) => (
+const Item = ({ data }: FeedItemProps) => (
   <Post to={`/${data.fields.collection}/${data.frontmatter.slug}`}>
     <Title>{data.frontmatter.title}</Title>
     <Description>{data.excerpt}</Description>
