@@ -1,27 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 import { ArticlesProps } from "../types/content"
-
-export const query = graphql`
-  {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
-          date
-        }
-      }
-    }
-  }
-`
 
 export default ({ data }: ArticlesProps) => (
   <Layout>
@@ -47,3 +28,27 @@ export default ({ data }: ArticlesProps) => (
     </Sidebar>
   </Layout>
 )
+
+export const query = graphql`
+  {
+    articles: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "articles" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          date
+        }
+      }
+    }
+  }
+`
+
+export const test = () => {
+  it("works", () => {
+    expect(1).toBe(1)
+  })
+}
