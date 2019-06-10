@@ -46,9 +46,3 @@ export const query = graphql`
     }
   }
 `
-
-export const test = () => {
-  it("works", () => {
-    expect(1).toBe(1)
-  })
-}
