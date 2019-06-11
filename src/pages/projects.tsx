@@ -13,7 +13,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
-        excerpt
+        excerpt(pruneLength: 400)
         frontmatter {
           title
           slug
@@ -32,9 +32,9 @@ export default ({ data }: ProjectsProps) => (
       {data.projects.nodes.map((node, i) => (
         <Link to={`/projects/${node.frontmatter.slug}`} key={i}>
           <Project>
-            {/* <Preview>
-              <Image fluid={node.heroImage.asset.fluid} />
-            </Preview> */}
+            <Preview>
+              <img src="https://source.unsplash.com/600x350/?startup" />
+            </Preview>
             <Content>
               <h3>{node.frontmatter.title}</h3>
               <p>{node.excerpt}</p>
