@@ -5,7 +5,7 @@ date: June 3rd, 2019
 authors: Timothy J. Whitaker
 ---
 
-I came across a fun dataset of almost 4000 confirmed planets that exist outside of our solar system.[^1] The NASA open catalogue of exoplanets dates back to an overlooked photograph taken in 1917. Almost 100 years later, an astronomy professor and his grad student were preparing research for a talk on white dwarfs and came across a slide which was soon then confirmed to be the first evidence of an exoplanet discovery.[^2] In recent years, technological advances have spurned a lot more discoveries due to a mountain of astronomical data that is being collecting. Sky survey projects all over the world collecting terabytes of information nightly.[^3] These projects are going to grow larger and collect more information as time goes on, so astronomy is in a cool place right now for data science!
+I came across a fun dataset of almost 4000 confirmed planets that exist outside of our solar system.[^1] The NASA open catalogue of exoplanets dates back to an overlooked photograph taken in 1917. Almost 100 years later, an astronomy professor and his grad student were preparing research for a talk on white dwarfs and came across a slide which was soon then confirmed to be the first evidence of an exoplanet discovery.[^2] In recent years, technological advances have spurned a lot more discoveries due to a mountain of astronomical data that is being collecting. Sky survey projects all over the world collecting terabytes of information nightly.[^3] These projects are going to grow larger and collect more information as time goes on, so it's a great time to be a data scientist if you're interested in exploring the universe!
 
 ## Libraries and Data
 
@@ -179,6 +179,41 @@ planets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 │ 3970 │ 3970  │ ups And     │ c         │ ups And c │ Radial Velocity │ 0              │ 3       │ 241.258   │ 0.827774   │ 0.2596      │
 │ 3971 │ 3971  │ ups And     │ d         │ ups And d │ Radial Velocity │ 0              │ 3       │ 1276.46   │ 2.51329    │ 0.2987      │
 │ 3972 │ 3972  │ xi Aql      │ b         │ xi Aql b  │ Radial Velocity │ 0              │ 1       │ 136.75    │ 0.68       │ 0.0         │
+```
+
+## Dataset Overview
+
+Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.). In the interest of brevity, I'm going to be posting outputs using the omitted versions of dataframes, but I'll add commented functions to show how to print all the data points as well.
+
+```julia
+# showall(first(planets))
+first(planets)
+```
+
+```text
+DataFrameRow. Omitted printing of 132 columns
+│ Row │ rowid │ pl_hostname │ pl_letter │ pl_name  │ pl_discmethod   │ pl_controvflag │ pl_pnum │ pl_orbper │ pl_orbsmax │ pl_orbeccen │ pl_orbincl │ pl_bmassj │
+│     │ Int64 │ String      │ String    │ String   │ String          │ Int64          │ Int64   │ Float64⍰  │ Float64⍰   │ Float64⍰    │ Float64⍰   │ Float64⍰  │
+├─────┼───────┼─────────────┼───────────┼──────────┼─────────────────┼────────────────┼─────────┼───────────┼────────────┼─────────────┼────────────┼───────────┤
+│ 1   │ 1     │ 11 Com      │ b         │ 11 Com b │ Radial Velocity │ 0              │ 1       │ 326.03    │ 1.29       │ 0.231       │ missing    │ 19.4      │
+```
+
+```julia
+# showall(describe(planets))
+describe(planets)
+```
+
+```text
+144×8 DataFrame
+│ Row │ variable    │ mean     │ min    │ median │ max    │ nunique │ nmissing │ eltype   │
+│     │ Symbol      │ Union…   │ Any    │ Union… │ Any    │ Union…  │ Union…   │ DataType │
+├─────┼─────────────┼──────────┼────────┼────────┼────────┼─────────┼──────────┼──────────┤
+│ 1   │ rowid       │ 1986.5   │ 1      │ 1986.5 │ 3972   │         │          │ Int64    │
+│ 2   │ pl_hostname │          │ 11 Com │        │ xi Aql │ 2963    │          │ String   │
+⋮
+│ 142 │ st_m1       │ 0.285146 │ 0.129  │ 0.253  │ 0.774  │         │ 3615     │ Float64  │
+│ 143 │ st_c1       │ 0.359557 │ -0.013 │ 0.368  │ 0.686  │         │ 3615     │ Float64  │
+│ 144 │ st_colorn   │ 5.47432  │ 0      │ 5.0    │ 83     │         │          │ Int64    │
 ```
 
 [^1]: https://github.com/OpenExoplanetCatalogue/open_exoplanet_catalogue
