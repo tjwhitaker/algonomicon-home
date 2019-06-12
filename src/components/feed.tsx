@@ -3,6 +3,7 @@ import styled from "styled-components"
 import moment from "moment"
 import Minion from "./minion"
 import { Link, graphql } from "gatsby"
+import { FeedProps, FeedItemProps } from "../types/components"
 
 const Container = styled.div`
   max-height: 100%;
@@ -35,22 +36,22 @@ const Meta = styled.small`
   font-weight: normal;
 `
 
-const Item = ({ data }) => (
+const Item = ({ data }: FeedItemProps) => (
   <Post to={`/${data.fields.collection}/${data.frontmatter.slug}`}>
     <Title>{data.frontmatter.title}</Title>
     <Description>{data.excerpt}</Description>
     <Meta>
       {data.fields.collection[0].toUpperCase() +
         data.fields.collection.slice(1, -1)}{" "}
-      from {moment(data.frontmatter.date, "MM-DD-YYYY").fromNow()}
+      from {moment(data.frontmatter.date, "MMMM Do, YYYY").fromNow()}
     </Meta>
   </Post>
 )
 
-export default ({ data }) => {
-  const items = data.allMarkdownRemark.edges.sort((a, b) => {
-    return moment(a.node.frontmatter.date, "MM-DD-YYYY").isBefore(
-      moment(b.node.frontmatter.date, "MM-DD-YYYY")
+export default ({ data }: FeedProps) => {
+  const items = data.allMarkdownRemark.nodes.sort((a, b) => {
+    return moment(b.frontmatter.date, "MMMM Do, YYYY").diff(
+      moment(a.frontmatter.date, "MMMM Do, YYYY")
     )
   })
 
@@ -58,7 +59,7 @@ export default ({ data }) => {
     <div>
       <Minion>Feed</Minion>
       <Container>
-        {items.map(({ node }, i) => (
+        {items.map((node, i) => (
           <Item key={i} data={node} />
         ))}
       </Container>
@@ -69,17 +70,15 @@ export default ({ data }) => {
 export const FeedQuery = graphql`
   fragment FeedQuery on Query {
     allMarkdownRemark {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            title
-            slug
-            date
-          }
-          fields {
-            collection
-          }
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          date
+        }
+        fields {
+          collection
         }
       }
     }

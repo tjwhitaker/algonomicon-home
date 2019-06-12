@@ -9,6 +9,7 @@ export const query = graphql`
   {
     snippets: allMarkdownRemark(
       filter: { fields: { collection: { eq: "snippets" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
         frontmatter {

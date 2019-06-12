@@ -12,6 +12,7 @@ export const query = graphql`
       frontmatter {
         title
         authors
+        date
       }
     }
   }
@@ -31,13 +32,12 @@ export default ({ data }: ArticleProps) => (
         <Minion>Meta</Minion>
         <Meta>
           <Field>Author: {data.article.frontmatter.authors}</Field>
-          {/* <Field>Created: {article._createdAt}</Field> */}
-          {/* <Field>Updated: {article._updatedAt}</Field> */}
+          <Field>Created: {data.article.frontmatter.date}</Field>
         </Meta>
       </div>
       <div>
         <Minion>Outline</Minion>
-        <Outline>{/* <BlockContent blocks={article._rawOutline} /> */}</Outline>
+        {/* <Outline>{data.article.tableOfContents}</Outline> */}
       </div>
     </Sidebar>
   </Layout>

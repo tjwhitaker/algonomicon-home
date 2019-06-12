@@ -4,6 +4,7 @@ import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Feed } from "../components"
+import { IndexProps } from "../types/pages"
 
 export const query = graphql`
   {
@@ -18,7 +19,7 @@ export const query = graphql`
   }
 `
 
-export default ({ data }) => (
+export default ({ data }: IndexProps) => (
   <Layout>
     <Helmet>
       <title>Home | Algonomicon</title>
@@ -87,6 +88,6 @@ const Sidebar = styled.div`
   position: relative;
 
   @media screen and (max-width: 600px) {
-    display:none;
+    display: none;
   }
 `

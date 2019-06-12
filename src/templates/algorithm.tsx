@@ -8,9 +8,10 @@ import { AlgorithmProps } from "../types/content"
 export const query = graphql`
   query Algorithm($slug: String!) {
     algorithm: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         title
-        slug
+        date
       }
     }
   }
@@ -23,14 +24,13 @@ export default ({ data }: AlgorithmProps) => (
     </Helmet>
     <Main>
       <Title>{data.algorithm.frontmatter.title}</Title>
-      {/* <BlockContent blocks={algorithm._rawContent} serializers={serializers} /> */}
+      <div dangerouslySetInnerHTML={{ __html: data.algorithm.html }} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          {/* <Field>Created: {algorithm._createdAt}</Field> */}
-          {/* <Field>Updated: {algorithm._updatedAt}</Field> */}
+          <Field>Created: {data.algorithm.frontmatter.date}</Field>
         </Meta>
       </div>
     </Sidebar>
@@ -38,7 +38,7 @@ export default ({ data }: AlgorithmProps) => (
 )
 
 const Title = styled.h1`
-  margin-top: 0;
+  margin: 0;
 `
 
 const Meta = styled.div`

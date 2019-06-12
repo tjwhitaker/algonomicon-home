@@ -10,9 +10,8 @@
     "format": "prettier --write {src,__{tests,mocks}__}/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest",
     "type-check": "tsc --noEmit",
-    "generate-types": "graphql-codegen"
+    "test": "cypress open"
   },
   "dependencies": {
     "@types/node": "^12.0.5",
@@ -53,12 +52,8 @@
     "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
-    "babel-jest": "^24.8.0",
-    "babel-preset-gatsby": "^0.1.11",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.8.0",
+    "cypress": "^3.3.1",
     "prettier": "^1.17.0",
-    "react-test-renderer": "^16.8.6",
     "typescript": "^3.5.1"
   },
   "repository": {

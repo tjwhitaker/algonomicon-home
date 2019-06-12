@@ -1,7 +1,7 @@
 ---
 title: Images
 slug: images
-date: 6-7-2019
+date: June 7th, 2019
 ---
 
 ```julia

@@ -23,7 +23,7 @@ export default ({ data }: ProjectProps) => (
     </Helmet>
     <Project>
       <Title>{data.project.frontmatter.title}</Title>
-      {/* <p>{project.description}</p> */}
+      <div dangerouslySetInnerHTML={{ __html: data.project.html }} />
     </Project>
   </Layout>
 )

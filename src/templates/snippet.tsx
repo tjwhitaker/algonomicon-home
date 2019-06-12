@@ -11,6 +11,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date
       }
     }
   }
@@ -23,15 +24,13 @@ export default ({ data }: SnippetProps) => (
     </Helmet>
     <Main>
       <Title>{data.snippet.frontmatter.title}</Title>
-      {/* <BlockContent blocks={snippet._rawContent} serializers={serializers} /> */}
       <div dangerouslySetInnerHTML={{ __html: data.snippet.html }} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          {/* <Field>Created: {snippet._createdAt}</Field> */}
-          {/* <Field>Updated: {snippet._updatedAt}</Field> */}
+          <Field>Created: {data.snippet.frontmatter.date}</Field>
         </Meta>
       </div>
     </Sidebar>
