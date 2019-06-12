@@ -183,23 +183,23 @@ planets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 
 ## Dataset Overview
 
-Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.). In the interest of brevity, I'm going to be posting outputs using the omitted versions of dataframes, but I'll add commented functions to show how to print all the data points as well.
+Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.). In the interest of brevity, I'm going to be posting outputs using the omitted versions of dataframes. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.
 
 ```julia
-# showall(first(planets))
+# First instance in the dataframe
 first(planets)
 ```
 
 ```text
-DataFrameRow. Omitted printing of 132 columns
-│ Row │ rowid │ pl_hostname │ pl_letter │ pl_name  │ pl_discmethod   │ pl_controvflag │ pl_pnum │ pl_orbper │ pl_orbsmax │ pl_orbeccen │ pl_orbincl │ pl_bmassj │
-│     │ Int64 │ String      │ String    │ String   │ String          │ Int64          │ Int64   │ Float64⍰  │ Float64⍰   │ Float64⍰    │ Float64⍰   │ Float64⍰  │
-├─────┼───────┼─────────────┼───────────┼──────────┼─────────────────┼────────────────┼─────────┼───────────┼────────────┼─────────────┼────────────┼───────────┤
-│ 1   │ 1     │ 11 Com      │ b         │ 11 Com b │ Radial Velocity │ 0              │ 1       │ 326.03    │ 1.29       │ 0.231       │ missing    │ 19.4      │
+DataFrameRow. Omitted printing of 134 columns
+│ Row │ rowid │ pl_hostname │ pl_letter │ pl_name  │ pl_discmethod   │ pl_controvflag │ pl_pnum │ pl_orbper │ pl_orbsmax │ pl_orbeccen │
+│     │ Int64 │ String      │ String    │ String   │ String          │ Int64          │ Int64   │ Float64⍰  │ Float64⍰   │ Float64⍰    │
+├─────┼───────┼─────────────┼───────────┼──────────┼─────────────────┼────────────────┼─────────┼───────────┼────────────┼─────────────┤
+│ 1   │ 1     │ 11 Com      │ b         │ 11 Com b │ Radial Velocity │ 0              │ 1       │ 326.03    │ 1.29       │ 0.231       │
 ```
 
 ```julia
-# showall(describe(planets))
+# Statstical details of the entire dataset
 describe(planets)
 ```
 
