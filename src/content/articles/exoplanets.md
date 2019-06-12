@@ -183,7 +183,7 @@ planets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 
 ## Dataset Overview
 
-Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.). In the interest of brevity, I'm going to be posting outputs using the omitted versions of dataframes. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.
+Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.). In the interest of brevity, I'm going to be posting outputs using the omitted versions of dataframes. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^4]
 
 ```julia
 # First instance in the dataframe
@@ -219,3 +219,4 @@ describe(planets)
 [^1]: https://github.com/OpenExoplanetCatalogue/open_exoplanet_catalogue
 [^2]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^3]: https://www.lsst.org/
+[^4]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
