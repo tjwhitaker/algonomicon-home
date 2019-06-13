@@ -82,6 +82,11 @@ th:last-child {
   padding-right: 0;
 }
 
+/* For 100% width svg plots */
+object {
+  width: 100%;
+}
+
 .footnote-backref {
   display: none;
 }
