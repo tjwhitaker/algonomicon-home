@@ -5,11 +5,11 @@ date: June 3rd, 2019
 authors: Timothy J. Whitaker
 ---
 
-The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advances and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly and these projects are going to grow larger and collect more information as time goes on.[^3]
+The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advances and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly and these projects are going to grow larger and collect more information as time goes on.[^2]
 
 ## Libraries and Data
 
-I downloaded the CSV from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes for each. Since there are a lot of attributes and I want to make this article readable, I'm going to be posting omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^4]
+I downloaded the CSV from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes for each. Since there are a lot of attributes and I want to make this article readable, I'm going to be posting omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
 
 Included in the file is a header detailing the column definitions.
 
@@ -86,5 +86,5 @@ describe(planets)
 ```
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
-[^3]: https://www.lsst.org/
-[^4]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
+[^2]: https://www.lsst.org/
+[^3]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
