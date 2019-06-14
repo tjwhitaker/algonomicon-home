@@ -1,7 +1,7 @@
 ---
 title: Dataframes
 slug: dataframes
-date: June 11th, 2019
+date: 2019-06-11
 ---
 
 ```julia

@@ -1,7 +1,7 @@
 ---
 title: Linear Regression
 slug: linear-regression
-date: June 3rd, 2019
+date: 2019-06-03
 ---
 
 Linear regression is a technique used for estimating relationships by fitting the inputs and the output to a line. Linear regression is used when the range of values is continuous and has a constant slope.
@@ -15,8 +15,8 @@ $
 ```julia
 using Gadfly
 
-line = layer(y = map(x->2x, 1:100), Geom.line)
-scatter = layer(y = map(x->2x + ((rand() - 0.5) * 100), 1:100), Geom.point)
+line = layer(y = map(x -> 2x, 1:100), Geom.line)
+scatter = layer(y = map(x- > 2x + ((rand() - 0.5) * 100), 1:100), Geom.point)
 
 plot(line, scatter)
 ```
