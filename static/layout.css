@@ -87,6 +87,11 @@ object {
   width: 100%;
 }
 
+code[class*="language-"],
+pre[class*="language-"] {
+  background: #222831 !important;
+}
+
 .footnote-backref {
   display: none;
 }
