@@ -16,7 +16,7 @@ $
 using Gadfly
 
 line = layer(y = map(x -> 2x, 1:100), Geom.line)
-scatter = layer(y = map(x- > 2x + ((rand() - 0.5) * 100), 1:100), Geom.point)
+scatter = layer(y = map(x -> 2x + ((rand() - 0.5) * 100), 1:100), Geom.point)
 
 plot(line, scatter)
 ```
