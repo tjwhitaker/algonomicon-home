@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import moment from "moment"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
@@ -30,7 +31,10 @@ export default ({ data }: AlgorithmProps) => (
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Created: {data.algorithm.frontmatter.date}</Field>
+          <Field>
+            Created:{" "}
+            {moment(data.algorithm.frontmatter.date).format("MMMM Do, YYYY")}
+          </Field>
         </Meta>
       </div>
     </Sidebar>
