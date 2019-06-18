@@ -15,7 +15,25 @@ const webpack = require("@cypress/webpack-preprocessor")
 
 module.exports = (on, config) => {
   const options = {
-    webpackOptions: require("../../webpack.config"),
+    webpackOptions: {
+      resolve: {
+        extensions: [".ts", ".js"],
+      },
+      module: {
+        rules: [
+          {
+            test: /\.ts$/,
+            exclude: [/node_modules/],
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-typescript"],
+              },
+            },
+          },
+        ],
+      },
+    },
   }
 
   on("file:preprocessor", webpack(options))
