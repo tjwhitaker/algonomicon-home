@@ -19,7 +19,6 @@ lastFive = last(df, 5)
 subset = df[5:10, :]
 
 # Column access (name or index)
-col1 = df.name
 col1 = df[:name]
 col2 = df[2]
 

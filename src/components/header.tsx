@@ -20,7 +20,7 @@ export default () => (
     `}
     render={data => {
       return (
-        <Header fluid={data.file.childImageSharp.fluid}>
+        <Header fluid={data.file.childImageSharp.fluid} className="hero">
           <Wrapper>
             <Masthead>
               <Logo />
