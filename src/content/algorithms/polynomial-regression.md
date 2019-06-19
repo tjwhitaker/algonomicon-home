@@ -1,7 +1,7 @@
 ---
 title: Polynomial Regression
 slug: polynomial-regression
-date: 2019-06-03
+date: 2019-06-19
 ---
 
 Polynomial regression is a technique used for estimating relationships by fitting the inputs and the output to a polynomial function. Like linear regression, polynomial regression is used when the range of values is continuous, but unlike linear regression, the slope is not constant.
