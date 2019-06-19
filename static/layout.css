@@ -2,13 +2,16 @@ html {
   background: #272822;
 }
 body {
-  transition: filter 1s ease;
   background: white;
 }
 
-body.glitched {
-  filter: grayscale(1);
-  transition: filter 2s ease;
+.hero::before {
+  transition: filter 0.5s ease !important;
+}
+
+.hero.glitched::before {
+  filter: brightness(1.6);
+  transition: opacity 0.5s ease, filter 1s ease !important;
 }
 
 a {
@@ -80,6 +83,11 @@ th:first-child {
 td:last-child,
 th:last-child {
   padding-right: 0;
+}
+
+/* For 100% width svg plots */
+object {
+  width: 100%;
 }
 
 .footnote-backref {

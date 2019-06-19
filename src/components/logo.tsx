@@ -2,11 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 
 const glitchBody = () => {
-  document.body.className = "glitched"
+  document.getElementsByClassName("hero")[0].classList.add("glitched")
 }
 
 const unglitchBody = () => {
-  document.body.className = ""
+  document.getElementsByClassName("hero")[0].classList.remove("glitched")
 }
 
 export default () => (

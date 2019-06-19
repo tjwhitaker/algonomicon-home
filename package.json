@@ -14,6 +14,7 @@
     "test": "cypress open"
   },
   "dependencies": {
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.0.8",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
@@ -53,7 +54,11 @@
     "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^4.1.0",
+    "axe-core": "^3.2.2",
+    "babel-loader": "^8.0.6",
     "cypress": "^3.3.1",
+    "cypress-axe": "^0.5.1",
     "prettier": "^1.18.2",
     "typescript": "^3.5.1"
   },

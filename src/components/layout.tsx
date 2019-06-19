@@ -6,6 +6,7 @@ import Footer from "./footer"
 import Wrapper from "./wrapper"
 import "../../static/layout.css"
 import "../../static/syntax.css"
+import "../../node_modules/katex/dist/katex.min.css"
 
 export default ({ children }) => (
   <div>

@@ -1,7 +1,7 @@
 ---
 title: World Models (2018)
 slug: world-models
-date: June 11th, 2019
+date: 2019-06-11
 authors: David Ha, Jürgen Schmidhuber
 ---
 

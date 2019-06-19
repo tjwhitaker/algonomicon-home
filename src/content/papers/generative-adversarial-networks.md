@@ -1,7 +1,7 @@
 ---
 title: Generative Adversarial Networks (2014)
 slug: generative-adversarial-networks
-date: June 11th, 2019
+date: 2019-06-11
 authors: Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio
 ---
 
