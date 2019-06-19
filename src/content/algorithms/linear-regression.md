@@ -7,7 +7,7 @@ date: 2019-06-03
 Linear regression is a technique used for estimating relationships by fitting the inputs and the output to a line. Linear regression is used when the range of values is continuous and has a constant slope.
 
 $
-y = mx + b
+\hat{y}_i = {\theta^T} \cdot x_i
 $
 
 <object data="/linear-regression.svg" type="image/svg+xml"></object>
