@@ -5,7 +5,7 @@ date: 2019-06-03
 authors: Timothy J. Whitaker
 ---
 
-The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advances and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly and these projects are going to grow larger and collect more information as time goes on.[^2]
+The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
 
 ## Libraries and Data
 
@@ -28,7 +28,7 @@ Included in the file is a header detailing the column definitions.
 # COLUMN st_m1:          m1 (Stromgren) [mag]
 ```
 
-Now I'm loading the data into a DataFrame using the CSV package. This is a good time to load some other libraries that we'll end up using in the future. Gadfly is a plotting library akin to ggplot2 and statistics is self explanatory.
+Now I'm loading the data into a DataFrame using the CSV package. The other libraries that we'll end up using are Gadfly, a plotting library akin to ggplot2, and statistics.
 
 ```julia
 using CSV, DataFrames, Gadfly, Statistics
