@@ -9,7 +9,7 @@ The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, datin
 
 ## Libraries and Data
 
-I downloaded the CSV from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes for each. Since there are a lot of attributes and I want to make this article readable, I'm going to be posting omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
+The exoplanet data comes from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes. Since there are a lot of parameters and I want to keep this article readable, I'm going to post omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
 
 Included in the file is a header detailing the column definitions.
 
@@ -28,13 +28,13 @@ Included in the file is a header detailing the column definitions.
 # COLUMN st_m1:          m1 (Stromgren) [mag]
 ```
 
-Now I'm loading the data into a DataFrame using the CSV package. The other libraries that we'll end up using are Gadfly, a plotting library akin to ggplot2, and statistics.
+The libraries I'm using are CSV, DataFrames, and Gadfly, a plotting library akin to ggplot2.
 
 ```julia
-using CSV, DataFrames, Gadfly, Statistics
+using CSV, DataFrames, Gadfly
 
 # Exoplanets downloaded from https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets
-planets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
+exoplanets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 ```
 
 ```text
@@ -50,26 +50,32 @@ planets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 │ 3972 │ 3972  │ xi Aql      │ b         │ xi Aql b  │ Radial Velocity │ 0              │ 1       │ 136.75    │ 0.68       │ 0.0         │
 ```
 
-## Dataset Overview
-
-Now that we have the exoplanets loaded, I'm going to start looking at pieces that might be interesting to visualize. A good first step is to look at a single row in its entirety and to describe our whole dataframe with general statistical functions (min, max, mean, median, etc.).
+I'm going to add another dataframe of the planets in our solar system. That way, I can plot these and use them as references. The mass and radius values are given as a ratio of Earth's measurements.
 
 ```julia
-# First instance in the dataframe
-first(planets)
+# Reference planets
+planets = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+                    mass = [0.0553, 0.815, 1, 0.107, 317.8, 95.2, 14.5, 17.1],
+                    radius = [0.383, 0.949, 1, 0.532, 11.21, 9.45, 4.01, 3.88])
 ```
 
 ```text
-DataFrameRow. Omitted printing of 134 columns
-│ Row │ rowid │ pl_hostname │ pl_letter │ pl_name  │ pl_discmethod   │ pl_controvflag │ pl_pnum │ pl_orbper │ pl_orbsmax │ pl_orbeccen │
-│     │ Int64 │ String      │ String    │ String   │ String          │ Int64          │ Int64   │ Float64⍰  │ Float64⍰   │ Float64⍰    │
-├─────┼───────┼─────────────┼───────────┼──────────┼─────────────────┼────────────────┼─────────┼───────────┼────────────┼─────────────┤
-│ 1   │ 1     │ 11 Com      │ b         │ 11 Com b │ Radial Velocity │ 0              │ 1       │ 326.03    │ 1.29       │ 0.231       │
+8×3 DataFrame
+│ Row │ name    │ mass    │ radius  │
+│     │ String  │ Float64 │ Float64 │
+├─────┼─────────┼─────────┼─────────┤
+│ 1   │ Mercury │ 0.0553  │ 0.383   │
+⋮
+│ 7   │ Uranus  │ 14.5    │ 4.01    │
+│ 8   │ Neptune │ 17.1    │ 3.88    │
 ```
 
+## Dataset Overview
+
+The first thing I always do in exploratory data analysis is to look at the dataset as a whole. Calling `describe(df)` will print out general statistics of the dataframe (min, max, mean, median, etc.).
+
 ```julia
-# Statstical details of the entire dataset
-describe(planets)
+describe(exoplanets)
 ```
 
 ```text
@@ -84,6 +90,42 @@ describe(planets)
 │ 143 │ st_c1       │ 0.359557 │ -0.013 │ 0.368  │ 0.686  │         │ 3615     │ Float64  │
 │ 144 │ st_colorn   │ 5.47432  │ 0      │ 5.0    │ 83     │         │          │ Int64    │
 ```
+
+```julia
+describe(planets)
+```
+
+```text
+3×8 DataFrame
+│ Row │ variable │ mean    │ min    │ median │ max   │ nunique │ nmissing │ eltype   │
+│     │ Symbol   │ Union…  │ Any    │ Union… │ Any   │ Union…  │ Nothing  │ DataType │
+├─────┼──────────┼─────────┼────────┼────────┼───────┼─────────┼──────────┼──────────┤
+│ 1   │ name     │         │ Earth  │        │ Venus │ 8       │          │ String   │
+│ 2   │ mass     │ 55.8222 │ 0.0553 │ 7.75   │ 317.8 │         │          │ Float64  │
+│ 3   │ radius   │ 3.92675 │ 0.383  │ 2.44   │ 11.21 │         │          │ Float64  │
+```
+
+### How big are the planets?
+
+```julia
+plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
+     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse))
+
+```
+
+<object data="mass-radius-scatter.svg" type="image/svg+xml">
+    <param name="url" value="mass-radius-scatter.svg">
+</object>
+
+```julia
+plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
+     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse, Geom.density2d),
+     style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"))
+```
+
+<object data="mass-radius-density.svg" type="image/svg+xml">
+    <param name="url" value="mass-radius-density.svg">
+</object>
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
