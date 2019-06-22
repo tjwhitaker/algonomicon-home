@@ -14,6 +14,7 @@ export const query = graphql`
         title
         authors
         date
+        outline
       }
     }
   }
@@ -41,7 +42,9 @@ export default ({ data }: ArticleProps) => (
       </div>
       <div>
         <Minion>Outline</Minion>
-        {/* <Outline>{data.article.tableOfContents}</Outline> */}
+        <Outline
+          dangerouslySetInnerHTML={{ __html: data.article.frontmatter.outline }}
+        />
       </div>
     </Sidebar>
   </Layout>
@@ -66,18 +69,10 @@ const Outline = styled.div`
     list-style: inside;
     margin-left: 0;
 
-    li {
-      margin-bottom: 1rem;
-
-      ul {
-        list-style: inside circle;
-        margin-left: 1.625rem;
-        margin-top: 0;
-
-        li {
-          margin-bottom: 0;
-        }
-      }
+    ul {
+      list-style: inside circle;
+      margin-left: 1.625rem;
+      margin-top: 0;
     }
   }
 `

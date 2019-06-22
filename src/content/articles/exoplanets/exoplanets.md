@@ -3,6 +3,15 @@ title: Exoplanets
 slug: exoplanets
 date: 2019-06-03
 authors: Timothy J. Whitaker
+outline: |
+  <ul>
+    <li>Introduction</li>
+    <li>Libraries and Data</li>
+    <li>Overview</li>
+    <ul>
+        <li>How big are the Planets?</li>
+    </ul>
+  </ul>
 ---
 
 The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
