@@ -50,7 +50,7 @@ exoplanets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 │ 3972 │ 3972  │ xi Aql      │ b         │ xi Aql b  │ Radial Velocity │ 0              │ 1       │ 136.75    │ 0.68       │ 0.0         │
 ```
 
-I'm going to add another dataframe of the planets in our solar system. That way, I can plot these and use them as references. The mass and radius values are given as a ratio of Earth's measurements.
+I'm going to add another dataframe of the planets in our solar system. That way, I can plot these and use them as references. The units for the mass and radius values are a ratio of Earth's measurements (5.972 x 10^24kg and 6,378km respectively).
 
 ```julia
 # Reference planets
@@ -91,19 +91,7 @@ describe(exoplanets)
 │ 144 │ st_colorn   │ 5.47432  │ 0      │ 5.0    │ 83     │         │          │ Int64    │
 ```
 
-```julia
-describe(planets)
-```
-
-```text
-3×8 DataFrame
-│ Row │ variable │ mean    │ min    │ median │ max   │ nunique │ nmissing │ eltype   │
-│     │ Symbol   │ Union…  │ Any    │ Union… │ Any   │ Union…  │ Nothing  │ DataType │
-├─────┼──────────┼─────────┼────────┼────────┼───────┼─────────┼──────────┼──────────┤
-│ 1   │ name     │         │ Earth  │        │ Venus │ 8       │          │ String   │
-│ 2   │ mass     │ 55.8222 │ 0.0553 │ 7.75   │ 317.8 │         │          │ Float64  │
-│ 3   │ radius   │ 3.92675 │ 0.383  │ 2.44   │ 11.21 │         │          │ Float64  │
-```
+First glance shows a variety of information, split between the planet's characteristics and the host star's characteristics. It's important to note that most of the columns show missing data, so we'll need to account for that when making comparisons between attributes.
 
 ### How big are the planets?
 
