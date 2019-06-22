@@ -10,7 +10,9 @@ $
 \hat{y}_i = \theta_0 + \theta_1 x_i + \theta_2 x_i^2 + ... + \theta_m x_i^m
 $
 
-<object data="/polynomial-regression.svg" type="image/svg+xml"></object>
+<object data="polynomial-regression.svg" type="image/svg+xml">
+    <param name="url" value="polynomial-regression.svg">
+</object>
 
 ```julia
 using Gadfly

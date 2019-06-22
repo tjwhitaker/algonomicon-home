@@ -10,7 +10,9 @@ $
 \hat{y}_i = {\theta^T} \cdot x_i
 $
 
-<object data="/linear-regression.svg" type="image/svg+xml"></object>
+<object data="linear-regression.svg" type="image/svg+xml">
+    <param name="url" value="linear-regression.svg">
+</object>
 
 ```julia
 using Gadfly
