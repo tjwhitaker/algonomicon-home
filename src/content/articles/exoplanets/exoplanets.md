@@ -107,6 +107,8 @@ describe(planets)
 
 ### How big are the planets?
 
+Our solar system has a variety of different planet characteristics. We have small terrestial planets, large gas giants, and cold ice giants. I'm curious to see what the majority of the exoplanets look like. Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
+
 ```julia
 plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
      layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse))
