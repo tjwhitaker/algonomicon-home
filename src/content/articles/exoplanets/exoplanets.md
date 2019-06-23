@@ -107,6 +107,7 @@ First glance shows a variety of information, split between the planet's characte
 Our solar system has a variety of different planet characteristics. We have small terrestial planets, large gas giants, and cold ice giants. I'm curious to see what the majority of the exoplanets look like. Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
 
 ```julia
+# Mass Radius Scatter
 plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
      layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse))
 
@@ -117,6 +118,7 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
 </object>
 
 ```julia
+# Mass Radius 2d Density
 plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
      layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse, Geom.density2d),
      style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"))
@@ -124,6 +126,23 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
 
 <object data="mass-radius-density.svg" type="image/svg+xml">
     <param name="url" value="mass-radius-density.svg">
+</object>
+
+```julia
+# Relative size
+sorted = sort(dropmissing(exoplanets, :pl_rade), :pl_rade)
+smallest = first(sorted)
+largest = last(sorted)
+
+# Values plotted manually after looking at the data frames
+plot(layer(x = [3.0001], y = [0], label = ["Kepler-37 b"], Geom.point, Geom.label, style(point_size = 0.336px, point_label_color = colorant"white")),
+     layer(x = [2.5], y = [0], label = ["Earth"], Geom.point, Geom.label, style(point_size = 1px, point_label_color = colorant"white")),
+     layer(x = [2], y = [0], label = ["Jupiter"], Geom.point, Geom.label, style(point_size = 11.21px, point_label_color = colorant"white")),
+     layer(x = [1], y = [0], label = ["HD 100546 b"], Geom.point, Geom.label, style(point_size = 77.342px, point_label_color = colorant"white")))
+```
+
+<object data="relative-size.svg" type="image/svg+xml">
+    <param name="url" value="relative-size.svg">
 </object>
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
