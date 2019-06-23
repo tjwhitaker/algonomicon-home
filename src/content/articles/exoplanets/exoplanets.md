@@ -6,17 +6,22 @@ authors: Timothy J. Whitaker
 outline: |
   <ul>
     <li>Introduction</li>
-    <li>Libraries and Data</li>
+    <li>Libraries and Data Preparation</li>
     <li>Overview</li>
+    <li>Planet Characteristics</li>
     <ul>
-        <li>How big are the Planets?</li>
+      <li>How big are the planets?</li>
+    </ul>
+    <li>Stellar Characteristics</li>
+    <ul>
+      <li>How big are the host stars?</li>
     </ul>
   </ul>
 ---
 
 The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
 
-## Libraries and Data
+## Libraries and Data Preparation
 
 The exoplanet data comes from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes. Since there are a lot of parameters and I want to keep this article readable, I'm going to post omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
 
@@ -79,7 +84,7 @@ planets = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Sat
 │ 8   │ Neptune │ 17.1    │ 3.88    │
 ```
 
-## Dataset Overview
+## Overview
 
 The first thing I always do in exploratory data analysis is to look at the dataset as a whole. Calling `describe(df)` will print out general statistics of the dataframe (min, max, mean, median, etc.).
 
@@ -102,13 +107,19 @@ describe(exoplanets)
 
 First glance shows a variety of information, split between the planet's characteristics and the host star's characteristics. It's important to note that most of the columns show missing data, so we'll need to account for that when making comparisons between attributes.
 
+## Planet Characterstics
+
+I'm going to start our analysis with the planets themselves. Then we'll expand to the host star characteristics and see what we can glean from looking at both together.
+
 ### How big are the planets?
 
 Our solar system has a variety of different planet characteristics. We have small terrestial planets, large gas giants, and cold ice giants. I'm curious to see what the majority of the exoplanets look like. Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
 
+Here's a scatter plot of all the exoplanets, plotted by their mass and radius. Most small radius planets are in a tight band of mass, indicating that the variance is smaller than larger planets.
+
 ```julia
 # Mass Radius Scatter
-plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
+plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
      layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse))
 
 ```
@@ -117,9 +128,11 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
     <param name="url" value="mass-radius-scatter.svg">
 </object>
 
+This 2d density plot below is another visualiztion of the patterns we see in the scatter plot. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
+
 ```julia
 # Mass Radius 2d Density
-plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"#fff", point_label_color = colorant"#fff")),
+plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
      layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse, Geom.density2d),
      style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"))
 ```
@@ -128,6 +141,8 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
     <param name="url" value="mass-radius-density.svg">
 </object>
 
+The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in comparison to the larger exoplanets. The plot below shows the relative size of the largest and smallest exoplanets discovered along with Jupiter and Earth as references.
+
 ```julia
 # Relative size
 sorted = sort(dropmissing(exoplanets, :pl_rade), :pl_rade)
@@ -135,15 +150,34 @@ smallest = first(sorted)
 largest = last(sorted)
 
 # Values plotted manually after looking at the data frames
-plot(layer(x = [3.0001], y = [0], label = ["Kepler-37 b"], Geom.point, Geom.label, style(point_size = 0.336px, point_label_color = colorant"white")),
-     layer(x = [2.5], y = [0], label = ["Earth"], Geom.point, Geom.label, style(point_size = 1px, point_label_color = colorant"white")),
-     layer(x = [2], y = [0], label = ["Jupiter"], Geom.point, Geom.label, style(point_size = 11.21px, point_label_color = colorant"white")),
-     layer(x = [1], y = [0], label = ["HD 100546 b"], Geom.point, Geom.label, style(point_size = 77.342px, point_label_color = colorant"white")))
+plot(layer(x=[3.5], y=[0], label=["Kepler-37 b"], Geom.point, Geom.label, style(point_size=0.336pt, point_label_color=colorant"white")),
+     layer(x=[3], y=[0], label=["Earth"], Geom.point, Geom.label, style(point_size=1pt, point_label_color=colorant"white")),
+     layer(x=[2.5], y=[0], label=["Jupiter"], Geom.point, Geom.label, style(point_size=11.21pt, point_label_color=colorant"white")),
+     layer(x=[1], y=[0], label=["HD 100546 b"], Geom.point, Geom.label, style(point_size=77.342pt, point_label_color=colorant"white")),
+     Scale.y_continuous(minvalue=-200, maxvalue=200))
 ```
 
 <object data="relative-size.svg" type="image/svg+xml">
     <param name="url" value="relative-size.svg">
 </object>
+
+### How long are their days/years?
+
+### How hot/cold are they?
+
+### Do they have moons?
+
+## Stellar Characteristics
+
+### How big are the host stars?
+
+### How hot are they?
+
+### What are their spectral qualities?
+
+### What are they composed of?
+
+### How old are they?
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
