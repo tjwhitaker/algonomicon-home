@@ -117,6 +117,10 @@ Our solar system has a variety of different planet characteristics. We have smal
 
 Here's a scatter plot of all the exoplanets, plotted by their mass and radius. Most small radius planets are in a tight band of mass, indicating that the variance is smaller than larger planets.
 
+<object data="mass-radius-scatter.svg" type="image/svg+xml">
+  <param name="url" value="mass-radius-scatter.svg">
+</object>
+
 ```julia
 # Mass Radius Scatter
 plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
@@ -124,11 +128,11 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
 
 ```
 
-<object data="mass-radius-scatter.svg" type="image/svg+xml">
-    <param name="url" value="mass-radius-scatter.svg">
-</object>
-
 This 2d density plot below is another visualiztion of the patterns we see in the scatter plot. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
+
+<object data="mass-radius-density.svg" type="image/svg+xml">
+  <param name="url" value="mass-radius-density.svg">
+</object>
 
 ```julia
 # Mass Radius 2d Density
@@ -137,11 +141,11 @@ plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.labe
      style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"))
 ```
 
-<object data="mass-radius-density.svg" type="image/svg+xml">
-    <param name="url" value="mass-radius-density.svg">
-</object>
-
 The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in comparison to the larger exoplanets. The plot below shows the relative size of the largest and smallest exoplanets discovered along with Jupiter and Earth as references.
+
+<object data="relative-size.svg" type="image/svg+xml">
+  <param name="url" value="relative-size.svg">
+</object>
 
 ```julia
 # Relative size
@@ -157,13 +161,7 @@ plot(layer(x=[3.5], y=[0], label=["Kepler-37 b"], Geom.point, Geom.label, style(
      Scale.y_continuous(minvalue=-200, maxvalue=200))
 ```
 
-<object data="relative-size.svg" type="image/svg+xml">
-    <param name="url" value="relative-size.svg">
-</object>
-
-### How long are their days/years?
-
-### How hot/cold are they?
+### What do their orbits look like?
 
 ### Do they have moons?
 
