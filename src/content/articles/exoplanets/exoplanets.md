@@ -161,9 +161,44 @@ plot(layer(x=[3.5], y=[0], label=["Kepler-37 b"], Geom.point, Geom.label, style(
      Scale.y_continuous(minvalue=-200, maxvalue=200))
 ```
 
+### How hot are they?
+
+<object data="equilibrium-temperature.svg" type="image/svg+xml">
+  <param name="url" value="equilibrium-temperature.svg">
+</object>
+
+```julia
+plot(dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol]), x=:pl_ratdor, y=:pl_insol, color=:pl_eqt,
+     Scale.y_log10, Scale.x_log10, Scale.color_continuous(colormap=(x->get(ColorSchemes.blackbody, x))),
+     Guide.xlabel("Ratio of Distance to Star Size"),
+     Guide.ylabel("Solar Irradiance (Earth Flux)"),
+     Guide.colorkey(title="Temp (K) "))
+```
+
 ### What do their orbits look like?
 
+<object data="orbit-grid.svg" type="image/svg+xml">
+  <param name="url" value="orbit-grid.svg">
+</object>
+
+```julia
+semi_major_axis = plot(dropmissing(exoplanets, [:pl_orbsmax]), x = :pl_orbsmax, Geom.histogram(bincount=50), Scale.x_log10, Guide.xlabel("Orbital Semi Major Axis (AU)"))
+period = plot(dropmissing(exoplanets, [:pl_orbper]), x=:pl_orbper, Geom.histogram(bincount=50), Scale.x_log10, Guide.xlabel("Orbital Period (Days)"))
+eccentricity = plot(dropmissing(exoplanets, [:pl_orbeccen]), x=:pl_orbeccen, Geom.histogram(bincount=50), Guide.xlabel("Eccentricity"))
+inclination = plot(dropmissing(exoplanets, [:pl_orbincl]), x=:pl_orbincl, Geom.histogram(bincount=50), Guide.xlabel("Inclination (Deg)"))
+
+gridstack([semi_major_axis period; eccentricity inclination])
+
+```
+
 ### Do they have moons?
+
+Nope! Not a single exoplanet in this dataset has a moon.
+
+```julia
+julia> exoplanets[exoplanets[:pl_mnum] .> 0, :pl_mnum] |> length
+julia> 0
+```
 
 ## Stellar Characteristics
 
