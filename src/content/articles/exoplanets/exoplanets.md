@@ -121,6 +121,9 @@ First glance shows a variety of information, split between some meta information
   <param name="url" value="star-map.svg">
 </object>
 
+closest = Proxima Cen b, 1.29 parsecs or 4.21 light years
+farthest = SWEEPS-4 b, 8500 parsecs or 27,723.29 light years
+
 ## Planet Characterstics
 
 I'm going to start our analysis with the planets themselves. Then we'll expand to the host star characteristics and see what we can glean from looking at both together.
