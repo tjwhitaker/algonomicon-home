@@ -105,7 +105,21 @@ describe(exoplanets)
 │ 144 │ st_colorn   │ 5.47432  │ 0      │ 5.0    │ 83     │         │          │ Int64    │
 ```
 
-First glance shows a variety of information, split between the planet's characteristics and the host star's characteristics. It's important to note that most of the columns show missing data, so we'll need to account for that when making comparisons between attributes.
+First glance shows a variety of information, split between some meta information, planet characteristics and host star characteristics. It's important to note that most of the columns show missing data, so we'll need to account for that when making comparisons between attributes.
+
+### How were they discovered?
+
+<object data="discoveries.svg" type="image/svg+xml">
+  <param name="url" value="discoveries.svg">
+</object>
+
+### Where are they?
+
+[^4]
+
+<object data="star-map.svg" type="image/svg+xml">
+  <param name="url" value="star-map.svg">
+</object>
 
 ## Planet Characterstics
 
@@ -202,16 +216,19 @@ julia> 0
 
 ## Stellar Characteristics
 
-### How big are the host stars?
+<object data="star-mass-radius-scatter.svg" type="image/svg+xml">
+  <param name="url" value="star-mass-radius-scatter.svg">
+</object>
 
-### How hot are they?
+<object data="star-temperature-brightness.svg" type="image/svg+xml">
+  <param name="url" value="star-temperature-brightness.svg">
+</object>
 
-### What are their spectral qualities?
-
-### What are they composed of?
-
-### How old are they?
+<object data="star-metallicity.svg" type="image/svg+xml">
+  <param name="url" value="star-metallicity.svg">
+</object>
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
 [^3]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
+[^4]: https://en.wikipedia.org/wiki/Galactic_coordinate_system
