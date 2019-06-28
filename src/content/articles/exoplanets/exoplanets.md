@@ -19,7 +19,7 @@ outline: |
   </ul>
 ---
 
-The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
+The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world are collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
 
 ## Libraries and Data Preparation
 
@@ -97,10 +97,7 @@ Exoplanet discovery has exploded in the last 10 years thanks to powerful telesco
 </object>
 
 ```julia
-# Exoplanet discoveries by years and methods
-discoveries = dropmissing(exoplanets, [:pl_disc, :pl_discmethod])
-
-plot(dicoveries, x = :pl_disc, color = :pl_discmethod, Geom.line, Stat.histogram,
+plot(dropmissing(exoplanets, [:pl_disc, :pl_discmethod]), x = :pl_disc, color = :pl_discmethod, Geom.line, Stat.histogram,
      Scale.y_sqrt, Guide.xlabel("Discovery Year"), Guide.colorkey(title = "Discovery Method"))
 ```
 
@@ -120,7 +117,7 @@ Most discovered exoplanets live within 500 parsecs (1630.78 light years) of Eart
 
 The closest and farthest planets we've found so far are Proxima Centauri b at 1.29 parsecs (4.21 light years) and SWEEPS-4 b/SWEEPS-11 b at 8500 parsecs (27,723.29 light years) respectively.
 
-We map universal objects by using the galactic coordinate system. This is a polar coordinate system, that uses the Earth (or Sun) as the origin and the center of the milky way galaxy as a 0 degree bearing. [^4] By converting the polar coordinates to cartesian coordinates, we can plot the relative position of the stars. Keep in mind that these stars actually exist in a 3-dimensional space, but due to the limitations of our plotting software, we are showing a 2-dimensional representation.
+The exoplanet locatioins are actually mapped by their host star using the galactic coordinate system. This is a polar coordinate system that uses the Earth (or Sun) as the origin and the center of the milky way galaxy as a 0 degree bearing.[^4] By converting the polar coordinates to cartesian coordinates, we can plot the relative position of the stars. Keep in mind that these stars actually exist in a 3-dimensional space, but due to the limitations of our plotting software, we are showing a 2-dimensional representation.
 
 <object data="star-map.svg" type="image/svg+xml">
   <param name="url" value="star-map.svg">
@@ -159,15 +156,12 @@ Here's a scatter plot of all the exoplanets, plotted by their mass and radius. M
 </object>
 
 ```
-# Mass radius scatter
-exoplanet_sizes = dropmissing(exoplanets, [:pl_rade, :pl_bmasse])
-
 planet_sizes = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
                          mass = [0.0553, 0.815, 1, 0.107, 317.8, 95.2, 14.5, 17.1],
                          radius = [0.383, 0.949, 1, 0.532, 11.21, 9.45, 4.01, 3.88])
 
 plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
-     layer(exoplanet_sizes, x = :pl_rade, y = :pl_bmasse),
+     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse),
      Scale.y_sqrt, Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
 
@@ -178,9 +172,8 @@ By plotting the size as a 2d density contour, we can see the patterns shown in t
 </object>
 
 ```julia
-# Mass radius density
 plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
-     layer(exoplanet_sizes, x = :pl_rade, y = :pl_bmasse, Geom.density2d),
+     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse, Geom.density2d),
      style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"),
      Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
@@ -192,7 +185,6 @@ The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in compariso
 </object>
 
 ```julia
-# Relative Size
 sorted_size = sort(dropmissing(exoplanets, :pl_rade), :pl_rade)
 smallest = first(sorted_size)
 largest = last(sorted_size)
@@ -213,15 +205,16 @@ A key characteristic for planet habitability is the surface temperature. We don'
 </object>
 
 ```julia
-# Equilibrium temperature
-equilibrium_temperature = dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol])
-
-plot(equilibrium_temperature, x = :pl_ratdor, y = :pl_insol, color = :pl_eqt,
+plot(dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol]), x = :pl_ratdor, y = :pl_insol, color = :pl_eqt,
      Scale.y_log10, Scale.x_log10, Scale.color_continuous(colormap = (x->get(ColorSchemes.blackbody, x))),
      Guide.xlabel("Ratio of Distance to Star Size"), Guide.ylabel("Solar Irradiance (Earth Flux)"), Guide.colorkey(title = "Temp (K) "))
 ```
 
 ### What do their orbits look like?
+
+While the mass and radius of the exoplanets vary, the majority of orbits of those exoplanets are actually pretty small and close to their host star. Their orbits are circular as opposed to elliptical and horizontal with most inclinations being at ~90 degrees.
+
+I think the reason for these small, regular orbits have more to do with our discovery methods than the patterns themselves. Since planets don't emit light, we can't actually measure them up directly. We find them by actually looking at the host star and measuring perturbations in movement or luminosity. Since a planets effect on a star (both occlusion and gravity) grows weaker with distance, it's natural that we find the exoplanets that are close to their star.
 
 <object data="orbit-grid.svg" type="image/svg+xml">
   <param name="url" value="orbit-grid.svg">
@@ -246,7 +239,7 @@ orbits = gridstack([semi_major_axis period; eccentricity inclination])
 
 ### Do they have moons?
 
-Nope! Not a single exoplanet in this dataset has a moon.
+Nope! Not a single exoplanet in this dataset has a moon! This goes hand in hand with the discovery method problems I mentioned in the orbits section. Current techniques can't pick up objects so small, dark, and far away. The exoplanets we find are close to their host star where it's unlikely for a moon to develop a stable orbit. It's probable that we'll find a lot of exomoons in the future. Our solar system suggests that they are common around larger planets farther from their star, for example, Mercury and Venus have no moons while Jupiter and Saturn have 67 and 62 moons respectively.
 
 ```julia
 julia> exoplanets[exoplanets[:pl_mnum] .> 0, :pl_mnum] |> length
@@ -255,19 +248,59 @@ julia> 0
 
 ## Stellar Characteristics
 
+The stars in this dataset have just as much to tell us than the exoplanets themselves.
+
+### How big are the stars?
+
+Our sun is close to the perfect average of star sizes. Of the discovered stars with exoplanets, the median mass and radius are just slightly smaller than the sun at a ratio of 0.975.
+
 <object data="star-mass-radius-scatter.svg" type="image/svg+xml">
   <param name="url" value="star-mass-radius-scatter.svg">
 </object>
+
+```julia
+plot(layer(x = [1], y = [1], label = ["Sun"], Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
+     layer(dropmissing(exoplanets, [:st_rad, :st_mass]), x = :st_rad, y = :st_mass),
+     Guide.xlabel("Radius (Solar Radii)"), Guide.ylabel("Mass (Solar Radii)"),
+     Scale.y_log10, Scale.x_log10)
+```
+
+### How hot and bright are they?
+
+Most stars we've found with exoplanets are actually less bright and hot than our own sun. The majority we've found are within the main sequence star classification, with a handful of red dwarfs.[^5]
 
 <object data="star-temperature-brightness.svg" type="image/svg+xml">
   <param name="url" value="star-temperature-brightness.svg">
 </object>
 
+```julia
+plot(layer(x = [5777], y = [1], label = ["Sun"], color = [5777], size = [3pt], shape = [Shape.xcross], Geom.point, Geom.label(position = :above), style(point_label_color = colorant"white")),
+     layer(dropmissing(exoplanets, [:st_lum, :st_teff]), y = :st_lum, x = :st_teff, color = :st_teff),
+     Scale.x_log10, Scale.color_continuous(colormap = (x->get(ColorSchemes.blackbody, x))),
+     Guide.xlabel("Effective Temperature (K)"), Guide.ylabel("Luminosity (log(Solar))"),
+     style(key_position = :none), Coord.cartesian(xflip = true))
+```
+
+### What are they composed of?
+
+Stars are primarily composed of hydrogen and helium. Extreme pressure and temperature create a nuclear fusion reactor at their cores, converting hydrogen into helium and releasing insane amounts of energy into space.[^6] Through this process, stars also create heavier elements called metals. This composition is a measurement called metallicity and is a ratio of elements in comparison to the ratio of our sun. Metal rich stars tend to be older and have a higher chance of hosting terrestrial planets in its orbits.
+
+The plot below shows the composition ratios we have currently measure. Iron is the most dominant by far, and we can see that the ratio around 0 (or our suns composition) is by the most prevalent.
+
 <object data="star-metallicity.svg" type="image/svg+xml">
   <param name="url" value="star-metallicity.svg">
 </object>
+
+```julia
+met_fe = plot(dropmissing(exoplanets, [:st_metfe]), x = :st_metfe, Geom.histogram(bincount = 50), Guide.xlabel("Metallicity (Dex)"))
+met_ratio = plot(dropmissing(exoplanets, [:st_metratio]), x = :st_metratio, Geom.histogram, Guide.xlabel("Metallicity Ratio"))
+
+metallicity = hstack([met_fe, met_ratio])
+```
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
 [^3]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
 [^4]: https://en.wikipedia.org/wiki/Galactic_coordinate_system
+[^5]: https://en.wikipedia.org/wiki/Main_sequence
+[^6]: https://en.wikipedia.org/wiki/Nuclear_fusion#Nuclear_fusion_in_stars
