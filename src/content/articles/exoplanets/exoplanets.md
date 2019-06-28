@@ -21,7 +21,7 @@ outline: |
 
 The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, dating back to an overlooked photograph from 1917.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world are collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
 
-## Libraries and Data Preparation
+## Introduction
 
 The exoplanet data comes from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>, which contains 3972 confirmed exoplanets and 144 attributes. Since there are a lot of parameters and I want to keep this article readable, I'm going to post omitted/shortened outputs of the dataframes and attribute descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
 
@@ -90,7 +90,11 @@ First glance shows a variety of information, split between some meta information
 
 ### How were they discovered?
 
-Exoplanet discovery has exploded in the last 10 years thanks to powerful telescopes, sensitive photometry technology and precise data analysis. The graph below shows how these methods and discoveries have evolved over time.
+Exoplanet discovery has exploded in the last 10 years thanks to powerful telescopes, sensitive photometry technology and precise data analysis. The dataset shows 10 different discovery methods used to find exoplanets. Transit and radial velocity appear to be the most popular and are both techniques that involve analyzing the photometry of the host star in a system to spot characterstics consistent with an orbiting planet.
+
+The radial velocity method relies on the fact that a star moves in a small ellipse when a planet orbits it. This gravitational pull causes a slight shift in color signature when viewed from a distance. We can measure this shift over time, and if these movements happen at a regular interval for a fixed length of time, we can assume that a planet is probably orbiting the star.[^4]
+
+The transit method works by measuring the brightness of a star. When an orbiting planet pass between Earth and the star, the brightness of that star slightly dims. When this dimming happens at regular intervals, and for a fixed length of time, then it's probable that a planet is orbiting.[^5]
 
 <object data="discoveries.svg" type="image/svg+xml">
   <param name="url" value="discoveries.svg">
@@ -101,23 +105,13 @@ plot(dropmissing(exoplanets, [:pl_disc, :pl_discmethod]), x = :pl_disc, color = 
      Scale.y_sqrt, Guide.xlabel("Discovery Year"), Guide.colorkey(title = "Discovery Method"))
 ```
 
-The dataset shows 10 different discovery methods used to find exoplanets. Transit and radial velocity appear to be the most popular and are both techniques that involve analyzing the photometry of the host star in a system to spot characterstics consistent with an orbiting planet.
-
-#### Radial Velocity
-
-This method relies on the fact that a star does not remain stationary when it is orbited by a planet. It moves, ever so slightly, in a small ellipse, responding to the gravitational tug of its smaller companion. When viewed from a distance, these slight movements affect the star's color signature. If the star is moving towards the observer, then its spectrum would appear slightly shifted towards the blue; if it is moving away, it will be shifted towards the red.
-
-#### Transit
-
-This method detects planets by measuring a regular dimming of a star as an orbiting planet passes between it and the Earth.
-
 ### Where are they?
 
 Most discovered exoplanets live within 500 parsecs (1630.78 light years) of Earth. With this kind of density, it's clear that the universe contains a lot of planets. As our observation and data collection improves, I expect the number of exoplanets to grow exponentially.
 
 The closest and farthest planets we've found so far are Proxima Centauri b at 1.29 parsecs (4.21 light years) and SWEEPS-4 b/SWEEPS-11 b at 8500 parsecs (27,723.29 light years) respectively.
 
-The exoplanet locatioins are actually mapped by their host star using the galactic coordinate system. This is a polar coordinate system that uses the Earth (or Sun) as the origin and the center of the milky way galaxy as a 0 degree bearing.[^4] By converting the polar coordinates to cartesian coordinates, we can plot the relative position of the stars. Keep in mind that these stars actually exist in a 3-dimensional space, but due to the limitations of our plotting software, we are showing a 2-dimensional representation.
+We're mapping the exoplanet locations by their host star using the galactic coordinate system. This is a polar coordinate system that uses the Earth (or Sun) as the origin and the center of the milky way galaxy as a 0 degree bearing.[^6] By converting the polar coordinates to cartesian coordinates, we can plot the relative position of the stars. Keep in mind that these stars actually exist in a 3-dimensional space, but due to the limitations of our plotting software, we are showing a 2-dimensional representation.
 
 <object data="star-map.svg" type="image/svg+xml">
   <param name="url" value="star-map.svg">
@@ -145,17 +139,17 @@ plot(layer(x = [0, 8121.9961554], y = [0, -7.90263480146], label = ["Earth", "Ga
 
 ## Planet Characterstics
 
-Our solar system has 8 planets, each with wildly varying characteristics. We have small terrestial planets, large gas giants, and cold ice giants. What do the exoplanets look like? Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
+Our solar system has 8 planets, each with varying characteristics. We have small terrestial planets, large gas giants, and cold ice giants. Do the exoplanets show as much variety? Do our discovery methods predispose us to finding certain types of planets?
 
 ### How big are the planets?
 
-Here's a scatter plot of all the exoplanets, plotted by their mass and radius. Most small radius planets are in a tight band of mass, indicating that the variance is smaller than larger planets.
+When plotting the exoplanets by their mass and radius, we see a host of different sizes. The majority appear to be terrestrial around Earth's size, but we also have a smattering of gas giants bigger event than the largest planet in our solar system, Jupiter.
 
 <object data="mass-radius-scatter.svg" type="image/svg+xml">
   <param name="url" value="mass-radius-scatter.svg">
 </object>
 
-```
+```julia
 planet_sizes = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
                          mass = [0.0553, 0.815, 1, 0.107, 317.8, 95.2, 14.5, 17.1],
                          radius = [0.383, 0.949, 1, 0.532, 11.21, 9.45, 4.01, 3.88])
@@ -165,7 +159,7 @@ plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom
      Scale.y_sqrt, Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
 
-By plotting the size as a 2d density contour, we can see the patterns shown in the scatter plot. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
+By plotting the size as a 2d density contour, we can see the patterns shown in the scatter plot above. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
 
 <object data="mass-radius-density.svg" type="image/svg+xml">
   <param name="url" value="mass-radius-density.svg">
@@ -178,7 +172,7 @@ plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom
      Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
 
-The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in comparison to the larger exoplanets. The plot below shows the relative size of the largest and smallest exoplanets discovered along with Jupiter and Earth as references.
+The giants in our solar system (Jupiter/Saturn/Uranus/Neptune) pale in comparison to the larger exoplanets. The plot below shows the relative size of the largest and smallest exoplanets discovered along with Jupiter and Earth as references.
 
 <object data="relative-size.svg" type="image/svg+xml">
   <param name="url" value="relative-size.svg">
@@ -198,23 +192,25 @@ plot(layer(x = [3.5], y = [0], label = ["Kepler-37 b"], Geom.point, Geom.label, 
 
 ### How hot are they?
 
-A key characteristic for planet habitability is the surface temperature. We don't have a way to measure this on planets so far away, as surface or atmospheric properties can raise or lower temperatures at the surface. Equilibrium temperature is a measurement we use to estimate their theoretical temperature by considering the planet as if it were a black body, heated only by it's parent star. By plotting the ratio between the distance to a planets host star, by the amount of solar irradiance it receives, we see a strong relationship between these values and equilibrium temperature.
+A key characteristic for planet habitability is the surface temperature. We don't have a way to measure this on planets so far away, as surface or atmospheric properties can raise or lower temperatures at the surface. Equilibrium temperature is a measurement we use to estimate their theoretical temperature by considering the planet as if it were a black body, heated only by it's parent star.[^7] By plotting the values of the distance to a planets host star, by the effective temperature of that host star, we see a strong relationship between these values and a planet's equilibrium temperature.
 
 <object data="equilibrium-temperature.svg" type="image/svg+xml">
   <param name="url" value="equilibrium-temperature.svg">
 </object>
 
 ```julia
-plot(dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol]), x = :pl_ratdor, y = :pl_insol, color = :pl_eqt,
-     Scale.y_log10, Scale.x_log10, Scale.color_continuous(colormap = (x->get(ColorSchemes.blackbody, x))),
-     Guide.xlabel("Ratio of Distance to Star Size"), Guide.ylabel("Solar Irradiance (Earth Flux)"), Guide.colorkey(title = "Temp (K) "))
+plot(layer(x = [1], y = [5778], color = [255], shape = [Shape.xcross], size = [3pt], label = ["Earth"], Geom.point, Geom.label, style(point_label_color = colorant"white")),
+     layer(dropmissing(exoplanets, [:pl_eqt, :st_teff, :pl_orbsmax]), x = :pl_orbsmax, y = :st_teff, color = :pl_eqt),
+     Scale.x_log10, Scale.color_continuous(colormap = (x->get(ColorSchemes.blackbody, x))),
+     Guide.xlabel("Orbital Semi Major Axis (AU)"), Guide.ylabel("Star Effective Temperature (K)"),
+     Guide.colorkey(title = "Planet Equilibrium   \nTemperature (K)  "), Guide.shapekey(pos = [10000,10000]))
 ```
 
 ### What do their orbits look like?
 
 While the mass and radius of the exoplanets vary, the majority of orbits of those exoplanets are actually pretty small and close to their host star. Their orbits are circular as opposed to elliptical and horizontal with most inclinations being at ~90 degrees.
 
-I think the reason for these small, regular orbits have more to do with our discovery methods than the patterns themselves. Since planets don't emit light, we can't actually measure them up directly. We find them by actually looking at the host star and measuring perturbations in movement or luminosity. Since a planets effect on a star (both occlusion and gravity) grows weaker with distance, it's natural that we find the exoplanets that are close to their star.
+I think the reason for these small, regular orbits have more to do with our discovery methods than the patterns themselves. Since planets don't emit light, we can't actually measure them up directly. We find them by looking at the host star and measuring perturbations in movement or luminosity. Since a planets effect on a star (both occlusion and gravity) grows weaker with distance, it's natural that we find the exoplanets that are close to their star.
 
 <object data="orbit-grid.svg" type="image/svg+xml">
   <param name="url" value="orbit-grid.svg">
@@ -248,11 +244,11 @@ julia> 0
 
 ## Stellar Characteristics
 
-The stars in this dataset have just as much to tell us than the exoplanets themselves.
+The stars in this dataset are not characteristic of all the stars in the sky. The stars listed here are merely those that have discovered exoplanets orbiting them. This causes our distribution to slant towards certain sizes and types of stars.
 
 ### How big are the stars?
 
-Our sun is close to the perfect average of star sizes. Of the discovered stars with exoplanets, the median mass and radius are just slightly smaller than the sun at a ratio of 0.975.
+Our sun is pretty close to the perfect average of star sizes. Of the discovered stars with exoplanets, the median mass and radius are 0.975 and 0.970 times the mass and radius of our sun and the mean mass and radius are 1.551 and 1.009 times the values of our sun.
 
 <object data="star-mass-radius-scatter.svg" type="image/svg+xml">
   <param name="url" value="star-mass-radius-scatter.svg">
@@ -267,7 +263,7 @@ plot(layer(x = [1], y = [1], label = ["Sun"], Geom.point, Geom.label, style(defa
 
 ### How hot and bright are they?
 
-Most stars we've found with exoplanets are actually less bright and hot than our own sun. The majority we've found are within the main sequence star classification, with a handful of red dwarfs.[^5]
+Most stars we've found with exoplanets are actually less bright and hot than our own sun. The majority we've found are within the main sequence star classification, with a handful of red dwarfs.[^7]
 
 <object data="star-temperature-brightness.svg" type="image/svg+xml">
   <param name="url" value="star-temperature-brightness.svg">
@@ -283,9 +279,9 @@ plot(layer(x = [5777], y = [1], label = ["Sun"], color = [5777], size = [3pt], s
 
 ### What are they composed of?
 
-Stars are primarily composed of hydrogen and helium. Extreme pressure and temperature create a nuclear fusion reactor at their cores, converting hydrogen into helium and releasing insane amounts of energy into space.[^6] Through this process, stars also create heavier elements called metals. This composition is a measurement called metallicity and is a ratio of elements in comparison to the ratio of our sun. Metal rich stars tend to be older and have a higher chance of hosting terrestrial planets in its orbits.
+Stars are primarily composed of hydrogen and helium. Extreme pressure and temperature create a nuclear fusion reactor at their cores, converting hydrogen into helium and releasing insane amounts of energy into space.[^8] Through this process, stars also create heavier elements called metals. This composition is a measurement called metallicity and is a ratio of elements in comparison to the ratio of our sun. Metal rich stars tend to be older and have a higher chance of hosting terrestrial planets in its orbits.
 
-The plot below shows the composition ratios we have currently measure. Iron is the most dominant by far, and we can see that the ratio around 0 (or our suns composition) is by the most prevalent.
+The plot below shows the composition ratios of exoplanets we've measured. Iron is the most dominant by far, and we can see that the ratio around 0 (or our suns composition) is by the most prevalent.
 
 <object data="star-metallicity.svg" type="image/svg+xml">
   <param name="url" value="star-metallicity.svg">
@@ -298,9 +294,18 @@ met_ratio = plot(dropmissing(exoplanets, [:st_metratio]), x = :st_metratio, Geom
 metallicity = hstack([met_fe, met_ratio])
 ```
 
+## Conclusion
+
+This brings us to the end of our exploration of the Open Exoplanet Catalogue. We looked at how we discover exoplanets. We looked at the physical characteristics the exoplanets exhibit and we looked at those exoplanet's host stars. We compared the values we found to the sun and the planets in our solar system.
+
+Talk about what we learned.
+
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
 [^3]: https://juliadata.github.io/DataFrames.jl/stable/man/getting_started.html#Examining-the-Data-1
-[^4]: https://en.wikipedia.org/wiki/Galactic_coordinate_system
-[^5]: https://en.wikipedia.org/wiki/Main_sequence
-[^6]: https://en.wikipedia.org/wiki/Nuclear_fusion#Nuclear_fusion_in_stars
+[^4]: http://www.planetary.org/explore/space-topics/exoplanets/radial-velocity.html
+[^5]: http://www.planetary.org/explore/space-topics/exoplanets/transit-photometry.html
+[^6]: https://en.wikipedia.org/wiki/Galactic_coordinate_system
+[^7]: https://en.wikipedia.org/wiki/Planetary_equilibrium_temperature
+[^7]: https://en.wikipedia.org/wiki/Main_sequence
+[^8]: https://en.wikipedia.org/wiki/Nuclear_fusion#Nuclear_fusion_in_stars
