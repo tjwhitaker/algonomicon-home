@@ -42,10 +42,10 @@ Included in the file is a header detailing the column definitions.
 # COLUMN st_m1:          m1 (Stromgren) [mag]
 ```
 
-The libraries I'm using are CSV, DataFrames, and Gadfly, a plotting library akin to ggplot2.
+The libraries I'm using are ColorSchemes, CSV, DataFrames, and Gadfly, a plotting library akin to ggplot2.
 
 ```julia
-using CSV, DataFrames, Gadfly
+using ColorSchemes, CSV, DataFrames, Gadfly
 
 # Exoplanets downloaded from https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets
 exoplanets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
@@ -64,31 +64,12 @@ exoplanets = CSV.read("planets_2019.06.07_18.33.16.csv", comment="#")
 │ 3972 │ 3972  │ xi Aql      │ b         │ xi Aql b  │ Radial Velocity │ 0              │ 1       │ 136.75    │ 0.68       │ 0.0         │
 ```
 
-I'm going to add another dataframe of the planets in our solar system. That way, I can plot these and use them as references. The units for the mass and radius values are a ratio of Earth's measurements (5.972 x 10^24kg and 6,378km respectively).
-
-```julia
-# Reference planets
-planets = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
-                    mass = [0.0553, 0.815, 1, 0.107, 317.8, 95.2, 14.5, 17.1],
-                    radius = [0.383, 0.949, 1, 0.532, 11.21, 9.45, 4.01, 3.88])
-```
-
-```text
-8×3 DataFrame
-│ Row │ name    │ mass    │ radius  │
-│     │ String  │ Float64 │ Float64 │
-├─────┼─────────┼─────────┼─────────┤
-│ 1   │ Mercury │ 0.0553  │ 0.383   │
-⋮
-│ 7   │ Uranus  │ 14.5    │ 4.01    │
-│ 8   │ Neptune │ 17.1    │ 3.88    │
-```
-
 ## Overview
 
-The first thing I always do in exploratory data analysis is to look at the dataset as a whole. Calling `describe(df)` will print out general statistics of the dataframe (min, max, mean, median, etc.).
+The first thing I do in exploratory data analysis is to look at the dataset as a whole. Calling `describe(df)` will print out general statistics of the dataframe (min, max, mean, median, etc.).
 
 ```julia
+# Statistical details of the entire dataset
 describe(exoplanets)
 ```
 
@@ -109,28 +90,67 @@ First glance shows a variety of information, split between some meta information
 
 ### How were they discovered?
 
+Exoplanet discovery has exploded in the last 10 years thanks to powerful telescopes, sensitive photometry technology and precise data analysis. The graph below shows how these methods and discoveries have evolved over time.
+
 <object data="discoveries.svg" type="image/svg+xml">
   <param name="url" value="discoveries.svg">
 </object>
 
+```julia
+# Exoplanet discoveries by years and methods
+discoveries = dropmissing(exoplanets, [:pl_disc, :pl_discmethod])
+
+plot(dicoveries, x = :pl_disc, color = :pl_discmethod, Geom.line, Stat.histogram,
+     Scale.y_sqrt, Guide.xlabel("Discovery Year"), Guide.colorkey(title = "Discovery Method"))
+```
+
+The dataset shows 10 different discovery methods used to find exoplanets. Transit and radial velocity appear to be the most popular and are both techniques that involve analyzing the photometry of the host star in a system to spot characterstics consistent with an orbiting planet.
+
+#### Radial Velocity
+
+This method relies on the fact that a star does not remain stationary when it is orbited by a planet. It moves, ever so slightly, in a small ellipse, responding to the gravitational tug of its smaller companion. When viewed from a distance, these slight movements affect the star's color signature. If the star is moving towards the observer, then its spectrum would appear slightly shifted towards the blue; if it is moving away, it will be shifted towards the red.
+
+#### Transit
+
+This method detects planets by measuring a regular dimming of a star as an orbiting planet passes between it and the Earth.
+
 ### Where are they?
 
-[^4]
+Most discovered exoplanets live within 500 parsecs (1630.78 light years) of Earth. With this kind of density, it's clear that the universe contains a lot of planets. As our observation and data collection improves, I expect the number of exoplanets to grow exponentially.
+
+The closest and farthest planets we've found so far are Proxima Centauri b at 1.29 parsecs (4.21 light years) and SWEEPS-4 b/SWEEPS-11 b at 8500 parsecs (27,723.29 light years) respectively.
+
+We map universal objects by using the galactic coordinate system. This is a polar coordinate system, that uses the Earth (or Sun) as the origin and the center of the milky way galaxy as a 0 degree bearing. [^4] By converting the polar coordinates to cartesian coordinates, we can plot the relative position of the stars. Keep in mind that these stars actually exist in a 3-dimensional space, but due to the limitations of our plotting software, we are showing a 2-dimensional representation.
 
 <object data="star-map.svg" type="image/svg+xml">
   <param name="url" value="star-map.svg">
 </object>
 
-closest = Proxima Cen b, 1.29 parsecs or 4.21 light years
-farthest = SWEEPS-4 b, 8500 parsecs or 27,723.29 light years
+```julia
+# Exoplanet locations
+coordinates = unique(dropmissing(exoplanets, [:st_glon, :st_dist]), [:st_glon, :st_dist])
+
+# Distance stats
+sorted_distance = sort(dropmissing(exoplanets, [:st_dist]), :st_dist)
+describe(sorted_distance[:st_dist])
+closest = first(sorted_distance)
+farthest = last(sorted_distance)
+
+# Convert polar galactic coordinates to cartesian
+x_pos = coordinates[:st_dist] .* cos.(coordinates[:st_glon])
+y_pos = coordinates[:st_dist] .* sin.(coordinates[:st_glon])
+
+plot(layer(x = [0, 8121.9961554], y = [0, -7.90263480146], label = ["Earth", "Galactic Center", Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
+     layer(x = x_pos, y = y_pos),
+     Guide.xlabel("Distance (Parsecs)"),
+     Guide.ylabel("Distance (Parsecs)"))
+```
 
 ## Planet Characterstics
 
-I'm going to start our analysis with the planets themselves. Then we'll expand to the host star characteristics and see what we can glean from looking at both together.
+Our solar system has 8 planets, each with wildly varying characteristics. We have small terrestial planets, large gas giants, and cold ice giants. What do the exoplanets look like? Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
 
 ### How big are the planets?
-
-Our solar system has a variety of different planet characteristics. We have small terrestial planets, large gas giants, and cold ice giants. I'm curious to see what the majority of the exoplanets look like. Are there any that resemble Earth? Are terrestial planets more common than gaseous ones? What do the smallest and largest exoplanets look like?
 
 Here's a scatter plot of all the exoplanets, plotted by their mass and radius. Most small radius planets are in a tight band of mass, indicating that the variance is smaller than larger planets.
 
@@ -138,24 +158,31 @@ Here's a scatter plot of all the exoplanets, plotted by their mass and radius. M
   <param name="url" value="mass-radius-scatter.svg">
 </object>
 
-```julia
-# Mass Radius Scatter
-plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
-     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse))
+```
+# Mass radius scatter
+exoplanet_sizes = dropmissing(exoplanets, [:pl_rade, :pl_bmasse])
 
+planet_sizes = DataFrame(name = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+                         mass = [0.0553, 0.815, 1, 0.107, 317.8, 95.2, 14.5, 17.1],
+                         radius = [0.383, 0.949, 1, 0.532, 11.21, 9.45, 4.01, 3.88])
+
+plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
+     layer(exoplanet_sizes, x = :pl_rade, y = :pl_bmasse),
+     Scale.y_sqrt, Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
 
-This 2d density plot below is another visualiztion of the patterns we see in the scatter plot. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
+By plotting the size as a 2d density contour, we can see the patterns shown in the scatter plot. It's clear in this plot, that most exoplanets cluster around sizes between Mercury/Earth/Mars and Uranus/Neptune.
 
 <object data="mass-radius-density.svg" type="image/svg+xml">
   <param name="url" value="mass-radius-density.svg">
 </object>
 
 ```julia
-# Mass Radius 2d Density
-plot(layer(planets, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
-     layer(dropmissing(exoplanets, [:pl_rade, :pl_bmasse]), x = :pl_rade, y = :pl_bmasse, Geom.density2d),
-     style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"))
+# Mass radius density
+plot(layer(planet_sizes, x = :radius, y = :mass, label = :name, Geom.point, Geom.label, style(default_color = colorant"white", point_label_color = colorant"white")),
+     layer(exoplanet_sizes, x = :pl_rade, y = :pl_bmasse, Geom.density2d),
+     style(key_position = :none), Scale.color_continuous(colormap = x->colorant"#fe4365"),
+     Guide.xlabel("Radius (Earth Radii)"), Guide.ylabel("Mass (Earth Mass)"))
 ```
 
 The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in comparison to the larger exoplanets. The plot below shows the relative size of the largest and smallest exoplanets discovered along with Jupiter and Earth as references.
@@ -165,31 +192,33 @@ The giants (Jupiter/Saturn/Uranus/Neptune) in our solar system pale in compariso
 </object>
 
 ```julia
-# Relative size
-sorted = sort(dropmissing(exoplanets, :pl_rade), :pl_rade)
-smallest = first(sorted)
-largest = last(sorted)
+# Relative Size
+sorted_size = sort(dropmissing(exoplanets, :pl_rade), :pl_rade)
+smallest = first(sorted_size)
+largest = last(sorted_size)
 
-# Values plotted manually after looking at the data frames
-plot(layer(x=[3.5], y=[0], label=["Kepler-37 b"], Geom.point, Geom.label, style(point_size=0.336pt, point_label_color=colorant"white")),
-     layer(x=[3], y=[0], label=["Earth"], Geom.point, Geom.label, style(point_size=1pt, point_label_color=colorant"white")),
-     layer(x=[2.5], y=[0], label=["Jupiter"], Geom.point, Geom.label, style(point_size=11.21pt, point_label_color=colorant"white")),
-     layer(x=[1], y=[0], label=["HD 100546 b"], Geom.point, Geom.label, style(point_size=77.342pt, point_label_color=colorant"white")),
-     Scale.y_continuous(minvalue=-200, maxvalue=200))
+plot(layer(x = [3.5], y = [0], label = ["Kepler-37 b"], Geom.point, Geom.label, style(point_size = 0.336pt, point_label_color = colorant"white")),
+     layer(x = [3], y = [0], label = ["Earth"], Geom.point, Geom.label, style(point_size = 1pt, point_label_color = colorant"white")),
+     layer(x = [2.5], y = [0], label = ["Jupiter"], Geom.point, Geom.label, style(point_size = 11.21pt, point_label_color = colorant"white")),
+     layer(x = [1], y = [0], label = ["HD 100546 b"], Geom.point, Geom.label, style(point_size = 77.342pt, point_label_color = colorant"white")),
+     Scale.y_continuous(minvalue = -200, maxvalue = 200))
 ```
 
 ### How hot are they?
+
+A key characteristic for planet habitability is the surface temperature. We don't have a way to measure this on planets so far away, as surface or atmospheric properties can raise or lower temperatures at the surface. Equilibrium temperature is a measurement we use to estimate their theoretical temperature by considering the planet as if it were a black body, heated only by it's parent star. By plotting the ratio between the distance to a planets host star, by the amount of solar irradiance it receives, we see a strong relationship between these values and equilibrium temperature.
 
 <object data="equilibrium-temperature.svg" type="image/svg+xml">
   <param name="url" value="equilibrium-temperature.svg">
 </object>
 
 ```julia
-plot(dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol]), x=:pl_ratdor, y=:pl_insol, color=:pl_eqt,
-     Scale.y_log10, Scale.x_log10, Scale.color_continuous(colormap=(x->get(ColorSchemes.blackbody, x))),
-     Guide.xlabel("Ratio of Distance to Star Size"),
-     Guide.ylabel("Solar Irradiance (Earth Flux)"),
-     Guide.colorkey(title="Temp (K) "))
+# Equilibrium temperature
+equilibrium_temperature = dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol])
+
+plot(equilibrium_temperature, x = :pl_ratdor, y = :pl_insol, color = :pl_eqt,
+     Scale.y_log10, Scale.x_log10, Scale.color_continuous(colormap = (x->get(ColorSchemes.blackbody, x))),
+     Guide.xlabel("Ratio of Distance to Star Size"), Guide.ylabel("Solar Irradiance (Earth Flux)"), Guide.colorkey(title = "Temp (K) "))
 ```
 
 ### What do their orbits look like?
@@ -199,13 +228,20 @@ plot(dropmissing(exoplanets, [:pl_eqt, :pl_ratdor, :pl_insol]), x=:pl_ratdor, y=
 </object>
 
 ```julia
-semi_major_axis = plot(dropmissing(exoplanets, [:pl_orbsmax]), x = :pl_orbsmax, Geom.histogram(bincount=50), Scale.x_log10, Guide.xlabel("Orbital Semi Major Axis (AU)"))
-period = plot(dropmissing(exoplanets, [:pl_orbper]), x=:pl_orbper, Geom.histogram(bincount=50), Scale.x_log10, Guide.xlabel("Orbital Period (Days)"))
-eccentricity = plot(dropmissing(exoplanets, [:pl_orbeccen]), x=:pl_orbeccen, Geom.histogram(bincount=50), Guide.xlabel("Eccentricity"))
-inclination = plot(dropmissing(exoplanets, [:pl_orbincl]), x=:pl_orbincl, Geom.histogram(bincount=50), Guide.xlabel("Inclination (Deg)"))
+# Orbit characteristics
+semi_major_axis = plot(dropmissing(exoplanets, [:pl_orbsmax]), x = :pl_orbsmax, Geom.histogram(bincount = 50),
+     Scale.x_log10, Guide.xlabel("Orbital Semi Major Axis (AU)"))
 
-gridstack([semi_major_axis period; eccentricity inclination])
+period = plot(dropmissing(exoplanets, [:pl_orbper]), x = :pl_orbper, Geom.histogram(bincount = 50),
+     Scale.x_log10, Guide.xlabel("Orbital Period (Days)"))
 
+eccentricity = plot(dropmissing(exoplanets, [:pl_orbeccen]), x = :pl_orbeccen, Geom.histogram(bincount = 50),
+     Guide.xlabel("Eccentricity"))
+
+inclination = plot(dropmissing(exoplanets, [:pl_orbincl]), x = :pl_orbincl, Geom.histogram(bincount = 50),
+     Guide.xlabel("Inclination (Deg)"))
+
+orbits = gridstack([semi_major_axis period; eccentricity inclination])
 ```
 
 ### Do they have moons?
