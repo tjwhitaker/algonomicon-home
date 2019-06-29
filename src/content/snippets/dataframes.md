@@ -14,16 +14,19 @@ df = CSV.read("file.csv")
 info = describe(df)
 
 # Subsets
-firstRow = first(df)
-lastFive = last(df, 5)
+first_row = first(df)
+last_five = last(df, 5)
 subset = df[5:10, :]
 
 # Column access (name or index)
-col1 = df[:name]
-col2 = df[2]
+name = df[:name]
+age = df[2]
 
 # Sizes and counts
-numRows = size(df, 1)
-numCols = size(df, 2)
+num_rows = size(df, 1)
+num_cols = size(df, 2)
 shape = size(df)
+
+# Replace missing values with NaN (needed for some plotting libraries)
+nan_df = mapcols(col -> coalesce.(col, NaN), df)
 ```
