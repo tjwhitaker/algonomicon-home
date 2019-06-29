@@ -1,21 +1,31 @@
 ---
-title: Exoplanets
-slug: exoplanets
-date: 2019-06-03
+title: Open Exoplanet Catalogue
+slug: open-exoplanet-catalogue
+date: 2019-06-28
 authors: Timothy J. Whitaker
 outline: |
   <ul>
     <li>Introduction</li>
-    <li>Libraries and Data Preparation</li>
     <li>Overview</li>
+    <ul>
+      <li>How were they discovered?</li>
+      <li>Where are they?</li>
+    </ul>
     <li>Planet Characteristics</li>
     <ul>
       <li>How big are the planets?</li>
+      <li>How hot are they?</li>
+      <li>What do their orbits look like?</li>
+      <li>Do they have moons?</li>
     </ul>
     <li>Stellar Characteristics</li>
     <ul>
-      <li>How big are the host stars?</li>
+      <li>How big are the stars?</li>
+      <li>How hot and bright are they></li>
+      <li>What are they composed of?</li>
     </ul>
+    <li>Conclusion</li>
+    <li>References</li>
   </ul>
 ---
 
