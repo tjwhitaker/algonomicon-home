@@ -14,6 +14,7 @@ export const query = graphql`
         title
         authors
         date
+        source
       }
     }
   }
@@ -26,6 +27,12 @@ export default ({ data }: PaperProps) => (
     </Helmet>
     <Main>
       <Title>{data.paper.frontmatter.title}</Title>
+      <p>
+        Source:{" "}
+        <Link to={data.paper.frontmatter.source}>
+          {data.paper.frontmatter.source}
+        </Link>
+      </p>
       <div dangerouslySetInnerHTML={{ __html: data.paper.html }} />
     </Main>
     <Sidebar>
