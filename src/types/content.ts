@@ -77,6 +77,7 @@ export type PaperProps = {
         title: string
         authors: string
         date: string
+        source: string
       }
     }
   }
