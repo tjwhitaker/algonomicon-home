@@ -47,5 +47,5 @@ end
 (m, b) = gradient_descent(xs, ys, η, epochs)
 
 plot(layer(x = xs, y = ys),
-     layer(x->m * x + b, 1, 100, Geom.line))
+     layer(x -> m * x + b, 1, 100, Geom.line))
 ```
