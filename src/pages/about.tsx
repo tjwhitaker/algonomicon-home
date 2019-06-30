@@ -4,10 +4,9 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-import { AboutQuery } from "../graphql-types"
 
 export const query = graphql`
-  query About {
+  {
     file(relativePath: { eq: "tim.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
@@ -18,7 +17,7 @@ export const query = graphql`
   }
 `
 
-export default (query: { data: AboutQuery }) => (
+export default ({ data }) => (
   <Layout>
     <Helmet>
       <title>About | Algonomicon</title>
@@ -52,7 +51,7 @@ export default (query: { data: AboutQuery }) => (
       <div>
         <Minion>Team</Minion>
         <Container>
-          <Image fluid={query.data.file.childImageSharp.fluid} alt="Profile" />
+          <Image fluid={data.file.childImageSharp.fluid} alt="Profile" />
         </Container>
       </div>
     </Sidebar>
