@@ -6,7 +6,7 @@ import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 import { PapersProps } from "../types/content"
 
 export const query = graphql`
-  query Papers {
+  {
     papers: allMarkdownRemark(
       filter: { fields: { collection: { eq: "papers" } } }
       sort: { fields: [frontmatter___date], order: DESC }
