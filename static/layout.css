@@ -91,8 +91,13 @@ object {
   margin-bottom: 0.5rem;
 }
 
-.footnote-backref {
-  display: none;
+.footnotes ol {
+  margin-left: 0;
+  list-style-position: inside;
+}
+
+.footnotes ol li p {
+  display: inline-block;
 }
 
 .glitch {
