@@ -7,7 +7,7 @@ import { Layout } from "../components"
 import { ProjectsProps } from "../types/content"
 
 export const query = graphql`
-  query Projects {
+  {
     projects: allMarkdownRemark(
       filter: { fields: { collection: { eq: "projects" } } }
       sort: { fields: [frontmatter___date], order: DESC }

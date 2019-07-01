@@ -13,8 +13,8 @@ export default () => (
     <Link to="/papers" activeClassName="active" partiallyActive={true}>
       Papers
     </Link>
-    <Link to="/projects" activeClassName="active" partiallyActive={true}>
-      Projects
+    <Link to="/products" activeClassName="active" partiallyActive={true}>
+      Products
     </Link>
     <Link to="/snippets" activeClassName="active" partiallyActive={true}>
       Snippets
