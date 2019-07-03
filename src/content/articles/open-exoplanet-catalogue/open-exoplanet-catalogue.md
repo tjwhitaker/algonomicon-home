@@ -80,7 +80,7 @@ The first thing I do in exploratory data analysis is to look at the dataset as a
 
 ```julia
 # Statistical details of the entire dataset
-describe(exoplanets)
+@show describe(exoplanets)
 ```
 
 ```text
