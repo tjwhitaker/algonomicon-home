@@ -13,51 +13,18 @@ In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, disco
 
 ## Introduction
 
-## Overview
-
-The data comes from <https://www.kaggle.com/c/higgs-boson/data>, split into train and test datasets. They contain 250,000 and 550,000 instances respectively, each with 33 attributes. Most attributes are prefixed with either DER or PRI. These stand for PRImitive (raw data obtained directly from the collision measurements) and DERived (features computed from primitive data by physicists at ATLAS).[^2]
-
 The large hadron collider is a machine that collides bunches of protons at high speed. When they collide, they produce a small firework in which part of the kinetic energy of the collision creates new particles. Some of the particles created through this collision (including the Higgs Boson) decay so rapidly that they can't actually be observed directly. What we can observe is the surviving particles, or the final state. The final state properties of these particles include the type (electron, photon, muon, etc.), the energy, and the 3D direction. Through these measurements, the properties are able to infer the decayed parent particles and this inference chain continues until reaching the heaviest primary particles.
 
-The particles of interest for this challenge are electrons, muons, hadronic tau, jets and missing transverse energy. Electrons and muons live long enough for the detector to read, so their energy and direction can be measured directly. Taus decay almost immediately into either and electron and two neutrinos, a muon and two neutrinos, or a bunch of charged particles and one neutrino. The resulting bundle of hadrons in the last case is a pseudo-particle called a hadronic tau. Jets are another pseudo particle which results from a high energy quark or gluon. The measured momenta of all the particles of the event is the primary information provided for this challenge.[^3]
+The particles of interest for this challenge are electrons, muons, hadronic tau, jets and missing transverse energy. Electrons and muons live long enough for the detector to read, so their energy and direction can be measured directly. These are both categorized as leptons in the dataset according to the standard model. Taus decay almost immediately into either and electron and two neutrinos, a muon and two neutrinos, or a bunch of charged particles and one neutrino. The resulting bundle of hadrons in the last case is a pseudo-particle called a hadronic tau. Jets are another pseudo particle which results from a high energy quark or gluon. The measured momenta of all the particles of the event is the primary information provided for this challenge.[^2]
 
-```julia
-EventId: An unique integer identifier of the event.
-DER_mass_MMC: The estimated mass mH of the Higgs boson candidate, obtained through a probabilistic phase space integration.
-DER_mass_transverse_met_lep: The transverse mass between the missing transverse energy and the lepton.
-DER_mass_vis: The invariant mass of the hadronic tau and the lepton.
-DER_pt_h: The modulus of the vector sum of the transverse momentum of the hadronic tau, the lepton and the missing transverse energy vector.
-DER_deltaeta_jet_jet: The absolute value of the pseudorapidity separation between the two jets (undefined if PRI_jet_num ≤ 1).
-DER_mass_jet_jet: The invariant mass of the two jets (undefined if PRI_jet_num ≤ 1).
-DER_prodeta_jet_jet: The product of the pseudorapidities of the two jets (undefined if PRI_jet_num ≤ 1).
-DER_deltar_tau_lep: The R separation between the hadronic tau and the lepton.
-DER_pt_tot: The modulus of the vector sum of the missing transverse momenta and the transverse momenta of the hadronic tau, the lepton, the leading jet (if PRI_jet_num ≥) and the subleading jet (if PRI jet num = 2) (but not of any additional jets).
-DER_sum_pt: The sum of the moduli of the transverse momenta of the hadronic tau, the lepton, the leading jet (if PRI jet num ≥ 1) and the subleading jet (if PRI jet num = 2) and the other jets (if PRI jet num = 3).
-DER_pt_ratio_lep_tau: The ratio of the transverse momenta of the lepton and the hadronic tau.
-DER_met_phi_centrality: The centrality of the azimuthal angle of the missing transverse energy vector w.r.t. the hadronic tau and the lepton.
-DER_lep_eta_centrality: The centrality of the pseudorapidity of the lepton w.r.t. the two jets (undefined if PRI_jet_num ≤ 1).
-PRI_tau_pt: The transverse momentum p2x+p2y−−−−−−√ of the hadronic tau.
-PRI_tau_eta: The pseudorapidity η of the hadronic tau.
-PRI_tau_phi: The azimuth angle ϕ of the hadronic tau.
-PRI_lep_pt: The transverse momentum p2x+p2y−−−−−−√ of the lepton (electron or muon).
-PRI_lep_eta: The pseudorapidity η of the lepton.
-PRI_lep_phi: The azimuth angle ϕ of the lepton.
-PRI_met: The missing transverse energy E→missT
-PRI_met_phi: The azimuth angle ϕ of the mssing transverse energy
-PRI_met_sumet: The total transverse energy in the detector.
-PRI_jet_num: The number of jets (integer with value of 0, 1, 2 or 3; possible larger values have been capped at 3).
-PRI_jet_leading_pt: The transverse momentum p2x+p2y−−−−−−√ of the leading jet, that is the jet with largest transverse momentum (undefined if PRI_jet_num = 0).
-PRI_jet_leading_eta: The pseudorapidity η of the leading jet (undefined if PRI jet num = 0).
-PRI_jet_leading_phi: The azimuth angle ϕ of the leading jet (undefined if PRI jet num = 0).
-PRI_jet_subleading_pt: The transverse momentum p2x+p2y−−−−−−√ of the leading jet, that is, the jet with second largest transverse momentum (undefined if PRI_jet_num ≤ 1).
-PRI_jet_subleading_eta: The pseudorapidity η of the subleading jet (undefined if PRI_jet_num ≤ 1).
-PRI_jet_subleading_phi: The azimuth angle ϕ of the subleading jet (undefined if PRI_jet_num ≤ 1).
-PRI_jet_all_pt: The scalar sum of the transverse momentum of all the jets of the events.
-Weight: The event weight wi
-Label: The event label (string) yi ∈ {s,b} (s for signal, b for background).
-```
+All events in both the training and test dataset were selected to have only one electron or muon, and only one hadronic tau. So the goal for this challenge is to classify whether the event showed that these particles decayed from a higgs or not.
 
-Some values are not able to be measured for whatever reason, and they are represented as -999.0 in the dataset. I'm going to convert those to missing values as to not influence numerical statistics.
+
+## Overview
+
+The data comes from <https://www.kaggle.com/c/higgs-boson/data>, split into train and test datasets. They contain 250,000 and 550,000 instances respectively, each with 33 attributes. Most attributes are prefixed with either DER or PRI. These stand for PRImitive (raw data obtained directly from the collision measurements) and DERived (features computed from primitive data by physicists at ATLAS). Descriptions of all the attributes are here <http://opendata.cern.ch/record/328> and a nice pdf of documentation for non-physiscists on the higgs challenge is here <http://opendata.cern.ch/record/328>.
+
+Some values are not computable or meaningless in the context of the attribute. Those values are represented as -999.0 in the dataset. I'm going to convert those to missing values instead as we load the dataset in order to make it clear that it shouldn't factor in to numerical computations.
 
 ```julia
 using CSV, DataFrames, Gadfly
@@ -109,6 +76,9 @@ train = CSV.read("train.csv", missingstring="-999.0")
 │ 33  │ Label                       │             │ b          │         │ s       │ 2       │          │ String   │
 ```
 
+The goal in this challenge is to distinguish events that contain evidence of a higgs boson decay vs lookalike events that don't. These are denoted by the characters 's' or 'b' (signal or background) in the 33rd column named Label.
+
+
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
-[^2]: http://opendata.cern.ch/record/328
-[^3]: http://opendata.cern.ch/record/329
+[^2]: http://opendata.cern.ch/record/329
+[^3]: http://opendata.cern.ch/record/328
