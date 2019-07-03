@@ -17,6 +17,10 @@ In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, disco
 
 The data comes from <https://www.kaggle.com/c/higgs-boson/data>, split into train and test datasets. They contain 250,000 and 550,000 instances respectively, each with 33 attributes. Most attributes are prefixed with either DER or PRI. These stand for PRImitive (raw data obtained directly from the collision measurements) and DERived (features computed from primitive data by physicists at ATLAS).[^2]
 
+The large hadron collider is a machine that collides bunches of protons at high speed. When they collide, they produce a small firework in which part of the kinetic energy of the collision creates new particles. Some of the particles created through this collision (including the Higgs Boson) decay so rapidly that they can't actually be observed directly. What we can observe is the surviving particles, or the final state. The final state properties of these particles include the type (electron, photon, muon, etc.), the energy, and the 3D direction. Through these measurements, the properties are able to infer the decayed parent particles and this inference chain continues until reaching the heaviest primary particles.
+
+The particles of interest for this challenge are electrons, muons, hadronic tau, jets and missing transverse energy. Electrons and muons live long enough for the detector to read, so their energy and direction can be measured directly. Taus decay almost immediately into either and electron and two neutrinos, a muon and two neutrinos, or a bunch of charged particles and one neutrino. The resulting bundle of hadrons in the last case is a pseudo-particle called a hadronic tau. Jets are another pseudo particle which results from a high energy quark or gluon. The measured momenta of all the particles of the event is the primary information provided for this challenge.[^3]
+
 ```julia
 EventId: An unique integer identifier of the event.
 DER_mass_MMC: The estimated mass mH of the Higgs boson candidate, obtained through a probabilistic phase space integration.
@@ -107,3 +111,4 @@ train = CSV.read("train.csv", missingstring="-999.0")
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/328
+[^3]: http://opendata.cern.ch/record/329
