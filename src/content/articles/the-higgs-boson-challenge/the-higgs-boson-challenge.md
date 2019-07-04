@@ -109,6 +109,20 @@ coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
     Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
 ```
 
+## How much energy is missing?
+
+Not all energy can be detected in a particle collider. Some of it is carried by neutrinos that do not interact with electromagnetic or strong forces and thus are not easily detectable. Using the law of the conservation of momentum, the missing energy in the transverse plane (cross section of the hadron collider) can be calculated. 
+
+<object data="missing-energy.svg" type="image/svg+xml">
+  <param name="url" value="missing-energy.svg">
+</object>
+
+```julia
+plot(train, x = :PRI_met, color = :Label, Geom.histogram, 
+    Guide.colorkey(title = "Label", labels = ["Signal", "Background"]),
+    Guide.xlabel("Missing Transverse Energy"), Scale.x_log10)
+```
+
 ## Are any measurements correlated?
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
