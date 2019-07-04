@@ -24,7 +24,7 @@ All events in both the training and test dataset were selected to have only one 
 
 The data comes from <https://www.kaggle.com/c/higgs-boson/data>, split into train and test datasets. They contain 250,000 and 550,000 instances respectively, each with 33 attributes. Most attributes are prefixed with either DER or PRI. These stand for PRImitive (raw data obtained directly from the collision measurements) and DERived (features computed from primitive data by physicists at ATLAS). Descriptions of all the attributes are here <http://opendata.cern.ch/record/328> and a nice pdf of documentation for non-physiscists on the higgs challenge is here <http://opendata.cern.ch/record/329>.
 
-Some values are not computable or meaningless in the context of the attribute. Those values are represented as -999.0 in the dataset. I'm going to convert those to missing values instead as we load the dataset in order to make it clear that it shouldn't factor in to numerical computations.
+Some values are not computable or are meaningless in the context of the attribute. Those values are represented as -999.0 in the dataset. I'm going to convert those to missing values instead as we load the dataset in order to make it clear that it shouldn't factor in to numerical computations.
 
 ```julia
 using CSV, DataFrames, Gadfly
@@ -75,6 +75,15 @@ train = CSV.read("train.csv", missingstring="-999.0")
 │ 32  │ Weight                      │ 1.64677     │ 0.00150187 │ 1.15619 │ 7.82254 │         │          │ Float64  │
 │ 33  │ Label                       │             │ b          │         │ s       │ 2       │          │ String   │
 ```
+
+## Primitive Values
+
+Now to recap, each event in the dataset contains a single lepton (electron or muon) and a single hadronic tau. So if every event has the same final state particles, how do we tell if it came from a higgs boson or not?
+
+<object data="coordinate-density.svg" type="image/svg+xml">
+  <param name="url" value="coordinate-density.svg">
+</object>
+
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
