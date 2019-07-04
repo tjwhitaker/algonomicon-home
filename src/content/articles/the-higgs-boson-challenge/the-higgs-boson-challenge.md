@@ -80,10 +80,36 @@ train = CSV.read("train.csv", missingstring="-999.0")
 
 Now to recap, each event in the dataset contains a single lepton (electron or muon) and a single hadronic tau. So if every event has the same final state particles, how do we tell if it came from a higgs boson or not?
 
+### Where are the particles detected?
+
+Here's a density chart showing where the detector measures the final state particles. The detector can't measure anything directly along the z axis, which is why we see a hole there. Most particles are detected in a small ring around the center axis.
+
 <object data="coordinate-density.svg" type="image/svg+xml">
   <param name="url" value="coordinate-density.svg">
 </object>
 
+```julia
+# Locations of particles
+function cartesian(pt, ϕ, η)
+    x = pt * cos(ϕ)
+    y = pt * sin(ϕ)
+    z = pt * sinh(η)
+
+    return (x, y, z)
+end
+
+coordinates = DataFrame(x = [], y = [], z = [])
+
+for row in eachrow(train)
+    push!(coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
+    push!(coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
+end
+
+coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
+    Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
+```
+
+## Are any measurements correlated?
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
