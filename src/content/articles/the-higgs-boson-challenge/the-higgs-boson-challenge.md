@@ -76,6 +76,88 @@ train = CSV.read("train.csv", missingstring="-999.0")
 │ 33  │ Label                       │             │ b          │         │ s       │ 2       │          │ String   │
 ```
 
+Due to the missing data related to jets, I'm creating a working set to use for analysis.
+
+```julia
+# Working dataframe with extraneous columns removed
+missingcols = [:EventId,
+               :DER_mass_MMC,
+               :DER_deltaeta_jet_jet,
+               :DER_mass_jet_jet,
+               :DER_prodeta_jet_jet,
+               :DER_lep_eta_centrality,
+               :PRI_jet_leading_pt,
+               :PRI_jet_leading_eta,
+               :PRI_jet_leading_phi,
+               :PRI_jet_subleading_pt,
+               :PRI_jet_subleading_eta,
+               :PRI_jet_subleading_phi]
+
+working = deletecols(train, missingcols)
+```
+
+### Signal vs Background Distribution
+
+The distribution of signal to background events (or higgs confirmed events to non-higgs) of the training set shows a near 1:2 ratio.
+
+```julia
+signal, background = groupby(working, :Label)
+```
+
+```text
+First Group (85667 rows): Label = "s". Omitted printing of 27 columns
+│ Row   │ EventId │ DER_mass_MMC │ DER_mass_transverse_met_lep │ DER_mass_vis │ DER_pt_h │ DER_deltaeta_jet_jet │
+│       │ Int64   │ Float64⍰     │ Float64                     │ Float64      │ Float64  │ Float64⍰             │
+├───────┼─────────┼──────────────┼─────────────────────────────┼──────────────┼──────────┼──────────────────────┤
+│ 1     │ 100000  │ 138.47       │ 51.655                      │ 97.827       │ 27.98    │ 0.91                 │
+│ 2     │ 100006  │ 148.754      │ 28.862                      │ 107.782      │ 106.13   │ 0.733                │
+⋮
+│ 85665 │ 349991  │ 133.457      │ 77.54                       │ 88.989       │ 69.65    │ missing              │
+│ 85666 │ 349993  │ 130.075      │ 3.918                       │ 66.781       │ 77.369   │ 0.936                │
+│ 85667 │ 349997  │ 105.457      │ 60.526                      │ 75.839       │ 39.757   │ missing              │
+⋮
+Last Group (164333 rows): Label = "b". Omitted printing of 27 columns
+│ Row    │ EventId │ DER_mass_MMC │ DER_mass_transverse_met_lep │ DER_mass_vis │ DER_pt_h │ DER_deltaeta_jet_jet │
+│        │ Int64   │ Float64⍰     │ Float64                     │ Float64      │ Float64  │ Float64⍰             │
+├────────┼─────────┼──────────────┼─────────────────────────────┼──────────────┼──────────┼──────────────────────┤
+│ 1      │ 100001  │ 160.937      │ 68.768                      │ 103.235      │ 48.146   │ missing              │
+│ 2      │ 100002  │ missing      │ 162.172                     │ 125.953      │ 35.635   │ missing              │
+⋮
+│ 164331 │ 349996  │ missing      │ 58.179                      │ 68.083       │ 22.439   │ missing              │
+│ 164332 │ 349998  │ 94.951       │ 19.362                      │ 68.812       │ 13.504   │ missing              │
+│ 164333 │ 349999  │ missing      │ 72.756                      │ 70.831       │ 7.479    │ missing              │
+```
+By calculating the boxplot statistics for both the signal and background sets, we can observe the general spread of the data. It looks like the distributions are pretty close on most columns, except for a few columns that the signals tend to be significantly different. These are the :DER_mass_transverse_met_lep, :DER_pt_h, :DER_sum_pt, :PRI_met_sumet, and :PRI_jet_all_pt. All of these fields correspond with transverse momentum. My hunch is that these fields will end up being the most important in a machine learning model.
+
+<object data="sb-stats.svg" type="image/svg+xml">
+  <param name="url" value="sb-stats.svg">
+</object>
+
+```julia
+# Signal and Background boxplot stats
+function boxplot_stats(v)
+    q1 = quantile(v, 0.25)
+    q2 = quantile(v, 0.5)
+    q3 = quantile(v, 0.75)
+
+    lf = q1 - (1.5 * (q3 - q1))
+    uf = q3 + (1.5 * (q3 - q1))
+
+    return (lf, q1, q2, q3, uf)
+end
+
+# Construct combined dataframe by looping over columns
+sb_stats = DataFrame(name = [], label = [], lf = [], lh = [], m = [], uh = [], uf = [])
+
+for i in 1:20
+    stats = boxplot_stats(signal[:, i])
+    push!(sb_stats, [names(signal)[i], "s", stats...])
+
+    stats = boxplot_stats(background[:, i])
+    push!(sb_stats, [names(background)[i], "b", stats...])
+end
+```
+
 ## Primitive Values
 
 Now to recap, each event in the dataset contains a single lepton (electron or muon) and a single hadronic tau. So if every event has the same final state particles, how do we tell if it came from a higgs boson or not?
@@ -100,7 +182,7 @@ end
 
 coordinates = DataFrame(x = [], y = [], z = [])
 
-for row in eachrow(train)
+for row in eachrow(working)
     push!(coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
     push!(coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
@@ -118,7 +200,7 @@ Not all energy can be detected in a particle collider. Some of it is carried by 
 </object>
 
 ```julia
-plot(train, x = :PRI_met, color = :Label, Geom.histogram, 
+plot(working, x = :PRI_met, color = :Label, Geom.histogram, 
     Guide.colorkey(title = "Label", labels = ["Signal", "Background"]),
     Guide.xlabel("Missing Transverse Energy"), Scale.x_log10)
 ```
