@@ -23,7 +23,7 @@ export const query = graphql`
   }
 `
 export default ({ data }: PapersProps) => {
-  const [papers, setPapers] = useState(data.papers.nodes.slice(0, 3))
+  const [chunk, setChunk] = useState(3)
 
   return (
     <Layout>
@@ -31,7 +31,7 @@ export default ({ data }: PapersProps) => {
         <title>Papers | Algonomicon</title>
       </Helmet>
       <Main>
-        {papers.map((node, i) => (
+        {data.papers.nodes.slice(0, chunk).map((node, i) => (
           <Post key={i}>
             <Link to={`/papers/${node.frontmatter.slug}`}>
               <h3>{node.frontmatter.title}</h3>
@@ -40,9 +40,9 @@ export default ({ data }: PapersProps) => {
             </Link>
           </Post>
         ))}
-        <Button onClick={() => setPapers(data.papers.nodes)}>
-          Load more...
-        </Button>
+        {chunk < data.papers.nodes.length && (
+          <Button onClick={() => setChunk(chunk + 3)}>Load more...</Button>
+        )}
       </Main>
       <Sidebar>
         <Search />
