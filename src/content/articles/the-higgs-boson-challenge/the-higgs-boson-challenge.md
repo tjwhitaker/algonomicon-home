@@ -127,7 +127,7 @@ Last Group (164333 rows): Label = "b". Omitted printing of 27 columns
 │ 164332 │ 349998  │ 94.951       │ 19.362                      │ 68.812       │ 13.504   │ missing              │
 │ 164333 │ 349999  │ missing      │ 72.756                      │ 70.831       │ 7.479    │ missing              │
 ```
-By calculating the boxplot statistics for both the signal and background sets, we can observe the general spread of the data. It looks like the distributions are pretty close on most columns, except for a few columns that the signals tend to be significantly different. These are the :DER_mass_transverse_met_lep, :DER_pt_h, :DER_sum_pt, :PRI_met_sumet, and :PRI_jet_all_pt. All of these fields correspond with transverse momentum. My hunch is that these fields will end up being the most important in a machine learning model.
+By calculating the boxplot statistics for both the signal and background sets, we can observe the general spread of the data. It looks like the distributions are pretty close on most columns, except for a few columns that the signals tend to be significantly different. These are the :DER\_mass\_transverse\_met\_lep, :DER\_pt\_h, :DER\_sum\_pt, :PRI\_met\_sumet, and :PRI\_jet\_all\_pt. All of these fields correspond with transverse momentum. My hunch is that these fields will end up being the most important in a machine learning model.
 
 <object data="sb-stats.svg" type="image/svg+xml">
   <param name="url" value="sb-stats.svg">
@@ -191,21 +191,12 @@ coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
     Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
 ```
 
-## What role do jets play?
+### What role do jets play?
 
-The jets stand out as an attribute worth special attention. While we're guaranteed that each event will have 1 lepton and 1 hadronic tau, the number of jets can vary from 0 to 3+.
+The jets stand out as an attribute worth special attention. While we're guaranteed that each event will have 1 lepton and 1 hadronic tau, the number of jets can vary from 0 to 3+. While the number of signals is pretty constant with 0, 1, and 2 jets, it severely drops off at 3+. The ratio of signals to background hits is highest (almost a 1:1 ratio) at 2 jets.
 
-```text
-# Ratios of signal:background for number of jets
-
-0: 0.3425377245669905
-1: 0.5560460729622346
-2: 1.0441874619598295
-3: 0.4361433292295730
-```
-
-<object data="num_jets.svg" type="image/svg+xml">
-  <param name="url" value="num_jets.svg">
+<object data="num-jets.svg" type="image/svg+xml">
+  <param name="url" value="num-jets.svg">
 </object>
 
 ```julia
@@ -219,8 +210,13 @@ for group in jet_groups
 
     push!(jet_df, (num_jets, num_s, num_b))
 
-    # Ratio of signal to background
     println("$num_jets: $(num_s / num_b)")
+
+    # Ratio of signal to background ^
+    # 0: 0.3425377245669905
+    # 1: 0.5560460729622346
+    # 2: 1.0441874619598295
+    # 3: 0.4361433292295730
 end
 
 plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variable, Geom.bar(position = :dodge))
@@ -229,16 +225,31 @@ plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variab
 
 ## Mass and Energy
 
-Not all energy can be detected in a particle collider. Some of it is carried by neutrinos that do not interact with electromagnetic or strong forces and thus are not easily detectable. Using the law of the conservation of momentum, the missing energy in the transverse plane (cross section of the hadron collider) can be calculated. 
+Not all energy can be detected in a particle collider. Some of it is carried by neutrinos that do not interact with electromagnetic or strong forces. Using the law of the conservation of momentum, the missing energy in the transverse plane (cross section of the hadron collider) can be calculated. 
 
+
+<object data="transverse-energy.svg" type="image/svg+xml">
+  <param name="url" value="transverse-energy.svg">
+</object>
+
+<object data="higgs-invariant-mass.svg" type="image/svg+xml">
+  <param name="url" value="higgs-invariant-mass.svg">
+</object>
+
+
+## Correlations
+
+<object data="correlations.svg" type="image/svg+xml">
+  <param name="url" value="correlations.svg">
+</object>
 
 ```julia
-plot(working, x = :PRI_met, color = :Label, Geom.histogram, 
-    Guide.colorkey(title = "Label", labels = ["Signal", "Background"]),
-    Guide.xlabel("Missing Transverse Energy"), Scale.x_log10)
-```
+correlations = cor(Matrix(working[:, 1:20]))
 
-## Are any measurements correlated?
+spy(correlations, Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
+    Guide.ylabel(nothing), Guide.colorkey(title = "Correlation\nCoefficient  "),
+    Guide.xticks(label = false), Guide.xlabel(nothing))
+```
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
