@@ -191,13 +191,46 @@ coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
     Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
 ```
 
-## How much energy is missing?
+## What role do jets play?
+
+The jets stand out as an attribute worth special attention. While we're guaranteed that each event will have 1 lepton and 1 hadronic tau, the number of jets can vary from 0 to 3+.
+
+```text
+# Ratios of signal:background for number of jets
+
+0: 0.3425377245669905
+1: 0.5560460729622346
+2: 1.0441874619598295
+3: 0.4361433292295730
+```
+
+<object data="num_jets.svg" type="image/svg+xml">
+  <param name="url" value="num_jets.svg">
+</object>
+
+```julia
+jet_groups = groupby(working, :PRI_jet_num, sort = true)
+jet_df = DataFrame(num_jets = [], num_s = [], num_b = [])
+
+for group in jet_groups
+    num_jets = first(group[:PRI_jet_num])
+    num_s = count(group[:Label] .== "s")
+    num_b = count(group[:Label] .== "b")
+
+    push!(jet_df, (num_jets, num_s, num_b))
+
+    # Ratio of signal to background
+    println("$num_jets: $(num_s / num_b)")
+end
+
+plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variable, Geom.bar(position = :dodge))
+
+```
+
+## Mass and Energy
 
 Not all energy can be detected in a particle collider. Some of it is carried by neutrinos that do not interact with electromagnetic or strong forces and thus are not easily detectable. Using the law of the conservation of momentum, the missing energy in the transverse plane (cross section of the hadron collider) can be calculated. 
 
-<object data="missing-energy.svg" type="image/svg+xml">
-  <param name="url" value="missing-energy.svg">
-</object>
 
 ```julia
 plot(working, x = :PRI_met, color = :Label, Geom.histogram, 

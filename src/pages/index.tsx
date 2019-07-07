@@ -27,9 +27,9 @@ export default ({ data }: IndexProps) => (
     <Main>
       <p>
         Welcome to Algonomicon! We are a data company working to apply machine
-        learning algorithms to the natural sciences. We're analyzing data,
-        building models and writing tutorials *to showcase how powerful these
-        methods can be*.
+        learning algorithms to natural science. We're analyzing data, building
+        models and writing tutorials *to showcase how powerful these methods can
+        be*.
       </p>
       <p>
         Thanks to increased power and large amounts of data, machine learning
