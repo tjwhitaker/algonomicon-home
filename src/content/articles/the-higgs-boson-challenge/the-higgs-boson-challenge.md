@@ -135,10 +135,10 @@ By calculating the boxplot statistics for both the signal and background sets, w
 
 ```julia
 # Signal and Background boxplot stats
-function boxplot_stats(v)
-    q1 = quantile(v, 0.25)
-    q2 = quantile(v, 0.5)
-    q3 = quantile(v, 0.75)
+function boxplot_stats(a)
+    q1 = quantile(a, 0.25)
+    q2 = quantile(a, 0.5)
+    q3 = quantile(a, 0.75)
 
     lf = q1 - (1.5 * (q3 - q1))
     uf = q3 + (1.5 * (q3 - q1))

@@ -5,6 +5,8 @@ date: 2019-07-05
 ---
 
 ```julia
+using Statistics
+
 function boxplot_stats(a::Array{Number})
     q1 = quantile(a, 0.25)
     q2 = quantile(a, 0.5)
