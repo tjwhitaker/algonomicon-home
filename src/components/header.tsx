@@ -49,10 +49,10 @@ export default () => (
               </MobileNav>
             </Masthead>
             <Intro>
-              <Headline>Machine Learning and Data Science</Headline>
+              <Headline>Machine Learning for Science!</Headline>
               <MobileHeadline>
-                Machine Learning and Data Science! Still under construction.
-                Thanks for bearing with us! Sign up for updates.
+                Machine Learning for Science! Still under construction. Thanks
+                for bearing with us! Sign up for updates.
               </MobileHeadline>
               <Tagline>
                 Still under construction. Thanks for bearing with us! Sign up
