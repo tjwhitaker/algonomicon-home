@@ -26,35 +26,40 @@ export default ({ data }: IndexProps) => (
     </Helmet>
     <Main>
       <p>
-        Welcome to Algonomicon! We are a data company working to apply machine
-        learning algorithms to natural science. We're analyzing data, building
-        models and writing tutorials *to showcase how powerful these methods can
-        be*.
+        Welcome to Algonomicon! We are a company working on applying machine
+        learning algorithms to the fields of natural science. We are analyzing
+        data, building models and writing articles to showcase how powerful
+        these methods can be when applied to cutting edge research in astronomy,
+        biology, chemistry, physics, etc.
       </p>
-      <p>
-        Thanks to increased power and large amounts of data, machine learning
-        models are capable of solving problems previously thought to be
-        impossible.
-      </p>
+
       <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
+
       <p style={{ margin: "1rem 0" }}>
         <i>
-          Inception: A state of the art deep learning architecture developed by
-          the AI research team at Google.
+          Inception: A deep learning architecture developed by the AI research
+          team at Google.
         </i>
       </p>
+
+      <p>
+        Thanks to increased power and large complex datasets, machine learning
+        models are solving problems previously thought to be impossible! We are
+        learning about the structure of nature through galaxies billions of
+        light years away and particles billions of times smaller than an atom.
+        Machine learning is helping us glean insights from the vast, complex
+        datasets that describe our universe.
+      </p>
+
       <blockquote>
         Truth is much too complicated to allow anything but approximations.
         <p>
           <i>- John Von Neumann</i>
         </p>
       </blockquote>
-      <p>
-        We are collecting more data about our universe than ever! We are
-        observing galaxies billions of light years away and particles billions
-        of times smaller than an atom.
-      </p>
+
       <p>We're particularly interested in the following research topics:</p>
+
       <ul>
         <li>Climate Change and Anthropogenic Impacts on the Environment</li>
         <li>Water Scarcity and Pollution</li>
