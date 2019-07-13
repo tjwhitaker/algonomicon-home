@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
-import { graphql } from "gatsby"
+import moment from "moment"
+import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout, Main, Feed } from "../components"
+import { Layout, Main, Minion, Post } from "../components"
 import { IndexProps } from "../types/pages"
 import { ImageProps } from "../types/images"
 
@@ -108,13 +109,21 @@ export default ({ data }: Props) => {
         </p>
       </Main>
       <Sidebar>
-        <Feed data={data} />
-          <Minion>Feed</Minion>
-          <Container>
-            {feedItems.map((node, i) => (
-              <Item key={i} data={node} />
-            ))}
-          </Container>
+        <Minion>Feed</Minion>
+        <Container>
+          {feedItems.map((node, i) => (
+            <Post key={i}>
+              <Link to={`/${node.fields.collection}/${node.frontmatter.slug}`}>
+                <h4>{node.frontmatter.title}</h4>
+                <p>{node.excerpt}</p>
+                <small>
+                  {node.fields.collection[0].toUpperCase() + node.fields.collection.slice(1, -1)}{" "}
+                  from {moment(node.frontmatter.date).fromNow()}
+                </small>
+              </Link>
+            </Post>
+          ))}
+        </Container>
       </Sidebar>
     </Layout>
   )
