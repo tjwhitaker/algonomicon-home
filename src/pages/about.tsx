@@ -5,19 +5,15 @@ import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 
-export const query = graphql`
-  {
-    file(relativePath: { eq: "tim.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+type Props = {
+  data: {
+    file: {
+      childImageSharp: ImageProps
     }
   }
-`
+}
 
-export default ({ data }) => (
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>About | Algonomicon</title>
@@ -61,3 +57,5 @@ export default ({ data }) => (
 const Container = styled.div`
   margin-top: 1rem;
 `
+
+export const query = graphql`{ ...About }`

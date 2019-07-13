@@ -6,20 +6,16 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Feed } from "../components"
 import { IndexProps } from "../types/pages"
 
-export const query = graphql`
-  {
-    file(relativePath: { eq: "inception.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+type Props = {
+  data: {
+    file: {
+      childImageSharp: ImageProps
     }
-    ...FeedQuery
+    allMarkdownRemark: FeedProps
   }
-`
+}
 
-export default ({ data }: IndexProps) => (
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>Home | Algonomicon</title>
@@ -97,3 +93,5 @@ const Sidebar = styled.div`
     display: none;
   }
 `
+
+export const query = graphql`{ ...Index }`

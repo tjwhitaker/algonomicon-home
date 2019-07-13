@@ -1,6 +1,40 @@
 import { graphql } from 'gatsby'
 
 export const queries = graphql`
+  fragment About on Query {
+    file(relativePath: { eq: "tim.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+
+  fragment Index on Query {
+    file(relativePath: { eq: "inception.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allMarkdownRemark {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          date
+        }
+        fields {
+          collection
+        }
+      }
+    }
+  }
+
+
   fragment Algorithms on Query {
     algorithms: allMarkdownRemark(
       filter: { fields: { collection: { eq: "algorithms" } } }
@@ -128,5 +162,5 @@ export const queries = graphql`
         date(formatString: "MMMM DD, YYYY")
       }
     }
-  } 
+  }
 `

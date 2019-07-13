@@ -3,7 +3,6 @@ import styled from "styled-components"
 import moment from "moment"
 import Minion from "./minion"
 import { Link, graphql } from "gatsby"
-import { FeedProps, FeedItemProps } from "../types/components"
 
 const Container = styled.div`
   max-height: 100%;
@@ -36,6 +35,20 @@ const Meta = styled.small`
   font-weight: normal;
 `
 
+type FeedItemProps = {
+  data: {
+    excerpt: string
+    frontmatter: {
+      title: string
+      slug: string
+      date: string
+    }
+    fields: {
+      collection: string
+    }
+  }
+}
+
 const Item = ({ data }: FeedItemProps) => (
   <Post to={`/${data.fields.collection}/${data.frontmatter.slug}`}>
     <Title>{data.frontmatter.title}</Title>
@@ -47,6 +60,24 @@ const Item = ({ data }: FeedItemProps) => (
     </Meta>
   </Post>
 )
+
+type FeedProps = {
+  data: {
+    allMarkdownRemark: {
+      nodes: {
+        excerpt: string
+        frontmatter: {
+          title: string
+          slug: string
+          date: string
+        }
+        fields: {
+          collection: string
+        }
+      }[]
+    }
+  }
+}
 
 export default ({ data }: FeedProps) => {
   const items = data.allMarkdownRemark.nodes.sort((a, b) => {
@@ -64,21 +95,3 @@ export default ({ data }: FeedProps) => {
     </div>
   )
 }
-
-export const FeedQuery = graphql`
-  fragment FeedQuery on Query {
-    allMarkdownRemark {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
-          date
-        }
-        fields {
-          collection
-        }
-      }
-    }
-  }
-`
