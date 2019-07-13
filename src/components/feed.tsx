@@ -60,38 +60,3 @@ const Item = ({ data }: FeedItemProps) => (
     </Meta>
   </Post>
 )
-
-type FeedProps = {
-  data: {
-    allMarkdownRemark: {
-      nodes: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          slug: string
-          date: string
-        }
-        fields: {
-          collection: string
-        }
-      }[]
-    }
-  }
-}
-
-export default ({ data }: FeedProps) => {
-  const items = data.allMarkdownRemark.nodes.sort((a, b) => {
-    return moment(b.frontmatter.date).diff(moment(a.frontmatter.date))
-  })
-
-  return (
-    <div>
-      <Minion>Feed</Minion>
-      <Container>
-        {items.map((node, i) => (
-          <Item key={i} data={node} />
-        ))}
-      </Container>
-    </div>
-  )
-}
