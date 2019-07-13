@@ -5,22 +5,6 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 import { SnippetsProps } from "../types/content"
 
-export const query = graphql`
-  {
-    snippets: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "snippets" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        frontmatter {
-          title
-          slug
-        }
-      }
-    }
-  }
-`
-
 export default ({ data }: SnippetsProps) => (
   <Layout>
     <Helmet>
@@ -59,3 +43,5 @@ const LinkRow = styled(Link)`
     color: hsla(0, 0%, 0%, 0.8);
   }
 `
+
+export const query = graphql`{ ...Snippets }`

@@ -29,20 +29,4 @@ export default ({ data }: ArticlesProps) => (
   </Layout>
 )
 
-export const query = graphql`
-  {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
-          date
-        }
-      }
-    }
-  }
-`
+export const query = graphql`{ ...Articles }`

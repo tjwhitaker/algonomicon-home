@@ -6,18 +6,6 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 import { SnippetProps } from "../types/content"
 
-export const query = graphql`
-  query($slug: String!) {
-    snippet: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
-    }
-  }
-`
-
 export default ({ data }: SnippetProps) => (
   <Layout>
     <Helmet>
@@ -52,3 +40,5 @@ const Meta = styled.div`
 const Field = styled.p`
   margin: 0;
 `
+
+export const query = graphql`query($slug: String!) { ...Snippet }`

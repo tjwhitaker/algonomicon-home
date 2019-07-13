@@ -6,18 +6,6 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 import { AlgorithmProps } from "../types/content"
 
-export const query = graphql`
-  query Algorithm($slug: String!) {
-    algorithm: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        date
-      }
-    }
-  }
-`
-
 export default ({ data }: AlgorithmProps) => (
   <Layout>
     <Helmet>
@@ -52,3 +40,5 @@ const Meta = styled.div`
 const Field = styled.p`
   margin: 0;
 `
+
+export const query = graphql`query($slug: String!) { ...Algorithm }`
