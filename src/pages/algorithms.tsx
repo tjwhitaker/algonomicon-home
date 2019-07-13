@@ -3,9 +3,8 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
-import { AlgorithmsProps } from "../types/content"
 
-type AlgorithmsProps = {
+type Props = {
   data: {
     algorithms: {
       nodes: {
@@ -19,7 +18,7 @@ type AlgorithmsProps = {
   }
 }
 
-export default ({ data }: AlgorithmsProps) => (
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>Algorithms | Algonomicon</title>

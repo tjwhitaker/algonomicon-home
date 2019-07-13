@@ -3,9 +3,21 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
-import { SnippetsProps } from "../types/content"
 
-export default ({ data }: SnippetsProps) => (
+type Props = {
+  data: {
+    snippets: {
+      nodes: {
+        frontmatter: {
+          title: string
+          slug: string
+        }
+      }[]
+    }
+  }
+}
+
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>Snippets | Algonomicon</title>

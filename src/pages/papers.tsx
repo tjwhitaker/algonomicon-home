@@ -3,9 +3,23 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
-import { PapersProps } from "../types/content"
 
-export default ({ data }: PapersProps) => {
+type Props = {
+  data: {
+    papers: {
+      nodes: {
+        excerpt: string
+        frontmatter: {
+          title: string
+          slug: string
+          authors: string
+        }
+      }[]
+    }
+  }
+}
+
+export default ({ data }: Props) => {
   const [chunk, setChunk] = useState(3)
 
   return (
