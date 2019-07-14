@@ -85,14 +85,14 @@ export default ({ data }: Props) => {
           </p>
         </blockquote>
 
-        <p>We're particularly interested in the following research topics:</p>
+        <p>While we're focused on applying machine learning to cutting edge scientific research, we're also interested in projects that look to make an impact on social good or address the grand challenges that face humanity.</p>
 
         <ul>
           <li>Climate Change and Anthropogenic Impacts on the Environment</li>
           <li>Water Scarcity and Pollution</li>
           <li>Poverty, Disease and Malnutrition</li>
           <li>Overpopulation and Global Education</li>
-          <li>Cyber Threats and Regional Stability</li>
+          <li>Disaster Resilience and Regional Stability</li>
           <li>Wildlife Conservation and Biodiversity Loss</li>
           <li>Renewable and Alternative Energy</li>
         </ul>
