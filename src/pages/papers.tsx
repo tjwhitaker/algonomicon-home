@@ -3,26 +3,23 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
-import { PapersProps } from "../types/content"
 
-export const query = graphql`
-  {
-    papers: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "papers" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
-          authors
+type Props = {
+  data: {
+    papers: {
+      nodes: {
+        excerpt: string
+        frontmatter: {
+          title: string
+          slug: string
+          authors: string
         }
-      }
+      }[]
     }
   }
-`
-export default ({ data }: PapersProps) => {
+}
+
+export default ({ data }: Props) => {
   const [chunk, setChunk] = useState(3)
 
   return (
@@ -58,3 +55,5 @@ const Button = styled.a`
   margin: 1rem 0;
   cursor: pointer;
 `
+
+export const query = graphql`{ ...Papers }`
