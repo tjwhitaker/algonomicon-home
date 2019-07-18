@@ -6,20 +6,6 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 import { ArticleProps } from "../types/content"
 
-export const query = graphql`
-  query($slug: String!) {
-    article: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        authors
-        date
-        outline
-      }
-    }
-  }
-`
-
 export default ({ data }: ArticleProps) => (
   <Layout>
     <Helmet>
@@ -76,3 +62,5 @@ const Outline = styled.div`
     }
   }
 `
+
+export const query = graphql`query($slug: String!) { ...Article }`

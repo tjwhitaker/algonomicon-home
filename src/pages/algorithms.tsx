@@ -3,26 +3,22 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
-import { AlgorithmsProps } from "../types/content"
 
-export const query = graphql`
-  {
-    algorithms: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "algorithms" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
+type Props = {
+  data: {
+    algorithms: {
+      nodes: {
+        excerpt: string
+        frontmatter: {
+          title: string
+          slug: string
         }
-      }
+      }[]
     }
   }
-`
+}
 
-export default ({ data }: AlgorithmsProps) => (
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>Algorithms | Algonomicon</title>
@@ -44,3 +40,5 @@ export default ({ data }: AlgorithmsProps) => (
     </Sidebar>
   </Layout>
 )
+
+export const query = graphql`{ ...Algorithms }`

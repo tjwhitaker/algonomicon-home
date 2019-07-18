@@ -1,51 +1,33 @@
 import React from "react"
 import Image from "gatsby-image"
+import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout, Main, Sidebar, Minion } from "../components"
+import { Logo, Wrapper } from "../components"
 
-export const query = graphql`
-  {
-    file(relativePath: { eq: "tim.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+type Props = {
+  data: {
+    file: {
+      childImageSharp: {
+        fluid: object
       }
     }
   }
-`
+}
 
-export default ({ data }) => (
-  <Layout>
+export default ({ data }: Props) => (
+  <div>
     <Helmet>
       <title>About | Algonomicon</title>
     </Helmet>
+    {/*
     <Main>
-      <p>
-        Hello world! My name is Tim Whitaker and I created Algonomicon. I'm
-        training to become a better machine learning engineer and I built this
-        website to help others who are looking to do the same.
-      </p>
+      <h1>Work That Matters</h1>
 
-      <p>
-        I'm going to be pursuing a M.S. in Computer Science in the fall at
-        Colorado State University. I'm really excited to do research in machine
-        learning and in the mean time, I'm writing articles, building software
-        and collecting datasets in order to learn as much as I can.
-      </p>
+      <h3>Who is this for?</h3>
 
-      <p>
-        I'm hoping to turn Algonomicon into a platform for kickstarting amazing
-        machine learning projects. I want to make it easier for people to work
-        on problems that can have a positive and lasting impact on the world.
-      </p>
-
-      <p>
-        If you have ideas for making Algonomicon even better, I'd love to hear
-        them! Please feel free to reach out to me at tim@algonomicon.com.
-      </p>
+      <h3>What is this for?</h3>
     </Main>
     <Sidebar>
       <div>
@@ -55,9 +37,131 @@ export default ({ data }) => (
         </Container>
       </div>
     </Sidebar>
-  </Layout>
+    */}
+    <Container>
+      <Header fluid={data.file.childImageSharp.fluid}>
+        <Wrapper>
+          <Masthead>
+            <Logo />
+            <Nav>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/">Home</NavLink>
+            </Nav>
+            <MobileNav>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                class="svg-inline--fa fa-bars fa-w-14 fa-5x"
+              >
+                <path
+                  fill="white"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  class=""
+                />
+              </svg>
+            </MobileNav>
+          </Masthead>
+          <Intro></Intro>
+        </Wrapper>
+      </Header>
+      <main></main>
+    </Container>
+  </div>
 )
 
 const Container = styled.div`
-  margin-top: 1rem;
+  width: 100%;
+`
+
+const Header = styled(BackgroundImage)`
+  background-color: black;
+  background-size: cover;
+  background-position: center bottom;
+  height: 100vh;
+  position: relative;
+
+  ::before {
+    filter: brightness(0.5);
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 15rem;
+  }
+`
+
+const Masthead = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Nav = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`
+
+const MobileNav = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+
+  svg {
+    height: 25px;
+  }
+
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
+`
+
+const NavLink = styled(Link)`
+  color: white;
+  margin-left: 1.5rem;
+  font-size: 0.87055rem;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+  &:hover {
+    color: #007bff;
+  }
+
+  &.active {
+    color: #007bff;
+  }
+`
+
+const Intro = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  max-width: 60%;
+
+  h1 {
+    color: white;
+    font-size: 10rem;
+    font-family: monospace;
+  }
+`
+
+export const query = graphql`
+  {
+    ...About
+  }
 `

@@ -2,9 +2,22 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
-import { ArticlesProps } from "../types/content"
 
-export default ({ data }: ArticlesProps) => (
+type Props = {
+  data: {
+    articles: {
+      nodes: {
+        excerpt: string
+        frontmatter: {
+          title: string
+          slug: string
+        }
+      }[]
+    }
+  }
+}
+
+export default ({ data }: Props) => (
   <Layout>
     <Helmet>
       <title>Articles | Algonomicon</title>
@@ -29,20 +42,4 @@ export default ({ data }: ArticlesProps) => (
   </Layout>
 )
 
-export const query = graphql`
-  {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      nodes {
-        excerpt
-        frontmatter {
-          title
-          slug
-          date
-        }
-      }
-    }
-  }
-`
+export const query = graphql`{ ...Articles }`

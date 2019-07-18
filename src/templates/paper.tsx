@@ -6,20 +6,6 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
 import { PaperProps } from "../types/content"
 
-export const query = graphql`
-  query($slug: String!) {
-    paper: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        authors
-        date
-        source
-      }
-    }
-  }
-`
-
 export default ({ data }: PaperProps) => (
   <Layout>
     <Helmet>
@@ -61,3 +47,5 @@ const Meta = styled.div`
 const Field = styled.p`
   margin: 0;
 `
+
+export const query = graphql`query($slug: String!) { ...Paper }`

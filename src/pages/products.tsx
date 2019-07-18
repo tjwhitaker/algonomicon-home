@@ -5,32 +5,6 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout } from "../components"
 
-export const query = graphql`
-  {
-    file1: file(relativePath: { eq: "placeholder1.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    file2: file(relativePath: { eq: "placeholder2.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    file3: file(relativePath: { eq: "placeholder3.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`
-
 export default ({ data }) => (
   <Layout>
     <Helmet>
@@ -90,3 +64,5 @@ const Description = styled.div`
     color: hsla(0, 0%, 0%, 0.8);
   }
 `
+
+export const query = graphql`{ ...Products }`
