@@ -1,8 +1,8 @@
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 export const queries = graphql`
   fragment About on Query {
-    file(relativePath: { eq: "tim.jpg" }) {
+    file(relativePath: { eq: "astronaut.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
@@ -33,7 +33,6 @@ export const queries = graphql`
       }
     }
   }
-
 
   fragment Algorithms on Query {
     algorithms: allMarkdownRemark(
