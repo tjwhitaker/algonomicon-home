@@ -88,7 +88,6 @@ const Header = styled(BackgroundImage)`
 
   ::before {
     filter: brightness(0.5);
-    transform: scaleX(-1);
   }
 
   @media screen and (max-width: 600px) {

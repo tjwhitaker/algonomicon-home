@@ -1,18 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import Image from "gatsby-image"
+import Image, { FluidObject } from "gatsby-image"
 import moment from "moment"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Minion, Post } from "../components"
-import { IndexProps } from "../types/pages"
-import { ImageProps } from "../types/images"
 
 type Props = {
   data: {
     file: {
       childImageSharp: {
-        fluid: object
+        fluid: FluidObject
       }
     }
     allMarkdownRemark: {
@@ -46,8 +44,8 @@ export default ({ data }: Props) => {
           Welcome to Algonomicon! We are a company working on applying machine
           learning algorithms to the fields of natural science. We are analyzing
           data, building models and writing articles to showcase how powerful
-          these methods can be when applied to cutting edge research in astronomy,
-          biology, chemistry, physics, etc.
+          these methods can be when applied to cutting edge research in
+          astronomy, biology, chemistry, physics, etc.
         </p>
 
         <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
@@ -61,11 +59,11 @@ export default ({ data }: Props) => {
 
         <p>
           Thanks to increased power and large complex datasets, machine learning
-          models are solving problems previously thought to be impossible! We are
-          learning about the structure of nature through galaxies billions of
-          light years away and particles billions of times smaller than an atom.
-          Machine learning is helping us glean insights from the vast, complex
-          datasets that describe our universe.
+          models are solving problems previously thought to be impossible! We
+          are learning about the structure of nature through galaxies billions
+          of light years away and particles billions of times smaller than an
+          atom. Machine learning is helping us glean insights from the vast,
+          complex datasets that describe our universe.
         </p>
 
         <blockquote>
@@ -75,7 +73,12 @@ export default ({ data }: Props) => {
           </p>
         </blockquote>
 
-        <p>While we're focused on applying machine learning to cutting edge scientific research, we're also interested in projects that look to make an impact on social good or address the grand challenges that face humanity.</p>
+        <p>
+          While we're focused on applying machine learning to cutting edge
+          scientific research, we're also interested in projects that look to
+          make an impact on social good or address the grand challenges that
+          face humanity.
+        </p>
 
         <ul>
           <li>Climate Change and Anthropogenic Impacts on the Environment</li>
@@ -89,7 +92,7 @@ export default ({ data }: Props) => {
         <p>
           If you own or work at a company that is tackling global or social
           issues, we'd love to get in touch. Feel free to visit our{" "}
-          <a href="/contact">contact page</a> or reach out directly to
+          <Link to="/contact">contact page</Link> or reach out directly to
           info@algonomicon.com.
         </p>
         <p>
@@ -107,7 +110,8 @@ export default ({ data }: Props) => {
                 <h4>{node.frontmatter.title}</h4>
                 <p>{node.excerpt}</p>
                 <small>
-                  {node.fields.collection[0].toUpperCase() + node.fields.collection.slice(1, -1)}{" "}
+                  {node.fields.collection[0].toUpperCase() +
+                    node.fields.collection.slice(1, -1)}{" "}
                   from {moment(node.frontmatter.date).fromNow()}
                 </small>
               </Link>
@@ -138,4 +142,8 @@ const Container = styled.div`
   position: absolute;
 `
 
-export const query = graphql`{ ...Index }`
+export const query = graphql`
+  {
+    ...Index
+  }
+`

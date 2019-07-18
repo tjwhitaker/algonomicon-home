@@ -265,7 +265,7 @@ Calculate the absolute value of the difference of the phi angles with respect to
 
 ### Eta Angles
 
-### Transverse Mass Ratios
+The eta angle denotes how far up or down the particle is in relation to the z axis. As these angles are the result of a collision, the fact that the eta angle is positive or negative should not matter as much as the magnitude of those angles so we're going to take the absolute values of those attributes.
 
 ### Normalizing
 
