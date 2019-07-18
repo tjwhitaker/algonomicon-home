@@ -96,6 +96,8 @@ missingcols = [:EventId,
 working = deletecols(train, missingcols)
 ```
 
+## Exploratory Data Analysis
+
 ### Signal vs Background Distribution
 
 The distribution of signal to background events (or higgs confirmed events to non-higgs) of the training set shows a near 1:2 ratio.
@@ -158,10 +160,6 @@ for i in 1:20
 end
 ```
 
-## Primitive Values
-
-Now to recap, each event in the dataset contains a single lepton (electron or muon) and a single hadronic tau. So if every event has the same final state particles, how do we tell if it came from a higgs boson or not?
-
 ### Where are the particles detected?
 
 Here's a density chart showing where the detector measures the final state particles. The detector can't measure anything directly along the z axis, which is why we see a hole there. Most particles are detected in a small ring around the center axis.
@@ -223,7 +221,7 @@ plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variab
 
 ```
 
-## Mass and Energy
+### Mass and Energy
 
 Not all energy can be detected in a particle collider. Some of it is carried by neutrinos that do not interact with electromagnetic or strong forces. Using the law of the conservation of momentum, the missing energy in the transverse plane (cross section of the hadron collider) can be calculated. 
 
@@ -237,7 +235,7 @@ Not all energy can be detected in a particle collider. Some of it is carried by 
 </object>
 
 
-## Correlations
+### Correlations
 
 <object data="correlations.svg" type="image/svg+xml">
   <param name="url" value="correlations.svg">
@@ -250,6 +248,34 @@ spy(correlations, Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
     Guide.ylabel(nothing), Guide.colorkey(title = "Correlation\nCoefficient  "),
     Guide.xticks(label = false), Guide.xlabel(nothing))
 ```
+
+## Predicting Signal States
+
+Now that we've finished our exploration of the dataset, we can build a model now to predict signal events.
+
+### Feature Selection and Engineering
+
+Many people reported great results without doing any feature engineering at all. This is due to the fact that the derived features included in the dataset are actually pretty good. I did get some ideas for some features to play with though after reading through some post-competition blog posts so I'll lay those out below.
+
+### Phi Angles
+
+The top finisher dropped the phi angles completely. The idea is that the angles in the transverse plane show invariant rotational symmetry, and thus have little impact on the performance of the model. I think it makes sense to drop these angles, and include instead the angles of the particles in relation to each other. For instance, it may not matter whether a lepton ends up on the top or bottom of the detector. But it may matter that the tau and lepton end up on opposite sides of the detector as opposed to right next to each other.
+
+Calculate the absolute value of the difference of the phi angles with respect to each other. 
+
+### Eta Angles
+
+### Transverse Mass Ratios
+
+### Normalizing
+
+mean of 0 and std dev of 1
+
+missing values represented as 0
+
+### XGBoost
+
+Gradient boosting trees are a popular and powerful algorithm used to crush structured, tabular datasets. XGBoost is probably the most popular implementation and has won a lot of machine learning competitions.
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
