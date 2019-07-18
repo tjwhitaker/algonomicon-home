@@ -15,9 +15,6 @@ type Props = {
   }
 }
 
-// TODO: Tell a more authentic story.
-// Help people. 
-
 export default ({ data }: Props) => (
   <Layout>
     <Helmet>
