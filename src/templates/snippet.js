@@ -4,16 +4,15 @@ import moment from "moment"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-import { AlgorithmProps } from "../types/content"
 
-export default ({ data }: AlgorithmProps) => (
+export default ({ data }) => (
   <Layout>
     <Helmet>
-      <title>{data.algorithm.frontmatter.title} | Algonomicon</title>
+      <title>{data.snippet.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{data.algorithm.frontmatter.title}</Title>
-      <div dangerouslySetInnerHTML={{ __html: data.algorithm.html }} />
+      <Title>{data.snippet.frontmatter.title}</Title>
+      <div dangerouslySetInnerHTML={{ __html: data.snippet.html }} />
     </Main>
     <Sidebar>
       <div>
@@ -21,7 +20,7 @@ export default ({ data }: AlgorithmProps) => (
         <Meta>
           <Field>
             Created:{" "}
-            {moment(data.algorithm.frontmatter.date).format("MMMM Do, YYYY")}
+            {moment(data.snippet.frontmatter.date).format("MMMM Do, YYYY")}
           </Field>
         </Meta>
       </div>
@@ -41,4 +40,14 @@ const Field = styled.p`
   margin: 0;
 `
 
-export const query = graphql`query($slug: String!) { ...Algorithm }`
+export const query = graphql`
+  query($slug: String!) {
+    snippet: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+    }
+  }
+`

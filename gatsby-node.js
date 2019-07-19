@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   articles.forEach(node => {
@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   papers.forEach(node => {
@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   snippets.forEach(node => {
@@ -100,6 +100,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 }

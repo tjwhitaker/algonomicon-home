@@ -1,35 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import Image, { FluidObject } from "gatsby-image"
 import moment from "moment"
+import Image from "gatsby-image"
+import { FluidObject } from "gatsby-image"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Minion, Post } from "../components"
 
-type Props = {
-  data: {
-    file: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
-    }
-    allMarkdownRemark: {
-      nodes: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          slug: string
-          date: string
-        }
-        fields: {
-          collection: string
-        }
-      }[]
-    }
-  }
-}
-
-export default ({ data }: Props) => {
+export default ({ data }) => {
   const feedItems = data.allMarkdownRemark.nodes.sort((a, b) => {
     return moment(b.frontmatter.date).diff(moment(a.frontmatter.date))
   })
@@ -144,6 +122,25 @@ const Container = styled.div`
 
 export const query = graphql`
   {
-    ...Index
+    file(relativePath: { eq: "inception.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allMarkdownRemark {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          date
+        }
+        fields {
+          collection
+        }
+      }
+    }
   }
 `

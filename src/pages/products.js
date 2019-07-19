@@ -65,4 +65,28 @@ const Description = styled.div`
   }
 `
 
-export const query = graphql`{ ...Products }`
+export const query = graphql`
+  {
+    file1: file(relativePath: { eq: "placeholder1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    file2: file(relativePath: { eq: "placeholder2.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    file3: file(relativePath: { eq: "placeholder3.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
