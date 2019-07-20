@@ -4,22 +4,7 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
-type Props = {
-  data: {
-    papers: {
-      nodes: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          slug: string
-          authors: string
-        }
-      }[]
-    }
-  }
-}
-
-export default ({ data }: Props) => {
+export default ({ data }) => {
   const [chunk, setChunk] = useState(3)
 
   return (
@@ -56,4 +41,20 @@ const Button = styled.a`
   cursor: pointer;
 `
 
-export const query = graphql`{ ...Papers }`
+export const query = graphql`
+  {
+    papers: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "papers" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          slug
+          authors
+        }
+      }
+    }
+  }
+`

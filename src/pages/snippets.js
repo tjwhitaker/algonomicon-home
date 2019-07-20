@@ -4,20 +4,7 @@ import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
 
-type Props = {
-  data: {
-    snippets: {
-      nodes: {
-        frontmatter: {
-          title: string
-          slug: string
-        }
-      }[]
-    }
-  }
-}
-
-export default ({ data }: Props) => (
+export default ({ data }) => (
   <Layout>
     <Helmet>
       <title>Snippets | Algonomicon</title>
@@ -56,4 +43,18 @@ const LinkRow = styled(Link)`
   }
 `
 
-export const query = graphql`{ ...Snippets }`
+export const query = graphql`
+  {
+    snippets: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "snippets" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          title
+          slug
+        }
+      }
+    }
+  }
+`

@@ -60,11 +60,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/algorithm.tsx"),
+      component: require.resolve("./src/templates/algorithm.js"),
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   articles.forEach(node => {
@@ -72,11 +72,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/article.tsx"),
+      component: require.resolve("./src/templates/article.js"),
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   papers.forEach(node => {
@@ -84,11 +84,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/paper.tsx"),
+      component: require.resolve("./src/templates/paper.js"),
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 
   snippets.forEach(node => {
@@ -96,10 +96,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/snippet.tsx"),
+      component: require.resolve("./src/templates/snippet.js"),
       context: { slug: node.frontmatter.slug },
     })
 
-    //createPageDependency({ path, nodeId: node.id })
+    createPageDependency({ path, nodeId: node.id })
   })
 }

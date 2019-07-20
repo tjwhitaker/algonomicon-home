@@ -1,43 +1,15 @@
 import React from "react"
-import Image from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Logo, Wrapper } from "../components"
 
-type Props = {
-  data: {
-    file: {
-      childImageSharp: {
-        fluid: object
-      }
-    }
-  }
-}
-
-export default ({ data }: Props) => (
+export default ({ data }) => (
   <div>
     <Helmet>
       <title>About | Algonomicon</title>
     </Helmet>
-    {/*
-    <Main>
-      <h1>Work That Matters</h1>
-
-      <h3>Who is this for?</h3>
-
-      <h3>What is this for?</h3>
-    </Main>
-    <Sidebar>
-      <div>
-        <Minion>Team</Minion>
-        <Container>
-          <Image fluid={data.file.childImageSharp.fluid} alt="Profile" />
-        </Container>
-      </div>
-    </Sidebar>
-    */}
     <Container>
       <Header fluid={data.file.childImageSharp.fluid}>
         <Wrapper>
@@ -57,12 +29,11 @@ export default ({ data }: Props) => (
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
-                class="svg-inline--fa fa-bars fa-w-14 fa-5x"
+                className="svg-inline--fa fa-bars fa-w-14 fa-5x"
               >
                 <path
                   fill="white"
                   d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                  class=""
                 />
               </svg>
             </MobileNav>
@@ -70,7 +41,6 @@ export default ({ data }: Props) => (
           <Intro></Intro>
         </Wrapper>
       </Header>
-      <main></main>
     </Container>
   </div>
 )
@@ -162,6 +132,12 @@ const Intro = styled.div`
 
 export const query = graphql`
   {
-    ...About
+    file(relativePath: { eq: "astronaut.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `

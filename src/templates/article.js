@@ -4,9 +4,8 @@ import moment from "moment"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-import { ArticleProps } from "../types/content"
 
-export default ({ data }: ArticleProps) => (
+export default ({ data }) => (
   <Layout>
     <Helmet>
       <title>{data.article.frontmatter.title} | Algonomicon</title>
@@ -63,4 +62,16 @@ const Outline = styled.div`
   }
 `
 
-export const query = graphql`query($slug: String!) { ...Article }`
+export const query = graphql`
+  query($slug: String!) {
+    article: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        authors
+        date
+        outline
+      }
+    }
+  }
+`

@@ -4,9 +4,8 @@ import moment from "moment"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Sidebar, Minion } from "../components"
-import { PaperProps } from "../types/content"
 
-export default ({ data }: PaperProps) => (
+export default ({ data }) => (
   <Layout>
     <Helmet>
       <title>{data.paper.frontmatter.title} | Algonomicon</title>
@@ -48,4 +47,16 @@ const Field = styled.p`
   margin: 0;
 `
 
-export const query = graphql`query($slug: String!) { ...Paper }`
+export const query = graphql`
+  query($slug: String!) {
+    paper: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        authors
+        date
+        source
+      }
+    }
+  }
+`
