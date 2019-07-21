@@ -17,7 +17,7 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   background: #222831;
-  color: #a1a1a1;
+  color: #d1d1d1;
 }
 
 /* Code blocks */
@@ -37,11 +37,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #575757;
+  color: #a1a1a1;
 }
 
 .token.punctuation {
-  color: #a1a1a1;
+  color: #d1d1d1;
 }
 
 .token.namespace {
@@ -93,7 +93,7 @@ pre[class*="language-"] {
 
 .token.placeholder,
 .token.variable {
-  color: #a1a1a1;
+  color: #d1d1d1;
 }
 
 .token.deleted {
@@ -101,7 +101,7 @@ pre[class*="language-"] {
 }
 
 .token.inserted {
-  border-bottom: 1px dotted #a1a1a1;
+  border-bottom: 1px dotted #d1d1d1;
   text-decoration: none;
 }
 
