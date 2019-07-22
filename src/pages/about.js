@@ -12,6 +12,16 @@ export default ({ data }) => (
     <Main>
       <Title>About</Title>
       <p>I, for one, welcome our new computer overlords. Watson 2011.</p>
+
+      <p>
+        Status Quo: Data is a double edged sword. Data is being used for
+        nefarious purposes. It's used to track everything you do. It's used to
+        sell you products and pollute your content with advertisements.
+      </p>
+
+      <p>Conflict:</p>
+
+      <p>Our mission is to use the power of machine learning for good.</p>
       <h3>Who is Algonomicon for?</h3>
       <p>This website is for Analysts, Programmers, and Researchers.</p>
       <div>
