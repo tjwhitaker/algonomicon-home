@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Minion, Sidebar } from "../components"
@@ -10,41 +11,48 @@ export default ({ data }) => (
       <title>About | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>About</Title>
-      <p>I, for one, welcome our new computer overlords. Watson 2011.</p>
-
       <p>
-        Status Quo: Data is a double edged sword. Data is being used for
-        nefarious purposes. It's used to track everything you do. It's used to
-        sell you products and pollute your content with advertisements.
+        I decided to pursue graduate school in late 2018. I was starting to feel
+        burnt out with web development, and while I love building web
+        applications for myself and friends, I found that client work was
+        getting less stimulating and more tiring. I wanted to switch gears and I
+        missed the deep work and collaboration that universities offer. I knew I
+        wanted to work with data and machine learning, but I didn't know what I
+        wanted to do exactly, so I started this website to explore ideas and
+        study state of the art machine learning techniques.
       </p>
 
-      <p>Conflict:</p>
+      <p>
+        The more I wrote and explored, the more I found I was drawn to projects
+        in the natural sciences. There's something about these projects that
+        make you feel like your work matters and has purpose and meaning. I want
+        to feel like I'm making a difference. I dream of a future where I can
+        help scientists and researchers do better work and manage the
+        increasingly larger and more complex datasets that describe their
+        experiments.
+      </p>
 
-      <p>Our mission is to use the power of machine learning for good.</p>
       <h3>Who is Algonomicon for?</h3>
       <p>This website is for Analysts, Programmers, and Researchers.</p>
-      <div>
-        <h3>What is Algonomicon for?</h3>
-        <p>
-          This website is a place to learn how to apply data science and machine
-          learning techniques to research projects in science.
-        </p>
-      </div>
+
+      <h3>What is Algonomicon for?</h3>
+      <p>
+        This website is a place to learn how to apply data science and machine
+        learning techniques to research projects in science.
+      </p>
     </Main>
     <Sidebar>
-      <Minion>Stuff</Minion>
+      <Minion>Numbers</Minion>
+      <div style={{ marginTop: "1rem" }}>
+        <Image fluid={data.file.childImageSharp.fluid} />
+      </div>
     </Sidebar>
   </Layout>
 )
 
-const Title = styled.h1`
-  margin-top: 0;
-`
-
 export const query = graphql`
   {
-    file(relativePath: { eq: "astronaut.jpg" }) {
+    file(relativePath: { eq: "tim.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
