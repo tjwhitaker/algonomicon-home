@@ -395,7 +395,32 @@ println("AMS: ", score(predictions, train_y, train_w))
 
 ### Preparing the Submission
 
-EventId,RankOrder,Class
+Now we'll train our final model a little bit longer.
+
+```julia
+rounds = 3000
+
+final_model = xgboost(
+  convert(Matrix, train_x),
+  rounds, 
+  label=train_y, 
+  max_depth=9, 
+  eta=0.1, 
+  sub_sample=0.9,  
+  objective="binary:logistic", 
+  metrics=["auc"]
+)
+```
+
+```julia
+final_predictions = predict(final_model, convert(Matrix, test_x))
+labels = map(x -> x > 0.5 ? 's' : 'b', final_predictions)
+rank_order = sortperm(final_predictions)
+
+submission = DataFrame(EventId=test[:EventId], RankOrder=rank_order, Class=labels)
+
+CSV.write("submission.csv", submission)
+```
 
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
