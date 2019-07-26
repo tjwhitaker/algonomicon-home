@@ -10,11 +10,11 @@ export default () => (
     <Link to="/articles" activeClassName="active" partiallyActive={true}>
       Articles
     </Link>
+    <Link to="/models" activeClassName="active" partiallyActive={true}>
+      Models
+    </Link>
     <Link to="/papers" activeClassName="active" partiallyActive={true}>
       Papers
-    </Link>
-    <Link to="/products" activeClassName="active" partiallyActive={true}>
-      Products
     </Link>
     <Link to="/snippets" activeClassName="active" partiallyActive={true}>
       Snippets
