@@ -7,8 +7,8 @@ export default () => (
     <Link to="/algorithms" activeClassName="active" partiallyActive={true}>
       Algorithms
     </Link>
-    <Link to="/articles" activeClassName="active" partiallyActive={true}>
-      Articles
+    <Link to="/datasets" activeClassName="active" partiallyActive={true}>
+      Datasets
     </Link>
     <Link to="/models" activeClassName="active" partiallyActive={true}>
       Models

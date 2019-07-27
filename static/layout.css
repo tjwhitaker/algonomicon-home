@@ -1,5 +1,5 @@
 html {
-  background: #272822;
+  background: white;
 }
 body {
   background: white;
@@ -160,7 +160,7 @@ object {
 
 .glitch:hover > .glitch__img:nth-child(6) {
   animation: glitch-anim-flash-2 0.8s steps(1, end) infinite;
-  background-color: $purple1;
+  background-color: black;
   background-blend-mode: overlay;
 }
 

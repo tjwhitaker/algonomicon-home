@@ -6,12 +6,12 @@ import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 export default ({ data }) => (
   <Layout>
     <Helmet>
-      <title>Articles | Algonomicon</title>
+      <title>Datasets | Algonomicon</title>
     </Helmet>
     <Main>
-      {data.articles.nodes.map((node, i) => (
+      {data.datasets.nodes.map((node, i) => (
         <Post key={i}>
-          <Link to={`/articles/${node.frontmatter.slug}`}>
+          <Link to={`/datasets/${node.frontmatter.slug}`}>
             <div>
               <h3>{node.frontmatter.title}</h3>
               <p>{node.excerpt}</p>
@@ -30,8 +30,8 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    articles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "articles" } } }
+    datasets: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "datasets" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {

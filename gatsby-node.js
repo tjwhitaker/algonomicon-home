@@ -17,8 +17,8 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      articles: allMarkdownRemark(
-        filter: { fields: { collection: { eq: "articles" } } }
+      datasets: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "datasets" } } }
       ) {
         nodes {
           id
@@ -51,7 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const algorithms = result.data.algorithms.nodes || []
-  const articles = result.data.articles.nodes || []
+  const datasets = result.data.datasets.nodes || []
   const papers = result.data.papers.nodes || []
   const snippets = result.data.snippets.nodes || []
 
@@ -67,12 +67,12 @@ exports.createPages = async ({ graphql, actions }) => {
     createPageDependency({ path, nodeId: node.id })
   })
 
-  articles.forEach(node => {
-    const path = `/articles/${node.frontmatter.slug}`
+  datasets.forEach(node => {
+    const path = `/datasets/${node.frontmatter.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/article.js"),
+      component: require.resolve("./src/templates/dataset.js"),
       context: { slug: node.frontmatter.slug },
     })
 
