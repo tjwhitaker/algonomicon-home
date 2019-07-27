@@ -13,6 +13,7 @@ export default ({ data }) => (
         <Post key={i}>
           <Link to={`/snippets/${node.frontmatter.slug}`} key={i}>
             <h3>{node.frontmatter.title}</h3>
+            <p>{node.excerpt}</p>
           </Link>
         </Post>
       ))}
@@ -32,6 +33,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
+        excerpt
         frontmatter {
           title
           slug

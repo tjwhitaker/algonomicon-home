@@ -4,6 +4,8 @@ slug: statistics
 date: 2019-07-05
 ---
 
+Math and statistics
+
 ```julia
 using Statistics
 

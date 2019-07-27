@@ -4,6 +4,8 @@ slug: images
 date: 2019-06-07
 ---
 
+Processing and manipulating images in code.
+
 ```julia
 using Images
 

@@ -4,6 +4,8 @@ slug: feature-engineering
 date: 2019-07-25
 ---
 
+Preprocessing and transforming data for use in machine learning models.
+
 ```julia
 using Statistics
 
