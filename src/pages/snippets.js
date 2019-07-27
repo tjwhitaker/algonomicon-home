@@ -1,8 +1,7 @@
 import React from "react"
-import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout, Main, Sidebar, Search, Sort, Tags } from "../components"
+import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
 export default ({ data }) => (
   <Layout>
@@ -10,20 +9,13 @@ export default ({ data }) => (
       <title>Snippets | Algonomicon</title>
     </Helmet>
     <Main>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.snippets.nodes.map((node, i) => (
-            <LinkRow to={`/snippets/${node.frontmatter.slug}`} key={i}>
-              <td>{node.frontmatter.title}</td>
-            </LinkRow>
-          ))}
-        </tbody>
-      </table>
+      {data.snippets.nodes.map((node, i) => (
+        <Post key={i}>
+          <Link to={`/snippets/${node.frontmatter.slug}`} key={i}>
+            <h3>{node.frontmatter.title}</h3>
+          </Link>
+        </Post>
+      ))}
     </Main>
     <Sidebar>
       <Search />
@@ -32,16 +24,6 @@ export default ({ data }) => (
     </Sidebar>
   </Layout>
 )
-
-const LinkRow = styled(Link)`
-  display: table-row;
-  color: hsla(0, 0%, 0%, 0.8);
-  font-weight: normal;
-
-  &:hover {
-    color: hsla(0, 0%, 0%, 0.8);
-  }
-`
 
 export const query = graphql`
   {
