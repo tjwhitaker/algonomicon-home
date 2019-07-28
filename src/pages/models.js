@@ -17,6 +17,7 @@ export default ({ data }) => (
           </Link>
         </Post>
       ))}
+      <p>No results.</p>
     </Main>
     <Sidebar>
       <Search />

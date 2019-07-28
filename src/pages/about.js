@@ -42,9 +42,13 @@ export default ({ data }) => (
       </p>
     </Main>
     <Sidebar>
-      <Minion>Numbers</Minion>
+      <Minion>Photos</Minion>
       <div style={{ marginTop: "1rem" }}>
-        <Image fluid={data.file.childImageSharp.fluid} />
+        <Image
+          fluid={data.file1.childImageSharp.fluid}
+          style={{ marginBottom: "1rem" }}
+        />
+        <Image fluid={data.file2.childImageSharp.fluid} />
       </div>
     </Sidebar>
   </Layout>
@@ -52,7 +56,14 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
-    file(relativePath: { eq: "tim.jpg" }) {
+    file1: file(relativePath: { eq: "worm-turns.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    file2: file(relativePath: { eq: "office.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
