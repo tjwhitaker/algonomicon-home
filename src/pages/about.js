@@ -22,13 +22,12 @@ export default ({ data }) => (
       </p>
 
       <p>
-        The more I wrote and explored, the more I found I was drawn to projects
+        The more I write and explore, the more I find myself drawn to projects
         in the natural sciences. There's something about these projects that
-        make you feel like your work matters and has purpose and meaning. I want
-        to feel like I'm making a difference. I dream of a future where I can
-        help scientists and researchers do better work and manage the
-        increasingly larger and more complex datasets that describe their
-        experiments.
+        makes me feel like the work has purpose and meaning. I want to feel like
+        I'm making a difference and I dream of a future where I can help
+        scientists and researchers do better work and manage the increasingly
+        larger and more complex datasets that describe their experiments.
       </p>
 
       <h3>Who is Algonomicon for?</h3>
