@@ -253,29 +253,175 @@ spy(correlations, Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
 
 Now that we've finished our exploration of the dataset, we can build a model now to predict signal events.
 
+
+### Preparing the Data
+
+Here we're loading the training and test data, and splitting it into some useful subsets. The features correspond to the variable train_x, and contains everything but the event_id, weight, and label. The variable train_y contains the labels and train_w contains weights used for the evaluation metric.
+
+```julia
+using CSV, DataFrames, Statistics, XGBoost
+
+train = CSV.read("higgs-boson/train.csv")
+test = CSV.read("higgs-boson/test.csv")
+
+train_x, train_y, train_w = train[:, 2:31], map(i -> i == "s" ? 1 : 0, train[:Label]), train[:Weight]
+test_x = test[:, 2:31]
+```
+
+### Benchmark Model
+
+As a point of comparison, we're going to train a model only on the raw features given in the training data.
+
+```julia
+rounds = 1000
+
+og_model = xgboost(
+  convert(Matrix, train_x),
+  rounds, 
+  label=train_y, 
+  max_depth=9, 
+  eta=0.1, 
+  sub_sample=0.9,  
+  objective="binary:logistic", 
+  metrics=["auc"]
+)
+
+og_predictions = predict(og_model, convert(Matrix, train_x))
+```
+
 ### Feature Selection and Engineering
 
 Many people reported great results without doing any feature engineering at all. This is due to the fact that the derived features included in the dataset are actually pretty good. I did get some ideas for some features to play with though after reading through some post-competition blog posts so I'll lay those out below.
 
-### Phi Angles
+### Open Angles
 
-The top finisher dropped the phi angles completely. The idea is that the angles in the transverse plane show invariant rotational symmetry, and thus have little impact on the performance of the model. I think it makes sense to drop these angles, and include instead the angles of the particles in relation to each other. For instance, it may not matter whether a lepton ends up on the top or bottom of the detector. But it may matter that the tau and lepton end up on opposite sides of the detector as opposed to right next to each other.
+Here are some features added that relate to the angles between various particles. Since the particle collider is symmetric around the rotational plane, it turns out that the open angles between particles matters more than the angles themselves. Here I'm taking the absolute values of the differences between angles (and accounting for -999 missing values). We're doing this to both phi and eta angles, and we're going to drop the original phi angles as they don't improve the model in any way.
 
-Calculate the absolute value of the difference of the phi angles with respect to each other. 
+```julia
+# Absolute differences of phi mapped to [-pi, pi]
+delta_phi(ϕ1, ϕ2) = (ϕ1 == -999 || ϕ2 == -999) ? 0 : rem2pi(abs(ϕ1 - ϕ2), RoundNearest)
 
-### Eta Angles
+train_x[:ALGO_delta_phi_tau_lep] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_lep_phi])
+train_x[:ALGO_delta_phi_tau_jet1] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_jet_leading_phi])
+train_x[:ALGO_delta_phi_tau_jet2] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_jet_subleading_phi])
+train_x[:ALGO_delta_phi_lep_jet1] = delta_phi.(train_x[:PRI_lep_phi], train_x[:PRI_jet_leading_phi])
+train_x[:ALGO_delta_phi_lep_jet2] = delta_phi.(train_x[:PRI_lep_phi], train_x[:PRI_jet_subleading_phi])
+train_x[:ALGO_delta_phi_jet1_jet2] = delta_phi.(train_x[:PRI_jet_leading_phi], train_x[:PRI_jet_subleading_phi])
 
-The eta angle denotes how far up or down the particle is in relation to the z axis. As these angles are the result of a collision, the fact that the eta angle is positive or negative should not matter as much as the magnitude of those angles so we're going to take the absolute values of those attributes.
+# Absolute differences of eta
+delta_eta(η1, η2) = (η1 == -999 || η2 == -999) ? 0 : abs(η1 - η2)
+
+train_x[:ALGO_delta_eta_tau_lep] = delta_eta.(train_x[:PRI_tau_eta], train_x[:PRI_lep_eta])
+train_x[:ALGO_delta_eta_tau_jet1] = delta_eta.(train_x[:PRI_tau_eta], train_x[:PRI_jet_leading_eta])
+train_x[:ALGO_delta_eta_tau_jet2] = delta_eta.(train_x[:PRI_tau_eta], train_x[:PRI_jet_subleading_eta])
+train_x[:ALGO_delta_eta_lep_jet1] = delta_eta.(train_x[:PRI_lep_eta], train_x[:PRI_jet_leading_eta])
+train_x[:ALGO_delta_eta_lep_jet2] = delta_eta.(train_x[:PRI_lep_eta], train_x[:PRI_jet_subleading_eta])
+train_x[:ALGO_delta_eta_jet1_jet2] = delta_eta.(train_x[:PRI_jet_leading_eta], train_x[:PRI_jet_subleading_eta])
+ 
+# Drop phi due to invariant rotational symmetry
+train_x = deletecols(train_x, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_leading_phi, :PRI_jet_subleading_phi])
+```
+
+### Missing Values
+
+In our dataset, missing data is given the value -999. While xgboost should be able to handle this fine, I'm going to borrow an idea from the first place finisher, Gabor Melis, and give all of those missing points the value 0. This will cause the tree to not see these points as crazy outliers.
+
+```julia
+train_x = mapcols(col -> replace(col, -999 => 0), train_x)
+```
 
 ### Normalizing
 
-mean of 0 and std dev of 1
+It's always a good idea to normalize our data. Here we are going to mean center our data at 0 with a standard deviation of 1. This gives a more accurate model and allows for better training.
 
-missing values represented as 0
+```julia
+function normalize(xs)
+  μ = mean(xs)
+  σ = std(xs)
+  return map(x -> ((x - μ) / σ), xs)
+end
 
-### XGBoost
+train_x = mapcols(col -> normalize(col), train_x)
+```
 
-Gradient boosting trees are a popular and powerful algorithm used to crush structured, tabular datasets. XGBoost is probably the most popular implementation and has won a lot of machine learning competitions.
+### Training
+
+Just like with our original featureless model, we're going to train on our old features plus our new open angle features.
+
+```julia
+rounds = 1000
+
+model = xgboost(
+  convert(Matrix, train_x),
+  rounds, 
+  label=train_y, 
+  max_depth=9, 
+  eta=0.1, 
+  sub_sample=0.9,  
+  objective="binary:logistic", 
+  metrics=["auc"]
+)
+
+predictions = predict(model, convert(Matrix, train_x))
+```
+
+### Evaluation Metric
+
+Now we can compare our models. The evaluation metric is given to us by CERN and it is called the approximate median significance.
+
+```julia
+# Function to calculate approximate median significance (AMS)
+function score(predictions, labels, weights)
+  threshold = 0.5
+  s = 0
+  b = 0
+
+  for i = 1:length(predictions)
+    # Only events predicted to be signal are counted
+    if predictions[i] > threshold
+      (labels[i] == 1) ? (s += weights[i]) : (b += weights[i])
+    end
+  end
+
+  return sqrt(2 * ((s + b + 10) * log(1 + (s / (b + 10))) - s))
+end
+
+println("AMS: ", score(og_predictions, train_y, train_w))
+println("AMS: ", score(predictions, train_y, train_w))
+
+# AMS: 6.552268162067583
+# AMS: 6.724715130304458
+```
+
+### Preparing the Submission
+
+Now we'll train our final model a little bit longer.
+
+```julia
+rounds = 3000
+
+final_model = xgboost(
+  convert(Matrix, train_x),
+  rounds, 
+  label=train_y, 
+  max_depth=9, 
+  eta=0.1, 
+  sub_sample=0.9,  
+  objective="binary:logistic", 
+  metrics=["auc"]
+)
+```
+
+```julia
+final_predictions = predict(final_model, convert(Matrix, test_x))
+labels = map(x -> x > 0.5 ? 's' : 'b', final_predictions)
+rank_order = sortperm(final_predictions)
+
+submission = DataFrame(EventId=test[:EventId], RankOrder=rank_order, Class=labels)
+
+CSV.write("submission.csv", submission)
+```
+
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329

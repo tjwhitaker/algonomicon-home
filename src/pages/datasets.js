@@ -1,27 +1,29 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import { Link, graphql } from "gatsby"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
 export default ({ data }) => {
-  const [chunk, setChunk] = useState(5)
+  const [chunk, setChunk] = useState(3)
 
   return (
     <Layout>
       <Helmet>
-        <title>Snippets | Algonomicon</title>
+        <title>Datasets | Algonomicon</title>
       </Helmet>
       <Main>
-        {data.snippets.nodes.slice(0, chunk).map((node, i) => (
+        {data.datasets.nodes.slice(0, chunk).map((node, i) => (
           <Post key={i}>
-            <Link to={`/snippets/${node.frontmatter.slug}`} key={i}>
-              <h3>{node.frontmatter.title}</h3>
-              <p>{node.excerpt}</p>
+            <Link to={`/datasets/${node.frontmatter.slug}`}>
+              <div>
+                <h3>{node.frontmatter.title}</h3>
+                <p>{node.excerpt}</p>
+              </div>
             </Link>
           </Post>
         ))}
-        {chunk < data.snippets.nodes.length && (
+        {chunk < data.datasets.nodes.length && (
           <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
         )}
       </Main>
@@ -42,8 +44,8 @@ const Button = styled.a`
 
 export const query = graphql`
   {
-    snippets: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "snippets" } } }
+    datasets: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "datasets" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
@@ -51,6 +53,7 @@ export const query = graphql`
         frontmatter {
           title
           slug
+          date
         }
       }
     }

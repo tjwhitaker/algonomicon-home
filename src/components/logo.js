@@ -14,7 +14,7 @@ const unglitchBody = () => {
 export default () => (
   <div className="logo" onMouseEnter={glitchBody} onMouseLeave={unglitchBody}>
     <Link to="/" className="glitch">
-      {Array.from({ length: 5 }).map((val, index) => (
+      {Array.from({ length: 6 }).map((val, index) => (
         <svg
           key={index}
           className="glitch__img"

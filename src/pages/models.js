@@ -5,25 +5,26 @@ import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
 export default ({ data }) => {
-  const [chunk, setChunk] = useState(5)
+  const [chunk, setChunk] = useState(3)
 
   return (
     <Layout>
       <Helmet>
-        <title>Snippets | Algonomicon</title>
+        <title>Models | Algonomicon</title>
       </Helmet>
       <Main>
-        {data.snippets.nodes.slice(0, chunk).map((node, i) => (
+        {data.models.nodes.slice(0, chunk).map((node, i) => (
           <Post key={i}>
-            <Link to={`/snippets/${node.frontmatter.slug}`} key={i}>
+            <Link to={`/models/${node.frontmatter.slug}`}>
               <h3>{node.frontmatter.title}</h3>
               <p>{node.excerpt}</p>
             </Link>
           </Post>
         ))}
-        {chunk < data.snippets.nodes.length && (
-          <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
+        {chunk < data.models.nodes.length && (
+          <Button onClick={() => setChunk(chunk + 3)}>Load more...</Button>
         )}
+        <p>No results.</p>
       </Main>
       <Sidebar>
         <Search />
@@ -42,8 +43,8 @@ const Button = styled.a`
 
 export const query = graphql`
   {
-    snippets: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "snippets" } } }
+    models: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "models" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {

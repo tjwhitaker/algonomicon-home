@@ -8,27 +8,27 @@ import { Layout, Main, Sidebar, Minion } from "../components"
 export default ({ data }) => (
   <Layout>
     <Helmet>
-      <title>{data.article.frontmatter.title} | Algonomicon</title>
+      <title>{data.dataset.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{data.article.frontmatter.title}</Title>
-      <div dangerouslySetInnerHTML={{ __html: data.article.html }} />
+      <Title>{data.dataset.frontmatter.title}</Title>
+      <div dangerouslySetInnerHTML={{ __html: data.dataset.html }} />
     </Main>
     <Sidebar>
       <div>
         <Minion>Meta</Minion>
         <Meta>
-          <Field>Author: {data.article.frontmatter.authors}</Field>
+          <Field>Author: {data.dataset.frontmatter.authors}</Field>
           <Field>
             Created:{" "}
-            {moment(data.article.frontmatter.date).format("MMMM Do, YYYY")}
+            {moment(data.dataset.frontmatter.date).format("MMMM Do, YYYY")}
           </Field>
         </Meta>
       </div>
       <div>
         <Minion>Outline</Minion>
         <Outline
-          dangerouslySetInnerHTML={{ __html: data.article.frontmatter.outline }}
+          dangerouslySetInnerHTML={{ __html: data.dataset.frontmatter.outline }}
         />
       </div>
     </Sidebar>
@@ -64,7 +64,7 @@ const Outline = styled.div`
 
 export const query = graphql`
   query($slug: String!) {
-    article: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    dataset: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title

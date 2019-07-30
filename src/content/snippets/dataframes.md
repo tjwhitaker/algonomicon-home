@@ -4,6 +4,8 @@ slug: dataframes
 date: 2019-06-11
 ---
 
+Manipulating tabular datasets
+
 ```julia
 using CSV, Dataframes
 

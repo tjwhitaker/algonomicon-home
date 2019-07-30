@@ -1,138 +1,79 @@
 import React from "react"
-import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
-import { graphql, Link } from "gatsby"
+import Image from "gatsby-image"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Logo, Wrapper } from "../components"
+import { Layout, Main, Minion, Sidebar } from "../components"
 
 export default ({ data }) => (
-  <div>
+  <Layout>
     <Helmet>
       <title>About | Algonomicon</title>
     </Helmet>
-    <Container>
-      <Header fluid={data.file.childImageSharp.fluid}>
-        <Wrapper>
-          <Masthead>
-            <Logo />
-            <Nav>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/contact">Contact</NavLink>
-              <NavLink to="/">Home</NavLink>
-            </Nav>
-            <MobileNav>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="bars"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                className="svg-inline--fa fa-bars fa-w-14 fa-5x"
-              >
-                <path
-                  fill="white"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                />
-              </svg>
-            </MobileNav>
-          </Masthead>
-          <Intro></Intro>
-        </Wrapper>
-      </Header>
-    </Container>
-  </div>
+    <Main>
+      <p>
+        I decided to pursue graduate school in late 2018. I missed the deep work
+        and collaboration that universities offer and I was ready to switch
+        gears from contract web development to something that I believe will
+        shape the future of technology. I knew I wanted to work with data and
+        machine learning, but I didn't know what I wanted to do exactly, so I
+        started this website to explore ideas and study state of the art machine
+        learning techniques.
+      </p>
+
+      <p>
+        The more I wrote and explored, the more I found I was drawn to projects
+        in the natural sciences. There's something about these projects that
+        make you feel like your work matters and has purpose and meaning. I want
+        to feel like I'm making a difference. I dream of a future where I can
+        help scientists and researchers do better work and manage the
+        increasingly larger and more complex datasets that describe their
+        experiments.
+      </p>
+
+      <h3>Who is Algonomicon for?</h3>
+      <p>
+        This website is for Analysts, Programmers, and Researchers. I'm trying
+        to make my writing as accessible as possible, but this project will be
+        targeted towards people with some base scientific, programming and
+        statistics knowledge. I'll try to not gloss over anything that may be
+        too complex or advanced, but if I do I'm sorry and please bear with me
+        as this is as much a learning process for me as the articles will
+        hopefully be for you!
+      </p>
+
+      <h3>What is Algonomicon for?</h3>
+      <p>
+        This website is a place to learn how to apply data science and machine
+        learning techniques to research projects in science. We're building a
+        collection of algorithms, datasets, models, papers and code snippets in
+        order to provide a pathway for learning and improving data skills in
+        science.
+      </p>
+    </Main>
+    <Sidebar>
+      <Minion>Photos</Minion>
+      <div style={{ marginTop: "1rem" }}>
+        <Image
+          fluid={data.file1.childImageSharp.fluid}
+          style={{ marginBottom: "1rem" }}
+        />
+        <Image fluid={data.file2.childImageSharp.fluid} />
+      </div>
+    </Sidebar>
+  </Layout>
 )
-
-const Container = styled.div`
-  width: 100%;
-`
-
-const Header = styled(BackgroundImage)`
-  background-color: black;
-  background-size: cover;
-  background-position: center bottom;
-  height: 100vh;
-  position: relative;
-
-  ::before {
-    filter: brightness(0.5);
-  }
-
-  @media screen and (max-width: 600px) {
-    height: 15rem;
-  }
-`
-
-const Masthead = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
-const Nav = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
-`
-
-const MobileNav = styled.div`
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-
-  svg {
-    height: 25px;
-  }
-
-  @media screen and (max-width: 600px) {
-    display: block;
-  }
-`
-
-const NavLink = styled(Link)`
-  color: white;
-  margin-left: 1.5rem;
-  font-size: 0.87055rem;
-  font-weight: bold;
-  text-decoration: none;
-  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-
-  &:hover {
-    color: #007bff;
-  }
-
-  &.active {
-    color: #007bff;
-  }
-`
-
-const Intro = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(0%, -50%);
-  max-width: 60%;
-
-  h1 {
-    color: white;
-    font-size: 10rem;
-    font-family: monospace;
-  }
-`
 
 export const query = graphql`
   {
-    file(relativePath: { eq: "astronaut.jpg" }) {
+    file1: file(relativePath: { eq: "worm-turns.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    file2: file(relativePath: { eq: "office.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid
