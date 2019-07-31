@@ -29,7 +29,7 @@ outline: |
   </ul>
 ---
 
-The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, created in 2012 and maintained as a free and decentralized database by a community of volunteers. The history of exoplanets themeselves date back to an overlooked photograph from 1917 in the vaults of Carnegie Observatory. This spectral photgraph of what would become known as van Mannen's Star wass the faintest white dwarf at the time, and the closest solitary white dwarf, found 13.9 light years from earth. This star's spectral signature showed two absoption lines from the same calcium ion, suggesting that it has at least 1 exoplanet.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined. Sky survey projects all over the world are collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
+The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, created in 2012 and maintained as a free and decentralized database by a community of volunteers. The history of exoplanets themeselves date back to an overlooked photograph from 1917 in the vaults of Carnegie Observatory. This spectral photgraph of what would become known as van Mannen's Star wass the faintest white dwarf at the time, and the closest solitary white dwarf, found 13.9 light years from earth. This star's spectral signature showed two absoption lines from the same calcium ion, suggesting that it has at least 1 exoplanet.[^1] In the last 5 years, technological advancements and data collection efforts have spurned the discovery of more planets than in the previous 100 years combined and sky survey projects all over the world are collecting terabytes of information nightly.[^2] There's a ton of astronomical data to explore and I'm excited to see what we can learn from these planets and the greater universe in general.
 
 ## Introduction
 
@@ -308,7 +308,7 @@ metallicity = hstack([met_fe, met_ratio])
 
 This brings us to the end of our exploration of the Open Exoplanet Catalogue. We looked at how we discover exoplanets. We looked at the physical characteristics the exoplanets exhibit and we looked at those exoplanet's host stars. We compared the values we found to the sun and the planets in our solar system.
 
-Talk about what we learned.
+I think the future of astronomy is so exciting! It seems like every year NASA releases a cool breakthrough, from the evidence of prehistoric water on mars to the first real photograph of a black hole. Astronomy is so open and friendly and I can't wait to dig in to more universal datasets going forward.
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
