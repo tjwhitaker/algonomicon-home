@@ -17,7 +17,7 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   background: #222831;
-  color: #a1a1a1;
+  color: #c1c1c1;
 }
 
 /* Code blocks */
@@ -41,7 +41,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: #a1a1a1;
+  color: #c1c1c1;
 }
 
 .token.namespace {
