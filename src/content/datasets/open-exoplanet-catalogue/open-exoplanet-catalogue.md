@@ -33,7 +33,7 @@ The NASA open catalogue of exoplanets is a dataset of almost 4000 planets, creat
 
 ## Introduction
 
-The exoplanet dataset can be downloaded from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>. At the time of this article, the dataset contains 3972 confirmed exoplanets with 144 attributes relating to each. Because of the large number of attributes, I'm going to post omitted/shortened outputs of the dataframes and descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
+I downloaded the dataset from <https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets>. At the time of this article, the dataset contains 3972 confirmed exoplanets with 144 attributes relating to each. Because of the large number of attributes, I'm going to post omitted/shortened outputs of the dataframes and descriptions. If you want to print out all the information for a particular dataframe, wrap it in the function `showall(df)` or `show(df, allcols=true, allrows=true)`.[^3]
 
 Included in the downloaded dataset is a header detailing the column definitions.
 
@@ -200,7 +200,7 @@ plot(layer(x = [3.5], y = [0], label = ["Kepler-37 b"], Geom.point, Geom.label, 
 
 ### How hot are they?
 
-A key characteristic for planet habitability is the surface temperature. We don't have a way to measure this on planets so far away, as atmospheric properties can raise or lower temperatures at the surface. Equilibrium temperature is a measurement we use to estimate their theoretical temperature by considering the planet as if it were a black body, heated only by it's parent star.[^7]
+A key characteristic for planet habitability is the surface temperature. We don't have a way to measure this on planets so far away, as atmospheric properties can raise or lower temperatures at the surface. Equilibrium temperature is a measurement we use to estimate their theoretical temperature by considering the planet as if it were a black body.[^7]
 
 <object data="equilibrium-temperature.svg" type="image/svg+xml">
   <param name="url" value="equilibrium-temperature.svg">
