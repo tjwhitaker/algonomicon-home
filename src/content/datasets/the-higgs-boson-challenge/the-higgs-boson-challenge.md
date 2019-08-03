@@ -2,7 +2,7 @@
 title: The Higgs Boson Challenge
 slug: the-higgs-boson-challenge
 date: 2019-07-01
-authors: Timothy J. Whitaker
+authors: Tim Whitaker
 outline: |
     <ul>
         <li>Introduction</li>
@@ -209,7 +209,7 @@ for row in eachrow(train)
     push!(lep_coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
 
-scene = Scene(resolution = (2400, 1600), backgroundcolor = "#222831")
+scene = Scene(resolution = (1200, 800), backgroundcolor = "#222831")
 scatter!(scene, tau_coordinates, markersize = 5, color = "#fe4365")
 scatter!(scene, lep_coordinates, markersize = 5, color = "#eca25c")
 
@@ -408,6 +408,8 @@ rank_order = sortperm(predictions)
 submission = DataFrame(EventId=test[:EventId], RankOrder=rank_order, Class=labels)
 CSV.write("submission.csv", submission)
 ```
+
+## Conclusion
 
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson

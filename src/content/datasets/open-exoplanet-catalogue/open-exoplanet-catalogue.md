@@ -2,7 +2,7 @@
 title: Open Exoplanet Catalogue
 slug: open-exoplanet-catalogue
 date: 2019-06-28
-authors: Timothy J. Whitaker
+authors: Tim Whitaker
 outline: |
   <ul>
     <li>Introduction</li>
