@@ -304,9 +304,9 @@ metallicity = hstack([met_fe, met_ratio])
 
 ## Conclusion
 
-Thanks for reading and exploring the exoplanets with me! We looked at how we discover exoplanets, what the exoplanets are like, and how their host stars compare to our own.
+Thanks for reading and exploring the exoplanets with me! We looked at how we discover exoplanets, what the exoplanets are like, and how their host stars compare to our own. I hope this inspires someone to dig into this dataset a bit more and hopefully find some cool insights. In the future it could be fun to build a model to process spectral data to search for exoplanet candidates of our own.
 
-I think the future of astronomy is so exciting! It seems like every year NASA releases a cool breakthrough, from the evidence of prehistoric water on mars to the first real photograph of a black hole. Astronomy is so open and friendly and I can't wait to dig in to more universal datasets going forward.
+I think the future of astronomy is so exciting! It seems like every year NASA releases a cool breakthrough. Astronomy is so open and friendly and I can't wait to dig in to more universal datasets going forward.
 
 [^1]: https://www.jpl.nasa.gov/news/news.php?feature=6991
 [^2]: https://www.lsst.org/
