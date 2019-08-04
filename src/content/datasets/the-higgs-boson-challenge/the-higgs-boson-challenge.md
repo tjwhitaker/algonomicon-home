@@ -9,7 +9,7 @@ outline: |
     </ul>
 ---
 
-In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, discovered a new particle called the Higgs Boson. This particle, originally theorized to exist in 1964, is difficult to detect. It has no spin, electrical charge, or color charge. It's super unstable and decays into other particles almost instanatly.[^1]
+In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, discovered a new particle called the Higgs Boson. This discovery was a breakthrough in particle physics, as the Higgs Boson was long theorized to exist, but almost impossible to detect. It's small, has no spin or electrical charge, and is so unstable that it decays into other particles almost instantly.[^1] After the discovery, the media dubbed the Higgs Boson "the god particle" due to its role in generating mass as other particles interact with the Higgs field.
 
 ## Introduction
 

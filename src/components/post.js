@@ -25,14 +25,14 @@ export default styled.div`
   p {
     color: hsla(0, 0%, 0%, 0.8);
     font-weight: normal;
-    margin-bottom:0;
+    margin-bottom: 0;
   }
 
   &:first-child {
     padding-top: 0;
 
     h4 {
-      margin-top:1rem;
+      margin-top: 1rem;
     }
   }
 `
