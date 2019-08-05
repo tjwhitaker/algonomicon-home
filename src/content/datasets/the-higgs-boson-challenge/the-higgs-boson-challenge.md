@@ -13,24 +13,23 @@ In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, disco
 
 ## Introduction
 
-The large hadron collider is a machine that collides bunches of protons at high speed. When they collide, they produce a small firework in which part of the kinetic energy of the collision creates new particles. Some of the particles created through this collision (including the Higgs Boson) decay so rapidly that we can't observe them directly. What we can observe is the surviving particles, or the final state. The final state properties of these particles include the type (electron, photon, muon, etc.), the energy, and the 3D direction. Through these measurements, the properties are able to infer the decayed parent particles and this inference chain continues until reaching the heaviest primary particles.
+The Large Hadron Collider is a machine that collides protons together at high speed. When they collide, they produce a small explosion and the LHC measures and tracks the resulting particles.
 
-The particles of interest for this challenge are electrons, muons, hadronic tau, jets and missing transverse energy. Electrons and muons live long enough for the detector to read, so their energy and direction can be measured directly. These are both categorized as leptons in the dataset according to the standard model. Taus decay almost immediately into either and electron and two neutrinos, a muon and two neutrinos, or a bunch of charged particles and one neutrino. The resulting bundle of hadrons in the last case is a pseudo-particle called a hadronic tau. Jets are another pseudo particle which results from a high energy quark or gluon. The measured momenta of all the particles of the event is the primary information provided for this challenge.[^2]
+Through this process, the higgs boson may or may not appear. It decays so fast that the LHC can not observe it directly. By looking at the final state of the particles, we can perform a kind of backtracking and deduce if the particles were the result of a higgs boson decay.
 
-All events in both the training and test dataset were selected to have only one electron or muon, and only one hadronic tau. So the goal for this challenge is to classify whether the event showed that these particles decayed from a higgs or not.
-
+In this dataset, every row corresponds to a collision event. Every event contains one lepton, one hadronic tau, and a variable number of jets. We're given the measured momenta of these particles and using these values and some special features derived by the physicists at the LHC, we are going to try to detect whether an event contained a higgs boson or not.
 
 ## Overview
 
-The data comes from <https://www.kaggle.com/c/higgs-boson/data>, split into train and test datasets. They contain 250,000 and 550,000 instances respectively, each with 33 attributes. Most attributes are prefixed with either DER or PRI. These stand for PRImitive (raw data obtained directly from the collision measurements) and DERived (features computed from primitive data by physicists at ATLAS). Descriptions of all the attributes are here <http://opendata.cern.ch/record/328> and a nice pdf of documentation for non-physiscists on the higgs challenge is here <http://opendata.cern.ch/record/329>.
+The training and testing datasets come from <https://www.kaggle.com/c/higgs-boson/data>. They contain 250,000 and 550,000 instances respectively. Each feature of each event starts with either PRI or DER, standing for primitive or derived. The primitive features are raw data obtained directly from the collision measurements and derived features are attributes computed from that primitive data.
 
-Some values are not computable or are meaningless in the context of the attribute. Those values are represented as -999.0 in the dataset. I'm going to convert those to missing values instead as we load the dataset in order to make it clear that it shouldn't factor in to numerical computations.
+The folks at ATLAS have provided a great rundown of particle physics for non physicists here <http://opendata.cern.ch/record/329>.
 
 ```julia
 using CSV, DataFrames, Gadfly
 
 # Dataset downloaded from https://www.kaggle.com/c/higgs-boson/data
-train = CSV.read("train.csv", missingstring="-999.0")
+train = CSV.read("train.csv")
 ```
 
 ```julia
