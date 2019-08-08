@@ -149,7 +149,7 @@ function boxplot_stats(a)
 end
 
 # Construct combined dataframe by looping over columns
-sb_stats = DataFrame(name = [], label = [], lf = [], lh = [], m = [], uh = [], uf = [])
+sb_stats = DataFrame(name=[], label=[], lf=[], lh=[], m=[], uh=[], uf=[])
 
 for i in 1:20
   stats = boxplot_stats(signal[:, i])
@@ -188,9 +188,9 @@ for row in eachrow(train)
   push!(lep_coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
 
-scene = Scene(resolution = (1200, 800), backgroundcolor = "#222831")
-scatter!(scene, tau_coordinates, markersize = 5, color = "#fe4365")
-scatter!(scene, lep_coordinates, markersize = 5, color = "#eca25c")
+scene = Scene(resolution=(1200, 800), backgroundcolor="#222831")
+scatter!(scene, tau_coordinates, markersize=5, color="#fe4365")
+scatter!(scene, lep_coordinates, markersize=5, color="#eca25c")
 
 scale!(scene, 2, 2, 2)
 scene.center = false
@@ -208,15 +208,20 @@ This density plot shows the distribution of those particles in the transverse pl
 </object>
 
 ```julia
-coordinates = DataFrame(x = [], y = [], z = [])
+coordinates = DataFrame(x=[], y=[], z=[])
 
 for row in eachrow(working)
   push!(coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
   push!(coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
 
-coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
-  Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
+plot(
+  coordinates,
+  x = :x,
+  y = :y,
+  Geom.density2d,
+  Scale.color_continuous(colormap=x->get(ColorSchemes.blackbody, x))
+)
 ```
 
 ### What role do jets play?
@@ -228,8 +233,8 @@ A jet is a narrow stream of particles that occur as the result of the hadronizat
 </object>
 
 ```julia
-jet_groups = groupby(working, :PRI_jet_num, sort = true)
-jet_df = DataFrame(num_jets = [], num_s = [], num_b = [])
+jet_groups = groupby(working, :PRI_jet_num, sort=true)
+jet_df = DataFrame(num_jets=[], num_s=[], num_b=[])
 
 for group in jet_groups
   num_jets = first(group[:PRI_jet_num])
@@ -247,8 +252,13 @@ for group in jet_groups
   # 3: 0.4361433292295730
 end
 
-plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variable, Geom.bar(position = :dodge))
-
+plot(
+  stack(jet_df, [:num_s, :num_b]),
+  x = :num_jets,
+  y = :value,
+  color = :variable,
+  Geom.bar(position = :dodge)
+)
 ```
 
 ### Missing Mass and Energy
@@ -277,10 +287,10 @@ correlations = cor(Matrix(working[:, 1:20]))
 
 spy(
   correlations,
-  Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
+  Scale.y_discrete(labels=i->names(working[:, 1:20])[i]),
   Guide.ylabel(nothing),
-  Guide.colorkey(title = "Correlation\nCoefficient  "),
-  Guide.xticks(label = false),
+  Guide.colorkey(title="Correlation\nCoefficient  "),
+  Guide.xticks(label=false),
   Guide.xlabel(nothing)
 )
 ```
