@@ -138,25 +138,25 @@ The ratio of signal to background events in the training set is about 1:2. The d
 ```julia
 # Signal and Background boxplot stats
 function boxplot_stats(a)
-    q1 = quantile(a, 0.25)
-    q2 = quantile(a, 0.5)
-    q3 = quantile(a, 0.75)
+  q1 = quantile(a, 0.25)
+  q2 = quantile(a, 0.5)
+  q3 = quantile(a, 0.75)
 
-    lf = q1 - (1.5 * (q3 - q1))
-    uf = q3 + (1.5 * (q3 - q1))
+  lf = q1 - (1.5 * (q3 - q1))
+  uf = q3 + (1.5 * (q3 - q1))
 
-    return (lf, q1, q2, q3, uf)
+  return (lf, q1, q2, q3, uf)
 end
 
 # Construct combined dataframe by looping over columns
 sb_stats = DataFrame(name = [], label = [], lf = [], lh = [], m = [], uh = [], uf = [])
 
 for i in 1:20
-    stats = boxplot_stats(signal[:, i])
-    push!(sb_stats, [names(signal)[i], "s", stats...])
+  stats = boxplot_stats(signal[:, i])
+  push!(sb_stats, [names(signal)[i], "s", stats...])
 
-    stats = boxplot_stats(background[:, i])
-    push!(sb_stats, [names(background)[i], "b", stats...])
+  stats = boxplot_stats(background[:, i])
+  push!(sb_stats, [names(background)[i], "b", stats...])
 end
 ```
 
@@ -176,16 +176,16 @@ tau_coordinates = Point3f0[]
 lep_coordinates = Point3f0[]
 
 function cartesian(pt, ϕ, η)
-    x = pt * cos(ϕ)
-    y = pt * sin(ϕ)
-    z = pt * sinh(η)
+  x = pt * cos(ϕ)
+  y = pt * sin(ϕ)
+  z = pt * sinh(η)
 
-    return (x, y, z)
+  return (x, y, z)
 end
 
 for row in eachrow(train)
-    push!(tau_coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
-    push!(lep_coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
+  push!(tau_coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
+  push!(lep_coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
 
 scene = Scene(resolution = (1200, 800), backgroundcolor = "#222831")
@@ -196,7 +196,7 @@ scale!(scene, 2, 2, 2)
 scene.center = false
 
 record(scene, "particles-3d.mp4", 1:200) do i
-    rotate_cam!(scene, 0.01, 0.0, 0.0)
+  rotate_cam!(scene, 0.01, 0.0, 0.0)
 end
 
 ```
@@ -211,12 +211,12 @@ This density plot shows the distribution of those particles in the transverse pl
 coordinates = DataFrame(x = [], y = [], z = [])
 
 for row in eachrow(working)
-    push!(coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
-    push!(coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
+  push!(coordinates, cartesian(row[:PRI_tau_pt], row[:PRI_tau_phi], row[:PRI_tau_eta]))
+  push!(coordinates, cartesian(row[:PRI_lep_pt], row[:PRI_lep_phi], row[:PRI_lep_eta]))
 end
 
 coordinate_density = plot(coordinates, x = :x, y = :y, Geom.density2d,
-    Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
+  Scale.color_continuous(colormap = x->get(ColorSchemes.blackbody, x)))
 ```
 
 ### What role do jets play?
@@ -232,19 +232,19 @@ jet_groups = groupby(working, :PRI_jet_num, sort = true)
 jet_df = DataFrame(num_jets = [], num_s = [], num_b = [])
 
 for group in jet_groups
-    num_jets = first(group[:PRI_jet_num])
-    num_s = count(group[:Label] .== "s")
-    num_b = count(group[:Label] .== "b")
+  num_jets = first(group[:PRI_jet_num])
+  num_s = count(group[:Label] .== "s")
+  num_b = count(group[:Label] .== "b")
 
-    push!(jet_df, (num_jets, num_s, num_b))
+  push!(jet_df, (num_jets, num_s, num_b))
 
-    println("$num_jets: $(num_s / num_b)")
+  println("$num_jets: $(num_s / num_b)")
 
-    # Ratio of signal to background ^
-    # 0: 0.3425377245669905
-    # 1: 0.5560460729622346
-    # 2: 1.0441874619598295
-    # 3: 0.4361433292295730
+  # Ratio of signal to background ^
+  # 0: 0.3425377245669905
+  # 1: 0.5560460729622346
+  # 2: 1.0441874619598295
+  # 3: 0.4361433292295730
 end
 
 plot(stack(jet_df, [:num_s, :num_b]), x = :num_jets, y = :value, color = :variable, Geom.bar(position = :dodge))
@@ -275,9 +275,14 @@ The features that are most correlated to each other are the tau phi, tau eta, le
 ```julia
 correlations = cor(Matrix(working[:, 1:20]))
 
-spy(correlations, Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
-    Guide.ylabel(nothing), Guide.colorkey(title = "Correlation\nCoefficient  "),
-    Guide.xticks(label = false), Guide.xlabel(nothing))
+spy(
+  correlations,
+  Scale.y_discrete(labels = i->names(working[:, 1:20])[i]),
+  Guide.ylabel(nothing),
+  Guide.colorkey(title = "Correlation\nCoefficient  "),
+  Guide.xticks(label = false),
+  Guide.xlabel(nothing)
+)
 ```
 
 ## Building The Model
@@ -304,13 +309,10 @@ $$
 We're loading our data here and splitting it into subsets of features, labels, and weights.
 
 ```julia
-using CSV, DataFrames, SparseArrays, Statistics, XGBoost
+using CSV, DataFrames, Statistics, XGBoost
 
 train = CSV.read("higgs-boson/train.csv")
 test = CSV.read("higgs-boson/test.csv")
-
-train_x, train_y, train_w = train[:, 2:31], map(i -> i == "s" ? 1 : 0, train[:Label]), train[:Weight]
-test_x = test[:, 2:31]
 ```
 
 ### Feature Selection and Engineering
@@ -320,26 +322,26 @@ I came across a bunch of ideas for feature engineering after reading some post c
 The first place finisher, Gabor Melis used 10 extra features. 5 based on the open angles between particles and 5 based around mass.[^8] For our model, I'm going to keep it simple and add the open angle features. Due to the rotational symmetry around the z-axis, we can drop the raw phi features after adding our open angle features.
 
 ```julia
-# Absolute differences of phi mapped to [-pi, pi]
-delta_phi(ϕ1, ϕ2) = (ϕ1 == -999 || ϕ2 == -999) ? -999 : rem2pi(abs(ϕ1 - ϕ2), RoundNearest)
+# Absolute differences of phi
+delta_phi(ϕ1, ϕ2) = (ϕ1 == -999 || ϕ2 == -999) ? -999.0 : abs(ϕ1 - ϕ2)
 
-train_x[:ALGO_delta_phi_tau_lep] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_lep_phi])
-train_x[:ALGO_delta_phi_tau_jet1] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_jet_leading_phi])
-train_x[:ALGO_delta_phi_tau_jet2] = delta_phi.(train_x[:PRI_tau_phi], train_x[:PRI_jet_subleading_phi])
-train_x[:ALGO_delta_phi_lep_jet1] = delta_phi.(train_x[:PRI_lep_phi], train_x[:PRI_jet_leading_phi])
-train_x[:ALGO_delta_phi_lep_jet2] = delta_phi.(train_x[:PRI_lep_phi], train_x[:PRI_jet_subleading_phi])
-train_x[:ALGO_delta_phi_jet1_jet2] = delta_phi.(train_x[:PRI_jet_leading_phi], train_x[:PRI_jet_subleading_phi])
+train[:ALGO_delta_phi_tau_lep] = delta_phi.(train[:PRI_tau_phi], train[:PRI_lep_phi])
+train[:ALGO_delta_phi_tau_jet1] = delta_phi.(train[:PRI_tau_phi], train[:PRI_jet_leading_phi])
+train[:ALGO_delta_phi_tau_jet2] = delta_phi.(train[:PRI_tau_phi], train[:PRI_jet_subleading_phi])
+train[:ALGO_delta_phi_lep_jet1] = delta_phi.(train[:PRI_lep_phi], train[:PRI_jet_leading_phi])
+train[:ALGO_delta_phi_lep_jet2] = delta_phi.(train[:PRI_lep_phi], train[:PRI_jet_subleading_phi])
+train[:ALGO_delta_phi_jet1_jet2] = delta_phi.(train[:PRI_jet_leading_phi], train[:PRI_jet_subleading_phi])
 
-test_x[:ALGO_delta_phi_tau_lep] = delta_phi.(test_x[:PRI_tau_phi], test_x[:PRI_lep_phi])
-test_x[:ALGO_delta_phi_tau_jet1] = delta_phi.(test_x[:PRI_tau_phi], test_x[:PRI_jet_leading_phi])
-test_x[:ALGO_delta_phi_tau_jet2] = delta_phi.(test_x[:PRI_tau_phi], test_x[:PRI_jet_subleading_phi])
-test_x[:ALGO_delta_phi_lep_jet1] = delta_phi.(test_x[:PRI_lep_phi], test_x[:PRI_jet_leading_phi])
-test_x[:ALGO_delta_phi_lep_jet2] = delta_phi.(test_x[:PRI_lep_phi], test_x[:PRI_jet_subleading_phi])
-test_x[:ALGO_delta_phi_jet1_jet2] = delta_phi.(test_x[:PRI_jet_leading_phi], test_x[:PRI_jet_subleading_phi])
+test[:ALGO_delta_phi_tau_lep] = delta_phi.(test[:PRI_tau_phi], test[:PRI_lep_phi])
+test[:ALGO_delta_phi_tau_jet1] = delta_phi.(test[:PRI_tau_phi], test[:PRI_jet_leading_phi])
+test[:ALGO_delta_phi_tau_jet2] = delta_phi.(test[:PRI_tau_phi], test[:PRI_jet_subleading_phi])
+test[:ALGO_delta_phi_lep_jet1] = delta_phi.(test[:PRI_lep_phi], test[:PRI_jet_leading_phi])
+test[:ALGO_delta_phi_lep_jet2] = delta_phi.(test[:PRI_lep_phi], test[:PRI_jet_subleading_phi])
+test[:ALGO_delta_phi_jet1_jet2] = delta_phi.(test[:PRI_jet_leading_phi], test[:PRI_jet_subleading_phi])
  
 # Drop phi due to invariant rotational symmetry
-train_x = deletecols(train_x, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_leading_phi, :PRI_jet_subleading_phi])
-test_x = deletecols(test_x, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_leading_phi, :PRI_jet_subleading_phi])
+train = deletecols(train, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_leading_phi, :PRI_jet_subleading_phi])
+test = deletecols(test, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_leading_phi, :PRI_jet_subleading_phi])
 ```
 
 ### Training
@@ -347,10 +349,19 @@ test_x = deletecols(test_x, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_
 Now we'll train our final model a little bit longer.
 
 ```julia
-rounds = 300
+train_w = convert(Vector, train[:Weight])
+train_x = convert(Matrix, deletecols(train, [:EventId, :Weight, :Label]))
+train_y = convert(Vector, map(i -> i == "s" ? 1 : 0, train[:Label]))
+
+dtrain = DMatrix(train_x, false, -999.0, weight=train_w, label=train_y)
+dtest = DMatrix(convert(Matrix, deletecols(test, [:EventId])), false, -999.0)
+
+rounds = 3000
+
 param = Dict(
-  "max_depth" => 6,
-  "eta" => 0.1,
+  "max_depth" => 9,
+  "eta" => 0.01,
+  "sub_sample" => 0.9,
   "objective" => "binary:logitraw"
 )
 
@@ -360,18 +371,33 @@ model = xgboost(
   param=param,
   metrics=["ams@0.15", "auc"]
 )
-
-predictions = predict(model, convert(Matrix, test_x))
-labels = map(x -> x > 0.15 ? 's' : 'b', predictions)
-rank_order = sortperm(predictions)
 ```
 
+### Testing
+
 ```julia
+function rank(xs)
+  ranks = Array{Int64}(undef, length(xs))
+  order = sortperm(xs)
+
+  for i = 1:length(xs)
+    ranks[order[i]] = i
+  end
+
+  return ranks
+end
+
+predictions = predict(model, dtest)
+rank_order = rank(predictions)
+labels = map(x -> x > .85 * size(test, 1) ? 's' : 'b', rank_order)
+
 submission = DataFrame(EventId=test[:EventId], RankOrder=rank_order, Class=labels)
 CSV.write("submission.csv", submission)
 ```
 
-### Testing
+```text
+Final Score: 3.61149
+```
 
 ## Conclusion
 
