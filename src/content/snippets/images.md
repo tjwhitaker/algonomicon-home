@@ -13,7 +13,7 @@ using Images
 μ = reshape([0.485, 0.456, 0.406], 1, 1, 3)
 σ = reshape([0.229, 0.224, 0.225], 1, 1, 3)
 
-# Normalize to scale inputs to improve training and accuracy
+# Normalize and denormalize images
 normalize(x) = (x .- μ) ./ σ
 denormalize(x) = x .* σ .+ μ
 

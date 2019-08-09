@@ -30,17 +30,6 @@ export default ({ data }) => (
         larger and more complex datasets that describe their experiments.
       </p>
 
-      <h3>Who is Algonomicon for?</h3>
-      <p>
-        This website is for Analysts, Programmers, and Researchers. I'm trying
-        to make my writing as accessible as possible, but this project will be
-        targeted towards people with some base scientific, programming and
-        statistics knowledge. I'll try to not gloss over anything that may be
-        too complex or advanced, but if I do I'm sorry and please bear with me
-        as this is as much a learning process for me as the articles will
-        hopefully be for you!
-      </p>
-
       <h3>What is Algonomicon for?</h3>
       <p>
         This website is a place to learn how to apply data science and machine
@@ -48,6 +37,14 @@ export default ({ data }) => (
         collection of algorithms, datasets, models, papers and code snippets in
         order to provide a pathway for learning and improving data skills in
         science.
+      </p>
+
+      <h3>Who is Algonomicon for?</h3>
+      <p>
+        This website is for Analysts, Programmers, and Researchers. I'm trying
+        to make my writing as accessible as possible, but this project will be
+        targeted towards people with a base level knowledge of programming and
+        statistics.
       </p>
     </Main>
     <Sidebar>

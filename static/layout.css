@@ -86,7 +86,8 @@ th:last-child {
 }
 
 /* For 100% width svg plots */
-object {
+object,
+video {
   width: 100%;
   margin-bottom: 0.5rem;
 }
