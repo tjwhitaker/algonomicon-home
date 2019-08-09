@@ -21,7 +21,7 @@ function rank(xs)
   return ranks
 end
 
-# Mean center values in an array at 0 with standard deviation of 1 
+# Mean center values in an array at 0 with standard deviation of 1
 function normalize(xs)
   μ = mean(xs)
   σ = std(xs)

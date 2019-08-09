@@ -356,7 +356,9 @@ test = deletecols(test, [:PRI_tau_phi, :PRI_lep_phi, :PRI_met_phi, :PRI_jet_lead
 
 ### Training
 
-Now we'll train our final model a little bit longer.
+The most popular and powerful models in machine learning competitions are ensembles of neural networks or gradient boosting trees. Neural networks tend to do great when the input data is complex or irregular, like images or language, and gradient boosting trees work well with organized and tabular data.
+
+XGBoost is a popular implementation of gradient boosting trees which I found to be fast, easy to use and memory efficient. We'll use XGBoost for this article, and in less than 20 lines of code, we can train a model that is capable of being compeitive on the leaderboard. The documetation, https://xgboost.readthedocs.io/en/latest/, is helpful if you want to learn more about gradient boosting and what goes in to tuning the model.
 
 ```julia
 train_w = convert(Vector, train[:Weight])
@@ -385,6 +387,8 @@ model = xgboost(
 
 ### Testing
 
+The kaggle competition expects our submission to be a csv file with the columns EventId, RankOrder, and Class. After calling predict() on the test matrix we created earlier, it will return a vector of logits, or log odds that the item belongs to the signal class.[^9] By calculating the rank of the logits, we'll take that ordering and map the top 15% to the class 's' and the rest to 'b'.
+
 ```julia
 function rank(xs)
   ranks = Array{Int64}(undef, length(xs))
@@ -411,6 +415,7 @@ Final Score: 3.61149
 
 ## Conclusion
 
+I had a lot of fun working on The Higgs Boson Challenge! Particle physics is so overwhelming at first but rewarding when the pieces start to come together. It's so cool to be able to work on and play with the data from one of the greatest achievements in physics in the last century.
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
@@ -420,3 +425,4 @@ Final Score: 3.61149
 [^6]: https://en.wikipedia.org/wiki/ATLAS_experiment
 [^7]: https://en.wikipedia.org/wiki/Jet_(particle_physics)
 [^8]: http://proceedings.mlr.press/v42/meli14.pdf
+[^9]: https://en.wikipedia.org/wiki/Logit
