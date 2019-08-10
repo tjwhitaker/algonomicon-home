@@ -4,9 +4,26 @@ slug: the-higgs-boson-challenge
 date: 2019-07-01
 authors: Tim Whitaker
 outline: |
+  <ul>
+    <li>Introduction</li>
+    <li>Overview</li>
     <ul>
-        <li>Introduction</li>
+      <li>Event Distribution</li>
+      <li>Particle Distribution</li>
+      <li>What role do jets play?</li>
+      <li>Missing Mass and Energy</li>
+      <li>Correlations</li>
     </ul>
+    <li>Building the Model</li>
+    <ul>
+      <li>Evaluation Metric</li>
+      <li>Preparing the Data</li>
+      <li>Feature Selection and Engineering</li>
+      <li>Training</li>
+      <li>Testing</li>
+    </ul>
+    <li>Conclusion</li>
+  </ul>
 ---
 
 In 2012, the ATLAS experiment at the Large Hadron Collider in Switzerland, discovered a new particle called the Higgs Boson. This discovery was a breakthrough in particle physics, as the Higgs Boson was long theorized to exist, but almost impossible to detect. It's small, has no spin or electrical charge, and is so unstable that it decays into other particles almost instantly.[^1] After the discovery, the media dubbed the Higgs Boson "the god particle" due to its role in generating mass as other particles interact with the Higgs field.
@@ -160,7 +177,7 @@ for i in 1:20
 end
 ```
 
-### Where are the particles detected?
+### Particle Distribution
 
 The ATLAS detector at the LHC is the largest particle detector in the world. It measures the 3 dimensional final state properties of the collision through a series of concentric cylinders around the collision point.[^6] Here's a plot of each hadronic tau and lepton for every event in the training set.
 
@@ -299,7 +316,7 @@ spy(
 
 The goal of this project is to classify events into signal or background. Using our exploration as a guide, we're going to build a model that will give us the probability that a given event produced a Higgs Boson.
 
-### AMS Evaluation Metric
+### Evaluation Metric
 
 The evaluation metric given to us by ATLAS is the approximate median significance. The AMS is a loss function that looks to reduce our false discovery rate. The goal for our model is to estimate with a high confidence that any predicted signal event is in fact a signal.
 
@@ -416,6 +433,8 @@ Final Score: 3.61149
 ## Conclusion
 
 I had a lot of fun working on The Higgs Boson Challenge! Particle physics is so overwhelming at first but rewarding when the pieces start to come together. It's so cool to be able to work on and play with the data from one of the greatest achievements in physics in the last century.
+
+Hope you all enjoyed this article! Looking forward to the next one!
 
 [^1]: https://en.wikipedia.org/wiki/Higgs_boson
 [^2]: http://opendata.cern.ch/record/329
