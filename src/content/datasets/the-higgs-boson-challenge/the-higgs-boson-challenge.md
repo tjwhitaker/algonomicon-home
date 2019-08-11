@@ -321,7 +321,7 @@ The goal of this project is to classify events into signal or background. Using 
 The evaluation metric given to us by ATLAS is the approximate median significance. The AMS is a loss function that looks to reduce our false discovery rate. The goal for our model is to estimate with a high confidence that any predicted signal event is in fact a signal.
 
 $$
-AMS = \sqrt{2\left((s+b+b_r) \log \left(1 + \frac{s}{b + b_r}\right)-s\right)}\\
+AMS = \sqrt{2\left((s+b+b_r) \log \left(1 + \frac{s}{b + b_r}\right)-s\right)}
 $$
 
 $$

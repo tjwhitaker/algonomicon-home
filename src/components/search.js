@@ -1,30 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Minion from "./minion"
 
-const Search = styled.div`
-  padding: 1rem 0;
-`
-
-const FieldGroup = styled.div`
-  position: relative;
-  width: 100%;
-`
-
-const Icon = styled.div`
-  position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1rem;
-  color: #aaa;
-`
-
-const Input = styled.input`
-  padding-left: 2rem;
-`
-
-export default () => (
+export default props => (
   <div>
     <Minion>Search</Minion>
     <Search>
@@ -49,8 +27,31 @@ export default () => (
         <Input
           type="text"
           placeholder="Articles, Datasets, Research and more..."
+          onChange={props.handleChange}
         />
       </FieldGroup>
     </Search>
   </div>
 )
+
+const Search = styled.div`
+  padding: 1rem 0;
+`
+
+const FieldGroup = styled.div`
+  position: relative;
+  width: 100%;
+`
+
+const Icon = styled.div`
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  color: #aaa;
+`
+
+const Input = styled.input`
+  padding-left: 2rem;
+`

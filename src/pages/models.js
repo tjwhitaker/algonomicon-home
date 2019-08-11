@@ -1,11 +1,21 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import Fuse from "fuse.js"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
+const handleSearch = (index, query) => {
+  const fuse = new Fuse(index, {
+    keys: ["excerpt", "frontmatter.title"],
+  })
+
+  return fuse.search(query)
+}
+
 export default ({ data }) => {
   const [chunk, setChunk] = useState(3)
+  const [models, setModels] = useState(data.models.nodes)
 
   return (
     <Layout>
@@ -13,7 +23,7 @@ export default ({ data }) => {
         <title>Models | Algonomicon</title>
       </Helmet>
       <Main>
-        {data.models.nodes.slice(0, chunk).map((node, i) => (
+        {models.slice(0, chunk).map((node, i) => (
           <Post key={i}>
             <Link to={`/models/${node.frontmatter.slug}`}>
               <h3>{node.frontmatter.title}</h3>
@@ -21,13 +31,19 @@ export default ({ data }) => {
             </Link>
           </Post>
         ))}
-        {chunk < data.models.nodes.length && (
+        {chunk < models.length && (
           <Button onClick={() => setChunk(chunk + 3)}>Load more...</Button>
         )}
         <p>No results.</p>
       </Main>
       <Sidebar>
-        <Search />
+        <Search
+          handleChange={e => {
+            e.target.value.length === 0
+              ? setModels(data.models.nodes)
+              : setModels(handleSearch(data.models.nodes, e.target.value))
+          }}
+        />
         <Sort />
         <Tags />
       </Sidebar>

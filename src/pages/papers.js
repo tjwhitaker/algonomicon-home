@@ -1,11 +1,21 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import Fuse from "fuse.js"
 import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
+const handleSearch = (index, query) => {
+  const fuse = new Fuse(index, {
+    keys: ["excerpt", "frontmatter.title", "frontmatter.authors"],
+  })
+
+  return fuse.search(query)
+}
+
 export default ({ data }) => {
   const [chunk, setChunk] = useState(3)
+  const [papers, setPapers] = useState(data.papers.nodes)
 
   return (
     <Layout>
@@ -13,7 +23,7 @@ export default ({ data }) => {
         <title>Papers | Algonomicon</title>
       </Helmet>
       <Main>
-        {data.papers.nodes.slice(0, chunk).map((node, i) => (
+        {papers.slice(0, chunk).map((node, i) => (
           <Post key={i}>
             <Link to={`/papers/${node.frontmatter.slug}`}>
               <h3>{node.frontmatter.title}</h3>
@@ -22,12 +32,18 @@ export default ({ data }) => {
             </Link>
           </Post>
         ))}
-        {chunk < data.papers.nodes.length && (
+        {chunk < papers.length && (
           <Button onClick={() => setChunk(chunk + 3)}>Load more...</Button>
         )}
       </Main>
       <Sidebar>
-        <Search />
+        <Search
+          handleChange={e => {
+            e.target.value.length === 0
+              ? setPapers(data.papers.nodes)
+              : setPapers(handleSearch(data.papers.nodes, e.target.value))
+          }}
+        />
         <Sort />
         <Tags />
       </Sidebar>

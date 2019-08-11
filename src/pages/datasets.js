@@ -1,11 +1,21 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import Fuse from "fuse.js"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
+const handleSearch = (index, query) => {
+  const fuse = new Fuse(index, {
+    keys: ["excerpt", "frontmatter.title"],
+  })
+
+  return fuse.search(query)
+}
+
 export default ({ data }) => {
   const [chunk, setChunk] = useState(3)
+  const [datasets, setDatasets] = useState(data.datasets.nodes)
 
   return (
     <Layout>
@@ -13,7 +23,7 @@ export default ({ data }) => {
         <title>Datasets | Algonomicon</title>
       </Helmet>
       <Main>
-        {data.datasets.nodes.slice(0, chunk).map((node, i) => (
+        {datasets.slice(0, chunk).map((node, i) => (
           <Post key={i}>
             <Link to={`/datasets/${node.frontmatter.slug}`}>
               <div>
@@ -23,12 +33,18 @@ export default ({ data }) => {
             </Link>
           </Post>
         ))}
-        {chunk < data.datasets.nodes.length && (
+        {chunk < datasets.length && (
           <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
         )}
       </Main>
       <Sidebar>
-        <Search />
+        <Search
+          handleChange={e => {
+            e.target.value.length === 0
+              ? setDatasets(data.datasets.nodes)
+              : setDatasets(handleSearch(data.datasets.nodes, e.target.value))
+          }}
+        />
         <Sort />
         <Tags />
       </Sidebar>
