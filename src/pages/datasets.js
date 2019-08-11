@@ -6,11 +6,9 @@ import { Link, graphql } from "gatsby"
 import { Layout, Main, Post, Sidebar, Search, Sort, Tags } from "../components"
 
 const handleSearch = (index, query) => {
-  const options = {
+  const fuse = new Fuse(index, {
     keys: ["excerpt", "frontmatter.title"],
-  }
-
-  const fuse = new Fuse(index, options)
+  })
 
   return fuse.search(query)
 }
