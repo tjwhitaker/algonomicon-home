@@ -14,7 +14,7 @@ const handleSearch = (index, query) => {
 }
 
 export default ({ data }) => {
-  const [chunk, setChunk] = useState(3)
+  const [chunk, setChunk] = useState(5)
   const [datasets, setDatasets] = useState(data.datasets.nodes)
 
   return (
