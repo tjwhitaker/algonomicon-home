@@ -34,7 +34,6 @@ export default ({ data }) => {
         {chunk < models.length && (
           <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
         )}
-        <p>No results.</p>
       </Main>
       <Sidebar>
         <Search

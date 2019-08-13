@@ -60,13 +60,13 @@ module.exports = {
         name: "datasets",
       },
     },
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     path: `${__dirname}/src/content/models`,
-    //     name: "models",
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/content/models`,
+        name: "models",
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
