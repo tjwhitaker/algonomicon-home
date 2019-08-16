@@ -18,11 +18,11 @@ export default ({ data }) => {
       </Helmet>
       <Main>
         <p>
-          Welcome to Algonomicon! We are a company working on applying machine
-          learning algorithms to the fields of natural science. We are analyzing
-          data, building models and writing articles to showcase how powerful
-          these methods can be when applied to cutting edge research in
-          astronomy, biology, chemistry, physics, etc.
+          Welcome to Algonomicon! This is a website that showcases work on
+          applying machine learning algorithms to the fields of natural science.
+          We are analyzing data, building models and writing articles to
+          showcase how powerful these methods can be when applied to cutting
+          edge research in astronomy, biology, chemistry, physics, etc.
         </p>
 
         <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
