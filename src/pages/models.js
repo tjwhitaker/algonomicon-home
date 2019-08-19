@@ -14,7 +14,7 @@ const handleSearch = (index, query) => {
 }
 
 export default ({ data }) => {
-  const [chunk, setChunk] = useState(3)
+  const [chunk, setChunk] = useState(5)
   const [models, setModels] = useState(data.models.nodes)
 
   return (
@@ -32,9 +32,8 @@ export default ({ data }) => {
           </Post>
         ))}
         {chunk < models.length && (
-          <Button onClick={() => setChunk(chunk + 3)}>Load more...</Button>
+          <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
         )}
-        <p>No results.</p>
       </Main>
       <Sidebar>
         <Search
