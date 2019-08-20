@@ -1,18 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const glitchBody = () => {
-  const hero = document.getElementsByClassName("hero")[0]
-  hero && hero.classList.add("glitched")
-}
-
-const unglitchBody = () => {
-  const hero = document.getElementsByClassName("hero")[0]
-  hero && hero.classList.remove("glitched")
-}
-
 export default () => (
-  <div className="logo" onMouseEnter={glitchBody} onMouseLeave={unglitchBody}>
+  <div className="logo">
     <Link to="/" className="glitch">
       {Array.from({ length: 6 }).map((val, index) => (
         <svg
