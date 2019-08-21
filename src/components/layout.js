@@ -23,7 +23,7 @@ export default ({ children }) => (
 
 const Container = styled.div`
   padding-bottom: 1rem;
-  min-height: 60vh;
+  min-height: 50vh;
 `
 
 const Grid = styled.div`

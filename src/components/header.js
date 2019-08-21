@@ -78,9 +78,9 @@ export default () => (
 
 const Header = styled.div`
   background-color: black;
-  background-size: cover;
   background-position: center bottom;
   background-image: url(/nebula-small.jpg);
+  background-size: cover;
   height: 18rem;
   position: relative;
 `
