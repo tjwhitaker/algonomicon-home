@@ -4,7 +4,7 @@ slug: linear-regression
 date: 2019-06-03
 ---
 
-Linear regression is a technique used for estimating relationships by fitting the inputs and the output to a line. Linear regression is used when the range of values is continuous and has a constant slope.
+Linear regression is a technique used for predicting outputs from a set of inputs by approximating a linear relationship.
 
 $
 \hat{y}_i = {\theta^T} \cdot x_i

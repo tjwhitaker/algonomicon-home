@@ -77,6 +77,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${__dirname}/src/content/puzzles`,
+        name: "puzzles",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${__dirname}/src/content/snippets`,
         name: "snippets",
       },

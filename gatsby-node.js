@@ -47,6 +47,16 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      puzzles: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "puzzles" } } }
+      ) {
+        nodes {
+          id
+          frontmatter {
+            slug
+          }
+        }
+      }
       snippets: allMarkdownRemark(
         filter: { fields: { collection: { eq: "snippets" } } }
       ) {
@@ -64,6 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const datasets = result.data.datasets.nodes || []
   const models = result.data.models.nodes || []
   const papers = result.data.papers.nodes || []
+  const puzzles = result.data.puzzles.nodes || []
   const snippets = result.data.snippets.nodes || []
 
   algorithms.forEach(node => {
@@ -102,6 +113,16 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve("./src/templates/paper.js"),
+      context: { slug: node.frontmatter.slug },
+    })
+  })
+
+  puzzles.forEach(node => {
+    const path = `/puzzles/${node.frontmatter.slug}`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/puzzle.js"),
       context: { slug: node.frontmatter.slug },
     })
   })
