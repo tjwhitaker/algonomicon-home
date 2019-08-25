@@ -13,11 +13,11 @@ export default () => (
     <Link to="/models" activeClassName="active" partiallyActive={true}>
       Models
     </Link>
-    <Link to="/puzzles" activeClassName="active" partiallyActive={true}>
-      Puzzles
-    </Link>
     <Link to="/snippets" activeClassName="active" partiallyActive={true}>
       Snippets
+    </Link>
+    <Link to="/thoughts" activeClassName="active" partiallyActive={true}>
+      Thoughts
     </Link>
   </Categories>
 )

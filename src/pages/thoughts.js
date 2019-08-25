@@ -15,24 +15,24 @@ const handleSearch = (index, query) => {
 
 export default ({ data }) => {
   const [chunk, setChunk] = useState(5)
-  const [puzzles, setPuzzles] = useState(data.puzzles.nodes)
+  const [thoughts, setThoughts] = useState(data.thoughts.nodes)
 
   return (
     <Layout>
       <Helmet>
-        <title>Puzzles | Algonomicon</title>
+        <title>Thoughts | Algonomicon</title>
       </Helmet>
       <Main>
-        {puzzles.slice(0, chunk).map((node, i) => (
+        {thoughts.slice(0, chunk).map((node, i) => (
           <Post key={i}>
-            <Link to={`/puzzles/${node.frontmatter.slug}`}>
+            <Link to={`/thoughts/${node.frontmatter.slug}`}>
               <h3>{node.frontmatter.title}</h3>
               <p>{node.excerpt}</p>
               <small>{node.frontmatter.authors}</small>
             </Link>
           </Post>
         ))}
-        {chunk < puzzles.length && (
+        {chunk < thoughts.length && (
           <Button onClick={() => setChunk(chunk + 5)}>Load more...</Button>
         )}
       </Main>
@@ -40,8 +40,8 @@ export default ({ data }) => {
         <Search
           handleChange={e => {
             e.target.value.length === 0
-              ? setPuzzles(data.puzzles.nodes)
-              : setPuzzles(handleSearch(data.puzzles.nodes, e.target.value))
+              ? setThoughts(data.thoughts.nodes)
+              : setThoughts(handleSearch(data.thoughts.nodes, e.target.value))
           }}
         />
         <Sort />
@@ -59,8 +59,8 @@ const Button = styled.a`
 
 export const query = graphql`
   {
-    puzzles: allMarkdownRemark(
-      filter: { fields: { collection: { eq: "puzzles" } } }
+    thoughts: allMarkdownRemark(
+      filter: { fields: { collection: { eq: "thoughts" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {

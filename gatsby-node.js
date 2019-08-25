@@ -47,8 +47,8 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      puzzles: allMarkdownRemark(
-        filter: { fields: { collection: { eq: "puzzles" } } }
+      snippets: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "snippets" } } }
       ) {
         nodes {
           id
@@ -57,8 +57,8 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      snippets: allMarkdownRemark(
-        filter: { fields: { collection: { eq: "snippets" } } }
+      thoughts: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "thoughts" } } }
       ) {
         nodes {
           id
@@ -74,8 +74,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const datasets = result.data.datasets.nodes || []
   const models = result.data.models.nodes || []
   const papers = result.data.papers.nodes || []
-  const puzzles = result.data.puzzles.nodes || []
   const snippets = result.data.snippets.nodes || []
+  const thoughts = result.data.thoughts.nodes || []
 
   algorithms.forEach(node => {
     const path = `/algorithms/${node.frontmatter.slug}`
@@ -117,22 +117,22 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  puzzles.forEach(node => {
-    const path = `/puzzles/${node.frontmatter.slug}`
-
-    createPage({
-      path,
-      component: require.resolve("./src/templates/puzzle.js"),
-      context: { slug: node.frontmatter.slug },
-    })
-  })
-
   snippets.forEach(node => {
     const path = `/snippets/${node.frontmatter.slug}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/snippet.js"),
+      context: { slug: node.frontmatter.slug },
+    })
+  })
+
+  thoughts.forEach(node => {
+    const path = `/thoughts/${node.frontmatter.slug}`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/thought.js"),
       context: { slug: node.frontmatter.slug },
     })
   })
