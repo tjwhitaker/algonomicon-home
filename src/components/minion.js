@@ -6,5 +6,6 @@ export default styled.h6`
   text-transform: uppercase;
   padding: 1rem 0;
   margin: 0;
+  margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
 `

@@ -13,11 +13,9 @@ export default ({ children }) => (
     <Header />
     <Container>
       <Wrapper>
-        <Categories />
         <Grid>{children}</Grid>
       </Wrapper>
     </Container>
-    <Footer />
   </div>
 )
 

@@ -10,11 +10,10 @@ export default () => (
   </Footer>
 )
 
-const Footer = styled.div`
-  background: black;
-`
+const Footer = styled.div``
 
 const Copyright = styled.p`
-  color: #ccc;
+  color: hsla(0, 0%, 0%, 0.8);
   margin: 0;
+  border-top: 1px solid #ccc;
 `

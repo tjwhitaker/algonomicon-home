@@ -11,7 +11,7 @@ export default ({ data }) => (
       <title>{data.dataset.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Title>{data.dataset.frontmatter.title}</Title>
+      <Minion>{data.dataset.frontmatter.title}</Minion>
       <div dangerouslySetInnerHTML={{ __html: data.dataset.html }} />
     </Main>
     <Sidebar>
@@ -40,7 +40,7 @@ const Title = styled.h1`
 `
 
 const Meta = styled.div`
-  padding: 1rem 0;
+  padding: 0;
 `
 
 const Field = styled.p`
@@ -48,7 +48,7 @@ const Field = styled.p`
 `
 
 const Outline = styled.div`
-  padding: 1rem 0;
+  padding: 0;
 
   ul {
     list-style: inside;

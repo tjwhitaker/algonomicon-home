@@ -1,5 +1,5 @@
 html {
-  background: black;
+  background: white;
 }
 body {
   background: white;
@@ -101,7 +101,7 @@ video {
   display: block;
 }
 .glitch svg {
-  fill: white;
+  fill: black;
   max-height: 25px;
   width: auto;
   shape-rendering: crispedges;
@@ -146,13 +146,13 @@ video {
 /* Hover flash animation on last image */
 .glitch:hover > .glitch__img:nth-child(5) {
   animation: glitch-anim-flash-1 0.5s steps(1, end) infinite alternate;
-  background-color: black;
+  background-color: white;
   background-blend-mode: overlay;
 }
 
 .glitch:hover > .glitch__img:nth-child(6) {
   animation: glitch-anim-flash-2 0.8s steps(1, end) infinite;
-  background-color: black;
+  background-color: white;
   background-blend-mode: overlay;
 }
 
