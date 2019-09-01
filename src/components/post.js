@@ -2,15 +2,14 @@ import styled from "styled-components"
 
 export default styled.div`
   padding: 1rem 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #fff4;
 
   h3 {
-    color: hsla(0, 0%, 0%, 0.8);
     margin-top: 0;
   }
 
   h4 {
-    color: hsla(0, 0%, 0%, 0.8);
+    color: white;
     margin: 0;
     line-height: 1.625;
   }
@@ -23,16 +22,18 @@ export default styled.div`
   }
 
   p {
-    color: hsla(0, 0%, 0%, 0.8);
+    color: #d4d4d4;
     font-weight: normal;
     margin-bottom: 0;
   }
 
   &:first-child {
     padding-top: 0;
+  }
 
+  &:hover {
     h4 {
-      margin-top: 1rem;
+      color: #ff4081;
     }
   }
 `

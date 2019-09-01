@@ -1,25 +1,10 @@
 html {
-  background: white;
-}
-body {
-  background: white;
-}
-
-a {
-  transition: all 0.1s ease;
-  color: #039be5;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-a.active,
-a:hover {
-  color: #0277bd;
-  text-decoration: none;
+  background: #121212;
+  color: #d4d4d4;
 }
 
 blockquote {
-  border-left: 5px solid #ccc;
+  border-left: 5px solid #d4d4d4;
   padding-left: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -35,8 +20,10 @@ input,
 textarea {
   width: 100%;
   background: white;
-  border: 1px solid #ccc;
   padding: 0.5rem;
+  color: #0008;
+  border: none;
+  box-sizing: border-box;
 }
 
 ul li {
@@ -101,7 +88,7 @@ video {
   display: block;
 }
 .glitch svg {
-  fill: black;
+  fill: white;
   max-height: 25px;
   width: auto;
   shape-rendering: crispedges;
@@ -146,13 +133,13 @@ video {
 /* Hover flash animation on last image */
 .glitch:hover > .glitch__img:nth-child(5) {
   animation: glitch-anim-flash-1 0.5s steps(1, end) infinite alternate;
-  background-color: white;
+  background-color: black;
   background-blend-mode: overlay;
 }
 
 .glitch:hover > .glitch__img:nth-child(6) {
   animation: glitch-anim-flash-2 0.8s steps(1, end) infinite;
-  background-color: white;
+  background-color: black;
   background-blend-mode: overlay;
 }
 

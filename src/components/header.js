@@ -10,10 +10,22 @@ export default () => (
       <Masthead>
         <Logo />
         <Nav>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about" activeClassName="active" partiallyActive={true}>
+            About
+          </NavLink>
+          <NavLink to="/blog" activeClassName="active" partiallyActive={true}>
+            Blog
+          </NavLink>
+          <NavLink
+            to="/contact"
+            activeClassName="active"
+            partiallyActive={true}
+          >
+            Contact
+          </NavLink>
+          <NavLink to="/" activeClassName="active">
+            Home
+          </NavLink>
         </Nav>
         <MobileNav>
           <svg
@@ -46,7 +58,7 @@ const Masthead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #fff4;
   padding-bottom: 1rem;
 `
 
@@ -76,21 +88,12 @@ const MobileNav = styled.div`
 `
 
 const NavLink = styled(Link)`
-  color: black;
+  color: white;
   margin-left: 1.5rem;
-  font-size: 0.87055rem;
-  font-weight: bold;
-  text-decoration: none;
-  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
 
+  &.active,
   &:hover {
-    color: #007bff;
-  }
-
-  &.active {
-    color: #007bff;
+    color: #ff4081;
   }
 `
 

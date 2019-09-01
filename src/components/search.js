@@ -49,7 +49,7 @@ const Icon = styled.div`
   top: 50%;
   transform: translateY(-50%);
   width: 1rem;
-  color: #aaa;
+  color: #0004;
 `
 
 const Input = styled.input`

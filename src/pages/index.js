@@ -25,9 +25,7 @@ export default ({ data }) => {
           edge research in astronomy, biology, chemistry, physics, etc.
         </p>
 
-        <Image fluid={data.file.childImageSharp.fluid} alt="Inception" />
-
-        <p style={{ margin: "1rem 0" }}>
+        <p>
           <i>
             Inception: A deep learning architecture developed by the AI research
             team at Google.
@@ -113,6 +111,7 @@ const Sidebar = styled.div`
 
 const Container = styled.div`
   max-height: 100%;
+  max-width: 100%;
   margin-right: -50px;
   padding-right: 42px;
   overflow: scroll;
@@ -121,13 +120,6 @@ const Container = styled.div`
 
 export const query = graphql`
   {
-    file(relativePath: { eq: "inception.jpg" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     allMarkdownRemark {
       nodes {
         excerpt
