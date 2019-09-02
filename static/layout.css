@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   background: #121212;
   color: #d4d4d4;
@@ -23,7 +27,6 @@ textarea {
   padding: 0.5rem;
   color: #0008;
   border: none;
-  box-sizing: border-box;
 }
 
 ul li {
