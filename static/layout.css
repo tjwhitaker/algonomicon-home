@@ -96,6 +96,7 @@ video {
   width: auto;
   shape-rendering: crispedges;
 }
+
 .glitch:hover svg {
   opacity: 1;
 }
@@ -374,7 +375,7 @@ video {
 @keyframes glitch-anim-flash-1 {
   0%,
   5% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: translate3d(5px, 2px, 0);
   }
   5.5%,
@@ -387,7 +388,7 @@ video {
 @keyframes glitch-anim-flash-2 {
   0%,
   5% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: translate3d(-2px, 0px, 0);
   }
   5.5%,

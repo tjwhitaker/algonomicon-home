@@ -36,10 +36,15 @@ a {
   text-decoration: none;
 }
 
+a:focus {
+  outline: 0;
+}
+
 a.active,
 a:hover {
   color: #ff4081;
   text-decoration: none;
+  outline: 0;
 }
 
 ul {
