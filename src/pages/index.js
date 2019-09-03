@@ -81,13 +81,12 @@ export default ({ data }) => {
         <Container>
           {feedItems.map((node, i) => (
             <Post key={i}>
-              <Link to={`/${node.fields.collection}/${node.frontmatter.slug}`}>
+              <Link to={`/blog/${node.frontmatter.slug}`}>
                 <h4>{node.frontmatter.title}</h4>
                 <p>{node.excerpt}</p>
                 <small>
-                  {node.fields.collection[0].toUpperCase() +
-                    node.fields.collection.slice(1, -1)}{" "}
-                  from {moment(node.frontmatter.date).fromNow()}
+                  {node.frontmatter.collection} from{" "}
+                  {moment(node.frontmatter.date).fromNow()}
                 </small>
               </Link>
             </Post>
@@ -127,6 +126,7 @@ export const query = graphql`
           title
           slug
           date
+          category
         }
         fields {
           collection

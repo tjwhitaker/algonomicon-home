@@ -3,6 +3,7 @@ title: The Higgs Boson Challenge
 slug: the-higgs-boson-challenge
 date: 2019-07-01
 authors: Tim Whitaker
+category: Analysis
 outline: |
   <ul>
     <li>Introduction</li>

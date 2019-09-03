@@ -25,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/algorithm.js"),
+      component: require.resolve("./src/templates/article.js"),
       context: { slug: node.frontmatter.slug },
     })
   })
