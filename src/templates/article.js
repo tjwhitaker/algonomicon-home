@@ -11,7 +11,7 @@ export default ({ data }) => (
       <title>{data.dataset.frontmatter.title} | Algonomicon</title>
     </Helmet>
     <Main>
-      <Minion>{data.dataset.frontmatter.title}</Minion>
+      <h1>{data.dataset.frontmatter.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: data.dataset.html }} />
     </Main>
     <Sidebar>
@@ -50,15 +50,10 @@ const Field = styled.p`
 const Outline = styled.div`
   padding: 0;
 
-  ul {
-    list-style: inside;
-    margin-left: 0;
-
-    ul {
-      list-style: inside circle;
-      margin-left: 1.625rem;
-      margin-top: 0;
-    }
+  ul ul {
+    list-style: inside circle;
+    margin-left: 1.625rem;
+    margin-top: 0;
   }
 `
 

@@ -18,12 +18,15 @@ export default ({ data }) => {
       </Helmet>
       <Main>
         <p>
-          Welcome to Algonomicon! This is a website that showcases work on
-          applying machine learning algorithms to the fields of natural science.
-          We are analyzing data, building models and writing articles to
-          showcase how powerful these methods can be when applied to cutting
-          edge research in astronomy, biology, chemistry, physics, etc.
+          Welcome to Algonomicon! This is a website to explore cool datasets and
+          machine learning algorithms.
         </p>
+
+        <Image
+          style={{ marginBottom: "2rem" }}
+          fluid={data.file.childImageSharp.fluid}
+          alt="Inception"
+        />
 
         <p>
           <i>
@@ -34,25 +37,16 @@ export default ({ data }) => {
 
         <p>
           Thanks to increased power and large complex datasets, machine learning
-          models are solving problems previously thought to be impossible! We
-          are learning about the structure of nature through galaxies billions
-          of light years away and particles billions of times smaller than an
-          atom. Machine learning is helping us glean insights from the vast,
-          complex datasets that describe our universe.
+          models are solving problems at the cutting edge of science. We are
+          learning about the structure of nature through galaxies billions of
+          light years away and particles billions of times smaller than an atom.
+          Machine learning is helping us glean insights from the vast, complex
+          datasets that describe our universe.
         </p>
 
-        <blockquote>
-          Truth is much too complicated to allow anything but approximations.
-          <p>
-            <i>- John Von Neumann</i>
-          </p>
-        </blockquote>
-
         <p>
-          While we're focused on applying machine learning to cutting edge
-          scientific research, we're also interested in projects that look to
-          make an impact on social good or address the grand challenges that
-          face humanity.
+          I'm really interested in projects looking to make an impact on social
+          good or address the grand challenges that face humanity.
         </p>
 
         <ul>
@@ -64,17 +58,6 @@ export default ({ data }) => {
           <li>Wildlife Conservation and Biodiversity Loss</li>
           <li>Renewable and Alternative Energy</li>
         </ul>
-        <p>
-          If you own or work at a company that is tackling global or social
-          issues, we'd love to get in touch. Feel free to visit our{" "}
-          <Link to="/contact">contact page</Link> or reach out directly to
-          info@algonomicon.com.
-        </p>
-        <p>
-          We support open source software. If you like our content, please join
-          our mission and collaborate with us on{" "}
-          <a href="https://github.com/algonomicon">Github</a>.
-        </p>
       </Main>
       <Sidebar>
         <Minion>Feed</Minion>
@@ -85,7 +68,7 @@ export default ({ data }) => {
                 <h4>{node.frontmatter.title}</h4>
                 <p>{node.excerpt}</p>
                 <small>
-                  {node.frontmatter.collection} from{" "}
+                  {node.frontmatter.category} from{" "}
                   {moment(node.frontmatter.date).fromNow()}
                 </small>
               </Link>
@@ -119,6 +102,13 @@ const Container = styled.div`
 
 export const query = graphql`
   {
+    file(relativePath: { eq: "inception.png" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     allMarkdownRemark {
       nodes {
         excerpt

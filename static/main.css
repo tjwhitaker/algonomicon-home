@@ -73,6 +73,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+img {
+  width: 100%;
+}
+
 .footnotes ol {
   margin-left: 0;
   list-style-position: inside;
