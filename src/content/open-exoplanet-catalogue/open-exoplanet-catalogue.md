@@ -155,7 +155,7 @@ plot(
     label = ["Earth", "Galactic Center"],
     Geom.point,
     Geom.label,
-    style(default_color=colorant"white", point_label_color=colorant"white")
+    style(default_color=colorant"#d4d4d4", point_label_color=colorant"#d4d4d4")
   ),
   layer(
     x = x_pos,
@@ -193,7 +193,7 @@ plot(
     label = :name,
     Geom.point,
     Geom.label,
-    style(default_color=colorant"white", point_label_color=colorant"white")
+    style(default_color=colorant"#d4d4d4", point_label_color=colorant"#d4d4d4")
   ),
   layer(
     dropmissing(exoplanets, [:pl_rade, :pl_bmasse]),
@@ -221,7 +221,7 @@ plot(
     label = :name,
     Geom.point,
     Geom.label,
-    style(default_color=colorant"white", point_label_color=colorant"white")
+    style(default_color=colorant"#d4d4d4", point_label_color=colorant"#d4d4d4")
   ),
   layer(
     dropmissing(exoplanets, [:pl_rade, :pl_bmasse]),
@@ -254,7 +254,7 @@ plot(
     label = ["Kepler-37 b"],
     Geom.point,
     Geom.label,
-    style(point_size = 0.336pt, point_label_color=colorant"white")
+    style(point_size = 0.336pt, point_label_color=colorant"#d4d4d4")
   ),
   layer(
     x = [3],
@@ -262,7 +262,7 @@ plot(
     label = ["Earth"],
     Geom.point,
     Geom.label,
-    style(point_size = 1pt, point_label_color=colorant"white")
+    style(point_size = 1pt, point_label_color=colorant"#d4d4d4")
   ),
   layer(
     x = [2.5],
@@ -270,7 +270,7 @@ plot(
     label = ["Jupiter"],
     Geom.point,
     Geom.label,
-    style(point_size = 11.21pt, point_label_color=colorant"white")
+    style(point_size = 11.21pt, point_label_color=colorant"#d4d4d4")
   ),
   layer(
     x = [1],
@@ -278,7 +278,7 @@ plot(
     label = ["HD 100546 b"],
     Geom.point,
     Geom.label,
-    style(point_size=77.342pt, point_label_color=colorant"white")
+    style(point_size=77.342pt, point_label_color=colorant"#d4d4d4")
   ),
   Scale.y_continuous(minvalue=-200, maxvalue=200)
 )
@@ -303,7 +303,7 @@ plot(
     label = ["Earth"],
     Geom.point,
     Geom.label,
-    style(point_label_color=colorant"white")
+    style(point_label_color=colorant"#d4d4d4")
   ),
   layer(
     dropmissing(exoplanets, [:pl_eqt, :st_teff, :pl_orbsmax]),
@@ -394,7 +394,7 @@ plot(
     label = ["Sun"],
     Geom.point,
     Geom.label,
-    style(default_color=colorant"white", point_label_color=colorant"white")
+    style(default_color=colorant"#d4d4d4", point_label_color=colorant"#d4d4d4")
   ),
   layer(
     dropmissing(exoplanets, [:st_rad, :st_mass]),

@@ -70,14 +70,19 @@ th:last-child {
 object,
 video {
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 img {
   width: 100%;
 }
 
+.footnotes hr {
+  height: 1px;
+  color: #fff4;
+}
 .footnotes ol {
+  padding-left: 0;
   margin-left: 0;
   list-style-position: inside;
 }
