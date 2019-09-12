@@ -1,23 +1,27 @@
 import React from "react"
 import styled from "styled-components"
-import Categories from "./categories"
+import { Helmet } from "react-helmet"
 import Header from "./header"
-import Footer from "./footer"
 import Wrapper from "./wrapper"
-import "../../static/layout.css"
+import "../../static/main.css"
 import "../../static/syntax.css"
+import "../../static/typography.css"
 import "../../node_modules/katex/dist/katex.min.css"
 
 export default ({ children }) => (
   <div>
+    <Helmet>
+      <link
+        href="https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
     <Header />
     <Container>
       <Wrapper>
-        <Categories />
         <Grid>{children}</Grid>
       </Wrapper>
     </Container>
-    <Footer />
   </div>
 )
 

@@ -8,16 +8,13 @@ export default () => (
       Algorithms
     </Link>
     <Link to="/datasets" activeClassName="active" partiallyActive={true}>
-      Datasets
+      Explorations
     </Link>
-    <Link to="/models" activeClassName="active" partiallyActive={true}>
+    {/* <Link to="/models" activeClassName="active" partiallyActive={true}>
       Models
-    </Link>
-    <Link to="/papers" activeClassName="active" partiallyActive={true}>
-      Papers
-    </Link>
-    <Link to="/snippets" activeClassName="active" partiallyActive={true}>
-      Snippets
+    </Link> */}
+    <Link to="/thoughts" activeClassName="active" partiallyActive={true}>
+      Thoughts
     </Link>
   </Categories>
 )

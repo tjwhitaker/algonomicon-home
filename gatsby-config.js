@@ -33,12 +33,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-typography",
-      options: {
-        pathToConfigModule: "src/utils/typography",
-      },
-    },
-    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "data",
@@ -49,36 +43,7 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/content/algorithms`,
-        name: "algorithms",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/datasets`,
-        name: "datasets",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/models`,
-        name: "models",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/papers`,
-        name: "papers",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/snippets`,
-        name: "snippets",
+        path: `${__dirname}/src/content`,
       },
     },
   ],

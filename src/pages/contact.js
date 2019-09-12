@@ -95,7 +95,7 @@ const TextArea = styled.textarea`
 `
 
 const Button = styled.button`
-  background: black;
+  background: #ff4081;
   color: white;
   font-weight: bold;
   display: inline-block;

@@ -1,0 +1,56 @@
+html {
+  line-height: 1.5;
+  font-family: "Fira Mono", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: color ease 0.1s;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+p {
+  margin: 0 0 2rem 0;
+}
+
+blockquote {
+  margin-bottom: 2rem;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+a {
+  transition: all 0.1s ease;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
+}
+
+a.active,
+a:hover {
+  color: #ff4081;
+  text-decoration: none;
+  outline: 0;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  list-style: inside;
+}

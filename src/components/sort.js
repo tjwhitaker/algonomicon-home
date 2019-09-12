@@ -13,7 +13,6 @@ const Group = styled.div`
 `
 
 const Option = styled(Link)`
-  color: #aaa;
   display: block;
 `
 
