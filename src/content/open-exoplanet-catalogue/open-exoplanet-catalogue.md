@@ -132,7 +132,7 @@ We're mapping the exoplanet locations using the galactic coordinate system. This
 
 <object data="star-map.svg" type="image/svg+xml">
   <param name="url" value="star-map.svg">
-</object>
+</object> 
 
 ```julia
 # Exoplanet locations
