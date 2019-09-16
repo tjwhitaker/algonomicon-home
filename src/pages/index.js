@@ -28,7 +28,7 @@ export default ({ data }) => {
           describe our universe. From galaxies billions of light years away to
           particles billions of times smaller than an atom, science experiments
           are producing more data than ever before. These algorithms are the
-          most powerful way to learn from these datasets, and I believe that
+          most powerful way to learn from these experiments, and I believe that
           they are the key to unlocking a new data driven paradigm in science.
         </p>
 
