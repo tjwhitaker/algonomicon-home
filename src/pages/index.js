@@ -22,6 +22,16 @@ export default ({ data }) => {
           machine learning algorithms.
         </p>
 
+        <p>
+          Thanks to increased computing power, machine learning models are
+          helping us glean insights from the vast, complex datasets that
+          describe our universe. From galaxies billions of light years away to
+          particles billions of times smaller than an atom, science experiments
+          are producing more data than ever before. These algorithms are the
+          most powerful way to learn from these experiments, and I believe that
+          they are the key to unlocking a new data driven paradigm in science.
+        </p>
+
         <Image
           style={{ marginBottom: "2rem" }}
           fluid={data.file.childImageSharp.fluid}
@@ -33,15 +43,6 @@ export default ({ data }) => {
             Inception: A deep learning architecture developed by the AI research
             team at Google.
           </i>
-        </p>
-
-        <p>
-          Thanks to increased power and large complex datasets, machine learning
-          models are solving problems at the cutting edge of science. We are
-          learning about the structure of nature through galaxies billions of
-          light years away and particles billions of times smaller than an atom.
-          Machine learning is helping us glean insights from the vast, complex
-          datasets that describe our universe.
         </p>
 
         <p>
@@ -96,7 +97,7 @@ const Container = styled.div`
   max-width: 100%;
   margin-right: -50px;
   padding-right: 42px;
-  overflow: scroll;
+  overflow: auto;
   position: absolute;
 `
 
