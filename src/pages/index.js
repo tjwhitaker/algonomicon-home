@@ -96,7 +96,7 @@ const Container = styled.div`
   max-width: 100%;
   margin-right: -50px;
   padding-right: 42px;
-  overflow: scroll;
+  overflow: auto;
   position: absolute;
 `
 
